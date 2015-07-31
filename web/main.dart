@@ -1,31 +1,26 @@
 /**
- * A "hello world" application for Chrome Apps written in Dart.
  *
- * For more information, see:
- * - http://developer.chrome.com/apps/api_index.html
- * - https://github.com/dart-gde/chrome.dart
  */
 
 import 'dart:html';
-
+import 'dart:io';
+import 'dart:async';
+import 'dart:convert';
+import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
-  List races = new List();
-  races.addAll(connect());
+
+  Election = loadElection();
   
-  if (races.length == 0) {
+  if (election == null) {
     return;
   }
-
-  List eventLog = new List();
-
 
   querySelector('#ID').onClick.listen(getID);
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  eventLog.add(querySelector('#Begin').onClick.listen(recordEvent));
   querySelector('#Begin').onClick.listen(beginElection);
 
   querySelector('#Previous').onClick.listen(displayCurrent);
@@ -74,36 +69,52 @@ void beginElection(MouseEvent event){
 }
 
 Map recordEvent(MouseEvent event) {
-  String type = event.type;
 
   Map e = new Map<String, String>();
   DateTime time = new DateTime.now();
-  e.putIfAbsent("type", type);
-  e.putIfAbsent("time", time.toIso8601String());
+  String type = (event.target as ButtonElement).id;
+  String timeStamp = time.toIso8601String();
+
+  e.putIfAbsent("type", (type as dynamic));
+  e.putIfAbsent("time", (timeStamp as dynamic));
 
   if(getCurrentRaceIndex()<27){
     e.putIfAbsent("page", getRaces().get(getCurrentRaceIndex()).number);
   }
   else if(getCurrentRaceIndex()>26){
-    e.putIfAbsent("page", "");
+    e.putIfAbsent("page", ("" as dynamic));
   }
 
   return e;
 }
 
-connect() {
-    String fileName="election.xml";
-    var xmlhttp=GetXmlHttpObject();
-    if (xmlhttp==null){
-        //alert ("Your browser does not support XMLHTTP!");
-        return null;
-    }
-    
-    var resultOfChange = stateChanged(xmlhttp);
-    xmlhttp.onreadystatechange=resultOfChange;
-    xmlhttp.open("GET",fileName,true);
-    xmlhttp.send(null);
-    return resultOfChange;
+Election loadElection(String path) {
+
+  //checkSupport()
+
+  var electionFile = new File(path);
+
+  if(!electionFile.existsSync()) return null;
+
+  var electionXML = parse(await());
+  if (electionXML==null){
+      window.alert ("Your browser does not support XMLHTTP!");
+      return null;
+  }
+
+  Election election = new Election();
+
+  /* When state = 4 the file has been received */
+  if (currentState ==  4) {
+      xmlhttp
+      election = buildRaces(xmlhttp.responseXML);
+  }
+
+  String fileName="election.xml";
+  xmlhttp.onreadystatechange=resultOfChange;
+  xmlhttp.open("GET",fileName,true);
+  xmlhttp.send(null);
+  return resultOfChange;
 }
 
 //checks if browser supports XML or ActiveObject
@@ -118,13 +129,11 @@ GetXmlHttpObject() {
 
 stateChanged(xmlhttp){
     var state=xmlhttp.readyState;
-    //When state = 4 the file has been received
-    //alert("state: "+ state);
+
+    /* Puts the state in the status field just for testing purposes */
     querySelector('#Debug').text=state;
-    //Puts the state in the status field just for testing purposes
-    if (state==4){
-        return buildRaces(xmlhttp.responseXML);
-    }
+
+  return state;
 }
 
 buildRaces(xml){
@@ -181,4 +190,8 @@ buildRaces(xml){
     //alert("Races legnth: "+races1.length);
     //alert("Races legnth: "+races.length);
     //alert("Props Length: "+props.length);
+}
+
+class Election {
+
 }
