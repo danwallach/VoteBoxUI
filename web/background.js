@@ -6,10 +6,10 @@
  */
 chrome.app.runtime.onLaunched.addListener(function(launchData) {
   chrome.app.window.create(
-    'index.html',
+    'VoteBoxUI-htmlSource.html',
     {
       id: 'mainWindow',
-      bounds: {width: 800, height: 600 }
+      bounds: {width: 1600, height: 800 }
     }
   );
 });
