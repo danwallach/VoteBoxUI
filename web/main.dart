@@ -4,8 +4,6 @@
 
 import 'dart:html' hide File, XmlDocument;
 import 'dart:io';
-import 'dart:async';
-import 'dart:convert';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 
@@ -35,19 +33,18 @@ void main() {
 void getID(MouseEvent event) {
   String ID = querySelector('#idText').text;
 
-  // Right now this always gets an empty string for some reason
-  /*if(ID==""){
+  if(ID==""){
         // this should actually be a popup or something
-        querySelector('#ID').text = "You must enter correctly your 5-digit authentication number.";
+        window.alert("You must enter correctly your 5-digit authentication number.");
     }
-    else{*/
+    else{
 
-  querySelector("#IDArea").text = ID + " STAR-Vote";
-  querySelector("#info").style.visibility="visible"; //shows election information page or start
-  querySelector("#ID").style.display="none"; //hides the elements on the authentication page
-  querySelector("#enterID").style.display="none";
-  querySelector("#idText").style.display="none";
-  //}
+    querySelector("#IDArea").text = ID + " STAR-Vote";
+    querySelector("#info").style.visibility="visible"; //shows election information page or start
+    querySelector("#ID").style.display="none"; //hides the elements on the authentication page
+    querySelector("#enterID").style.display="none";
+    querySelector("#idText").style.display="none";
+  }
 
 }
 
