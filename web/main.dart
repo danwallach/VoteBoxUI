@@ -2,7 +2,7 @@
  *
  */
 
-import 'dart:html';
+import 'dart:html' hide File, XmlDocument;
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
@@ -11,7 +11,8 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
-  Election = loadElection();
+  Election election = loadElection("election.xml");
+  num currentPage = 0;
 
   if (election == null) {
     return;
@@ -21,10 +22,12 @@ void main() {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen(beginElection);
+  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, currentPage, election));
 
-  querySelector('#Previous').onClick.listen(displayCurrent);
-  querySelector('#Next').onClick.listen(displayCurrent);
+  querySelector('#Previous').onClick.listen((MouseEvent e) => display(e, --currentPage, election));
+  querySelector('#Next').onClick.listen((MouseEvent e) => display(e, ++currentPage, election));
+
+  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, election));
 
 
 }
@@ -57,141 +60,141 @@ void gotoFirstInstructions(MouseEvent event) {
 }
 
 void gotoInfo(MouseEvent event) {
-  querySelector("#Begin").style.visibility="hidden"; //hides the bigin and back buttons shown on the instructions page
+  querySelector("#Begin").style.visibility="hidden"; //hides the begin and back buttons shown on the instructions page
   querySelector("#Back").style.visibility="hidden";
   querySelector("#first_instructions").style.display="none"; //makes the instructions invisible
   querySelector("#info").style.display="block"; //shows election information page or start
 
 }
 
-void beginElection(MouseEvent event){
+void gotoReview(MouseEvent event, Election e) {
+  displayReviewPage(e);
+}
+
+void display(MouseEvent event, int currentPage, Election e) {
+
+  if (currentPage < 0) currentPage = 0;
+
+  if(currentPage >= e.size()) {
+    displayReviewPage(e);
+  } else {
+    displayRace(e.getRace(currentPage));
+  }
+}
+
+void displayRace(Race race) {
 
 }
 
-Map recordEvent(MouseEvent event) {
+void displayReviewPage(Election e) {
 
-  Map e = new Map<String, String>();
-  DateTime time = new DateTime.now();
-  String type = (event.target as ButtonElement).id;
-  String timeStamp = time.toIso8601String();
-
-  e.putIfAbsent("type", (type as dynamic));
-  e.putIfAbsent("time", (timeStamp as dynamic));
-
-  if(getCurrentRaceIndex()<27){
-    e.putIfAbsent("page", getRaces().get(getCurrentRaceIndex()).number);
-  }
-  else if(getCurrentRaceIndex()>26){
-    e.putIfAbsent("page", ("" as dynamic));
-  }
-
-  return e;
 }
 
 Election loadElection(String path) {
 
-  //checkSupport()
+  String electionXML;
 
-  var electionFile = new File(path);
+  /* Parse this file into a String */
+  new File(path).readAsString().then((xmlStr) {
+    electionXML = xmlStr;
+  });
 
-  if(!electionFile.existsSync()) return null;
-
-  var electionXML = parse(await());
-  if (electionXML==null){
-    window.alert ("Your browser does not support XMLHTTP!");
+  if (electionXML == null) {
+    window.alert("The file was not loaded properly!");
     return null;
   }
 
+  XmlDocument xmlDoc = parse(electionXML);
+
   Election election = new Election();
+  election.loadFromXML(xmlDoc);
 
-  /* When state = 4 the file has been received */
-  if (currentState ==  4) {
-    xmlhttp
-    election = buildRaces(xmlhttp.responseXML);
-  }
-
-  String fileName="election.xml";
-  xmlhttp.onreadystatechange=resultOfChange;
-  xmlhttp.open("GET",fileName,true);
-  xmlhttp.send(null);
-  return resultOfChange;
+  return election;
 }
 
-//checks if browser supports XML or ActiveObject
-GetXmlHttpObject() {
-  /*if (window.XMLHttpRequest()){
-        return new XMLHttpRequest();
-    }
-    if (window.ActiveXObject()){
-        return new ActiveXObject("Microsoft.XMLHTTP");
-    }*/
-}
-
-stateChanged(xmlhttp){
-  var state=xmlhttp.readyState;
-
-  /* Puts the state in the status field just for testing purposes */
-  querySelector('#Debug').text=state;
-
-  return state;
-}
-
-buildRaces(xml){
-  int numberOfRaces = xml.getElementsByTagName("race").length;
-  var races = [];
-
-  for (int j = 0; j < numberOfRaces; j++){
-    races[j] = {};
-    var currentRace = xml.getElementsByTagName("race")[j];
-    races[j].title = currentRace.getElementsByTagName("title")[0].firstChild.nodeValue;
-    races[j].number = currentRace.getElementsByTagName("number")[0].firstChild.nodeValue;
-    races[j].cand = currentRace.getElementsByTagName("candidate");
-
-    races[j].candidates = [];
-    for (var i=0;i<races[j].cand.length;i++) {
-      races[j].candidates[i] = {};
-      races[j].candidates[i].index = i;
-      races[j].candidates[i].voted = false;
-      races[j].candidates[i].name = races[j].cand[i].getElementsByTagName("name")[0].firstChild.nodeValue;
-      races[j].candidates[i].party = races[j].cand[i].getElementsByTagName("party")[0].firstChild.nodeValue;
-    }
-  }
-
-  int numberOfProps = xml.getElementsByTagName("proposition").length;
-  var props = [];
-  //alert("number of props"+numberOfProps)
-  for (int p = 0; p < numberOfProps; p++){
-    props[p] = {};
-    props[p].log = [];
-    var currentProp = xml.getElementsByTagName("proposition")[p];
-    props[p].title = currentProp.getElementsByTagName("title")[0].firstChild.nodeValue;
-    props[p].text = currentProp.getElementsByTagName("propositionText")[0].firstChild.nodeValue;
-    props[p].number = currentProp.getElementsByTagName("number")[0].firstChild.nodeValue;
-    props[p].cand = currentProp.getElementsByTagName("response");
-
-    props[p].candidates = [];
-    for (var l=0; l<props[p].cand.length;l++) {
-      props[p].candidates[l] = {};
-      props[p].candidates[l].index = l;
-      props[p].candidates[l].voted = false;
-      if(l == 0){
-        props[p].candidates[l].name= "Yes";
-        props[p].candidates[l].party = " ";
-      }
-      else{
-        props[p].candidates[l].name = "No";
-        props[p].candidates[l].party = " ";
-      }
-      //props[p].candidates[l].name = props[p].cand[l].getElementsByTagName("response")[0].firstChild.nodeValue
-    }
-  }
-
-  return races.addAll(props);
-  //alert("Races legnth: "+races1.length);
-  //alert("Races legnth: "+races.length);
-  //alert("Props Length: "+props.length);
-}
 
 class Election {
+
+  List<Race> races;
+
+  Election() {
+    races = new List<Race>();
+  }
+
+  int size() {
+    return races.length;
+  }
+
+  Race getRace(int index) {
+    return races.elementAt(index);
+  }
+
+  void loadFromXML(XmlDocument xml) {
+
+    List<XmlElement> raceList = xml.findElements("race");
+
+    for (XmlElement race in raceList) {
+
+      String title = race.getAttribute("title");
+      List<XmlElement> XMLcandidates = race.findElements("candidate");
+      List<Option> candidates = new List<Option>();
+
+      for (XmlElement element in XMLcandidates) {
+        candidates.add(new Option(element.getAttribute("name"), groupAssociation: element.getAttribute("party")));
+      }
+
+      Race currentRace = new Race(title, candidates);
+      races.add(currentRace);
+
+    }
+
+    List<XmlElement> propList = xml.findElements("proposition");
+
+    for (XmlElement prop in propList) {
+
+      String title = prop.getAttribute("title");
+      String text = prop.getAttribute("propositionText");
+      List<XmlElement> XMLresponses = prop.findElements("response");
+      List<Option> responses = new List<Option>();
+
+      for (XmlElement element in XMLresponses) {
+        responses.add(new Option(XMLresponses.indexOf(element) == 0 ? "Yes" : "No"));
+      }
+
+      Race currentRace = new Race(title, responses, text: text);
+      races.add(currentRace);
+
+    }
+
+  }
+
+}
+
+class Race {
+
+  String title;
+  List<Option> options;
+  String text;
+  bool voted=false;
+
+  Race(this.title, this.options, {this.text});
+
+  void markSelection(Option o) {
+    voted = true;
+    o.mark();
+  }
+
+}
+
+class Option {
+  String identifier;
+  String groupAssociation;
+  bool voted=false;
+
+  Option(this.identifier, {this.groupAssociation});
+
+  void mark() {
+    voted = true;
+  }
 
 }
