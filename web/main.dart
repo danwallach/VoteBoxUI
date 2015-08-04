@@ -10,7 +10,6 @@ import 'package:chrome/chrome_app.dart' as chrome;
 void main() {
 
   Election election = loadElection("election.xml");
-  num currentPage = 0;
 
   if (election == null) {
     return;
@@ -20,10 +19,10 @@ void main() {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, currentPage, election));
+  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, election));
 
-  querySelector('#Previous').onClick.listen((MouseEvent e) => display(e, --currentPage, election));
-  querySelector('#Next').onClick.listen((MouseEvent e) => display(e, ++currentPage, election));
+  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, election));
+  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, election));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, election));
 
@@ -77,20 +76,30 @@ void gotoInfo(MouseEvent event) {
  *
  */
 void gotoReview(MouseEvent event, Election e) {
-  displayReviewPage(e);
+  update(event, e.getCurrentPage(), e.size()-e.getCurrentPage(), e);
+}
+
+void update(MouseEvent event, int delta, Election e) {
+
+  /* Record information on currentPage */
+  record(e);
+
+  display(event, e.getCurrentPage()+delta, e);
 }
 
 /**
  *
  */
-void display(MouseEvent event, int currentPage, Election e) {
+void display(MouseEvent event, int pageToDisplay, Election e) {
 
-  if (currentPage < 0) currentPage = 0;
+  if (pageToDisplay < 0) pageToDisplay = 0;
 
-  if(currentPage >= e.size()) {
+  if(pageToDisplay >= e.size()) {
     displayReviewPage(e);
+    e.updateCurrentPage(e.size());
   } else {
-    displayRace(e.getRace(currentPage));
+    displayRace(e.getRace(pageToDisplay));
+    e.updateCurrentPage(pageToDisplay);
   }
 }
 
@@ -138,18 +147,27 @@ Election loadElection(String path) {
  */
 class Election {
 
-  List<Race> races;
+  List<Race> _races;
+  int _currentPage=0;
 
   Election() {
-    races = new List<Race>();
+    _races = new List<Race>();
   }
 
   int size() {
-    return races.length;
+    return _races.length;
   }
 
   Race getRace(int index) {
-    return races.elementAt(index);
+    return _races.elementAt(index);
+  }
+
+  int getCurrentPage() {
+    return _currentPage;
+  }
+
+  void updateCurrentPage(int newPage) {
+    _currentPage = newPage;
   }
 
   void loadFromXML(XmlDocument xml) {
@@ -167,7 +185,7 @@ class Election {
       }
 
       Race currentRace = new Race(title, candidates);
-      races.add(currentRace);
+      _races.add(currentRace);
 
     }
 
@@ -185,7 +203,7 @@ class Election {
       }
 
       Race currentRace = new Race(title, responses, text: text);
-      races.add(currentRace);
+      _races.add(currentRace);
 
     }
 
@@ -198,19 +216,19 @@ class Election {
  */
 class Race {
 
-  String title;
-  List<Option> options;
+  String _title;
+  List<Option> _options;
   String text;
-  bool voted=false;
+  bool _voted=false;
 
-  Race(this.title, this.options, {this.text});
+  Race(this._title, this._options, {this.text});
 
   bool hasVoted() {
-    return voted;
+    return _voted;
   }
 
   void markSelection(Option o) {
-    voted = true;
+    _voted = true;
     o.mark();
   }
 
@@ -220,18 +238,18 @@ class Race {
  *
  */
 class Option {
-  String identifier;
+  String _identifier;
   String groupAssociation;
-  bool voted=false;
+  bool _voted=false;
 
-  Option(this.identifier, {this.groupAssociation});
+  Option(this._identifier, {this.groupAssociation});
 
   bool wasSelected(){
-    return voted;
+    return _voted;
   }
 
   void mark() {
-    voted = true;
+    _voted = true;
   }
 
 }
