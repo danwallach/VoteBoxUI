@@ -26,7 +26,6 @@ void main() {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, election));
 
-
 }
 
 /**
@@ -76,7 +75,7 @@ void gotoInfo(MouseEvent event) {
  *
  */
 void gotoReview(MouseEvent event, Election e) {
-  update(event, e.getCurrentPage(), e.size()-e.getCurrentPage(), e);
+  update(event, e.size()-e.getCurrentPage(), e);
 }
 
 void update(MouseEvent event, int delta, Election e) {
@@ -84,7 +83,31 @@ void update(MouseEvent event, int delta, Election e) {
   /* Record information on currentPage */
   record(e);
 
+  /* Display the new page */
   display(event, e.getCurrentPage()+delta, e);
+}
+
+/**
+ *
+ */
+void record(Election e){
+  /* Get the "votes" collection of elements from this page */
+  RadioButtonInputElement selected;
+
+  try {
+    selected = (querySelector("#votes").getElementsByClassName("candidate")
+    as List<RadioButtonInputElement>).singleWhere((RadioButtonInputElement el) => isSelected(el));
+
+    e.getRace(e.getCurrentPage()).markSelection(selected.getAttribute("name"));
+
+  } catch (exception) {
+    e.getRace(e.getCurrentPage()).noSelection();
+  }
+
+}
+
+bool isSelected(RadioButtonInputElement e) {
+  return e.checked;
 }
 
 /**
@@ -227,9 +250,24 @@ class Race {
     return _voted;
   }
 
-  void markSelection(Option o) {
+  void markSelection(String identifier) {
     _voted = true;
-    o.mark();
+
+    for(Option o in _options) {
+      o.unmark();
+
+      if (o._identifier == identifier)
+        o.mark();
+    }
+  }
+
+  void noSelection(){
+    _voted = false;
+
+    for(Option o in _options) {
+      o.unmark();
+    }
+
   }
 
 }
@@ -250,6 +288,10 @@ class Option {
 
   void mark() {
     _voted = true;
+  }
+
+  void unmark(){
+    _voted = false;
   }
 
 }
