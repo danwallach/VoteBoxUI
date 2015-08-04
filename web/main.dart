@@ -30,6 +30,9 @@ void main() {
 
 }
 
+/**
+ *
+ */
 void getID(MouseEvent event) {
   String ID = querySelector('#idText').text;
 
@@ -48,6 +51,9 @@ void getID(MouseEvent event) {
 
 }
 
+/**
+ *
+ */
 void gotoFirstInstructions(MouseEvent event) {
   querySelector("#first_instructions").style.display="block"; //de-invisibles
   querySelector("#first_instructions").style.visibility="visible"; //displays instructions
@@ -56,6 +62,9 @@ void gotoFirstInstructions(MouseEvent event) {
   querySelector("#info").style.display="none"; //makes the instructions invisible
 }
 
+/**
+ *
+ */
 void gotoInfo(MouseEvent event) {
   querySelector("#Begin").style.visibility="hidden"; //hides the begin and back buttons shown on the instructions page
   querySelector("#Back").style.visibility="hidden";
@@ -64,10 +73,16 @@ void gotoInfo(MouseEvent event) {
 
 }
 
+/**
+ *
+ */
 void gotoReview(MouseEvent event, Election e) {
   displayReviewPage(e);
 }
 
+/**
+ *
+ */
 void display(MouseEvent event, int currentPage, Election e) {
 
   if (currentPage < 0) currentPage = 0;
@@ -79,14 +94,23 @@ void display(MouseEvent event, int currentPage, Election e) {
   }
 }
 
+/**
+ *
+ */
 void displayRace(Race race) {
 
 }
 
+/**
+ *
+ */
 void displayReviewPage(Election e) {
 
 }
 
+/**
+ *
+ */
 Election loadElection(String path) {
 
   String electionXML;
@@ -109,7 +133,9 @@ Election loadElection(String path) {
   return election;
 }
 
-
+/**
+ *
+ */
 class Election {
 
   List<Race> races;
@@ -167,6 +193,9 @@ class Election {
 
 }
 
+/**
+ *
+ */
 class Race {
 
   String title;
@@ -176,6 +205,10 @@ class Race {
 
   Race(this.title, this.options, {this.text});
 
+  bool hasVoted() {
+    return voted;
+  }
+
   void markSelection(Option o) {
     voted = true;
     o.mark();
@@ -183,12 +216,19 @@ class Race {
 
 }
 
+/**
+ *
+ */
 class Option {
   String identifier;
   String groupAssociation;
   bool voted=false;
 
   Option(this.identifier, {this.groupAssociation});
+
+  bool wasSelected(){
+    return voted;
+  }
 
   void mark() {
     voted = true;
