@@ -5,6 +5,10 @@
  * @see http://developer.chrome.com/apps/app.window.html
  */
 chrome.app.runtime.onLaunched.addListener(function(launchData) {
+
+  document.createElement("XMLFile");
+  document.XMLFile = launchData.items[0].entry;
+
   chrome.app.window.create(
     'VoteBoxUI-htmlSource.html',
     {

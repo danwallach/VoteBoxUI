@@ -2,20 +2,19 @@
  *
  */
 
-import 'dart:html' hide File, XmlDocument;
-import 'dart:io';
+import 'dart:html' hide XmlDocument;
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
-  Election election = loadElection("election.xml");
+  Election election = loadElection();
 
   if (election == null) {
     return;
   }
 
-  querySelector('#ID').onClick.listen(getID);
+  //querySelector('#ID').onClick.listen(getID);
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
@@ -34,12 +33,13 @@ void main() {
 void getID(MouseEvent event) {
   String ID = querySelector('#idText').text;
 
+
   if(ID==""){
         // this should actually be a popup or something
         window.alert("You must enter correctly your 5-digit authentication number.");
     }
     else{
-
+window.alert("|$ID|");
     querySelector("#IDArea").text = ID + " STAR-Vote";
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
@@ -131,6 +131,14 @@ void display(MouseEvent event, int pageToDisplay, Election e) {
  */
 void displayRace(Race race) {
 
+  /* Clear all other HTML */
+
+  /* If nothing is selected show "skip" , otherwise "next" */
+
+  /* Display the current race info */
+
+
+
 }
 
 /**
@@ -138,18 +146,26 @@ void displayRace(Race race) {
  */
 void displayReviewPage(Election e) {
 
+  /* Clear all other HTML */
+
+  /* Display only "Print Your Ballot" */
+
+  /* Display review */
+
 }
 
 /**
  *
  */
-Election loadElection(String path) {
+Election loadElection() {
 
   String electionXML;
 
-  /* Parse this file into a String */
-  new File(path).readAsString().then((xmlStr) {
-    electionXML = xmlStr;
+  FileEntry entry = document.getElementById("XMLFile") as FileEntry;
+  entry.file().then((file) {
+    FileReader reader = new FileReader();
+    reader.onLoad.listen((e) => electionXML = e.target.result);
+    reader.readAsText(file);
   });
 
   if (electionXML == null) {

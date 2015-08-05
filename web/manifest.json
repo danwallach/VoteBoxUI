@@ -4,7 +4,7 @@
   "short_name": "VoteBoxUI",
   "description": "",
   "version": "0.0.1",
-  "minimum_chrome_version": "38",
+  "minimum_chrome_version": "39",
 
   "icons": {
     "16": "icon_16.png",
@@ -14,6 +14,20 @@
   "app": {
     "background": {
       "scripts": ["background.js"]
+    }
+  },
+
+  "permissions": [
+    "storage",
+    {"fileSystem": ["retainEntries", "directory"]},
+    "*://*/*"
+  ],
+
+  "file_handlers": {
+    "any": {
+      "extensions": [
+        "xml"
+      ]
     }
   }
 }
