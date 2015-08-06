@@ -78,15 +78,17 @@ void gotoInfo(MouseEvent event) {
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
 void gotoReview(MouseEvent event, Ballot e) {
+
+  /* Set the delta to purposefully get to the review page */
   update(event, e.size()-e.getCurrentPage(), e);
 }
 
 void update(MouseEvent event, int delta, Ballot b) {
 
-  /* Record information on currentPage */
+  /* Record information on currentPage in the Ballot */
   record(b);
 
-  /* Display the new page */
+  /* Display the new page (either next or previous) */
   display(event, b.getCurrentPage()+delta, b);
 }
 
