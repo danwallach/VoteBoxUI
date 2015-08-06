@@ -81,58 +81,65 @@ void gotoReview(MouseEvent event, Ballot e) {
   update(event, e.size()-e.getCurrentPage(), e);
 }
 
-void update(MouseEvent event, int delta, Ballot e) {
+void update(MouseEvent event, int delta, Ballot b) {
 
   /* Record information on currentPage */
-  record(e);
+  record(b);
 
   /* Display the new page */
-  display(event, e.getCurrentPage()+delta, e);
+  display(event, b.getCurrentPage()+delta, b);
 }
 
 /**
  * Records the current selection state of the current Race in the Ballot
  */
-void record(Ballot e){
+void record(Ballot b){
   /* Get the "votes" collection of elements from this page */
-  RadioButtonInputElement selected;
+  Iterable<RadioButtonInputElement> selected;
 
-  try {
+  /* Get the currently selected candidate button(s) on the page */
+  selected = (querySelector("#votes").getElementsByClassName("candidate")
+                as List<RadioButtonInputElement>).where((RadioButtonInputElement el) => isSelected(el));
 
-    /* Get */
-    selected = (querySelector("#votes").getElementsByClassName("candidate")
-                  as List<RadioButtonInputElement>).singleWhere((RadioButtonInputElement el) => isSelected(el));
+  /* There should never be more than one selected radio button... */
+  if(selected.length == 1) {
 
-    e.getRace(e.getCurrentPage()).markSelection(selected.getAttribute("name"));
+    /* Mark the Option in this Race with the selection's name */
+    b.getRace(b.getCurrentPage()).markSelection(selected.elementAt(0).getAttribute("name"));
+  }
+  else if (selected.length == 0){
 
-  } catch (exception) {
-    e.getRace(e.getCurrentPage()).noSelection();
+    /* If nothing is selected, note it */
+    b.getRace(b.getCurrentPage()).noSelection();
   }
 
 }
 
+/**
+ * Returns the checked state of this radio button
+ */
 bool isSelected(RadioButtonInputElement e) {
   return e.checked;
 }
 
 /**
- *
+ * Renders the pageToDisplay in the Ballot as HTML in the UI
  */
-void display(MouseEvent event, int pageToDisplay, Ballot e) {
+void display(MouseEvent event, int pageToDisplay, Ballot b) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
-  if(pageToDisplay >= e.size()) {
-    displayReviewPage(e);
-    e.updateCurrentPage(e.size());
+  if(pageToDisplay >= b.size()) {
+    displayReviewPage(b);
+    b.updateCurrentPage(b.size());
   } else {
-    displayRace(e.getRace(pageToDisplay));
-    e.updateCurrentPage(pageToDisplay);
+    displayRace(b.getRace(pageToDisplay));
+    b.updateCurrentPage(pageToDisplay);
   }
 }
 
 /**
- *
+ * Renders this Race on the UI as HTML
  */
 void displayRace(Race race) {
 
@@ -147,7 +154,7 @@ void displayRace(Race race) {
 }
 
 /**
- *
+ * Renders the review page for the current state of this Ballot
  */
 void displayReviewPage(Ballot e) {
 
@@ -160,7 +167,8 @@ void displayReviewPage(Ballot e) {
 }
 
 /**
- *
+ * Loads the ballot XML file from localdata and parses the XML as a String to be sent
+ * to be converted into a Ballot object
  */
 Ballot loadBallot() {
 
