@@ -3,14 +3,15 @@
  */
 
 import 'dart:html' hide XmlDocument;
-import 'dart:async';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
   /* Load the Ballot from the XML file reference passed through localdata */
-  //Ballot ballot = loadBallot();
+  try {
+  Ballot ballot = loadBallot();
+  } catch(exception) { print('$exception');}
   
   /* If for some reason nothing is there, close the window or error or something */
   /*if (ballot == null) {
@@ -183,11 +184,12 @@ Ballot loadBallot() {
 
   String ballotXML;
 
-  FileEntry entry;
+  FileEntry entry = chrome.app.window.current().contentWindow.files[0];
 
-  chrome.app.runtime.onLaunched.first.then((file) {
+  /*chrome.app.runtime.onLaunched.first.then((file) {
+    print("$file");
     entry = file as FileEntry;
-  });
+  });*/
 
   entry.file().then((file) {
     FileReader reader = new FileReader();
