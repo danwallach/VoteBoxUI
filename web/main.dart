@@ -3,33 +3,40 @@
  */
 
 import 'dart:html' hide XmlDocument;
+import 'dart:async';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
   /* Load the Ballot from the XML file reference passed through localdata */
-  Ballot ballot = loadBallot();
+  //Ballot ballot = loadBallot();
   
   /* If for some reason nothing is there, close the window or error or something */
-  if (ballot == null) {
+  /*if (ballot == null) {
     chrome.app.window.current().close();
     return;
-  }
+  }*/
 
   /* Set up listeners for the different buttons clicked */
   querySelector('#ID').onClick.listen(getID);
+
+  querySelector('#okay').onClick.listen(close);
+
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
+  /*querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
 
   querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, ballot));
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
-}
+*/}
 
+void close(MouseEvent event) {
+  (querySelector('dialog') as DialogElement).close('');
+}
 /**
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
@@ -37,9 +44,10 @@ void getID(MouseEvent event) {
   String ID = (querySelector('#idText') as TextInputElement).value;
 
   if(ID=="" || ID.length < 5){
-        window.alert("You must correctly enter your 5-digit authentication number.");
-    }
-    else{
+    DialogElement dialog = querySelector('dialog') as DialogElement;
+    dialog.showModal();
+  }
+  else{
 
     /* TODO: Verify this ID by sending it back to Supervisor */
     querySelector("#IDArea").text = ID + " STAR-Vote";
