@@ -8,13 +8,17 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
+  /* Load the election from the XML file reference passed through localdata */
   Election election = loadElection();
-
+  
+  /* If for some reason nothing is there, close the window or error or something */
   if (election == null) {
+    chrome.app.window.current().close();
     return;
   }
 
-  //querySelector('#ID').onClick.listen(getID);
+  /* Set up listeners for the different buttons clicked */
+  querySelector('#ID').onClick.listen(getID);
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
@@ -24,22 +28,21 @@ void main() {
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, election));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, election));
-
 }
 
 /**
- *
+ * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
 void getID(MouseEvent event) {
   String ID = querySelector('#idText').text;
-
 
   if(ID==""){
         // this should actually be a popup or something
         window.alert("You must enter correctly your 5-digit authentication number.");
     }
     else{
-window.alert("|$ID|");
+
+    /* TODO: Verify this ID by sending it back to Supervisor */
     querySelector("#IDArea").text = ID + " STAR-Vote";
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
@@ -161,7 +164,12 @@ Election loadElection() {
 
   String electionXML;
 
-  FileEntry entry = document.getElementById("XMLFile") as FileEntry;
+  FileEntry entry;
+
+  chrome.app.runtime.onLaunched.first.then((file) {
+    entry = file as FileEntry;
+  });
+
   entry.file().then((file) {
     FileReader reader = new FileReader();
     reader.onLoad.listen((e) => electionXML = e.target.result);
