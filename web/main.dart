@@ -1,5 +1,5 @@
 /**
- *
+ * The main guts of the Voting Session UI (current project name 'VoteBoxUI')
  */
 
 import 'dart:html' hide XmlDocument;
