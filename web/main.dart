@@ -34,11 +34,10 @@ void main() {
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
 void getID(MouseEvent event) {
-  String ID = querySelector('#idText').text;
+  String ID = (querySelector('#idText') as TextInputElement).value;
 
-  if(ID==""){
-        // this should actually be a popup or something
-        window.alert("You must enter correctly your 5-digit authentication number.");
+  if(ID=="" || ID.length < 5){
+        window.alert("You must correctly enter your 5-digit authentication number.");
     }
     else{
 
