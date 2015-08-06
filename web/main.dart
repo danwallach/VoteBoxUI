@@ -8,11 +8,11 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 void main() {
 
-  /* Load the election from the XML file reference passed through localdata */
-  Election election = loadElection();
+  /* Load the Ballot from the XML file reference passed through localdata */
+  Ballot ballot = loadBallot();
   
   /* If for some reason nothing is there, close the window or error or something */
-  if (election == null) {
+  if (ballot == null) {
     chrome.app.window.current().close();
     return;
   }
@@ -22,12 +22,12 @@ void main() {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, election));
+  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
 
-  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, election));
-  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, election));
+  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, ballot));
+  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
-  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, election));
+  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 }
 
 /**
@@ -53,7 +53,7 @@ void getID(MouseEvent event) {
 }
 
 /**
- *
+ * Triggers on 'Begin' and renders the 'First Instructions' page
  */
 void gotoFirstInstructions(MouseEvent event) {
   querySelector("#first_instructions").style.display="block"; //de-invisibles
@@ -64,7 +64,7 @@ void gotoFirstInstructions(MouseEvent event) {
 }
 
 /**
- *
+ * Triggers on 'Back' and renders the 'Instructions' page
  */
 void gotoInfo(MouseEvent event) {
   querySelector("#Begin").style.visibility="hidden"; //hides the begin and back buttons shown on the instructions page
@@ -75,13 +75,13 @@ void gotoInfo(MouseEvent event) {
 }
 
 /**
- *
+ * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent event, Election e) {
+void gotoReview(MouseEvent event, Ballot e) {
   update(event, e.size()-e.getCurrentPage(), e);
 }
 
-void update(MouseEvent event, int delta, Election e) {
+void update(MouseEvent event, int delta, Ballot e) {
 
   /* Record information on currentPage */
   record(e);
@@ -91,15 +91,17 @@ void update(MouseEvent event, int delta, Election e) {
 }
 
 /**
- *
+ * Records the current selection state of the current Race in the Ballot
  */
-void record(Election e){
+void record(Ballot e){
   /* Get the "votes" collection of elements from this page */
   RadioButtonInputElement selected;
 
   try {
+
+    /* Get */
     selected = (querySelector("#votes").getElementsByClassName("candidate")
-    as List<RadioButtonInputElement>).singleWhere((RadioButtonInputElement el) => isSelected(el));
+                  as List<RadioButtonInputElement>).singleWhere((RadioButtonInputElement el) => isSelected(el));
 
     e.getRace(e.getCurrentPage()).markSelection(selected.getAttribute("name"));
 
@@ -116,7 +118,7 @@ bool isSelected(RadioButtonInputElement e) {
 /**
  *
  */
-void display(MouseEvent event, int pageToDisplay, Election e) {
+void display(MouseEvent event, int pageToDisplay, Ballot e) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
@@ -147,7 +149,7 @@ void displayRace(Race race) {
 /**
  *
  */
-void displayReviewPage(Election e) {
+void displayReviewPage(Ballot e) {
 
   /* Clear all other HTML */
 
@@ -160,9 +162,9 @@ void displayReviewPage(Election e) {
 /**
  *
  */
-Election loadElection() {
+Ballot loadBallot() {
 
-  String electionXML;
+  String ballotXML;
 
   FileEntry entry;
 
@@ -172,32 +174,32 @@ Election loadElection() {
 
   entry.file().then((file) {
     FileReader reader = new FileReader();
-    reader.onLoad.listen((e) => electionXML = e.target.result);
+    reader.onLoad.listen((e) => ballotXML = e.target.result);
     reader.readAsText(file);
   });
 
-  if (electionXML == null) {
+  if (ballotXML == null) {
     window.alert("The file was not loaded properly!");
     return null;
   }
 
-  XmlDocument xmlDoc = parse(electionXML);
+  XmlDocument xmlDoc = parse(ballotXML);
 
-  Election election = new Election();
-  election.loadFromXML(xmlDoc);
+  Ballot ballot = new Ballot();
+  ballot.loadFromXML(xmlDoc);
 
-  return election;
+  return ballot;
 }
 
 /**
  *
  */
-class Election {
+class Ballot {
 
   List<Race> _races;
   int _currentPage=0;
 
-  Election() {
+  Ballot() {
     _races = new List<Race>();
   }
 
