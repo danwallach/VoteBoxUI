@@ -24,15 +24,13 @@
   ],
 
   "file_handlers": {
-    "text" : {
-        "extensions" : [ 
-          "*" 
-          ]
-    },
     "any": {
-      "extensions": [
+      "types": [
         "*"
       ]
     }
-  }
+  },
+
+  "kiosk_enabled" : true,
+  "kiosk_only" : true
 }

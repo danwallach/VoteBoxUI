@@ -15,7 +15,33 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
     },
 
     function(createdWindow) {
-      createdWindow.contentWindow.files = launchData.items||[];
+
+      if(launchData.items !== undefined) {
+        launchData.items[0].entry.file(
+  
+          function(result) {
+  
+            var reader = new FileReader();
+            var XML;
+  
+            reader.onloadend = function(){
+              XML = reader.result;
+              chrome.storage.local.set({'XML': XML});
+            };
+  
+            reader.readAsText(result);
+  
+          },
+  
+          function(){
+            console.log("Error reading XML file");
+          }
+  
+        );
+      }
+      else {
+        console.log("No file was detected.");
+      }
     }
   );
 

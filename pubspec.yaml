@@ -5,3 +5,5 @@ dependencies:
   xml: "^2.3.2"
 transformers:
 - chrome
+- $dart2js:
+    csp: true
