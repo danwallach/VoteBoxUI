@@ -118,7 +118,7 @@ void update(MouseEvent event, int delta, Ballot b) {
   if(b.getCurrentPage() != b.size()) {
     /* Record information on currentPage in the Ballot */
     record(b);
-    display(event, b.getCurrentPage() + delta, b);
+    display(b.getCurrentPage() + delta, b);
   } else {
     review(event, b.getCurrentPage()+delta, b);
   }
@@ -248,25 +248,21 @@ void displayRace(Race race) {
 
   propTitleDiv.id = "propTitle";
   propTitleDiv.className = "propTitle";
-
-  propTextDiv.id = "propText";
-  propTextDiv.text = "Choose yes or no.";
-
-  raceTitleDiv.id = "raceTitle";
-  raceTitleDiv.className = "raceTitle";
-
-  raceInstDiv.id = "raceInst";
-  raceInstDiv.text = "Vote for 1.";
-
   titleDiv.append(propTitleDiv);
   titleDiv.appendHtml("<br>");
 
+  propTextDiv.id = "propText";
+  propTextDiv.text = "Choose yes or no.";
   titleDiv.append(propTextDiv);
   titleDiv.appendHtml("<br>");
 
+  raceTitleDiv.id = "raceTitle";
+  raceTitleDiv.className = "raceTitle";
   titleDiv.append(raceTitleDiv);
   titleDiv.appendHtml("<br>");
 
+  raceInstDiv.id = "raceInst";
+  raceInstDiv.text = "Vote for 1.";
   titleDiv.append(raceInstDiv);
 
   /* Add new race div */
