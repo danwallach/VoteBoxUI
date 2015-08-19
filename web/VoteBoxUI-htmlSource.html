@@ -51,46 +51,26 @@
         <!-- Ballot completion -->
         <div id="VotingContentDIV" style = "visibility: hidden" class="votingInstructions">
             <!-- <p id="votinginstructions" align = "left">Vote for 1.</p> <br><br> -->
-            <!--<div id="grid"> Can remove if votingcontentDiv takes over-->
-            
-                <div id="titles">
-                    <div id="TitleDIV" class="propTitle">Prop title here </div><br>
-                    <div id="propText"> Choose yes or no. </div> <br> 
-                    <div id="racetitle" class = "racetitle">Race Title</div><br>
-                    <div id="voteFor">Vote for 1.</div>
-                </div>
-                
-                <div id="votes">
-                  <div id="first" class="candidate" onClick="recordEvent(choice1);selectChoice(1)"> 
-                      <div class= "voteButton"><label>
-                          <input name="vote" type="radio" id="radio1" class= "vote"  
-                              onClick="recordEvent(choice1);selectChoice(1)">
-                          <img src="images/check_selected copy-01.png"> </label>
-                      </div>
-                      <div id="c1" class="name"></div>
-                      <div id="p1" class="selectparty"> Party1</div>
-                  </div> <!--close of first-->
-                    
-                  <div id="second" class="candidate" onClick="recordEvent(choice2);selectChoice(2)">
-                      <div class= "voteButton"><label>
-                          <input id="radio2" name="vote" type="radio" class= "vote" 
-                              onClick="recordEvent(choice2);selectChoice(2)">
-                          <img src="images/check_selected copy-01.png">
-                      </label></div>
-                      <div id="c2" class="name"></div>
-                      <div id="p2" class="selectparty"> Party2 </div>
-                  </div> <!--close of second-->
-      
-                  <div id="third" class="candidate" onClick="recordEvent(choice3);selectChoice(3)">
-                      <div class= "voteButton"><label>
-                          <input name="vote" type="radio" id="radio3" class= "vote" onClick="recordEvent(choice3)">
-                              <!--Why is there not a selectChoice(3)? And why the redundant code?-->
-                          <img src="images/check_selected copy-01.png">
-                      </label></div>
-                      <div id="c3" class="name"></div>
-                      <div id="p3" class="selectparty"> Party3 </div> 
-                  </div> <!--close of third-->
-                </div>
+
+            <div id="titles">
+                <div id="TitleDIV" class="propTitle">Prop title here </div><br>
+                <div id="propText"> Choose yes or no. </div> <br>
+                <div id="racetitle" class = "racetitle">Race Title</div><br>
+                <div id="voteFor">Vote for 1.</div>
+            </div>
+
+            <div id="votes">
+
+              <div id="first" class="candidate">
+                  <div class= "voteButton"><label>
+                      <input name="vote" type="radio" id="radio1" class= "vote" >
+                      <img src="images/check_selected copy-01.png"> </label>
+                  </div>
+                  <div id="c1" class="name"></div>
+                  <div id="p1" class="selectparty"> Party1</div>
+              </div> <!--close of first-->
+
+            </div>
                 
                 <!--<button type="button" id="clearSelection" onClick="Clear()">Clear your selection</button>-->
             <!--</div> grid-->
@@ -368,15 +348,14 @@
                     Connect</button> !!!Not Used?-->
         
                 <!--Buttons and progress element used in ballot completion section -->
-                <button id="Previous" type="button" onClick="recordEvent(previous);Nav(0)" style= "visibility: hidden">
-                    Back</button>
+                <button id="Previous" type="button" style= "visibility: hidden">Back</button>
+
                 <div id="progress"></div> <!--Ballot Completion Progress: XX of 27-->
-                <button id="Next" type="button" class="next" onClick="recordEvent(next);Nav(1)" style= "visibility: hidden">Next</button>
-                <button id="Review" type="button" onClick="recordEvent(review);recordReviewChange(rIndex)" style= "visibility: hidden">
-                    Return to Review<br></button>
-                <button id="finishUp" type="button" onClick="recordEvent(movingtoprint); finishUp()" style="visibility: hidden"> Print your ballot </button>
+
+                <button id="Next" type="button" class="next" style= "visibility: hidden">Next</button>
+                <button id="Review" type="button"  style= "visibility: hidden">Return to Review<br></button>
+                <button id="finishUp" type="button"  style="visibility: hidden"> Print your ballot </button>
                 
-                <!--<button id= "Clear" type="button" onClick="Clear()" style="visibility:hidden"> Clear Current Race Selection </button> Clearing needs to be a toggle property or part of the selection stuff troubleShoot-->
         </div> <!-- Bottom -->
     </div><!-- Footer -->
                       

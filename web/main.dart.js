@@ -8339,15 +8339,37 @@ z=document.querySelector("#first_instructions").style
 z.display="none"
 z=document.querySelector("#info").style
 z.display="block"},"$1","S",2,0,38,30],
+pn:function(a,b,c){var z,y
+z=J.Y(c)
+if(!J.mG(c.qe(),z.DF(c))){F.OB(c)
+F.GX(a,J.WB(c.qe(),b),c)}else{y=J.WB(c.qe(),b)
+if(J.UN(y,0))y=0
+if(J.u6(y,z.DF(c)))c.EG(z.DF(c))
+else{c.vi(y)
+z=document.querySelector("#Next").style
+z.visibility="hidden"
+z=document.querySelector("#Skip").style
+z.visibility="hidden"
+z=document.querySelector("#Review").style
+z.visibility="visible"
+c.EG(y)}}},
 OB:function(a){var z=J.vo(H.HD(document.querySelector("#votes").getElementsByClassName("candidate"),"$iszM",[W.UM],"$aszM"),new F.aO())
 if(z.gv(z)===1)a.vi(a.qe()).eI(J.iz(z.Zv(0,0),"name"))
 else if(z.gv(z)===0)a.vi(a.qe()).TU()},
-GX:function(a,b,c){var z
+GX:function(a,b,c){var z,y
 if(J.UN(b,0))b=0
 z=J.Y(c)
 if(J.u6(b,z.DF(c)))c.EG(z.DF(c))
-else{c.vi(b)
-c.EG(b)}},
+else{z=c.vi(b)
+y=document.querySelector("#Review").style
+y.visibility="hidden"
+if(z.c){z=document.querySelector("#Next").style
+z.visibility="visible"
+z=document.querySelector("#Skip").style
+z.visibility="hidden"}else{z=document.querySelector("#Next").style
+z.visibility="hidden"
+z=document.querySelector("#Skip").style
+z.visibility="visible"}c.EG(b)}},
 W:function(){var z=0,y=new P.Zh(),x,w=2,v,u,t,s,r,q,p,o
 function $W(a,b){if(a===1){v=b
 z=w}while(true)switch(z){case 0:$.G0().toString
@@ -8362,16 +8384,16 @@ return H.AZ(t.Q.Q,$W,y)
 case 3:s=o.Tf(b,"XML")
 if(s==null){P.P("The file was not loaded properly!")
 z=1
-break}else ;P.P("Loaded the ballot...")
+break}else ;P.P("Loaded the ballot XML...")
 r=new F.lK(null,0)
 r.Q=H.J([],[F.Os])
-P.P("Parsing the ballot!")
+P.P("Parsing the ballot XML...")
 q=$.r3().pI(s)
 if(q.gEP())H.vh(P.p(new E.JS(q).X(0)))
 else ;z=4
 return H.AZ(q.gM(q),$W,y)
 case 4:p=b
-P.P("Parsed the ballot!")
+P.P("Parsed the ballot XML!")
 P.P("Loading the ballot from XML...")
 r.pb(p)
 x=r
@@ -8388,23 +8410,14 @@ em:{
 $1:[function(a){return F.GX(a,0,this.Q.Q)},null,null,2,0,null,3,"call"]},
 Lb:{
 "^":"r:18;Q",
-$1:[function(a){var z=this.Q.Q
-F.OB(z)
-F.GX(a,J.WB(z.qe(),-1),z)
-return},null,null,2,0,null,3,"call"]},
+$1:[function(a){return F.pn(a,-1,this.Q.Q)},null,null,2,0,null,3,"call"]},
 QA:{
 "^":"r:18;Q",
-$1:[function(a){var z=this.Q.Q
-F.OB(z)
-F.GX(a,J.WB(z.qe(),1),z)
-return},null,null,2,0,null,3,"call"]},
+$1:[function(a){return F.pn(a,1,this.Q.Q)},null,null,2,0,null,3,"call"]},
 Cv:{
 "^":"r:18;Q",
-$1:[function(a){var z,y
-z=this.Q.Q
-y=J.aF(J.WS(z),z.qe())
-F.OB(z)
-F.GX(a,J.WB(z.qe(),y),z)
+$1:[function(a){var z=this.Q.Q
+F.pn(a,J.aF(J.WS(z),z.qe()),z)
 return},null,null,2,0,null,3,"call"]},
 aO:{
 "^":"r:19;",
