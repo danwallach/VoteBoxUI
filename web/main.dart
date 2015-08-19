@@ -9,7 +9,7 @@ import 'dart:async';
 
 main() async {
 
-  document.onKeyDown.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+  document.onKeyDown.listen(blockKeys);
   document.onKeyUp.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
 
   Ballot ballot;
@@ -35,6 +35,21 @@ main() async {
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
+}
+
+/**
+ * Attempt to block undesired key combinations
+ */
+void blockKeys(KeyEvent event){
+
+  print("${event.keyCode}");
+  if(event.keyCode == 27 /* ESC */ ||
+    (event.altKey && (event.which == 115 /* F4 */ || event.which == 9 /* Tab */)) ||
+    (event.keyCode == 91) /* Windows Key ... doesn't work of course */) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
+  }
 }
 
 void close(MouseEvent event) {
