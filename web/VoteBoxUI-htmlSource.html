@@ -50,30 +50,25 @@
     
         <!-- Ballot completion -->
         <div id="VotingContentDIV" style = "visibility: hidden" class="votingInstructions">
-            <!-- <p id="votinginstructions" align = "left">Vote for 1.</p> <br><br> -->
 
             <div id="titles">
-                <div id="TitleDIV" class="propTitle">Prop title here </div><br>
+                <div id="propTitle" class="propTitle">Prop title here </div><br>
                 <div id="propText"> Choose yes or no. </div> <br>
-                <div id="racetitle" class = "racetitle">Race Title</div><br>
-                <div id="voteFor">Vote for 1.</div>
+                <div id="raceTitle" class = "raceTitle">Race Title</div><br>
+                <div id="raceInst">Vote for 1.</div>
             </div>
 
             <div id="votes">
-
-              <div id="first" class="candidate">
-                  <div class= "voteButton"><label>
-                      <input name="vote" type="radio" id="radio1" class= "vote" >
-                      <img src="images/check_selected copy-01.png"> </label>
-                  </div>
-                  <div id="c1" class="name"></div>
-                  <div id="p1" class="selectparty"> Party1</div>
-              </div> <!--close of first-->
-
+                <div id="first" class="candidate">
+                    <div class= "voteButton"><label>
+                        <input name="vote" type="radio" id="radio1" class= "vote" >
+                        <img src="images/check_selected copy-01.png"> </label>
+                    </div>
+                    <div id="c1" class="optionIdentifier"></div>
+                    <div id="p1" class="optionGroup"> Party1</div>
+               </div> <!--close of first-->
             </div>
-                
-                <!--<button type="button" id="clearSelection" onClick="Clear()">Clear your selection</button>-->
-            <!--</div> grid-->
+
         </div> <!--VotingContentDIV-->
         
         <!--Review-->
@@ -139,8 +134,8 @@
           
             <!-- Buttons -->
                 <!--Buttons on Instruction Screen -->
-                <button id="Back" type="button" style="visibility:hidden">Back </button><!--Takes voter back to how to vote screen-->
-                <button id="Begin" type="button" style="visibility:hidden">Next </button> <!--Begins ballot completion loop, but next in total voting process-->
+                <button id="Back" type="button" style="visibility:hidden">Back</button><!--Takes voter back to how to vote screen-->
+                <button id="Begin" type="button" style="visibility:hidden">Next</button> <!--Begins ballot completion loop, but next in total voting process-->
         
                 <!--Buttons and progress element used in ballot completion section -->
                 <button id="Previous" type="button" style= "visibility: hidden">Back</button>

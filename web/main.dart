@@ -29,7 +29,7 @@ main() async {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
+  querySelector('#Begin').onClick.listen((MouseEvent e) => beginElection(e, ballot));
 
   /* TODO straight party? */
 
@@ -186,9 +186,33 @@ void reviewRace(Race race) {
 }
 
 /**
+ * Triggers on 'Next' after 'Begin', displays the first race in the election
+ */
+void beginElection(MouseEvent e, Ballot b) {
+
+  /* Erase first instructions */
+  querySelector("#first_instructions").style.display="none";
+  querySelector("#first_instructions").style.visibility="hidden";
+  querySelector("#Back").style.visibility="hidden";
+  querySelector("#Begin").style.visibility="hidden";
+
+  /* Correct this button */
+  querySelector("#Next").style.visibility="visible";
+
+  /* Set up race div */
+  querySelector("#VotingContentDIV").style.display = "block";
+  querySelector("#VotingContentDIV").style.visibility = "visible";
+
+  /* Display the first race */
+  display(0, b);
+}
+
+
+
+/**
  * Renders the pageToDisplay in the Ballot as HTML in the UI
  */
-void display(MouseEvent event, int pageToDisplay, Ballot b) {
+void display(int pageToDisplay, Ballot b) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
@@ -206,11 +230,50 @@ void display(MouseEvent event, int pageToDisplay, Ballot b) {
  */
 void displayRace(Race race) {
 
-  /* TODO Clear div of previous race */
+  DivElement votingContentDiv = querySelector("#VotingContentDiv");
 
-  /* TODO Fill div with current race */
+  /* Clear div of previous race */
+  votingContentDiv.childNodes.where((Element e) => e.id == "votes").first.remove();
 
-  /* If nothing has already been selected show "skip" , otherwise "next" */
+  /* Add new title div */
+  DivElement titleDiv = new DivElement();
+
+  titleDiv.id = "titles";
+
+  /* Create a bunch of divs for the different elements */
+  DivElement propTitleDiv = new DivElement();
+  DivElement propTextDiv = new DivElement();
+  DivElement raceTitleDiv = new DivElement();
+  DivElement raceInstDiv = new DivElement();
+
+  propTitleDiv.id = "propTitle";
+  propTitleDiv.className = "propTitle";
+
+  propTextDiv.id = "propText";
+  propTextDiv.text = "Choose yes or no.";
+
+  raceTitleDiv.id = "raceTitle";
+  raceTitleDiv.className = "raceTitle";
+
+  raceInstDiv.id = "raceInst";
+  raceInstDiv.text = "Vote for 1.";
+
+  titleDiv.append(propTitleDiv);
+  titleDiv.appendHtml("<br>");
+
+  titleDiv.append(propTextDiv);
+  titleDiv.appendHtml("<br>");
+
+  titleDiv.append(raceTitleDiv);
+  titleDiv.appendHtml("<br>");
+
+  titleDiv.append(raceInstDiv);
+
+  /* Add new race div */
+  DivElement votesDiv = new DivElement();
+  votesDiv.id = "votes";
+
+  /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
   if(race.hasVoted()) {
     querySelector("#Next").style.visibility = "visible";
     querySelector("#Skip").style.visibility = "hidden";
@@ -220,8 +283,69 @@ void displayRace(Race race) {
     querySelector("#Skip").style.visibility = "visible";
   }
 
-  /* TODO Display the current race info */
+  /* Display the current race info */
+  for (Option o in race.options) {
 
+    /* Starts from 1 */
+    int currentIndex = race.options.indexOf(o)+1;
+
+    /* Create a div for each option */
+    DivElement optionDiv = new DivElement();
+
+    /* Set up the id and class */
+    optionDiv.id = "option$currentIndex}";
+    optionDiv.className = "option";
+
+    /* Create voteButton div */
+    DivElement voteButtonDiv = new DivElement();
+    voteButtonDiv.className = "voteButton";
+
+    /* Set up label element */
+    LabelElement voteButtonLabel = new LabelElement();
+
+    /* Set up the radio/checkbox */ /* TODO check if this element is selected (straight party?) */
+    InputElement voteInput = new InputElement();
+    voteInput.name="vote";
+    voteInput.type="radio";
+    voteInput.id="radio1";
+    voteInput.className = "vote";
+
+    /* Set up image */
+    ImageElement voteButtonImage = new ImageElement();
+    voteButtonImage.src = "images/check_selected copy-01.png";
+
+    /* Append the radiobutton and image to this label so that it can be added as a button */
+    voteButtonLabel.append(voteInput);
+    voteButtonLabel.append(voteButtonImage);
+
+    voteButtonDiv.append(voteButtonLabel);
+
+    /* Now set up the candidate and party name divs */
+    DivElement nameDiv = new DivElement();
+    nameDiv.id = "c$currentIndex";
+    nameDiv.className = "optionIdentifier";
+    nameDiv.text = o.identifier;
+
+    DivElement partyDiv = new DivElement();
+    partyDiv.id = "p$currentIndex";
+    partyDiv.className = "optionGroup";
+    partyDiv.text=(o.groupAssociation != null) ? o.groupAssociation : "";
+
+    /* Add all of these to the optiondiv and then add this option to the current vote div */
+    optionDiv.append(voteButtonDiv);
+    optionDiv.append(nameDiv);
+    optionDiv.append(partyDiv);
+
+    votesDiv.append(optionDiv);
+  }
+
+  /* Append this to the page */
+  votingContentDiv.append(titleDiv);
+  votingContentDiv.append(votesDiv);
+
+  /* Final setup */
+  votingContentDiv.style.visibility = "visible";
+  votingContentDiv.className = "votingInstructions";
 }
 
 /**
@@ -269,11 +393,11 @@ Future<Ballot> loadBallot() async {
  *
  */
 class Option {
-  String _identifier;
+  String identifier;
   String groupAssociation;
   bool _voted=false;
 
-  Option(this._identifier, {this.groupAssociation});
+  Option(this.identifier, {this.groupAssociation});
 
   bool wasSelected(){
     return _voted;
@@ -288,7 +412,7 @@ class Option {
   }
 
   String toString(){
-    return "Name: $_identifier, Group: $groupAssociation, Voted Status: $_voted\n";
+    return "Name: $identifier, Group: $groupAssociation, Voted Status: $_voted\n";
   }
 }
 
@@ -298,12 +422,12 @@ class Option {
  */
 class Race {
 
-  String _title;
-  List<Option> _options;
+  String title;
+  List<Option> options;
   String text;
   bool _voted=false;
 
-  Race(this._title, this._options, {this.text});
+  Race(this.title, this.options, {this.text});
 
   bool hasVoted() {
     return _voted;
@@ -312,10 +436,10 @@ class Race {
   void markSelection(String identifier) {
     _voted = true;
 
-    for(Option o in _options) {
+    for(Option o in options) {
       o.unmark();
 
-      if (o._identifier == identifier)
+      if (o.identifier == identifier)
         o.mark();
     }
   }
@@ -323,18 +447,18 @@ class Race {
   void noSelection(){
     _voted = false;
 
-    for(Option o in _options) {
+    for(Option o in options) {
       o.unmark();
     }
 
   }
 
   String toString(){
-    String strRep = "Race: $_title";
+    String strRep = "Race: $title";
     strRep += "\n\tText: $text";
     strRep += "\n\tOptions: \n";
 
-    for(Option option in _options) {
+    for(Option option in options) {
       strRep += "\t\t$option";
     }
 
