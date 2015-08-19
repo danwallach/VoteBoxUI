@@ -169,15 +169,15 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
 
 void reviewRace(Race race) {
 
-  /* Clear all other HTML */
+  /* TODO Clear all other unnecessary HTML */
 
-  /* If hide all other buttons except "Return to Review" */
+  /* Hide all other buttons except "Return to Review" */
   querySelector("#Next").style.visibility = "hidden";
   querySelector("#Skip").style.visibility = "hidden";
   querySelector("#Review").style.visibility = "visible";
 
 
-  /* Display the current race info */
+  /* TODO Display the current race info */
 }
 
 /**
@@ -201,7 +201,7 @@ void display(MouseEvent event, int pageToDisplay, Ballot b) {
  */
 void displayRace(Race race) {
 
-  /* Clear all other HTML */
+  /* TODO Clear all other HTML */
   querySelector("#Review").style.visibility = "hidden";
 
   /* If nothing has already been selected show "skip" , otherwise "next" */
@@ -214,7 +214,7 @@ void displayRace(Race race) {
     querySelector("#Skip").style.visibility = "visible";
   }
 
-  /* Display the current race info */
+  /* TODO Display the current race info */
 
 }
 
@@ -223,11 +223,11 @@ void displayRace(Race race) {
  */
 void displayReviewPage(Ballot e) {
 
-  /* Clear all other HTML */
+  /* TODO Clear all other HTML */
 
-  /* Display only "Print Your Ballot" */
+  /* TODO Display only "Print Your Ballot" button on bottom bar */
 
-  /* Display review */
+  /* TODO Display review */
 
 }
 
@@ -244,16 +244,21 @@ Future<Ballot> loadBallot() async {
     return null;
   }
 
-  print("Loaded the ballot...");
+  print("Loaded the ballot XML...");
   Ballot ballot = new Ballot();
-  print("Parsing the ballot!");
+
+  print("Parsing the ballot XML...");
   XmlDocument xmlDoc = await parse(ballotXML);
-  print("Parsed the ballot!");
+
+  print("Parsed the ballot XML!");
+
   print("Loading the ballot from XML...");
   ballot.loadFromXML(xmlDoc);
 
   return ballot;
 }
+
+
 /**
  *
  */
