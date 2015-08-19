@@ -31,6 +31,8 @@ main() async {
   querySelector('#Back').onClick.listen(gotoInfo);
   querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
 
+  /* TODO straight party? */
+
   querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, ballot));
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
@@ -52,6 +54,9 @@ void blockKeys(KeyEvent event){
   }
 }
 
+/**
+ * Closes the modal dialog
+ */
 void close(MouseEvent event) {
   (querySelector('dialog') as DialogElement).close('');
 }
@@ -61,13 +66,13 @@ void close(MouseEvent event) {
 void getID(MouseEvent event) {
   String ID = (querySelector('#idText') as TextInputElement).value;
 
+  /* TODO check for non-numerals and validate with Supervisor */
   if(ID=="" || ID.length < 5){
     DialogElement dialog = querySelector('dialog') as DialogElement;
     dialog.showModal();
   }
   else{
 
-    /* TODO: Verify this ID by sending it back to Supervisor */
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
@@ -169,15 +174,15 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
 
 void reviewRace(Race race) {
 
-  /* TODO Clear all other unnecessary HTML */
+  /* TODO Make review div invisible */
+
+  /* TODO Regenerate this page and check correct boxes */
 
   /* Hide all other buttons except "Return to Review" */
   querySelector("#Next").style.visibility = "hidden";
   querySelector("#Skip").style.visibility = "hidden";
   querySelector("#Review").style.visibility = "visible";
 
-
-  /* TODO Display the current race info */
 }
 
 /**
@@ -201,8 +206,9 @@ void display(MouseEvent event, int pageToDisplay, Ballot b) {
  */
 void displayRace(Race race) {
 
-  /* TODO Clear all other HTML */
-  querySelector("#Review").style.visibility = "hidden";
+  /* TODO Clear div of previous race */
+
+  /* TODO Fill div with current race */
 
   /* If nothing has already been selected show "skip" , otherwise "next" */
   if(race.hasVoted()) {
