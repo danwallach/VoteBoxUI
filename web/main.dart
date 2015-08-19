@@ -101,19 +101,22 @@ void gotoInfo(MouseEvent event) {
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent event, Ballot e) {
+void gotoReview(MouseEvent event, Ballot b) {
 
   /* Set the delta to purposefully get to the review page */
-  update(event, e.size()-e.getCurrentPage(), e);
+  update(event, b.size()-b.getCurrentPage(), b);
 }
 
 void update(MouseEvent event, int delta, Ballot b) {
 
-  /* Record information on currentPage in the Ballot */
-  record(b);
-
   /* Display the new page (either next or previous) */
-  display(event, b.getCurrentPage()+delta, b);
+  if(b.getCurrentPage() != b.size()) {
+    /* Record information on currentPage in the Ballot */
+    record(b);
+    display(event, b.getCurrentPage() + delta, b);
+  } else {
+    review(event, b.getCurrentPage()+delta, b);
+  }
 }
 
 /**
@@ -149,6 +152,35 @@ bool isSelected(RadioButtonInputElement e) {
 }
 
 /**
+ * Renders the pageToDisplay in the Ballot as HTML in the UI as a "reviewed" page
+ */
+void review(MouseEvent event, int pageToDisplay, Ballot b) {
+
+  if (pageToDisplay < 0) pageToDisplay = 0;
+
+  if(pageToDisplay >= b.size()) {
+    displayReviewPage(b);
+    b.updateCurrentPage(b.size());
+  } else {
+    reviewRace(b.getRace(pageToDisplay));
+    b.updateCurrentPage(pageToDisplay);
+  }
+}
+
+void reviewRace(Race race) {
+
+  /* Clear all other HTML */
+
+  /* If hide all other buttons except "Return to Review" */
+  querySelector("#Next").style.visibility = "hidden";
+  querySelector("#Skip").style.visibility = "hidden";
+  querySelector("#Review").style.visibility = "visible";
+
+
+  /* Display the current race info */
+}
+
+/**
  * Renders the pageToDisplay in the Ballot as HTML in the UI
  */
 void display(MouseEvent event, int pageToDisplay, Ballot b) {
@@ -170,12 +202,19 @@ void display(MouseEvent event, int pageToDisplay, Ballot b) {
 void displayRace(Race race) {
 
   /* Clear all other HTML */
+  querySelector("#Review").style.visibility = "hidden";
 
-  /* If nothing is selected show "skip" , otherwise "next" */
+  /* If nothing has already been selected show "skip" , otherwise "next" */
+  if(race.hasVoted()) {
+    querySelector("#Next").style.visibility = "visible";
+    querySelector("#Skip").style.visibility = "hidden";
+  }
+  else {
+    querySelector("#Next").style.visibility = "hidden";
+    querySelector("#Skip").style.visibility = "visible";
+  }
 
   /* Display the current race info */
-
-
 
 }
 
