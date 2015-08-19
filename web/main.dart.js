@@ -8356,14 +8356,11 @@ c.EG(y)}}},
 OB:function(a){var z=J.vo(H.HD(document.querySelector("#votes").getElementsByClassName("candidate"),"$iszM",[W.UM],"$aszM"),new F.aO())
 if(z.gv(z)===1)a.vi(a.qe()).eI(J.iz(z.Zv(0,0),"name"))
 else if(z.gv(z)===0)a.vi(a.qe()).TU()},
-GX:function(a,b,c){var z,y
+GX:function(a,b,c){var z
 if(J.UN(b,0))b=0
 z=J.Y(c)
 if(J.u6(b,z.DF(c)))c.EG(z.DF(c))
-else{z=c.vi(b)
-y=document.querySelector("#Review").style
-y.visibility="hidden"
-if(z.c){z=document.querySelector("#Next").style
+else{if(c.vi(b).c){z=document.querySelector("#Next").style
 z.visibility="visible"
 z=document.querySelector("#Skip").style
 z.visibility="hidden"}else{z=document.querySelector("#Next").style
