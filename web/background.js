@@ -12,6 +12,7 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
     {
       id: 'mainWindow',
       bounds: {width: 1600, height: 800 }
+
     },
 
     function(createdWindow) {
@@ -42,7 +43,13 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
       else {
         console.log("No file was detected.");
       }
+
+      createdWindow.fullscreen();
+      createdWindow.onkeydown(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+      createdWindow.onkeyup(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
     }
   );
 
 });
+
+

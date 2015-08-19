@@ -20,7 +20,9 @@
   "permissions": [
     "storage",
     "fileSystem",
-    "*://*/*"
+    "*://*/*",
+    "app.window.fullscreen",
+    "app.window.fullscreen.overrideEsc"
   ],
 
   "file_handlers": {
@@ -31,6 +33,5 @@
     }
   },
 
-  "kiosk_enabled" : true,
-  "kiosk_only" : true
+  "kiosk_enabled" : true
 }

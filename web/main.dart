@@ -9,6 +9,9 @@ import 'dart:async';
 
 main() async {
 
+  document.onKeyDown.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+  document.onKeyUp.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+
   Ballot ballot;
 
   /* Load the Ballot from the XML file reference passed through localdata */
