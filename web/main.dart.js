@@ -9366,7 +9366,6 @@ $1:[function(a){var z,y,x
 z=this.Q
 y=J.Y(a)
 x=H.Go(H.Go(y.gSd(a),"$iscv").querySelector(".vote"),"$isMi")
-P.P("Responding to click... "+J.Lz(x))
 x.checked=x.checked!==!0
 if(x.checked===!0){z.eI(H.Go(y.gSd(a),"$iscv").querySelector(".optionIdentifier").textContent)
 if(document.querySelector("#Next").style.display==="block"&&document.querySelector("#Next").style.visibility==="visible"){document.querySelector("#Next").className="next"
