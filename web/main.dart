@@ -485,13 +485,15 @@ void displayReviewPage(Ballot b) {
     raceSelection.id = "raceSel${i+1}";
     raceSelection.className = "raceSel";
     raceSelection.text = currentRace.hasVoted() ?
-                          currentRace.getSelectedOption() :
+                          currentRace.getSelectedOption().identifier :
                           "You did not vote for anyone. If you want to vote, touch here.";
 
     DivElement partySelection = new DivElement();
     partySelection.id = "party${i+1}";
     partySelection.className = "party";
-    partySelection.text = currentRace.hasVoted() ? currentRace.getSelectedOption() : "";
+    partySelection.text = currentRace.hasVoted() && (currentRace.getSelectedOption().groupAssociation != null) ?
+                            currentRace.getSelectedOption().groupAssociation :
+                            "";
 
     raceBox.append(raceSelection);
     raceBox.appendHtml("<strong>${partySelection.outerHtml}</strong>");
