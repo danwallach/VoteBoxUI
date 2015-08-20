@@ -9,8 +9,10 @@ import 'dart:async';
 
 main() async {
 
+  /* Block undesirable key combinations */
+  document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
-  document.onKeyUp.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+  document.onKeyUp.listen(blockKeys);
 
   Ballot ballot;
 
@@ -128,17 +130,16 @@ void update(MouseEvent event, int delta, Ballot b) {
  */
 void record(Ballot b){
   /* Get the "votes" collection of elements from this page */
-  Iterable<RadioButtonInputElement> selected;
+  Iterable<DivElement> selected;
 
   /* Get the currently selected candidate button(s) on the page */
-  selected = (querySelector("#votes").getElementsByClassName("candidate")
-                as List<RadioButtonInputElement>).where((RadioButtonInputElement el) => isSelected(el));
+  selected = (querySelector("#votes").querySelectorAll(".option") as ElementList<DivElement>).where((DivElement el) => isSelected(el));
 
   /* There should never be more than one selected radio button... */
   if(selected.length == 1) {
 
     /* Mark the Option in this Race with the selection's name */
-    b.getRace(b.getCurrentPage()).markSelection(selected.elementAt(0).getAttribute("name"));
+    b.getRace(b.getCurrentPage()).markSelection(selected.elementAt(0).querySelector(".optionIdentifier").text);
   }
   else if (selected.length == 0){
 
@@ -151,8 +152,8 @@ void record(Ballot b){
 /**
  * Returns the checked state of this radio button
  */
-bool isSelected(RadioButtonInputElement e) {
-  return e.checked;
+bool isSelected(DivElement e) {
+  return (e.querySelector(".vote") as InputElement).checked;
 }
 
 /**
