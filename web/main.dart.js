@@ -8817,14 +8817,15 @@ c.EG(y)}}},
 OB:function(a){var z,y
 z=H.HD(new W.wz(document.querySelector("#votes").querySelectorAll(".option")),"$isHU",[W.Wy],"$asHU")
 y=z.ev(z,new F.aO())
-P.P("Selected: "+P.EP(y,"(",")"))
 if(y.gv(y)===1)a.vi(a.qe()).eI(J.c1(y.Zv(0,0),".optionIdentifier").textContent)
 else if(y.gv(y)===0)a.vi(a.qe()).TU()},
-GX:function(a,b){var z
+GX:function(a,b){var z,y
 if(J.UN(a,0))a=0
 z=J.Y(b)
-if(J.u6(a,z.DF(b)))b.EG(z.DF(b))
-else{F.d4(b.vi(a))
+y=J.Wx(a)
+if(y.C(a,z.DF(b)))b.EG(z.DF(b))
+else{if(y.A(a,0)){z=document.querySelector("#Previous").style
+z.visibility="visible"}F.d4(b.vi(a))
 b.EG(a)}},
 d4:function(a){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c
 z=document.querySelector("#VotingContentDIV")

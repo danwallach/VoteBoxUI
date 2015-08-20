@@ -221,6 +221,10 @@ void display(int pageToDisplay, Ballot b) {
     displayReviewPage(b);
     b.updateCurrentPage(b.size());
   } else {
+
+    if (pageToDisplay>0)
+      querySelector("#Previous").style.visibility = "visible";
+
     displayRace(b.getRace(pageToDisplay));
     b.updateCurrentPage(pageToDisplay);
   }
@@ -279,6 +283,8 @@ void displayRace(Race race) {
   DivElement votesDiv = new DivElement();
   votesDiv.id = "votes";
 
+
+  /* Show proper button */
   ButtonElement nextButton = querySelector("#Next");
   nextButton.style.visibility = "visible";
 
