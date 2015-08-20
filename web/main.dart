@@ -38,6 +38,8 @@ main() async {
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
+
+  querySelector('#finishUp').onClick.listen((MouseEvent e) => chrome.app.window.current().close());
 }
 
 /**
