@@ -402,19 +402,29 @@ void respondToClick(MouseEvent e, Race race) {
   /* Add the image */
 
   /* Now update this Race */
-  if(target.checked)
+  if(target.checked) {
     race.markSelection((e.currentTarget as Element).querySelector(".optionIdentifier").text);
-  else
+
+    /* Update the button as well if in */
+    if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
+      querySelector("#Next").className = "next";
+      querySelector("#Next").text = "Next";
+    }
+  }
+  else {
+
+    /* Update the button as well if in */
+    if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
+      querySelector("#Next").className = "skip";
+      querySelector("#Next").text = "Skip";
+    }
+
     race.noSelection();
+  }
 
   /* Just redisplay the page to take care of everything */
   displayRace(race);
 
-  /* Update the button as well if in */
-  if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
-    querySelector("#Next").className = "next";
-    querySelector("#Next").text = "Next";
-  }
 }
 
 /**
@@ -464,6 +474,7 @@ void displayReviewPage(Ballot b) {
     DivElement raceTitle = new DivElement();
     raceTitle.id = "raceTitle${i+1}";
     raceTitle.className = "title";
+    raceTitle.innerHtml = "${i+1}. <b>${currentRace.title}</b>";
 
     DivElement raceBox = new DivElement();
     raceBox.id = "raceSelBox${i+1}";
@@ -473,10 +484,14 @@ void displayReviewPage(Ballot b) {
     DivElement raceSelection = new DivElement();
     raceSelection.id = "raceSel${i+1}";
     raceSelection.className = "raceSel";
+    raceSelection.text = currentRace.hasVoted() ?
+                          currentRace.getSelectedOption() :
+                          "You did not vote for anyone. If you want to vote, touch here.";
 
     DivElement partySelection = new DivElement();
     partySelection.id = "party${i+1}";
     partySelection.className = "party";
+    partySelection.text = currentRace.hasVoted() ? currentRace.getSelectedOption() : "";
 
     raceBox.append(raceSelection);
     raceBox.appendHtml("<strong>${partySelection.outerHtml}</strong>");
@@ -579,6 +594,14 @@ class Race {
       if (o.identifier == identifier)
         o.mark();
     }
+  }
+
+  Option getSelectedOption(){
+    if (_voted) {
+      return options.firstWhere((Option o) => o._voted);
+    }
+
+    return null;
   }
 
   void noSelection(){
