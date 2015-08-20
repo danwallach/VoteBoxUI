@@ -163,19 +163,30 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   if(pageToDisplay >= b.size()) {
+
     displayReviewPage(b);
     b.updateCurrentPage(b.size());
+
   } else {
-    reviewRace(b.getRace(pageToDisplay));
+
+    Race race = b.getRace(pageToDisplay);
+
+    reviewRace(race);
     b.updateCurrentPage(pageToDisplay);
   }
 }
 
 void reviewRace(Race race) {
 
-  /* TODO Make review div invisible */
+  /* Make review div invisible */
+  querySelector("#reviews").style.visibility = "hidden";
+  querySelector("#reviews").style.display = "none";
 
-  /* TODO Regenerate this page and check correct boxes */
+  querySelector("#Review").style.display = "block";
+  querySelector("#Review").style.visibility = "visible";
+
+  /* Regenerate this page and check correct boxes */
+  displayRace(race);
 
   /* Hide all other buttons except "Return to Review" */
   querySelector("#Previous").style.visibility = "hidden";
@@ -193,11 +204,13 @@ void beginElection(MouseEvent e, Ballot b) {
   querySelector("#first_instructions").style.display="none";
 
   querySelector("#Back").style.display="none";
+  querySelector("#Previous").style.visibility = "hidden";
 
   querySelector("#Begin").style.display="none";
 
   /* Display this button */
   querySelector("#Next").style.visibility="visible";
+  querySelector("#Next").style.display="block";
 
   /* Set up race div */
   querySelector("#VotingContentDIV").style.visibility = "visible";
@@ -223,8 +236,26 @@ void display(int pageToDisplay, Ballot b) {
 
     if (pageToDisplay>0)
       querySelector("#Previous").style.visibility = "visible";
+    else
+      querySelector("#Previous").style.visibility = "hidden";
 
-    displayRace(b.getRace(pageToDisplay));
+    Race race = b.getRace(pageToDisplay);
+
+    /* Show proper button */
+    ButtonElement nextButton = querySelector("#Next");
+    nextButton.style.visibility = "visible";
+
+    /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
+    if(race.hasVoted()) {
+      nextButton.className = "next";
+      nextButton.text = "Next";
+    }
+    else {
+      nextButton.className = "skip";
+      nextButton.text = "Skip";
+    }
+
+    displayRace(race);
     b.updateCurrentPage(pageToDisplay);
   }
 }
@@ -287,20 +318,6 @@ void displayRace(Race race) {
   /* Add new race div */
   DivElement votesDiv = new DivElement();
   votesDiv.id = "votes";
-
-  /* Show proper button */
-  ButtonElement nextButton = querySelector("#Next");
-  nextButton.style.visibility = "visible";
-
-  /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
-  if(race.hasVoted()) {
-    nextButton.className = "next";
-    nextButton.text = "Next";
-  }
-  else {
-    nextButton.className = "skip";
-    nextButton.text = "Skip";
-  }
 
   /* Display the current race info */
   for (Option o in race.options) {
@@ -390,15 +407,20 @@ void respondToClick(MouseEvent e, Race race) {
   else
     race.noSelection();
 
-  /* Just redisplay the race to take care of everything */
+  /* Just redisplay the page to take care of everything */
   displayRace(race);
 
+  /* Update the button as well if in */
+  if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
+    querySelector("#Next").className = "next";
+    querySelector("#Next").text = "Next";
+  }
 }
 
 /**
  * Renders the review page for the current state of this Ballot
  */
-void displayReviewPage(Ballot e) {
+void displayReviewPage(Ballot b) {
 
   /* Clear all other HTML */
   querySelector("#VotingContentDIV").remove();
@@ -414,8 +436,64 @@ void displayReviewPage(Ballot e) {
   querySelector("#finishUp").style.display = "block";
   querySelector("#finishUp").style.visibility = "visible";
 
-  /* TODO Display review */
+  /* Display review */
+  querySelector("#reviews").style.visibility = "visible";
+  querySelector("#reviews").style.display = "block";
 
+  DivElement reviewCol1 = querySelector("#review1");
+  DivElement reviewCol2 = querySelector("#review2");
+
+  querySelector("#reviewTop").style.visibility = "visible";
+
+  /* Remove all races */
+  reviewCol1.querySelectorAll(".race").forEach((Element e) => e.remove());
+  reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
+
+  /* Go through all the races and add them to the columns (14 max in each?) */
+  for (int i=0; i<b.size(); i++) {
+
+    /* Get the ith race */
+    Race currentRace = b.getRace(i);
+
+    /* Create a div for it */
+    DivElement raceDiv = new DivElement();
+    raceDiv.id = "race${i+1}";
+    raceDiv.className = "race";
+
+    /* Set up these divs for it */
+    DivElement raceTitle = new DivElement();
+    raceTitle.id = "raceTitle${i+1}";
+    raceTitle.className = "title";
+
+    DivElement raceBox = new DivElement();
+    raceBox.id = "raceSelBox${i+1}";
+
+    raceBox.className = currentRace.hasVoted() ? "sel" : "noSel";
+
+    DivElement raceSelection = new DivElement();
+    raceSelection.id = "raceSel${i+1}";
+    raceSelection.className = "raceSel";
+
+    DivElement partySelection = new DivElement();
+    partySelection.id = "party${i+1}";
+    partySelection.className = "party";
+
+    raceBox.append(raceSelection);
+    raceBox.appendHtml("<strong>${partySelection.outerHtml}</strong>");
+
+    raceDiv.append(raceTitle);
+    raceDiv.append(raceBox);
+
+    /* Set up a listener for click on raceDiv */
+    raceDiv.onClick.listen((MouseEvent e) => reviewRace(b.getRace(i)));
+
+    /* Send to correct column */
+    querySelector("#review${(i<14) ? "1" : "2"}").append(raceDiv);
+
+  }
+
+  reviewCol1.style.visibility = "visible";
+  reviewCol2.style.visibility = "visible";
 
 }
 
