@@ -2739,11 +2739,11 @@ if(!("name" in dT))dT.name="dT"
 $desc=$collectedClasses$.dT[1]
 dT.prototype=$desc
 dT.$__fields__=[]
-function nl(){this.$deferredAction()}nl.builtin$cls="nl"
-if(!("name" in nl))nl.name="nl"
-$desc=$collectedClasses$.nl[1]
-nl.prototype=$desc
-nl.$__fields__=[]
+function N2(){this.$deferredAction()}N2.builtin$cls="N2"
+if(!("name" in N2))N2.name="N2"
+$desc=$collectedClasses$.N2[1]
+N2.prototype=$desc
+N2.$__fields__=[]
 function eE(){this.$deferredAction()}eE.builtin$cls="eE"
 if(!("name" in eE))eE.name="eE"
 $desc=$collectedClasses$.eE[1]
@@ -2831,6 +2831,8 @@ if(!("name" in p5))p5.name="p5"
 $desc=$collectedClasses$.p5[1]
 p5.prototype=$desc
 p5.$__fields__=["Q","a","b"]
+p5.prototype.gxG=function(){return this.Q}
+p5.prototype.gGD=function(){return this.a}
 p5.prototype.gqZ=function(){return this.b}
 function Os(a,b,c,d,e){this.Q=a
 this.a=b
@@ -3460,7 +3462,7 @@ if(!("name" in Sd))Sd.name="Sd"
 $desc=$collectedClasses$.Sd[1]
 Sd.prototype=$desc
 Sd.$__fields__=["Q"]
-return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,Eq,lb,tD,hJ,bq,TZ,yS,cu,N5,Mw,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,h7,QN,P4,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,wi,i1,xy,MH,A8,U5,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,WV,zW,tK,DL,b8,Pf,Lj,Fe,vs,da,pV,U7,vr,rH,eX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,MO,NO,X4,Vo,qB,aA,LV,DS,yR,Wh,CR,ny,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,o0,lf,Vj,uw,i8,Uk,zF,by,Mx,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,mp,ub,ds,lj,UV,VS,t7,HG,oe,kM,KN,cX,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,RE,qs,rV,Wy,YN,Ec,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,tb,Sg,pA,Mi,XF,MX,hn,Og,u8,M6,eL,D8,ZY,DH,Ee,Qb,Lk,Im,Aj,oU,FO,e7,KV,BH,zL,x5,KY,G7,Ql,wL,Fa,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,RX,YC,hq,w4,Nf,rh,dx,rr,D9,i7,R,Cq,O,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,zU,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,PC,Nz,Jd,QS,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,Ip,Hg,K8,xj,dE,ZA,dT,nl,eE,V6,D7,Zf,GS,em,Lb,QA,Cv,aO,p8,wW,Vg,xz,p5,Os,cr,lK,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,ed,Hv,DE,JS,Sn,nH,Si,QF,FX,hs,XP,wU,kt,GZ,R4,J8,t4,SX,pR,Pn,ux,hE,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Dt,bR,YH,Xg,eH,ta,Cc,oR,hd,kw,to,de,dZ,Ew,Md,W6,wJ,lE,rI,km,yb,WA,cp,is,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
+return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,Eq,lb,tD,hJ,bq,TZ,yS,cu,N5,Mw,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,h7,QN,P4,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,wi,i1,xy,MH,A8,U5,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,WV,zW,tK,DL,b8,Pf,Lj,Fe,vs,da,pV,U7,vr,rH,eX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,MO,NO,X4,Vo,qB,aA,LV,DS,yR,Wh,CR,ny,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,o0,lf,Vj,uw,i8,Uk,zF,by,Mx,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,mp,ub,ds,lj,UV,VS,t7,HG,oe,kM,KN,cX,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,RE,qs,rV,Wy,YN,Ec,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,tb,Sg,pA,Mi,XF,MX,hn,Og,u8,M6,eL,D8,ZY,DH,Ee,Qb,Lk,Im,Aj,oU,FO,e7,KV,BH,zL,x5,KY,G7,Ql,wL,Fa,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,RX,YC,hq,w4,Nf,rh,dx,rr,D9,i7,R,Cq,O,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,zU,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,PC,Nz,Jd,QS,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,Ip,Hg,K8,xj,dE,ZA,dT,N2,eE,V6,D7,Zf,GS,em,Lb,QA,Cv,aO,p8,wW,Vg,xz,p5,Os,cr,lK,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,ed,Hv,DE,JS,Sn,nH,Si,QF,FX,hs,XP,wU,kt,GZ,R4,J8,t4,SX,pR,Pn,ux,hE,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Dt,bR,YH,Xg,eH,ta,Cc,oR,hd,kw,to,de,dZ,Ew,Md,W6,wJ,lE,rI,km,yb,WA,cp,is,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
 function setupProgram(a,b){"use strict"
 function generateAccessor(a9,b0,b1){var g=a9.split("-")
 var f=g[0]
@@ -8915,7 +8917,7 @@ $isqC:1,
 $iscX:1,
 $ascX:function(){return[P.KN]},
 "%":"Uint16Array"},
-nl:{
+N2:{
 "^":"Pg;",
 gbx:function(a){return C.Vh},
 p:function(a,b){var z=a.length
@@ -9086,40 +9088,45 @@ z=document.querySelector("#first_instructions").style
 z.display="none"
 z=document.querySelector("#info").style
 z.display="block"},"$1","S",2,0,42,33],
-pn:function(a,b,c){var z,y
-z=J.Y(c)
-if(!J.mG(c.qe(),z.DF(c))){F.OB(c)
-F.GX(J.WB(c.qe(),b),c)}else{y=J.WB(c.qe(),b)
-if(J.UN(y,0))y=0
-if(J.u6(y,z.DF(c))){F.Zl(c)
-c.EG(z.DF(c))}else{F.q3(c.vi(y))
-c.EG(y)}}},
+pn:function(a,b,c){if(!J.mG(c.qe(),J.WS(c))){F.OB(c)
+F.GX(J.WB(c.qe(),b),c)}else F.nl(a,J.WB(c.qe(),b),c)},
 OB:function(a){var z,y
 z=H.HD(new W.wz(document.querySelector("#votes").querySelectorAll(".option")),"$isHU",[W.Wy],"$asHU")
 y=z.ev(z,new F.aO())
 if(y.gv(y)===1)a.vi(a.qe()).eI(J.c1(y.Zv(0,0),".optionIdentifier").textContent)
 else if(y.gv(y)===0)a.vi(a.qe()).TU()},
-q3:function(a){var z=document.querySelector("#reviews").style
+nl:function(a,b,c){var z,y,x
+if(J.UN(b,0))b=0
+z=J.Y(c)
+y=J.Wx(b)
+if(y.C(b,z.DF(c))){F.Zl(c)
+c.EG(z.DF(c))}else{document.querySelector("#progress").textContent=H.d(y.g(b,1))+" of "+H.d(z.DF(c))
+x=c.vi(b)
+z=document.querySelector("#reviews").style
 z.visibility="hidden"
 z=document.querySelector("#reviews").style
+z.display="none"
+z=document.querySelector("#progress").style
+z.visibility="visible"
+F.d4(x)
+z=document.querySelector("#Previous").style
+z.visibility="hidden"
+z=document.querySelector("#Next").style
+z.display="none"
+z=document.querySelector("#finishUp").style
 z.display="none"
 z=document.querySelector("#Review").style
 z.display="block"
 z=document.querySelector("#Review").style
 z.visibility="visible"
-F.d4(a)
-z=document.querySelector("#Previous").style
-z.visibility="hidden"
-z=document.querySelector("#Next").style
-z.display="none"
-z=document.querySelector("#Review").style
-z.display="block"},
+c.EG(b)}},
 GX:function(a,b){var z,y,x,w
 if(J.UN(a,0))a=0
 z=J.Y(b)
 y=J.Wx(a)
 if(y.C(a,z.DF(b))){F.Zl(b)
-b.EG(z.DF(b))}else{if(y.A(a,0)){z=document.querySelector("#Previous").style
+b.EG(z.DF(b))}else{document.querySelector("#progress").textContent=H.d(y.g(a,1))+" of "+H.d(z.DF(b))
+if(y.A(a,0)){z=document.querySelector("#Previous").style
 z.visibility="visible"}else{z=document.querySelector("#Previous").style
 z.visibility="hidden"}x=b.vi(a)
 w=document.querySelector("#Next")
@@ -9213,10 +9220,15 @@ n.appendChild(d)
 s.appendChild(n)}z.appendChild(y)
 z.appendChild(s)
 x=z.style
+x.display="block"
+x=z.style
 x.visibility="visible"
 z.className="votingInstructions"},
 Zl:function(a){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l
-J.Mp(document.querySelector("#VotingContentDIV"))
+z=document.querySelector("#VotingContentDIV").style
+z.display="none"
+z=document.querySelector("#progress").style
+z.visibility="hidden"
 z=document.querySelector("#Next").style
 z.display="none"
 z=document.querySelector("#Review").style
@@ -9259,11 +9271,11 @@ q.className=u.d?"sel":"noSel"
 p=document.createElement("div",null)
 p.id="raceSel"+s
 p.className="raceSel"
-p.textContent=u.d?u.Lc():"You did not vote for anyone. If you want to vote, touch here."
+p.textContent=u.d?u.Lc().gxG():"You did not vote for anyone. If you want to vote, touch here."
 o=document.createElement("div",null)
 o.id="party"+s
 o.className="party"
-o.textContent=u.d?u.Lc():""
+o.textContent=u.d&&u.Lc().gGD()!=null?u.Lc().gGD():""
 q.appendChild(p)
 J.Cr(q,"beforeend","<strong>"+H.d(J.iT(o))+"</strong>",null,null)
 t.appendChild(r)
@@ -9369,9 +9381,9 @@ Vg:{
 $1:function(a){return J.Mp(a)}},
 xz:{
 "^":"r:19;Q,a",
-$1:[function(a){return F.q3(this.Q.vi(this.a))},null,null,2,0,null,3,"call"]},
+$1:[function(a){return F.nl(a,this.a,this.Q)},null,null,2,0,null,3,"call"]},
 p5:{
-"^":"a;Q,a,qZ:b<",
+"^":"a;xG:Q<,GD:a<,qZ:b<",
 Bu:function(){return this.b},
 nJ:function(){this.b=!0},
 AC:function(){this.b=!1},
@@ -10343,8 +10355,6 @@ J.ow=function(a){return J.Y(a).gni(a)}
 J.qA=function(a){return J.w1(a).br(a)}
 J.qV=function(a,b,c,d){return J.Y(a).On(a,b,c,d)}
 J.r0=function(a,b){return J.Y(a).sLU(a,b)}
-J.u6=function(a,b){if(typeof a=="number"&&typeof b=="number")return a>=b
-return J.Wx(a).C(a,b)}
 J.vU=function(a,b){if(typeof a=="number"&&typeof b=="number")return a>b
 return J.Wx(a).A(a,b)}
 J.vo=function(a,b){return J.w1(a).ev(a,b)}

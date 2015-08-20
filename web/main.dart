@@ -169,6 +169,9 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
 
   } else {
 
+    /* Update progress */
+    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
+
     Race race = b.getRace(pageToDisplay);
 
     reviewRace(race);
@@ -182,8 +185,7 @@ void reviewRace(Race race) {
   querySelector("#reviews").style.visibility = "hidden";
   querySelector("#reviews").style.display = "none";
 
-  querySelector("#Review").style.display = "block";
-  querySelector("#Review").style.visibility = "visible";
+  querySelector("#progress").style.visibility = "visible";
 
   /* Regenerate this page and check correct boxes */
   displayRace(race);
@@ -191,7 +193,10 @@ void reviewRace(Race race) {
   /* Hide all other buttons except "Return to Review" */
   querySelector("#Previous").style.visibility = "hidden";
   querySelector("#Next").style.display = "none";
+  querySelector("#finishUp").style.display = "none";
+
   querySelector("#Review").style.display = "block";
+  querySelector("#Review").style.visibility = "visible";
 
 }
 
@@ -230,9 +235,13 @@ void display(int pageToDisplay, Ballot b) {
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   if(pageToDisplay >= b.size()) {
+
     displayReviewPage(b);
     b.updateCurrentPage(b.size());
   } else {
+
+    /* Update progress */
+    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
 
     if (pageToDisplay>0)
       querySelector("#Previous").style.visibility = "visible";
@@ -385,6 +394,7 @@ void displayRace(Race race) {
   votingContentDiv.append(votesDiv);
 
   /* Final setup */
+  votingContentDiv.style.display = "block";
   votingContentDiv.style.visibility = "visible";
   votingContentDiv.className = "votingInstructions";
 }
@@ -396,7 +406,6 @@ void respondToClick(MouseEvent e, Race race) {
 
   /* Toggle the target of the click */
   InputElement target = ((e.currentTarget as Element).querySelector(".vote") as InputElement);
-  print("Responding to click... $target");
   target.checked = !target.checked;
 
   /* Add the image */
@@ -433,7 +442,10 @@ void respondToClick(MouseEvent e, Race race) {
 void displayReviewPage(Ballot b) {
 
   /* Clear all other HTML */
-  querySelector("#VotingContentDIV").remove();
+  querySelector("#VotingContentDIV").style.display = "none";
+
+  /* Hide the progress bar */
+  querySelector("#progress").style.visibility = "hidden";
 
   /* Move these out of the way for finishUp */
   querySelector("#Next").style.display = "none";
@@ -502,7 +514,7 @@ void displayReviewPage(Ballot b) {
     raceDiv.append(raceBox);
 
     /* Set up a listener for click on raceDiv */
-    raceDiv.onClick.listen((MouseEvent e) => reviewRace(b.getRace(i)));
+    raceDiv.onClick.listen((MouseEvent e) => review(e, i, b));
 
     /* Send to correct column */
     querySelector("#review${(i<14) ? "1" : "2"}").append(raceDiv);
