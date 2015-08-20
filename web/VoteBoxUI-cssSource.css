@@ -223,7 +223,7 @@ strong {
 	margin: 0 auto; 
 	display: block;
 }
-#racetitle.racetitle{ /*Race Title*/
+#racetitle.raceTitle{ /*Race Title*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -241,7 +241,7 @@ strong {
 	display: block;
 	text-align: left;
 }
-#voteFor{ /*Vote for 1.*/
+#raceInst{ /*Vote for 1.*/
 	font-weight: 900;
 	width: 688px;
 	border: 0;

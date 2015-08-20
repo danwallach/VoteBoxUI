@@ -230,10 +230,11 @@ void display(int pageToDisplay, Ballot b) {
  */
 void displayRace(Race race) {
 
-  DivElement votingContentDiv = querySelector("#VotingContentDiv");
+  DivElement votingContentDiv = querySelector("#VotingContentDIV");
 
-  /* Clear div of previous race */
-  votingContentDiv.childNodes.where((Element e) => e.id == "votes").first.remove();
+  /* Clear div of previous race and title */
+  querySelector("#titles").remove();
+  querySelector("#votes").remove();
 
   /* Add new title div */
   DivElement titleDiv = new DivElement();
@@ -248,6 +249,7 @@ void displayRace(Race race) {
 
   propTitleDiv.id = "propTitle";
   propTitleDiv.className = "propTitle";
+  propTitleDiv.text = raceTitleDiv.text = race.title;
   titleDiv.append(propTitleDiv);
   titleDiv.appendHtml("<br>");
 
@@ -269,14 +271,16 @@ void displayRace(Race race) {
   DivElement votesDiv = new DivElement();
   votesDiv.id = "votes";
 
+  ButtonElement nextButton = querySelector("#Next");
+  nextButton.style.visibility = "visible";
+
   /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
   if(race.hasVoted()) {
-    querySelector("#Next").style.visibility = "visible";
-    querySelector("#Skip").style.visibility = "hidden";
+    nextButton.text = "Next";
   }
   else {
-    querySelector("#Next").style.visibility = "hidden";
-    querySelector("#Skip").style.visibility = "visible";
+    nextButton.text = "Skip";
+    nextButton.className = "Skip";
   }
 
   /* Display the current race info */
@@ -289,7 +293,7 @@ void displayRace(Race race) {
     DivElement optionDiv = new DivElement();
 
     /* Set up the id and class */
-    optionDiv.id = "option$currentIndex}";
+    optionDiv.id = "option$currentIndex";
     optionDiv.className = "option";
 
     /* Create voteButton div */
@@ -299,12 +303,13 @@ void displayRace(Race race) {
     /* Set up label element */
     LabelElement voteButtonLabel = new LabelElement();
 
-    /* Set up the radio/checkbox */ /* TODO check if this element is selected (straight party?) */
+    /* Set up the radio/checkbox */
     InputElement voteInput = new InputElement();
     voteInput.name="vote";
     voteInput.type="radio";
     voteInput.id="radio1";
     voteInput.className = "vote";
+    voteInput.checked = o.wasSelected();
 
     /* Set up image */
     ImageElement voteButtonImage = new ImageElement();
