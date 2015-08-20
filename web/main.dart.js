@@ -8743,7 +8743,6 @@ return H.AZ(F.W(),E2,y)
 case 2:t=b
 v.Q=t
 P.P("Ballot has "+H.d(J.WS(t))+" races and propositions detected.")
-P.P(H.d(t))
 u=J.X(document.querySelector("#ID"))
 H.J(new W.O(0,u.Q,u.a,W.V(F.M()),u.b),[H.N(u,0)]).Y()
 u=J.X(document.querySelector("#okay"))
@@ -8805,14 +8804,14 @@ z=J.Y(c)
 if(!J.mG(c.qe(),z.DF(c))){F.OB(c)
 F.GX(J.WB(c.qe(),b),c)}else{y=J.WB(c.qe(),b)
 if(J.UN(y,0))y=0
-if(J.u6(y,z.DF(c)))c.EG(z.DF(c))
-else{c.vi(y)
+if(J.u6(y,z.DF(c))){F.Zl(c)
+c.EG(z.DF(c))}else{c.vi(y)
+z=document.querySelector("#Previous").style
+z.visibility="hidden"
 z=document.querySelector("#Next").style
-z.visibility="hidden"
-z=document.querySelector("#Skip").style
-z.visibility="hidden"
+z.display="none"
 z=document.querySelector("#Review").style
-z.visibility="visible"
+z.display="block"
 c.EG(y)}}},
 OB:function(a){var z,y
 z=H.HD(new W.wz(document.querySelector("#votes").querySelectorAll(".option")),"$isHU",[W.Wy],"$asHU")
@@ -8823,8 +8822,8 @@ GX:function(a,b){var z,y
 if(J.UN(a,0))a=0
 z=J.Y(b)
 y=J.Wx(a)
-if(y.C(a,z.DF(b)))b.EG(z.DF(b))
-else{if(y.A(a,0)){z=document.querySelector("#Previous").style
+if(y.C(a,z.DF(b))){F.Zl(b)
+b.EG(z.DF(b))}else{if(y.A(a,0)){z=document.querySelector("#Previous").style
 z.visibility="visible"}F.d4(b.vi(a))
 b.EG(a)}},
 d4:function(a){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c
@@ -8850,8 +8849,7 @@ x.N0(y,"beforeend","<br>",null,null)
 u.id="raceTitle"
 u.className="propText"
 u.textContent=a.b
-y.appendChild(u)
-x.N0(y,"beforeend","<br>",null,null)}else if(x==="race"){u=document.createElement("div",null)
+y.appendChild(u)}else if(x==="race"){u=document.createElement("div",null)
 t=document.createElement("div",null)
 u.id="raceTitle"
 u.className="raceTitle"
@@ -8919,6 +8917,18 @@ z.appendChild(s)
 x=z.style
 x.visibility="visible"
 z.className="votingInstructions"},
+Zl:function(a){var z
+J.Mp(document.querySelector("#VotingContentDIV"))
+z=document.querySelector("#Next").style
+z.display="none"
+z=document.querySelector("#Review").style
+z.display="none"
+z=document.querySelector("#Previous").style
+z.visibility="hidden"
+z=document.querySelector("#finishUp").style
+z.display="block"
+z=document.querySelector("#finishUp").style
+z.visibility="visible"},
 W:function(){var z=0,y=new P.Zh(),x,w=2,v,u,t,s,r,q,p,o
 function $W(a,b){if(a===1){v=b
 z=w}while(true)switch(z){case 0:$.G0().toString

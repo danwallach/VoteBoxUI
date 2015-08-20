@@ -20,7 +20,6 @@ main() async {
   print("Loading ballot...");
   ballot = await loadBallot();
   print("Ballot has ${ballot.size()} races and propositions detected.");
-  print("$ballot");
 
   /* Set up listeners for the different buttons clicked */
   querySelector('#ID').onClick.listen(getID);
@@ -179,9 +178,9 @@ void reviewRace(Race race) {
   /* TODO Regenerate this page and check correct boxes */
 
   /* Hide all other buttons except "Return to Review" */
-  querySelector("#Next").style.visibility = "hidden";
-  querySelector("#Skip").style.visibility = "hidden";
-  querySelector("#Review").style.visibility = "visible";
+  querySelector("#Previous").style.visibility = "hidden";
+  querySelector("#Next").style.display = "none";
+  querySelector("#Review").style.display = "block";
 
 }
 
@@ -268,7 +267,6 @@ void displayRace(Race race) {
     raceTitleDiv.className = "propText";
     raceTitleDiv.text = race.text;
     titleDiv.append(raceTitleDiv);
-    titleDiv.appendHtml("<br>");
   }
   else if (race.type == "race") {
 
@@ -289,7 +287,6 @@ void displayRace(Race race) {
   /* Add new race div */
   DivElement votesDiv = new DivElement();
   votesDiv.id = "votes";
-
 
   /* Show proper button */
   ButtonElement nextButton = querySelector("#Next");
@@ -403,11 +400,22 @@ void respondToClick(MouseEvent e, Race race) {
  */
 void displayReviewPage(Ballot e) {
 
-  /* TODO Clear all other HTML */
+  /* Clear all other HTML */
+  querySelector("#VotingContentDIV").remove();
 
-  /* TODO Display only "Print Your Ballot" button on bottom bar */
+  /* Move these out of the way for finishUp */
+  querySelector("#Next").style.display = "none";
+  querySelector("#Review").style.display = "none";
+
+  /* Hide this */
+  querySelector("#Previous").style.visibility = "hidden";
+
+  /* Display only "Print Your Ballot" button on bottom bar */
+  querySelector("#finishUp").style.display = "block";
+  querySelector("#finishUp").style.visibility = "visible";
 
   /* TODO Display review */
+
 
 }
 

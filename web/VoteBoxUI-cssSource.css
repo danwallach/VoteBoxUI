@@ -77,8 +77,8 @@
 /* Page Formatting */
 html, body {
 	font-family: "Univers", Helvetica, Arial, sans-serif;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
 	overflow: hidden; /*Turns off page scrolling*/
@@ -190,7 +190,7 @@ strong {
 	border: 0;
 	font-family: inherit;
 	font-style: inherit;
-	font-size: 2rm;
+	font-size: 30px;
 	line-height: 42px;
 	text-align: left;
 	outline: 0;
