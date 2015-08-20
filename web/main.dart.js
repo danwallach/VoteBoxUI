@@ -2752,16 +2752,18 @@ if(!("name" in p5))p5.name="p5"
 $desc=$collectedClasses$.p5[1]
 p5.prototype=$desc
 p5.$__fields__=["Q","a","b"]
-function Os(a,b,c,d){this.Q=a
+function Os(a,b,c,d,e){this.Q=a
 this.a=b
 this.b=c
 this.c=d
+this.d=e
 this.$deferredAction()}Os.builtin$cls="Os"
 if(!("name" in Os))Os.name="Os"
 $desc=$collectedClasses$.Os[1]
 Os.prototype=$desc
-Os.$__fields__=["Q","a","b","c"]
+Os.$__fields__=["Q","a","b","c","d"]
 Os.prototype.ga4=function(a){return this.b}
+Os.prototype.st5=function(a,b){return this.c=b}
 function lK(a,b){this.Q=a
 this.a=b
 this.$deferredAction()}lK.builtin$cls="lK"
@@ -3650,7 +3652,7 @@ giO:function(a){return H.wP(a)},
 X:["VE",function(a){return H.H9(a)}],
 P:["p4",function(a,b){throw H.b(P.lr(a,b.gWa(),b.gnd(),b.gVm(),null))},null,"gkh",2,0,null,0],
 gbx:function(a){return new H.cu(H.dJ(a),null)},
-"%":"DOMImplementation|MediaError|MediaKeyError|PositionError|PushManager|Range|SQLError|SVGAnimatedLength|SVGAnimatedLengthList|SVGAnimatedNumber|SVGAnimatedNumberList|SVGAnimatedString"},
+"%":"DOMImplementation|MediaError|MediaKeyError|PositionError|PushManager|Range|SQLError|SVGAnimatedEnumeration|SVGAnimatedLength|SVGAnimatedLengthList|SVGAnimatedNumber|SVGAnimatedNumberList|SVGAnimatedString"},
 kn:{
 "^":"Gv;",
 X:function(a){return String(a)},
@@ -3928,7 +3930,7 @@ z=new H.fP(!0,[]).QS(b.data)
 y=J.U6(z)
 switch(y.p(z,"command")){case"start":init.globalState.a=y.p(z,"id")
 x=y.p(z,"functionName")
-w=x==null?init.globalState.cx:H.Cr(x)
+w=x==null?init.globalState.cx:H.WL(x)
 v=y.p(z,"args")
 u=new H.fP(!0,[]).QS(y.p(z,"msg"))
 t=y.p(z,"isSpawnUri")
@@ -3970,7 +3972,7 @@ y.toString
 self.postMessage(x)}else try{self.console.log(a)}catch(w){H.Ru(w)
 z=H.ts(w)
 throw H.b(P.FM(z))}},
-Cr:function(a){return init.globalFunctions[a]()},
+WL:function(a){return init.globalFunctions[a]()},
 Z7:function(a,b,c,d,e,f){var z,y,x,w
 z=init.globalState.c
 y=z.Q
@@ -8767,44 +8769,42 @@ z=J.Y(b)
 if(J.u6(a,z.DF(b)))b.EG(z.DF(b))
 else{F.d4(b.vi(a))
 b.EG(a)}},
-d4:function(a){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f
+d4:function(a){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e
 z=document.querySelector("#VotingContentDIV")
 J.Mp(document.querySelector("#titles"))
 J.Mp(document.querySelector("#votes"))
 y=document.createElement("div",null)
 y.id="titles"
-x=document.createElement("div",null)
-w=document.createElement("div",null)
+x=a.c
+if(x==="proposition"){w=document.createElement("div",null)
 v=document.createElement("div",null)
-u=document.createElement("div",null)
-x.id="propTitle"
-x.className="propTitle"
-t=a.Q
-v.textContent=t
-x.textContent=t
-y.appendChild(x)
-t=J.Y(y)
-t.N0(y,"beforeend","<br>",null,null)
-w.id="propText"
-w.textContent="Choose yes or no."
+w.id="propTitle"
+w.className="propTitle"
+w.textContent=a.Q
 y.appendChild(w)
-t.N0(y,"beforeend","<br>",null,null)
-v.id="raceTitle"
-v.className="raceTitle"
+x=J.Y(y)
+x.N0(y,"beforeend","<br>",null,null)
+v.id="propText"
+v.textContent="Choose yes or no."
 y.appendChild(v)
-t.N0(y,"beforeend","<br>",null,null)
-u.id="raceInst"
-u.textContent="Vote for 1."
+x.N0(y,"beforeend","<br>",null,null)}else if(x==="race"){u=document.createElement("div",null)
+t=document.createElement("div",null)
+u.id="raceTitle"
+u.className="raceTitle"
+u.textContent=a.Q
 y.appendChild(u)
-s=document.createElement("div",null)
+J.Cr(y,"beforeend","<br>",null,null)
+t.id="raceInst"
+t.textContent="Vote for 1."
+y.appendChild(t)}s=document.createElement("div",null)
 s.id="votes"
 r=document.querySelector("#Next")
-t=r.style
-t.visibility="visible"
-if(a.c)r.textContent="Next"
+x=r.style
+x.visibility="visible"
+if(a.d)r.textContent="Next"
 else{r.textContent="Skip"
-r.className="Skip"}for(t=a.a,q=t.length,p=0;p<t.length;t.length===q||(0,H.lk)(t),++p){o=t[p]
-n=C.Nm.OY(t,o)+1
+r.className="Skip"}for(x=a.a,q=x.length,p=0;p<x.length;x.length===q||(0,H.lk)(x),++p){o=x[p]
+n=C.Nm.OY(x,o)+1
 m=document.createElement("div",null)
 m.id="option"+n
 m.className="option"
@@ -8825,20 +8825,26 @@ k.appendChild(h)
 l.appendChild(k)
 g=document.createElement("div",null)
 g.id="c"+n
+i=g.style
+f=o.Bu()?"white":"black"
+i.color=f
 g.className="optionIdentifier"
 g.textContent=o.Q
-f=document.createElement("div",null)
-f.id="p"+n
-f.className="optionGroup"
+e=document.createElement("div",null)
+e.id="p"+n
+i=e.style
+f=o.Bu()?"white":"black"
+i.color=f
+e.className="optionGroup"
 i=o.a
-f.textContent=i!=null?i:""
+e.textContent=i!=null?i:""
 m.appendChild(l)
 m.appendChild(g)
-m.appendChild(f)
+m.appendChild(e)
 s.appendChild(m)}z.appendChild(y)
 z.appendChild(s)
-t=z.style
-t.visibility="visible"
+x=z.style
+x.visibility="visible"
 z.className="votingInstructions"},
 W:function(){var z=0,y=new P.Zh(),x,w=2,v,u,t,s,r,q,p,o
 function $W(a,b){if(a===1){v=b
@@ -8916,19 +8922,19 @@ nJ:function(){this.b=!0},
 AC:function(){this.b=!1},
 X:function(a){return"Name: "+H.d(this.Q)+", Group: "+H.d(this.a)+", Voted Status: "+this.b+"\n"}},
 Os:{
-"^":"a;Q,a,a4:b>,c",
+"^":"a;Q,a,a4:b>,t5:c',d",
 eI:function(a){var z,y,x,w
-this.c=!0
+this.d=!0
 for(z=this.a,y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x){w=z[x]
 w.AC()
 if(J.mG(w.Q,a))w.nJ()}},
 TU:function(){var z,y,x
-this.c=!1
+this.d=!1
 for(z=this.a,y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x)z[x].AC()},
 X:function(a){var z,y,x,w,v
 z="Race: "+H.d(this.Q)+("\n\tText: "+H.d(this.b))+"\n\tOptions: \n"
 for(y=this.a,x=y.length,w=0;w<y.length;y.length===x||(0,H.lk)(y),++w){v=y[w]
-z+="\t\t"+("Name: "+H.d(v.Q)+", Group: "+H.d(v.a)+", Voted Status: "+v.b+"\n")}return z+("\nVoted Status: "+this.c+"\n")}},
+z+="\t\t"+("Name: "+H.d(v.Q)+", Group: "+H.d(v.a)+", Voted Status: "+v.b+"\n")}return z+("\nVoted Status: "+this.d+"\n")}},
 lK:{
 "^":"a;Q,a",
 DF:function(a){return this.Q.length},
@@ -8951,7 +8957,7 @@ for(;w.D();){s=w.Q
 r=s.VT("name")
 r=J.nJ(r.Mi(J.n9(r.Q)))
 q=s.VT("party")
-t.push(new F.p5(r,J.nJ(q.Mi(J.n9(q.Q))),!1))}this.Q.push(new F.Os(v,t,null,!1))}p=a.ly("proposition")
+t.push(new F.p5(r,J.nJ(q.Mi(J.n9(q.Q))),!1))}this.Q.push(new F.Os(v,t,null,"race",!1))}p=a.ly("proposition")
 for(y=H.J(new H.MH(null,J.Nx(p.Q),p.a),[H.N(p,0),H.N(p,1)]);y.D();){o=y.Q
 w=o.VT("title")
 v=J.nJ(w.Mi(J.n9(w.Q)))
@@ -8961,7 +8967,7 @@ m=[]
 m.$builtinTypeInfo=[F.p5]
 m.push(new F.p5("Yes",null,!1))
 m.push(new F.p5("No",null,!1))
-this.Q.push(new F.Os(v,m,n,!1))}},
+this.Q.push(new F.Os(v,m,n,"proposition",!1))}},
 X:function(a){var z,y,x,w
 for(z=this.Q,y=z.length,x="",w=0;w<z.length;z.length===y||(0,H.lk)(z),++w)x+=z[w].X(0)+"\n"
 return x+"\n"}}},1],["","",,E,{
@@ -9821,6 +9827,7 @@ if(typeof a!="object")return a
 if(a instanceof P.a)return a
 return J.ks(a)}
 J.C9=function(a){return J.Y(a).goc(a)}
+J.Cr=function(a,b,c,d,e){return J.Y(a).N0(a,b,c,d,e)}
 J.DZ=function(a,b){return J.t(a).P(a,b)}
 J.Df=function(a,b){if(typeof a=="number"&&typeof b=="number")return a<=b
 return J.Wx(a).B(a,b)}

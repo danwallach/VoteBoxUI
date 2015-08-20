@@ -242,30 +242,37 @@ void displayRace(Race race) {
   titleDiv.id = "titles";
 
   /* Create a bunch of divs for the different elements */
-  DivElement propTitleDiv = new DivElement();
-  DivElement propTextDiv = new DivElement();
-  DivElement raceTitleDiv = new DivElement();
-  DivElement raceInstDiv = new DivElement();
+  if (race.type == "proposition") {
 
-  propTitleDiv.id = "propTitle";
-  propTitleDiv.className = "propTitle";
-  propTitleDiv.text = raceTitleDiv.text = race.title;
-  titleDiv.append(propTitleDiv);
-  titleDiv.appendHtml("<br>");
+    DivElement propTitleDiv = new DivElement();
+    DivElement propTextDiv = new DivElement();
 
-  propTextDiv.id = "propText";
-  propTextDiv.text = "Choose yes or no.";
-  titleDiv.append(propTextDiv);
-  titleDiv.appendHtml("<br>");
+    propTitleDiv.id = "propTitle";
+    propTitleDiv.className = "propTitle";
+    propTitleDiv.text = race.title;
+    titleDiv.append(propTitleDiv);
+    titleDiv.appendHtml("<br>");
 
-  raceTitleDiv.id = "raceTitle";
-  raceTitleDiv.className = "raceTitle";
-  titleDiv.append(raceTitleDiv);
-  titleDiv.appendHtml("<br>");
+    propTextDiv.id = "propText";
+    propTextDiv.text = "Choose yes or no.";
+    titleDiv.append(propTextDiv);
+    titleDiv.appendHtml("<br>");
+  }
+  else if (race.type == "race") {
 
-  raceInstDiv.id = "raceInst";
-  raceInstDiv.text = "Vote for 1.";
-  titleDiv.append(raceInstDiv);
+    DivElement raceTitleDiv = new DivElement();
+    DivElement raceInstDiv = new DivElement();
+
+    raceTitleDiv.id = "raceTitle";
+    raceTitleDiv.className = "raceTitle";
+    raceTitleDiv.text = race.title;
+    titleDiv.append(raceTitleDiv);
+    titleDiv.appendHtml("<br>");
+
+    raceInstDiv.id = "raceInst";
+    raceInstDiv.text = "Vote for 1.";
+    titleDiv.append(raceInstDiv);
+  }
 
   /* Add new race div */
   DivElement votesDiv = new DivElement();
@@ -324,11 +331,13 @@ void displayRace(Race race) {
     /* Now set up the candidate and party name divs */
     DivElement nameDiv = new DivElement();
     nameDiv.id = "c$currentIndex";
+    nameDiv.style.color = o.wasSelected() ? "white" : "black";
     nameDiv.className = "optionIdentifier";
     nameDiv.text = o.identifier;
 
     DivElement partyDiv = new DivElement();
     partyDiv.id = "p$currentIndex";
+    partyDiv.style.color = o.wasSelected() ? "white" : "black";
     partyDiv.className = "optionGroup";
     partyDiv.text=(o.groupAssociation != null) ? o.groupAssociation : "";
 
@@ -426,9 +435,10 @@ class Race {
   String title;
   List<Option> options;
   String text;
+  String type;
   bool _voted=false;
 
-  Race(this.title, this.options, {this.text});
+  Race(this.title, this.options, this.type, {this.text});
 
   bool hasVoted() {
     return _voted;
@@ -514,7 +524,7 @@ class Ballot {
                                   groupAssociation: element.findElements("party").first.text));
       }
 
-      Race currentRace = new Race(title, candidates);
+      Race currentRace = new Race(title, candidates, "race");
       _races.add(currentRace);
 
     }
@@ -531,7 +541,7 @@ class Ballot {
       responses.add(new Option("Yes"));
       responses.add(new Option("No"));
 
-      Race currentRace = new Race(title, responses, text: text);
+      Race currentRace = new Race(title, responses, "proposition", text: text);
       _races.add(currentRace);
 
     }

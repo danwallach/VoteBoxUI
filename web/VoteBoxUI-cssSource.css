@@ -337,7 +337,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     margin: 0px;
 	visibility: visible;
 }
-.name{ /*candidate name style */
+.optionIdentifier { /*candidate name style */
     display: inline-block;
 	float: left;
 	padding-left: 90px;
@@ -347,7 +347,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     line-height: 33px;
 	-webkit-user-select: none;
 }
-.selectparty{ /*party style */
+.groupIdentifier { /*party style */
     display: inline-block;
 	float: right;
 	padding-right: 35px;
