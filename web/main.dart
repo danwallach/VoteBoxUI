@@ -300,13 +300,11 @@ void displayRace(Race race) {
     /* Create a div for each option */
     DivElement optionDiv = new DivElement();
 
-    /* Add listener for clicking of this */
-    optionDiv.onClick.listen((MouseEvent e)=>respondToClick(e,race));
-
     /* Set up the id and class */
     optionDiv.id = "option$currentIndex";
     optionDiv.className = "option";
     optionDiv.style.border = "1px solid black;";
+    optionDiv.onClick.listen((MouseEvent e)=>respondToClick(e,race));
 
     /* Create voteButton div */
     DivElement voteButtonDiv = new DivElement();
@@ -369,14 +367,15 @@ void displayRace(Race race) {
 void respondToClick(MouseEvent e, Race race) {
 
   /* Toggle the target of the click */
-  InputElement target = ((e.target as DivElement).querySelector(".vote") as InputElement);
+  InputElement target = ((e.currentTarget as Element).querySelector(".vote") as InputElement);
+  print("Responding to click... $target");
   target.checked = !target.checked;
 
   /* Add the image */
 
   /* Now update this Race */
   if(target.checked)
-    race.markSelection((e.target as DivElement).querySelector(".optionIdentifier").text);
+    race.markSelection((e.currentTarget as Element).querySelector(".optionIdentifier").text);
   else
     race.noSelection();
 
