@@ -193,14 +193,17 @@ void beginElection(MouseEvent e, Ballot b) {
   /* Erase first instructions */
   querySelector("#first_instructions").style.display="none";
   querySelector("#first_instructions").style.visibility="hidden";
-  querySelector("#Back").style.visibility="hidden";
-  querySelector("#Begin").style.visibility="hidden";
 
-  /* Correct this button */
+  querySelector("#Back").style.visibility="hidden";
+  querySelector("#Back").style.display="none";
+
+  querySelector("#Begin").style.visibility="hidden";
+  querySelector("#Begin").style.display="none";
+
+  /* Display this button */
   querySelector("#Next").style.visibility="visible";
 
   /* Set up race div */
-  querySelector("#VotingContentDIV").style.display = "block";
   querySelector("#VotingContentDIV").style.visibility = "visible";
 
   /* Display the first race */
@@ -283,11 +286,12 @@ void displayRace(Race race) {
 
   /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
   if(race.hasVoted()) {
+    nextButton.className = "next";
     nextButton.text = "Next";
   }
   else {
+    nextButton.className = "skip";
     nextButton.text = "Skip";
-    nextButton.className = "Skip";
   }
 
   /* Display the current race info */

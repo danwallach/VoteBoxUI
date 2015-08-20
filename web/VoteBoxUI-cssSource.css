@@ -76,7 +76,7 @@
 
 /* Page Formatting */
 html, body {
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+	font-family: "Univers", Helvetica, Arial, sans-serif;
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -167,7 +167,7 @@ strong {
     color: rgba(0,0,0,0.8);
     text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px; /*originally set at 20px*/
     line-height: 54px; /*originally set at 36px*/
     font-weight: 600;
@@ -223,7 +223,7 @@ strong {
 	margin: 0 auto; 
 	display: block;
 }
-#racetitle.raceTitle{ /*Race Title*/
+#raceTitle.raceTitle{ /*Race Title*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -294,7 +294,7 @@ strong {
 	text-align: left;
 }
 
-#racetitle.propText{ /*Proposition Text*/
+#raceTitle.propText{ /*Proposition Text*/
 	/*position: absolute;*/
 	/*left: 0;*/
 	/*top: 124px;*/
@@ -347,7 +347,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     line-height: 33px;
 	-webkit-user-select: none;
 }
-.groupIdentifier { /*party style */
+.optionGroup { /*party style */
     display: inline-block;
 	float: right;
 	padding-right: 35px;
@@ -554,7 +554,7 @@ input[type="radio"]{
     border: none;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -580,7 +580,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -605,7 +605,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -630,7 +630,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -651,7 +651,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 28px;
     font-weight: 600;
@@ -678,7 +678,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
 	cursor: pointer;
-	font-family: "Univers",Helvetica,Arial,Sans-serif;
+	font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -699,7 +699,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 36px;
     font-weight: 600;
@@ -720,7 +720,7 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 36px;
     font-weight: 600;
@@ -741,7 +741,7 @@ display: inline-block;
     height: 60px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 28px;
     font-weight: 600;
