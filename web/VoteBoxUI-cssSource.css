@@ -256,7 +256,7 @@ strong {
 	display: block;
 	text-align: left;
 }
-#TitleDIV.propTitle{ /*Proposition Title*/
+#propTitle.propTitle{ /*Proposition Title*/
 	position: absolute;
 	top: 0;
 	left: 0; 
@@ -275,7 +275,7 @@ strong {
 	text-align: left;
 }
 
-#propText{ /*Choose yes or no. */
+#propInst{ /*Choose yes or no. */
 	/*position: absolute;*/
 	/*top: 60px;*/
 	/*left:0;*/

@@ -250,7 +250,8 @@ void displayRace(Race race) {
   if (race.type == "proposition") {
 
     DivElement propTitleDiv = new DivElement();
-    DivElement propTextDiv = new DivElement();
+    DivElement propInstDiv = new DivElement();
+    DivElement raceTitleDiv = new DivElement();
 
     propTitleDiv.id = "propTitle";
     propTitleDiv.className = "propTitle";
@@ -258,9 +259,15 @@ void displayRace(Race race) {
     titleDiv.append(propTitleDiv);
     titleDiv.appendHtml("<br>");
 
-    propTextDiv.id = "propText";
-    propTextDiv.text = "Choose yes or no.";
-    titleDiv.append(propTextDiv);
+    propInstDiv.id = "propInst";
+    propInstDiv.text = "Choose yes or no.";
+    titleDiv.append(propInstDiv);
+    titleDiv.appendHtml("<br>");
+
+    raceTitleDiv.id = "raceTitle";
+    raceTitleDiv.className = "propText";
+    raceTitleDiv.text = race.text;
+    titleDiv.append(raceTitleDiv);
     titleDiv.appendHtml("<br>");
   }
   else if (race.type == "race") {

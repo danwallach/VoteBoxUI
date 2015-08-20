@@ -8836,15 +8836,21 @@ y.id="titles"
 x=a.c
 if(x==="proposition"){w=document.createElement("div",null)
 v=document.createElement("div",null)
+u=document.createElement("div",null)
 w.id="propTitle"
 w.className="propTitle"
 w.textContent=a.Q
 y.appendChild(w)
 x=J.Y(y)
 x.N0(y,"beforeend","<br>",null,null)
-v.id="propText"
+v.id="propInst"
 v.textContent="Choose yes or no."
 y.appendChild(v)
+x.N0(y,"beforeend","<br>",null,null)
+u.id="raceTitle"
+u.className="propText"
+u.textContent=a.b
+y.appendChild(u)
 x.N0(y,"beforeend","<br>",null,null)}else if(x==="race"){u=document.createElement("div",null)
 t=document.createElement("div",null)
 u.id="raceTitle"
