@@ -310,7 +310,7 @@ strong {
 	display: block;
 	height: auto;
 }
-.candidate, .propchoice{ /*Class for selection boxes with races and propositions*/
+.option { /*Class for selection boxes with races and propositions*/
 	display: block;
 	width: 700px; /*was set at 628px*/
 	height: 80px; /*was set at 628px*/
