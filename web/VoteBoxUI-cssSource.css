@@ -76,9 +76,9 @@
 
 /* Page Formatting */
 html, body {
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
-    margin: 0px;
-    padding: 0px;
+	font-family: "Univers", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
 	overflow: hidden; /*Turns off page scrolling*/
@@ -87,23 +87,23 @@ html, body {
 	position:absolute;
 	height: 100%;
 	width: 100%;
-} 
+}
 #Content {
 	position: relative;
 	align: center;
 	width: 100%;
-	height: 100%; 
+	height: 100%;
 	top: 115px; /* at 115px */
 	/* min-width: 800px;
 	min-height: 960px; */
 }
-#header {top:0; left: 0; right: 0; width: 100%; height: 90px; position: fixed; background-color: rgba(0, 0, 0, 1); background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2), rgba(255,255,255,0)); 
+#header {top:0; left: 0; right: 0; width: 100%; height: 90px; position: fixed; background-color: rgba(0, 0, 0, 1); background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2), rgba(255,255,255,0));
 box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block; margin: 0; border: 0; padding: 0;
 } /*originally set at 60px*/
-#footer {bottom:0; width: 100%; height: 90px; position: fixed; background-color: rgba(0, 0, 0, 1); background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2), rgba(255,255,255,0)); 
-box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block; 
+#footer {bottom:0; width: 100%; height: 90px; position: fixed; background-color: rgba(0, 0, 0, 1); background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.2), rgba(255,255,255,0));
+box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 }/*originally set at 60px*/
-.container_hf {width: 800px; margin: 0 auto; display: block; 
+.container_hf {width: 800px; margin: 0 auto; display: block;
 } /*width was 768px*/
 
 
@@ -135,7 +135,7 @@ strong {
 }
 #enterID{
 	margin-left: auto;
-	margin-right: auto; 
+	margin-right: auto;
 	width: auto;
 	padding: 10px 0;
 	border: 0;
@@ -161,13 +161,13 @@ strong {
     height: 63px;
 	margin-top: 30px;
 	margin-left: auto;
-	margin-right: auto; 
+	margin-right: auto;
 	background: rgba(200,200,200,1);
     border: thin;
     color: rgba(0,0,0,0.8);
     text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px; /*originally set at 20px*/
     line-height: 54px; /*originally set at 36px*/
     font-weight: 600;
@@ -183,14 +183,14 @@ strong {
 #info{
 	position: absolute;
 	left: 50%;
-	margin-left: -254px; 
+	margin-left: -254px;
 	width: 508px;
 	top: 560px; /*set at 500px*/
 	padding: 0;
 	border: 0;
 	font-family: inherit;
 	font-style: inherit;
-	font-size: 2rm;
+	font-size: 30px;
 	line-height: 42px;
 	text-align: left;
 	outline: 0;
@@ -220,10 +220,10 @@ strong {
 	top: 500px; /*set at 200px*/
 	width: 676.5px; /*What is this setting?*/
 	height: 100%;
-	margin: 0 auto; 
+	margin: 0 auto;
 	display: block;
 }
-#racetitle.racetitle{ /*Race Title*/
+#raceTitle.raceTitle{ /*Race Title*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -234,14 +234,14 @@ strong {
 	cursor: pointer;
 	font-size: 34.5px;
 	line-height: 45px;
-	margin: 0;
+	margin: 12px 0 18px 0;
 	outline: 0;
 	padding: 12px 0 18px;
 	vertical-align: baseline;
 	display: block;
 	text-align: left;
 }
-#voteFor{ /*Vote for 1.*/
+#raceInst{ /*Vote for 1.*/
 	font-weight: 900;
 	width: 688px;
 	border: 0;
@@ -249,17 +249,17 @@ strong {
 	cursor: pointer;
 	font-size: 30px;
 	line-height: 42px; /* 42px */
-	margin: 0;
+	margin: 50px 0 20px 0;
 	outline: 0;
-	padding: 50px 0 20px; 
+	padding: 50px 0 20px;
 	vertical-align: baseline;
 	display: block;
 	text-align: left;
 }
-#TitleDIV.propTitle{ /*Proposition Title*/
+#propTitle.propTitle{ /*Proposition Title*/
 	position: absolute;
 	top: 0;
-	left: 0; 
+	left: 0;
 	/*width: 688px; */
 	font-weight: 900;
 	border:0;
@@ -275,7 +275,7 @@ strong {
 	text-align: left;
 }
 
-#propText{ /*Choose yes or no. */
+#propInst{ /*Choose yes or no. */
 	/*position: absolute;*/
 	/*top: 60px;*/
 	/*left:0;*/
@@ -287,14 +287,14 @@ strong {
 	font-size: 30px;
 	line-height: 42px;
 	margin-top: 33px;
-	outline: 0;
 	padding: 15px 0;
+	outline: 0;
 	vertical-align: baseline;
 	display: block;
 	text-align: left;
 }
 
-#racetitle.propText{ /*Proposition Text*/
+#raceTitle.propText{ /*Proposition Text*/
 	/*position: absolute;*/
 	/*left: 0;*/
 	/*top: 124px;*/
@@ -310,7 +310,7 @@ strong {
 	display: block;
 	height: auto;
 }
-.candidate, .propchoice{ /*Class for selection boxes with races and propositions*/
+.option { /*Class for selection boxes with races and propositions*/
 	display: block;
 	width: 700px; /*was set at 628px*/
 	height: 80px; /*was set at 628px*/
@@ -337,7 +337,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     margin: 0px;
 	visibility: visible;
 }
-.name{ /*candidate name style */
+.optionIdentifier { /*candidate name style */
     display: inline-block;
 	float: left;
 	padding-left: 90px;
@@ -347,7 +347,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
     line-height: 33px;
 	-webkit-user-select: none;
 }
-.selectparty{ /*party style */
+.optionGroup { /*party style */
     display: inline-block;
 	float: right;
 	padding-right: 35px;
@@ -384,15 +384,15 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 /*input[type="radio"] {
     -webkit-appearance: checkbox;
     -moz-appearance: checkbox;
-    -ms-appearance: checkbox;     
-    -o-appearance: checkbox;      
+    -ms-appearance: checkbox;
+    -o-appearance: checkbox;
 }
 input[type="radio"]{
-  /* Double-sized Checkboxes 
-  -ms-transform: scale(3); 
-  -moz-transform: scale(3); 
-  -webkit-transform: scale(3); 
-  -o-transform: scale(3); 
+  /* Double-sized Checkboxes
+  -ms-transform: scale(3);
+  -moz-transform: scale(3);
+  -webkit-transform: scale(3);
+  -o-transform: scale(3);
   position:relative;
   visibility: inherit;
 } */
@@ -438,13 +438,13 @@ input[type="radio"]{
 	outline: 0;
 	display: block;
 }
-#review1{ 
+#review1{
 	width: 400px;
 	display: inline-block;
 	float: left;
 	margin-top: 125px;
 }
-#review2{ 
+#review2{
 	width: 400px;
 	display: inline-block;
 	float: right;
@@ -536,16 +536,15 @@ input[type="radio"]{
 	display: block;
 }
 
- /* Buttons */ 
+ /* Buttons */
  /*Big Green*/
- #button_begin{ 
-    margin-right: 0;
-    background-color: rgba(87,178,34,1);
+ #button_begin{
+	 background-color: rgba(87,178,34,1);
     color: rgba(255,255,255,0.8);
     text-shadow: none;
 	width: 460px;
-    margin: 10px 0;
-	box-shadow: 0 120px 0 -90px rgba(255,255,255,0.3) inset, 0 3px 0 rgba(255,255,255,0.3), 0 3px 0 rgba(0,0,0,0.6);
+	 margin: 10px 0;
+	 box-shadow: 0 120px 0 -90px rgba(255,255,255,0.3) inset, 0 3px 0 rgba(255,255,255,0.3), 0 3px 0 rgba(0,0,0,0.6);
 	padding: 4px 0 0;
 	height: 63px;
     display: block;
@@ -554,7 +553,7 @@ input[type="radio"]{
     border: none;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
@@ -566,101 +565,101 @@ input[type="radio"]{
  /*Forward Nav*/
 #Begin{
 	 display: inline-block;
-	 padding: 4px 105px 0 45px; 
+	 padding: 4px 105px 0 45px;
     background-position: 140px -418px; /*horizontal was at 130px*/
     float: right;
 	 background-color: rgba(87,178,34,1);
-    color: rgba(255,255,255,1.00);  
+    color: rgba(255,255,255,1.00);
     text-shadow: none;
 	background-image: url('images/sprite-button.png');
     background-size: 60px 480px;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 	margin: 10px 10px 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start; 
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
  }
 #Next.next{ /*nav button displayed when a voter makes a selection*/
 	 display: inline-block;
-	 padding: 4px 105px 0 45px; 
+	 padding: 4px 105px 0 45px;
     background-position: 140px -418px;
     float: right;
 	 background-color: rgba(87,178,34,1);
-    color: rgba(255,255,255,1.00);  
+    color: rgba(255,255,255,1.00);
     text-shadow: none;
 	background-image: url('images/sprite-button.png');
     background-size: 60px 480px;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 	margin: 10px 10px 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start; 
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
  }
  #Next.skip{ /*nav button displayed when a voter does NOT makes a selection*/
 	 display: inline-block;
-	 padding: 4px 105px 0 45px; 
+	 padding: 4px 105px 0 45px;
     background-position: 140px -180px;
     float: right;
 	 background-color: rgba(200,200,200,1);
-    color: black;  
+    color: black;
     text-shadow: none;
 	background-image: url('images/sprite-button.png');
     background-size: 60px 480px;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 	margin: 10px 10px 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start; 
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
  }
  #Review{ /*returns to review screen*/
 	 display: inline-block;
-	 padding: 2px 10px 0 10px; 
+	 padding: 2px 10px 0 10px;
     float: right;
 	 background-color: rgba(87,178,34,1);
-    color: rgba(255,255,255,1.00);  
-    text-shadow: none; 
+    color: rgba(255,255,255,1.00);
+    text-shadow: none;
 	margin: 10px 10px 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 28px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start;  
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
 }
- 
+
 /* Back Nav*/
 #Back, #Previous{
 	display:inline-block;
@@ -678,70 +677,70 @@ input[type="radio"]{
     height: 63px;
 	text-decoration: none;
 	cursor: pointer;
-	font-family: "Univers",Helvetica,Arial,Sans-serif;
+	font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 30px;
     line-height: 54px;
     font-weight: 600;
 	border-radius: 9px;
-	align-items: flex-start; 
+	align-items: flex-start;
 	text-align: center;
 	box-sizing: border-box;
 }
 #returnToBallot{ /*Returns to review screen from the are you ready to print page*/
 	display: inline-block;
-	 padding: 4px 10px 0 10px; 
+	 padding: 4px 10px 0 10px;
     float: left;
 	 background-color: rgba(200,200,200,1);
-	color: rgba(0,0,0,0.8);  
-    text-shadow: none; 
+	color: rgba(0,0,0,0.8);
+    text-shadow: none;
 	margin: 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 36px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start;  
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
 }
 #endVoting{ /*ends voting task and prints ballot*/
 	 display: inline-block;
-	 padding: 4px 10px 0 10px; 
+	 padding: 4px 10px 0 10px;
     float: right;
 	 background-color: rgba(87,178,34,1);
-    color: rgba(255,255,255,1.00);  
-    text-shadow: none; 
+    color: rgba(255,255,255,1.00);
+    text-shadow: none;
 	margin: 0;
 	width: 250px; /*was 236px*/
     height: 63px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 36px;
     font-weight: 600;
 	border-radius: 6px;
-	align-items: flex-start;  
+	align-items: flex-start;
     text-align: center;
 	box-sizing: border-box;
 }
 #finishUp{ /* goes to final screen confirming votes should be cast*/
 display: inline-block;
-	 padding: 2px 10px 0 10px; 
+	 padding: 2px 10px 0 10px;
     float: right;
 	 background-color: rgba(87,178,34,1);
-    color: rgba(255,255,255,1.00);  
-    text-shadow: none; 
+    color: rgba(255,255,255,1.00);
+    text-shadow: none;
 	margin: 14px 10px 0;
 	width: 250px; /*was 236px*/
     height: 60px;
 	text-decoration: none;
     cursor: pointer;
-    font-family: "Univers",Helvetica,Arial,Sans-serif;
+    font-family: "Univers",Helvetica,Arial,sans-serif;
     font-size: 26px;
     line-height: 28px;
     font-weight: 600;

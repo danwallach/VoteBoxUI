@@ -9,8 +9,10 @@ import 'dart:async';
 
 main() async {
 
+  /* Block undesirable key combinations */
+  document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
-  document.onKeyUp.listen((e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+  document.onKeyUp.listen(blockKeys);
 
   Ballot ballot;
 
@@ -18,7 +20,6 @@ main() async {
   print("Loading ballot...");
   ballot = await loadBallot();
   print("Ballot has ${ballot.size()} races and propositions detected.");
-  print("$ballot");
 
   /* Set up listeners for the different buttons clicked */
   querySelector('#ID').onClick.listen(getID);
@@ -29,12 +30,16 @@ main() async {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => display(e, 0, ballot));
+  querySelector('#Begin').onClick.listen((MouseEvent e) => beginElection(e, ballot));
+
+  /* TODO straight party? */
 
   querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, ballot));
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
+
+  querySelector('#finishUp').onClick.listen((MouseEvent e) => chrome.app.window.current().close());
 }
 
 /**
@@ -42,7 +47,6 @@ main() async {
  */
 void blockKeys(KeyEvent event){
 
-  print("${event.keyCode}");
   if(event.keyCode == 27 /* ESC */ ||
     (event.altKey && (event.which == 115 /* F4 */ || event.which == 9 /* Tab */)) ||
     (event.keyCode == 91) /* Windows Key ... doesn't work of course */) {
@@ -52,6 +56,9 @@ void blockKeys(KeyEvent event){
   }
 }
 
+/**
+ * Closes the modal dialog
+ */
 void close(MouseEvent event) {
   (querySelector('dialog') as DialogElement).close('');
 }
@@ -61,13 +68,13 @@ void close(MouseEvent event) {
 void getID(MouseEvent event) {
   String ID = (querySelector('#idText') as TextInputElement).value;
 
+  /* TODO check for non-numerals and validate with Supervisor */
   if(ID=="" || ID.length < 5){
     DialogElement dialog = querySelector('dialog') as DialogElement;
     dialog.showModal();
   }
   else{
 
-    /* TODO: Verify this ID by sending it back to Supervisor */
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
@@ -113,7 +120,7 @@ void update(MouseEvent event, int delta, Ballot b) {
   if(b.getCurrentPage() != b.size()) {
     /* Record information on currentPage in the Ballot */
     record(b);
-    display(event, b.getCurrentPage() + delta, b);
+    display(b.getCurrentPage() + delta, b);
   } else {
     review(event, b.getCurrentPage()+delta, b);
   }
@@ -124,17 +131,16 @@ void update(MouseEvent event, int delta, Ballot b) {
  */
 void record(Ballot b){
   /* Get the "votes" collection of elements from this page */
-  Iterable<RadioButtonInputElement> selected;
+  Iterable<DivElement> selected;
 
   /* Get the currently selected candidate button(s) on the page */
-  selected = (querySelector("#votes").getElementsByClassName("candidate")
-                as List<RadioButtonInputElement>).where((RadioButtonInputElement el) => isSelected(el));
+  selected = (querySelector("#votes").querySelectorAll(".option") as ElementList<DivElement>).where((DivElement el) => isSelected(el));
 
   /* There should never be more than one selected radio button... */
   if(selected.length == 1) {
 
     /* Mark the Option in this Race with the selection's name */
-    b.getRace(b.getCurrentPage()).markSelection(selected.elementAt(0).getAttribute("name"));
+    b.getRace(b.getCurrentPage()).markSelection(selected.elementAt(0).querySelector(".optionIdentifier").text);
   }
   else if (selected.length == 0){
 
@@ -147,8 +153,8 @@ void record(Ballot b){
 /**
  * Returns the checked state of this radio button
  */
-bool isSelected(RadioButtonInputElement e) {
-  return e.checked;
+bool isSelected(DivElement e) {
+  return (e.querySelector(".vote") as InputElement).checked;
 }
 
 /**
@@ -159,39 +165,108 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   if(pageToDisplay >= b.size()) {
+
     displayReviewPage(b);
     b.updateCurrentPage(b.size());
+
   } else {
-    reviewRace(b.getRace(pageToDisplay));
+
+    /* Update progress */
+    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
+
+    Race race = b.getRace(pageToDisplay);
+
+    reviewRace(race);
     b.updateCurrentPage(pageToDisplay);
   }
 }
 
 void reviewRace(Race race) {
 
-  /* TODO Clear all other unnecessary HTML */
+  /* Make review div invisible */
+  querySelector("#reviews").style.visibility = "hidden";
+  querySelector("#reviews").style.display = "none";
+
+  querySelector("#progress").style.visibility = "visible";
+
+  /* Regenerate this page and check correct boxes */
+  displayRace(race);
 
   /* Hide all other buttons except "Return to Review" */
-  querySelector("#Next").style.visibility = "hidden";
-  querySelector("#Skip").style.visibility = "hidden";
+  querySelector("#Previous").style.visibility = "hidden";
+  querySelector("#Next").style.display = "none";
+  querySelector("#finishUp").style.display = "none";
+
+  querySelector("#Review").style.display = "block";
   querySelector("#Review").style.visibility = "visible";
 
-
-  /* TODO Display the current race info */
 }
+
+/**
+ * Triggers on 'Next' after 'Begin', displays the first race in the election
+ */
+void beginElection(MouseEvent e, Ballot b) {
+
+  /* Erase first instructions */
+  querySelector("#first_instructions").style.display="none";
+
+  querySelector("#Back").style.display="none";
+  querySelector("#Previous").style.visibility = "hidden";
+
+  querySelector("#Begin").style.display="none";
+
+  /* Display this button */
+  querySelector("#Next").style.visibility="visible";
+  querySelector("#Next").style.display="block";
+
+  /* Set up race div */
+  querySelector("#VotingContentDIV").style.visibility = "visible";
+  querySelector("#VotingContentDIV").style.display = "block";
+
+  /* Display the first race */
+  display(0, b);
+}
+
+
 
 /**
  * Renders the pageToDisplay in the Ballot as HTML in the UI
  */
-void display(MouseEvent event, int pageToDisplay, Ballot b) {
+void display(int pageToDisplay, Ballot b) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   if(pageToDisplay >= b.size()) {
+
     displayReviewPage(b);
     b.updateCurrentPage(b.size());
   } else {
-    displayRace(b.getRace(pageToDisplay));
+
+    /* Update progress */
+    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
+
+    if (pageToDisplay>0)
+      querySelector("#Previous").style.visibility = "visible";
+    else
+      querySelector("#Previous").style.visibility = "hidden";
+
+    Race race = b.getRace(pageToDisplay);
+
+    /* Show proper button */
+    ButtonElement nextButton = querySelector("#Next");
+    nextButton.style.visibility = "visible";
+
+    /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
+    if(race.hasVoted()) {
+      nextButton.className = "next";
+      nextButton.text = "Next";
+    }
+    else {
+      nextButton.className = "skip";
+      nextButton.text = "Skip";
+    }
+
+    displayRace(race);
     b.updateCurrentPage(pageToDisplay);
   }
 }
@@ -201,33 +276,255 @@ void display(MouseEvent event, int pageToDisplay, Ballot b) {
  */
 void displayRace(Race race) {
 
-  /* TODO Clear all other HTML */
-  querySelector("#Review").style.visibility = "hidden";
+  DivElement votingContentDiv = querySelector("#VotingContentDIV");
 
-  /* If nothing has already been selected show "skip" , otherwise "next" */
-  if(race.hasVoted()) {
-    querySelector("#Next").style.visibility = "visible";
-    querySelector("#Skip").style.visibility = "hidden";
+  /* Clear div of previous race and title */
+  querySelector("#titles").remove();
+  querySelector("#votes").remove();
+
+  /* Add new title div */
+  DivElement titleDiv = new DivElement();
+
+  titleDiv.id = "titles";
+
+  /* Create a bunch of divs for the different elements */
+  if (race.type == "proposition") {
+
+    DivElement propTitleDiv = new DivElement();
+    DivElement propInstDiv = new DivElement();
+    DivElement raceTitleDiv = new DivElement();
+
+    propTitleDiv.id = "propTitle";
+    propTitleDiv.className = "propTitle";
+    propTitleDiv.text = race.title;
+    titleDiv.append(propTitleDiv);
+    titleDiv.appendHtml("<br>");
+
+    propInstDiv.id = "propInst";
+    propInstDiv.text = "Choose yes or no.";
+    titleDiv.append(propInstDiv);
+    titleDiv.appendHtml("<br>");
+
+    raceTitleDiv.id = "raceTitle";
+    raceTitleDiv.className = "propText";
+    raceTitleDiv.text = race.text;
+    titleDiv.append(raceTitleDiv);
+  }
+  else if (race.type == "race") {
+
+    DivElement raceTitleDiv = new DivElement();
+    DivElement raceInstDiv = new DivElement();
+
+    raceTitleDiv.id = "raceTitle";
+    raceTitleDiv.className = "raceTitle";
+    raceTitleDiv.text = race.title;
+    titleDiv.append(raceTitleDiv);
+    titleDiv.appendHtml("<br>");
+
+    raceInstDiv.id = "raceInst";
+    raceInstDiv.text = "Vote for 1.";
+    titleDiv.append(raceInstDiv);
+  }
+
+  /* Add new race div */
+  DivElement votesDiv = new DivElement();
+  votesDiv.id = "votes";
+
+  /* Display the current race info */
+  for (Option o in race.options) {
+
+    /* Starts from 1 */
+    int currentIndex = race.options.indexOf(o)+1;
+
+    /* Create a div for each option */
+    DivElement optionDiv = new DivElement();
+
+    /* Set up the id and class */
+    optionDiv.id = "option$currentIndex";
+    optionDiv.className = "option";
+    optionDiv.style.border = "1px solid black;";
+    optionDiv.onClick.listen((MouseEvent e)=>respondToClick(e,race));
+
+    /* Create voteButton div */
+    DivElement voteButtonDiv = new DivElement();
+    voteButtonDiv.className = "voteButton";
+
+    /* Set up label element */
+    LabelElement voteButtonLabel = new LabelElement();
+
+    /* Set up the radio/checkbox */
+    InputElement voteInput = new InputElement();
+    voteInput.name="vote";
+    voteInput.type="radio";
+    voteInput.id="radio1";
+    voteInput.className = "vote";
+    voteInput.checked = o.wasSelected();
+
+    /* Set up image */
+    ImageElement voteButtonImage = new ImageElement();
+    voteButtonImage.src = "images/check_selected copy-01.png";
+
+    /* Append the radiobutton and image to this label so that it can be added as a button */
+    voteButtonLabel.append(voteInput);
+    voteButtonLabel.append(voteButtonImage);
+
+    voteButtonDiv.append(voteButtonLabel);
+
+    /* Now set up the candidate and party name divs */
+    DivElement nameDiv = new DivElement();
+    nameDiv.id = "c$currentIndex";
+    nameDiv.style.color = o.wasSelected() ? "white" : "black";
+    nameDiv.className = "optionIdentifier";
+    nameDiv.text = o.identifier;
+
+    DivElement partyDiv = new DivElement();
+    partyDiv.id = "p$currentIndex";
+    partyDiv.style.color = o.wasSelected() ? "white" : "black";
+    partyDiv.className = "optionGroup";
+    partyDiv.text=(o.groupAssociation != null) ? o.groupAssociation : "";
+
+    /* Add all of these to the optiondiv and then add this option to the current vote div */
+    optionDiv.append(voteButtonDiv);
+    optionDiv.append(nameDiv);
+    optionDiv.append(partyDiv);
+
+    votesDiv.append(optionDiv);
+  }
+
+  /* Append this to the page */
+  votingContentDiv.append(titleDiv);
+  votingContentDiv.append(votesDiv);
+
+  /* Final setup */
+  votingContentDiv.style.display = "block";
+  votingContentDiv.style.visibility = "visible";
+  votingContentDiv.className = "votingInstructions";
+}
+
+/**
+ *
+ */
+void respondToClick(MouseEvent e, Race race) {
+
+  /* Toggle the target of the click */
+  InputElement target = ((e.currentTarget as Element).querySelector(".vote") as InputElement);
+  target.checked = !target.checked;
+
+  /* Add the image */
+
+  /* Now update this Race */
+  if(target.checked) {
+    race.markSelection((e.currentTarget as Element).querySelector(".optionIdentifier").text);
+
+    /* Update the button as well if in */
+    if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
+      querySelector("#Next").className = "next";
+      querySelector("#Next").text = "Next";
+    }
   }
   else {
-    querySelector("#Next").style.visibility = "hidden";
-    querySelector("#Skip").style.visibility = "visible";
+
+    /* Update the button as well if in */
+    if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
+      querySelector("#Next").className = "skip";
+      querySelector("#Next").text = "Skip";
+    }
+
+    race.noSelection();
   }
 
-  /* TODO Display the current race info */
+  /* Just redisplay the page to take care of everything */
+  displayRace(race);
 
 }
 
 /**
  * Renders the review page for the current state of this Ballot
  */
-void displayReviewPage(Ballot e) {
+void displayReviewPage(Ballot b) {
 
-  /* TODO Clear all other HTML */
+  /* Clear all other HTML */
+  querySelector("#VotingContentDIV").style.display = "none";
 
-  /* TODO Display only "Print Your Ballot" button on bottom bar */
+  /* Hide the progress bar */
+  querySelector("#progress").style.visibility = "hidden";
 
-  /* TODO Display review */
+  /* Move these out of the way for finishUp */
+  querySelector("#Next").style.display = "none";
+  querySelector("#Review").style.display = "none";
+
+  /* Hide this */
+  querySelector("#Previous").style.visibility = "hidden";
+
+  /* Display only "Print Your Ballot" button on bottom bar */
+  querySelector("#finishUp").style.display = "block";
+  querySelector("#finishUp").style.visibility = "visible";
+
+  /* Display review */
+  querySelector("#reviews").style.visibility = "visible";
+  querySelector("#reviews").style.display = "block";
+
+  DivElement reviewCol1 = querySelector("#review1");
+  DivElement reviewCol2 = querySelector("#review2");
+
+  querySelector("#reviewTop").style.visibility = "visible";
+
+  /* Remove all races */
+  reviewCol1.querySelectorAll(".race").forEach((Element e) => e.remove());
+  reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
+
+  /* Go through all the races and add them to the columns (14 max in each?) */
+  for (int i=0; i<b.size(); i++) {
+
+    /* Get the ith race */
+    Race currentRace = b.getRace(i);
+
+    /* Create a div for it */
+    DivElement raceDiv = new DivElement();
+    raceDiv.id = "race${i+1}";
+    raceDiv.className = "race";
+
+    /* Set up these divs for it */
+    DivElement raceTitle = new DivElement();
+    raceTitle.id = "raceTitle${i+1}";
+    raceTitle.className = "title";
+    raceTitle.innerHtml = "${i+1}. <b>${currentRace.title}</b>";
+
+    DivElement raceBox = new DivElement();
+    raceBox.id = "raceSelBox${i+1}";
+
+    raceBox.className = currentRace.hasVoted() ? "sel" : "noSel";
+
+    DivElement raceSelection = new DivElement();
+    raceSelection.id = "raceSel${i+1}";
+    raceSelection.className = "raceSel";
+    raceSelection.text = currentRace.hasVoted() ?
+                          currentRace.getSelectedOption().identifier :
+                          "You did not vote for anyone. If you want to vote, touch here.";
+
+    DivElement partySelection = new DivElement();
+    partySelection.id = "party${i+1}";
+    partySelection.className = "party";
+    partySelection.text = currentRace.hasVoted() && (currentRace.getSelectedOption().groupAssociation != null) ?
+                            currentRace.getSelectedOption().groupAssociation :
+                            "";
+
+    raceBox.append(raceSelection);
+    raceBox.appendHtml("<strong>${partySelection.outerHtml}</strong>");
+
+    raceDiv.append(raceTitle);
+    raceDiv.append(raceBox);
+
+    /* Set up a listener for click on raceDiv */
+    raceDiv.onClick.listen((MouseEvent e) => review(e, i, b));
+
+    /* Send to correct column */
+    querySelector("#review${(i<14) ? "1" : "2"}").append(raceDiv);
+
+  }
+
+  reviewCol1.style.visibility = "visible";
+  reviewCol2.style.visibility = "visible";
 
 }
 
@@ -263,11 +560,11 @@ Future<Ballot> loadBallot() async {
  *
  */
 class Option {
-  String _identifier;
+  String identifier;
   String groupAssociation;
   bool _voted=false;
 
-  Option(this._identifier, {this.groupAssociation});
+  Option(this.identifier, {this.groupAssociation});
 
   bool wasSelected(){
     return _voted;
@@ -282,7 +579,7 @@ class Option {
   }
 
   String toString(){
-    return "Name: $_identifier, Group: $groupAssociation, Voted Status: $_voted\n";
+    return "Name: $identifier, Group: $groupAssociation, Voted Status: $_voted\n";
   }
 }
 
@@ -292,12 +589,13 @@ class Option {
  */
 class Race {
 
-  String _title;
-  List<Option> _options;
+  String title;
+  List<Option> options;
   String text;
+  String type;
   bool _voted=false;
 
-  Race(this._title, this._options, {this.text});
+  Race(this.title, this.options, this.type, {this.text});
 
   bool hasVoted() {
     return _voted;
@@ -306,29 +604,37 @@ class Race {
   void markSelection(String identifier) {
     _voted = true;
 
-    for(Option o in _options) {
+    for(Option o in options) {
       o.unmark();
 
-      if (o._identifier == identifier)
+      if (o.identifier == identifier)
         o.mark();
     }
+  }
+
+  Option getSelectedOption(){
+    if (_voted) {
+      return options.firstWhere((Option o) => o._voted);
+    }
+
+    return null;
   }
 
   void noSelection(){
     _voted = false;
 
-    for(Option o in _options) {
+    for(Option o in options) {
       o.unmark();
     }
 
   }
 
   String toString(){
-    String strRep = "Race: $_title";
+    String strRep = "Race: $title";
     strRep += "\n\tText: $text";
     strRep += "\n\tOptions: \n";
 
-    for(Option option in _options) {
+    for(Option option in options) {
       strRep += "\t\t$option";
     }
 
@@ -383,7 +689,7 @@ class Ballot {
                                   groupAssociation: element.findElements("party").first.text));
       }
 
-      Race currentRace = new Race(title, candidates);
+      Race currentRace = new Race(title, candidates, "race");
       _races.add(currentRace);
 
     }
@@ -400,7 +706,7 @@ class Ballot {
       responses.add(new Option("Yes"));
       responses.add(new Option("No"));
 
-      Race currentRace = new Race(title, responses, text: text);
+      Race currentRace = new Race(title, responses, "proposition", text: text);
       _races.add(currentRace);
 
     }

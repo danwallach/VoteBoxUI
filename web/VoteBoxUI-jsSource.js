@@ -154,7 +154,7 @@ function submitID() {   //records authentication credential and takes voter to e
     if(subjectID===""){
         alert("You must enter correctly your 5-digit authentication number.");
     }
-    else{
+    else {
         document.getElementById("IDArea").value= subjectID+ " "+ subject;
         document.getElementById("info").style.visibility="visible"; //shows election information page or start
         document.getElementById("ID").style.display="none"; //hides the elements on the authentication page
