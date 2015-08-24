@@ -107,16 +107,34 @@ box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 } /*width was 768px*/
 
 /* Popup modal dialog that tell users their 5 digit auth number was incorrect */
-dialog {
-	width: 20%;
-	height: 20%;
+#IDdialog {
+
+	background: #FFF;
+	height: 10%;
+	width: 50%;
+	text-align: center;
+	padding: 1em;
+	margin: .25em auto;
+	border: 0;
+	border-top: .25em solid #002EB8;
+	box-shadow: 0 .125em .667em rgba(0,0,0,0.8);
 	position: fixed;
-	font-size: 50px;
+	font-size: 2.5em;
 	font-style: inherit;
 	font-weight: inherit;
 }
-/*'Okay' Button for the popup dialoge telling users their 5 digit auth number was incorrect */
-button {
+
+#IDdialog::backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*'Okay' Button for the popup dialog telling users their 5 digit auth number was incorrect */
+#okay {
 	width: 100%;
 	text-align: center;
 	font-size: 50px;
@@ -136,6 +154,7 @@ button {
 	/* align-items: flex-start; */
     text-align: center;
 	display: block;
+	margin: .25em;
 }
 
 /* Formatted Elements */
