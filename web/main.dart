@@ -3,9 +3,9 @@
  */
 
 import 'dart:html' hide XmlDocument;
+import 'dart:async';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
-import 'dart:async';
 
 main() async {
 
