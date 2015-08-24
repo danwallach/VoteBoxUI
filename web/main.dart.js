@@ -2854,6 +2854,11 @@ if(!("name" in GS))GS.name="GS"
 $desc=$collectedClasses$.GS[1]
 GS.prototype=$desc
 GS.$__fields__=[]
+function L(){this.$deferredAction()}L.builtin$cls="L"
+if(!("name" in L))L.name="L"
+$desc=$collectedClasses$.L[1]
+L.prototype=$desc
+L.$__fields__=[]
 function em(a){this.Q=a
 this.$deferredAction()}em.builtin$cls="em"
 if(!("name" in em))em.name="em"
@@ -3550,7 +3555,7 @@ if(!("name" in Sd))Sd.name="Sd"
 $desc=$collectedClasses$.Sd[1]
 Sd.prototype=$desc
 Sd.$__fields__=["Q"]
-return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,Eq,lb,tD,hJ,bq,TZ,yS,cu,N5,Mw,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,y5,Eh,up,YU,nf,SS,E1,oR,ZP,yb,h7,QN,P4,q2,oe,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,a7,i1,xy,MH,A8,U5,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,WV,zW,tK,DL,b8,Pf,Lj,Fe,vs,da,pV,U7,vr,rH,eX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,MO,NO,X4,Vo,qB,aA,LV,DS,yR,Wh,CR,Qk,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,KG,lf,Vj,uw,i8,Uk,zF,by,Mx,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,JS,ub,ds,lj,UV,VS,t7,HG,cK,kM,KN,cX,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,RE,qs,rV,Wy,YN,bA,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,tb,Sg,pA,Mi,XF,MX,hn,Og,u8,M6,eL,D8,ZY,DH,Ee,Qb,Lk,Im,Aj,oU,FO,e7,KV,BH,zL,x5,KY,G7,Ql,wL,Fa,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,RX,YC,hq,w4,Nf,rh,dx,rr,D9,i7,R,Cq,O,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,zU,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,Hp,Nz,Jd,QS,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,Ip,Hg,K8,xj,dE,ZA,dT,N2,eE,V6,D7,Zf,GS,em,Lb,QA,Cv,ed,aO,p8,wW,Vg,xz,p5,Os,cr,lK,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,is,Hv,DE,CG,Sn,nH,Si,QF,FX,Ec,XP,wU,iM,GZ,n9,J8,t4,SX,pR,Pn,ux,pe,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Dt,bR,YH,Xg,eH,ta,Cc,cp,hd,kw,to,de,dZ,Ew,Md,W6,wJ,lE,rI,km,Wr,WA,EL,tq,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
+return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,Eq,lb,tD,hJ,bq,TZ,yS,cu,N5,Mw,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,y5,Eh,up,YU,nf,SS,E1,oR,ZP,yb,h7,QN,P4,q2,oe,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,a7,i1,xy,MH,A8,U5,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,WV,zW,tK,DL,b8,Pf,Lj,Fe,vs,da,pV,U7,vr,rH,eX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,MO,NO,X4,Vo,qB,aA,LV,DS,yR,Wh,CR,Qk,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,KG,lf,Vj,uw,i8,Uk,zF,by,Mx,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,JS,ub,ds,lj,UV,VS,t7,HG,cK,kM,KN,cX,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,RE,qs,rV,Wy,YN,bA,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,tb,Sg,pA,Mi,XF,MX,hn,Og,u8,M6,eL,D8,ZY,DH,Ee,Qb,Lk,Im,Aj,oU,FO,e7,KV,BH,zL,x5,KY,G7,Ql,wL,Fa,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,RX,YC,hq,w4,Nf,rh,dx,rr,D9,i7,R,Cq,O,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,zU,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,Hp,Nz,Jd,QS,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,Ip,Hg,K8,xj,dE,ZA,dT,N2,eE,V6,D7,Zf,GS,L,em,Lb,QA,Cv,ed,aO,p8,wW,Vg,xz,p5,Os,cr,lK,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,is,Hv,DE,CG,Sn,nH,Si,QF,FX,Ec,XP,wU,iM,GZ,n9,J8,t4,SX,pR,Pn,ux,pe,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Dt,bR,YH,Xg,eH,ta,Cc,cp,hd,kw,to,de,dZ,Ew,Md,W6,wJ,lE,rI,km,Wr,WA,EL,tq,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
 function setupProgram(a,b){"use strict"
 function generateAccessor(a9,b0,b1){var g=a9.split("-")
 var f=g[0]
@@ -9176,25 +9181,27 @@ $1:function(a){return J.Mp(a)}}}],["","",,F,{
 E2:[function(){var z=0,y=new P.Zh(),x=1,w,v,u,t
 function E2(a,b){if(a===1){w=b
 z=x}while(true)switch(z){case 0:v={}
+u=H.J(new W.R(document,"click",!1),[null])
+H.J(new W.O(0,u.Q,u.a,W.V(new F.L()),u.b),[H.N(u,0)]).Y()
 u=H.J(new W.R(document,"keypress",!1),[null])
-H.J(new W.O(0,u.Q,u.a,W.V(F.T()),u.b),[H.N(u,0)]).Y()
+H.J(new W.O(0,u.Q,u.a,W.V(F.Em()),u.b),[H.N(u,0)]).Y()
 u=H.J(new W.R(document,"keydown",!1),[null])
-H.J(new W.O(0,u.Q,u.a,W.V(F.T()),u.b),[H.N(u,0)]).Y()
+H.J(new W.O(0,u.Q,u.a,W.V(F.Em()),u.b),[H.N(u,0)]).Y()
 u=H.J(new W.R(document,"keyup",!1),[null])
-H.J(new W.O(0,u.Q,u.a,W.V(F.T()),u.b),[H.N(u,0)]).Y()
+H.J(new W.O(0,u.Q,u.a,W.V(F.Em()),u.b),[H.N(u,0)]).Y()
 v.Q=null
 P.P("Loading ballot...")
 z=2
 return H.AZ(F.W(),E2,y)
 case 2:t=b
 v.Q=t
-P.P("Ballot has "+H.d(J.WS(t))+" races and propositions detected.")
+P.P("Ballot has "+H.d(J.Q(t))+" races and propositions detected.")
 u=J.X(document.querySelector("#ID"))
 H.J(new W.O(0,u.Q,u.a,W.V(F.M()),u.b),[H.N(u,0)]).Y()
 u=J.X(document.querySelector("#okay"))
 H.J(new W.O(0,u.Q,u.a,W.V(F.h5()),u.b),[H.N(u,0)]).Y()
 u=J.X(document.querySelector("#button_begin"))
-H.J(new W.O(0,u.Q,u.a,W.V(F.L()),u.b),[H.N(u,0)]).Y()
+H.J(new W.O(0,u.Q,u.a,W.V(F.n1()),u.b),[H.N(u,0)]).Y()
 u=J.X(document.querySelector("#Back"))
 H.J(new W.O(0,u.Q,u.a,W.V(F.S()),u.b),[H.N(u,0)]).Y()
 u=J.X(document.querySelector("#Begin"))
@@ -9216,7 +9223,7 @@ else y=!1
 y=y||z.gHQ(a)===91}else y=!0
 if(y){z.e6(a)
 z.bb(a)
-z.Hq(a)}},"$1","T",2,0,43,33],
+z.Hq(a)}},"$1","Em",2,0,43,33],
 JK:[function(a){H.Go(document.querySelector("dialog"),"$isrV").close("")},"$1","h5",2,0,44,33],
 pg:[function(a){var z,y
 z=H.Go(document.querySelector("#idText"),"$isje").value
@@ -9238,7 +9245,7 @@ z.visibility="visible"
 z=document.querySelector("#Begin").style
 z.visibility="visible"
 z=document.querySelector("#info").style
-z.display="none"},"$1","L",2,0,44,33],
+z.display="none"},"$1","n1",2,0,44,33],
 CK:[function(a){var z=document.querySelector("#Begin").style
 z.visibility="hidden"
 z=document.querySelector("#Back").style
@@ -9247,7 +9254,7 @@ z=document.querySelector("#first_instructions").style
 z.display="none"
 z=document.querySelector("#info").style
 z.display="block"},"$1","S",2,0,44,33],
-pn:function(a,b,c){if(!J.mG(c.qe(),J.WS(c))){F.OB(c)
+pn:function(a,b,c){if(!J.mG(c.qe(),J.Q(c))){F.OB(c)
 F.GX(J.WB(c.qe(),b),c)}else F.nl(a,J.WB(c.qe(),b),c)},
 OB:function(a){var z,y
 z=H.HD(new W.wz(document.querySelector("#votes").querySelectorAll(".option")),"$isHU",[W.Wy],"$asHU")
@@ -9483,6 +9490,9 @@ z=1
 break
 case 1:return H.AZ(x,0,y,null)
 case 2:return H.AZ(v,1,y)}}return H.AZ(null,$W,y,null)},
+L:{
+"^":"r:19;",
+$1:[function(a){return document.querySelector("#idText").focus()},null,null,2,0,null,3,"call"]},
 em:{
 "^":"r:19;Q",
 $1:[function(a){var z,y
@@ -9514,7 +9524,7 @@ $1:[function(a){return F.pn(a,1,this.Q.Q)},null,null,2,0,null,3,"call"]},
 Cv:{
 "^":"r:19;Q",
 $1:[function(a){var z=this.Q.Q
-F.pn(a,J.aF(J.WS(z),z.qe()),z)
+F.pn(a,J.aF(J.Q(z),z.qe()),z)
 return},null,null,2,0,null,3,"call"]},
 ed:{
 "^":"r:19;",
@@ -10480,6 +10490,7 @@ J.Nj=function(a,b,c){return J.rY(a).Nj(a,b,c)}
 J.Nx=function(a){return J.w1(a).gu(a)}
 J.OG=function(a){return J.Y(a).gwd(a)}
 J.OS=function(a,b){return J.w1(a).tt(a,b)}
+J.Q=function(a){return J.Y(a).DF(a)}
 J.Q1=function(a,b){return J.Wx(a).L(a,b)}
 J.Qy=function(a,b){return J.Y(a).shf(a,b)}
 J.SR=function(a){return J.Y(a).gKD(a)}
@@ -10490,7 +10501,6 @@ return J.Wx(a).w(a,b)}
 J.Vs=function(a){return J.Y(a).gQg(a)}
 J.WB=function(a,b){if(typeof a=="number"&&typeof b=="number")return a+b
 return J.Qc(a).g(a,b)}
-J.WS=function(a){return J.Y(a).DF(a)}
 J.X=function(a){return J.Y(a).gVl(a)}
 J.Xf=function(a,b){return J.Y(a).oo(a,b)}
 J.Yj=function(a,b){return J.Y(a).sLA(a,b)}

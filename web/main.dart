@@ -9,6 +9,9 @@ import 'dart:async';
 
 main() async {
 
+  /* Hacky way of getting focus to textbox if user clicks somewhere */
+  document.onClick.listen((MouseEvent e) => querySelector("#idText").focus());
+
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
