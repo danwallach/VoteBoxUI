@@ -9,6 +9,9 @@ import 'dart:async';
 
 main() async {
 
+  /* Autofocus on ID textbox */
+  querySelector("idText").focus();
+
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);

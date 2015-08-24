@@ -9176,6 +9176,7 @@ $1:function(a){return J.Mp(a)}}}],["","",,F,{
 E2:[function(){var z=0,y=new P.Zh(),x=1,w,v,u,t
 function E2(a,b){if(a===1){w=b
 z=x}while(true)switch(z){case 0:v={}
+document.querySelector("idText").focus()
 u=H.J(new W.R(document,"keypress",!1),[null])
 H.J(new W.O(0,u.Q,u.a,W.V(F.T()),u.b),[H.N(u,0)]).Y()
 u=H.J(new W.R(document,"keydown",!1),[null])
