@@ -8,4 +8,5 @@ To use
 Branches:
 
 `master` is the current production developer setup for integration with STAR-Vote
+
 `PsycTestable` is the branch used for developing a vote-flipping testable version of the `master` branch for the psychology department at Rice
