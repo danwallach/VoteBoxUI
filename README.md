@@ -9,7 +9,7 @@ To use in windows:
 
 
 
-To use in MacOSX:
+#To use in MacOSX:
 
 
 First, install pub.
