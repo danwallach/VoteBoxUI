@@ -27,8 +27,8 @@
 
   "file_handlers": {
     "any": {
-      "types": [
-        "*"
+      "extensions": [
+        "xml"
       ]
     }
   },
