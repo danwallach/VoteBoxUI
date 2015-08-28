@@ -188,6 +188,7 @@ void reviewRace(Race race) {
 
   /* Make review div invisible */
   querySelector("#reviews").style.visibility = "hidden";
+  querySelector("#reviews").style.visibility = "hidden";
   querySelector("#reviews").style.display = "none";
 
   querySelector("#progress").style.visibility = "visible";
