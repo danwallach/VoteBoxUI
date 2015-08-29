@@ -9,9 +9,6 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 main() async {
 
-  /* Hacky way of getting focus to textbox if user clicks somewhere */
-  document.onClick.listen((MouseEvent e) => querySelector("#idText").focus());
-
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
@@ -42,9 +39,11 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 
-  querySelector('#finishUp').onClick.listen((MouseEvent e) => submitScreen);
-  querySelector('#endVoting').onClick.listen((MouseEvent e) => confirmScreen);
-
+  querySelector('#finishUp').onClick.listen((e) => intermediateSubmitScreen);
+  querySelector('#endVoting').onClick.listen((e) => () async {
+      await confirmScreen();
+      chrome.app.window.current().close();
+  });
 }
 
 /**
@@ -113,10 +112,10 @@ void gotoInfo(MouseEvent event) {
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent event, Ballot b) {
+void gotoReview(MouseEvent e, Ballot b) {
 
   /* Set the delta to purposefully get to the review page */
-  update(event, b.size()-b.getCurrentPage(), b);
+  update(e, b.size()-b.getCurrentPage(), b);
 }
 
 void update(MouseEvent event, int delta, Ballot b) {
@@ -534,41 +533,38 @@ void displayReviewPage(Ballot b) {
 
 }
 
-void submitScreen(MouseEvent e){
+void intermediateSubmitScreen(){
+
+  print("Submitting!");
 
   /* Get rid of original "Print Your Ballot" button on bottom bar */
-  querySelector("#finishUp").style.display = "none";
-  querySelector("#finishUp").style.visibility = "hidden";
+  querySelector('#finishUp').style.display = "none";
+  querySelector('#finishUp').style.visibility = "hidden";
 
   /* Undisplay review */
-  querySelector("#reviews").style.visibility = "hidden";
-  querySelector("#reviews").style.display = "none";
+  querySelector('#reviews').style.visibility = "hidden";
+  querySelector('#reviews').style.display = "none";
 
   /* Display submit screen */
-  querySelector("#submitScreen").style.visibility = "visible";
-  querySelector("#submitScreen").style.display = "block";
+  querySelector('#submitScreen').style.visibility = "visible";
+  querySelector('#submitScreen').style.display = "block";
 
 }
 
 
-void confirmScreen(MouseEvent e) async {
+Future confirmScreen() async {
 
-  querySelector("#submitScreen").style.visibility = "hidden";
-  querySelector("#submitScreen").style.display = "none";
+  print("Confirming!");
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
 
-  querySelector("#confirmation").style.visibility = "visible";
-  querySelector("#confirmation").style.display = "block";
+  querySelector('#confirmation').style.visibility = "visible";
+  querySelector('#confirmation').style.display = "block";
 
   /* Await the construction of this future so we can quit */
-  await new Future.delayed(const Duration(seconds: 5), () => "5");
+  return new Future.delayed(const Duration(seconds: 5), () => '5');
 
-  chrome.app.window.current().close();
 }
-
-
-
-
-
 
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent

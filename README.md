@@ -10,8 +10,8 @@ decide to install the Dart SDK -- and use that to download the packages.
 
 Then, run the following commands in the terminal, after cd'ing into the VoteBoxUI directory
 
-`pub get`
 `pub build`
+
 `xcopy /Y build\web\main.dart.js web\main.dart.js`
 
 ## Launch for Devs
@@ -29,8 +29,6 @@ right clicking or command-q; if it's still running, even if you closed every tab
 with command-w, it won't open the app correctly until you quit chrome first)
 
 Third, run the following command in the terminal, after cd'ing into the VoteBoxUI directory
-
-`pub get`
 
 `pub build`
 

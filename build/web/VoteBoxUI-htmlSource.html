@@ -11,9 +11,9 @@
   <div id="Container">
   
     <div id="header"></div>
-    <div id="Content"> 
+    <div id="Content">
         
-        <dialog id ="IDDialog">
+        <dialog id ="IDdialog">
           <p>You must enter correctly your 5-digit voting machine pin.</p>
           <button id="okay">Okay</button>
         </dialog>
@@ -24,7 +24,7 @@
         <div id="auth">
           <label id="enterID" for="idText"> Enter your 5-digit voting machine pin to
               <br>access your precinct's ballot</label><!--enterID-->
-            <p><input type="text" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
+            <p><input type="tel" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
             <p><button id="ID"> Submit </button></p>
         </div>
         
@@ -104,26 +104,26 @@
             </div> <!--review2-->
 
         </div> <!--reviews-->
-    
-        <!-- Are you finished?-->
-            <div id="submitScreen" style="visibility: hidden">
-                <p id="submitHeading"><strong> Are you finished?</strong></p>
-                <p id="submitText">If you want to make changes, touch the <strong>Return to ballot</strong> button.<br><br>
-                If you are ready to print your ballot, touch the <strong>Print</strong> button.</p>
-                <div id="submitScreenBtns">
-                    <button id="returnToBallot" type="button"> Return to ballot </button>
-                    <button id="endVoting" type="button">Print your ballot</button>
-                </div><!--submitScreenBtns-->
-            </div><!--submitScreen-->
-            
-        <!--Confirmation Screen-->
-            <div id="confirmation" style="visibility: hidden">
-                <p id="confHeading"><strong> Thank you for completing your ballot!</strong></p>
-                <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both. 
-                <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
-            </div>
             
     </div> <!-- Content -->
+
+    <!-- Are you finished?-->
+    <div id="submitScreen" style="visibility: hidden">
+        <p id="submitHeading"><strong> Are you finished?</strong></p>
+        <p id="submitText">If you want to make changes, touch the <strong>Return to ballot</strong> button.<br><br>
+            If you are ready to print your ballot, touch the <strong>Print</strong> button.</p>
+        <div id="submitScreenBtns">
+            <button id="returnToBallot" type="button"> Return to ballot </button>
+            <button id="endVoting" type="button">Print your ballot</button>
+        </div><!--submitScreenBtns-->
+    </div><!--submitScreen-->
+
+    <!--Confirmation Screen-->
+    <div id="confirmation" style="visibility: hidden">
+        <p id="confHeading"><strong> Thank you for completing your ballot!</strong></p>
+        <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both.
+        <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
+    </div>
     
     <!--Bottom Content-->
     <div id="footer">
@@ -144,7 +144,7 @@
 
                 <button id="Next" type="button" class="next" style= "visibility: hidden">Next</button>
                 <button id="Review" type="button"  style= "visibility: hidden">Return to Review<br></button>
-                <button id="finishUp" type="button"  style="visibility: hidden"> Print your ballot</button>
+                <button id="finishUp" type="button"  style="visibility: hidden">Print your ballot</button>
                 
         </div> <!-- Bottom -->
     </div><!-- Footer -->
