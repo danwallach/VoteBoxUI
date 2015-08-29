@@ -2,8 +2,947 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="README update">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/transformers/transformers.snapshot" afterPath="$PROJECT_DIR$/.pub/transformers/transformers.snapshot" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/actions.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/actions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/actions.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/actions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/actions.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/actions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/actions.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/actions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/aggregate_transform.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/aggregate_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/alarms.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/alarms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/alarms.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/alarms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/alarms.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/alarms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/alarms.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/alarms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/algorithms.dart" afterPath="$PROJECT_DIR$/packages/collection/algorithms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/algorithms.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/algorithms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/algorithms.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/algorithms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/algorithms.dart" afterPath="$PROJECT_DIR$/web/packages/collection/algorithms.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/iterators/ancestors.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/iterators/ancestors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/ancestors.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/ancestors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/ancestors.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/ancestors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/iterators/ancestors.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/iterators/ancestors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/app.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/app.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/app.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/app.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/app_patch.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/app_patch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/app_patch.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/app_patch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/app_patch.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/app_patch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/app_patch.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/app_patch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/asset_cascade.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/asset_cascade.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/asset_cascade.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/asset_cascade.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset_forwarder.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_forwarder.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_forwarder.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_forwarder.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset_id.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset_id.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_id.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_id.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_id.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_id.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_id.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_id.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset_node.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_node.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_node.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_node.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset_node_set.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset_node_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_node_set.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_node_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_node_set.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_node_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_node_set.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_node_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/asset_set.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/asset_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_set.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/asset_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_set.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/asset_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_set.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/asset_set.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/attribute.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/attribute.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/attribute.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/attribute.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/attribute.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/attribute.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/attribute.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/attribute.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/audio.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/audio.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/audio.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/audio.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/audio.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/audio.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/audio.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/audio.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/barback.dart" afterPath="$PROJECT_DIR$/packages/barback/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/barback.dart" afterPath="$PROJECT_DIR$/packages/barback/src/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/barback.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/barback.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/barback.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/barback.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/barback.dart" afterPath="$PROJECT_DIR$/web/packages/barback/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/barback.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/barback.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/barback_settings.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/barback_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/barback_settings.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/barback_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/barback_settings.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/barback_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/barback_settings.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/barback_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/base_transform.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/base_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/base_transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/base_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/base_transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/base_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/base_transform.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/base_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/beta.dart" afterPath="$PROJECT_DIR$/packages/petitparser/beta.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/beta.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/beta.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/beta.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/beta.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/beta.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/beta.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/bluetooth.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/bluetooth.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/bluetooth_low_energy.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/bluetooth_low_energy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth_low_energy.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth_low_energy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth_low_energy.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth_low_energy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth_low_energy.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth_low_energy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/bluetooth_socket.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/bluetooth_socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth_socket.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bluetooth_socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth_socket.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/bluetooth_socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth_socket.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/bluetooth_socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/bookmarks.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/bookmarks.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bookmarks.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/bookmarks.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/bookmarks.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/bookmarks.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/bookmarks.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/bookmarks.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/packages/chrome/bootstrap.js" afterPath="$PROJECT_DIR$/build/web/packages/chrome/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/bootstrap.js" afterPath="$PROJECT_DIR$/packages/chrome/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/bootstrap.js" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/bootstrap.js" afterPath="$PROJECT_DIR$/web/images/packages/chrome/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/bootstrap.js" afterPath="$PROJECT_DIR$/web/packages/chrome/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/branch.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/branch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/branch.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/branch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/branch.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/branch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/branch.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/branch.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/browser.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/browser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/browser.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/browser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/browser.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/browser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/browser_action.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/browser_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browser_action.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browser_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/browser_action.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/browser_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/browser_action.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/browser_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/browsing_data.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/browsing_data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browsing_data.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/browsing_data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/browsing_data.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/browsing_data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/browsing_data.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/browsing_data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/build/build.dart" afterPath="$PROJECT_DIR$/packages/chrome/build/build.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/build/build.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/build/build.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/build/build.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/build/build.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/build/build.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/build/build.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/build_result.dart" afterPath="$PROJECT_DIR$/packages/barback/src/build_result.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/build_result.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/build_result.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/build_result.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/build_result.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/build_result.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/build_result.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/builder.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/builder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/builder.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/builder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/builder.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/builder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/builder.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/builder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils/cancelable_future.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils/cancelable_future.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/cancelable_future.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/cancelable_future.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils/cancelable_future.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils/cancelable_future.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils/cancelable_future.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils/cancelable_future.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/src/canonicalized_map.dart" afterPath="$PROJECT_DIR$/packages/collection/src/canonicalized_map.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/src/canonicalized_map.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/src/canonicalized_map.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/src/canonicalized_map.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/src/canonicalized_map.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/src/canonicalized_map.dart" afterPath="$PROJECT_DIR$/web/packages/collection/src/canonicalized_map.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/cdata.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/cdata.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/cdata.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/cdata.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/cdata.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/cdata.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/cdata.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/cdata.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/chain.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/chain.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/chain.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/chain.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/chain.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/chain.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/chain.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/chain.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/characters.dart" afterPath="$PROJECT_DIR$/packages/path/src/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/characters.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/characters.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/characters.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/characters.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/characters.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/characters.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/characters.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/characters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/chrome_app.dart" afterPath="$PROJECT_DIR$/packages/chrome/chrome_app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/chrome_app.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/chrome_app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/chrome_app.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/chrome_app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/chrome_app.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/chrome_app.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/chrome_ext.dart" afterPath="$PROJECT_DIR$/packages/chrome/chrome_ext.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/chrome_ext.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/chrome_ext.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/chrome_ext.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/chrome_ext.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/chrome_ext.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/chrome_ext.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/collection.dart" afterPath="$PROJECT_DIR$/packages/collection/collection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/collection.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/collection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/collection.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/collection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/collection.dart" afterPath="$PROJECT_DIR$/web/packages/collection/collection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/colors.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/colors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/colors.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/colors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/colors.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/colors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/colors.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/colors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/combinators.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/combinators.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/combinators.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/combinators.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/combinators.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/combinators.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/combinators.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/combinators.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/commands.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/commands.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/commands.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/commands.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/commands.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/commands.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/commands.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/commands.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/comment.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/comment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/comment.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/comment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/comment.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/comment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/comment.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/comment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/src/common.dart" afterPath="$PROJECT_DIR$/packages/chrome/src/common.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/src/common.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/src/common.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/src/common.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/src/common.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/src/common.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/src/common.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/src/common_exp.dart" afterPath="$PROJECT_DIR$/packages/chrome/src/common_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/src/common_exp.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/src/common_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/src/common_exp.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/src/common_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/src/common_exp.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/src/common_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/composite.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/composite.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/composite.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/composite.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/composite.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/composite.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/composite.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/composite.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/cons.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/cons.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/cons.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/cons.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/cons.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/cons.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/cons.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/cons.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/content_settings.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/content_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/content_settings.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/content_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/content_settings.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/content_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/content_settings.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/content_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/context.dart" afterPath="$PROJECT_DIR$/packages/path/src/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/context.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/context.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/context.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/context.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/context.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/context.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/context.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/context_menus.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/context_menus.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/context_menus.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/context_menus.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/context_menus.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/context_menus.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/context_menus.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/context_menus.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/debug/continuation.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/debug/continuation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/continuation.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/continuation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/continuation.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/continuation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/debug/continuation.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/debug/continuation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/cookies.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/cookies.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/cookies.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/cookies.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/cookies.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/cookies.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/cookies.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/cookies.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/dart.dart" afterPath="$PROJECT_DIR$/packages/petitparser/dart.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/dart.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/dart.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/dart.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/dart.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/dart.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/dart.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/data.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/data.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/data.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/data.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/data.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/debug.dart" afterPath="$PROJECT_DIR$/packages/petitparser/debug.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/debug.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/debug.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/debug.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/debug.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/debug.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/debug.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/debugger.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/debugger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/debugger.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/debugger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/debugger.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/debugger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/debugger.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/debugger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/declarative_content.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/declarative_content.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/declarative_content.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/declarative_content.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/declarative_content.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/declarative_content.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/declarative_content.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/declarative_content.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/declarative_web_request.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/declarative_web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/declarative_web_request.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/declarative_web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/declarative_web_request.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/declarative_web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/declarative_web_request.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/declarative_web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_aggregate_transform.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_aggregate_transform.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_aggregate_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_transform.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_transform.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/declaring_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/declaring_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/declaring_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/declaring_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/definition.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/definition.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/definition.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/definition.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/definition.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/definition.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/definition.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/definition.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/iterators/descendants.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/iterators/descendants.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/descendants.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/descendants.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/descendants.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/descendants.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/iterators/descendants.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/iterators/descendants.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/desktop_capture.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/desktop_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/desktop_capture.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/desktop_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/desktop_capture.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/desktop_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/desktop_capture.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/desktop_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/devtools.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/devtools.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/devtools.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/devtools.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/devtools.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/devtools.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/devtools.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/devtools.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/doctype.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/doctype.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/doctype.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/doctype.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/doctype.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/doctype.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/doctype.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/doctype.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/document.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/document.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/document.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/document.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/document.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/document.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/document.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/document.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/downloads.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/downloads.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/downloads.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/downloads.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/downloads.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/downloads.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/downloads.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/downloads.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/element.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/element.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/element.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/element.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/element.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/element.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/element.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/element.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/entities.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/entities.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/entities.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/entities.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/entities.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/entities.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/entities.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/entities.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/environment.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/environment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/environment.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/environment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/environment.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/environment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/environment.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/environment.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/equality.dart" afterPath="$PROJECT_DIR$/packages/collection/equality.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/equality.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/equality.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/equality.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/equality.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/equality.dart" afterPath="$PROJECT_DIR$/web/packages/collection/equality.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/errors.dart" afterPath="$PROJECT_DIR$/packages/barback/src/errors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/errors.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/errors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/errors.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/errors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/errors.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/errors.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/events.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/events.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/events.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/events.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/events.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/events.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/events.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/events.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/expression.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/expression.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/expression.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/expression.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/expression.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/expression.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/expression.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/expression.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/extension.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/extension.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/extension.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/extension.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/extension.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/extension.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/extension.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/extension.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/file.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/file.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/file.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/file.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/file.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/file.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/file.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/file.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/file_browser_handler.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/file_browser_handler.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/file_browser_handler.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/file_browser_handler.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/file_browser_handler.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/file_browser_handler.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/file_browser_handler.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/file_browser_handler.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils/file_pool.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils/file_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/file_pool.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/file_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils/file_pool.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils/file_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils/file_pool.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils/file_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/file_system.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/file_system.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/file_system.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/file_system.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/src/files.dart" afterPath="$PROJECT_DIR$/packages/chrome/src/files.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/src/files.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/src/files.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/src/files.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/src/files.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/src/files.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/src/files.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/src/files_exp.dart" afterPath="$PROJECT_DIR$/packages/chrome/src/files_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/src/files_exp.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/src/files_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/src/files_exp.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/src/files_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/src/files_exp.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/src/files_exp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/iterators/following.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/iterators/following.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/following.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/following.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/following.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/following.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/iterators/following.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/iterators/following.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/font_settings.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/font_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/font_settings.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/font_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/font_settings.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/font_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/font_settings.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/font_settings.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/frame.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/frame.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/frame.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/frame.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/gcm.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/gcm.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/gcm.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/gcm.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/gcm.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/gcm.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/gcm.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/gcm.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/dart/grammar.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/dart/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/json/grammar.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/json/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/grammar.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/smalltalk/grammar.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/smalltalk/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/grammar.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/dart/grammar.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/dart/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/json/grammar.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/json/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/grammar.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/smalltalk/grammar.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/smalltalk/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/grammar.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/dart/grammar.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/dart/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/json/grammar.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/json/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/grammar.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/smalltalk/grammar.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/smalltalk/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/grammar.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/dart/grammar.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/dart/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/json/grammar.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/json/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/grammar.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/smalltalk/grammar.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/smalltalk/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/grammar.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/grammar.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/group_runner.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/group_runner.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/group_runner.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/group_runner.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/group_runner.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/group_runner.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/group_runner.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/group_runner.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/hid.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/hid.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/hid.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/hid.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/hid.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/hid.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/hid.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/hid.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/history.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/history.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/history.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/history.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/history.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/history.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/history.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/history.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/i18n.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/i18n.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/i18n.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/i18n.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/i18n.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/i18n.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/i18n.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/i18n.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/identity.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/identity.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/identity.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/identity.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/identity.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/identity.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/identity.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/identity.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/idle.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/idle.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/idle.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/idle.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/idle.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/idle.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/idle.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/idle.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/infobars.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/infobars.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/infobars.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/infobars.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/infobars.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/infobars.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/infobars.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/infobars.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/input.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/input.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/input.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/input.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/input.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/input.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/input.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/input.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/internal_asset.dart" afterPath="$PROJECT_DIR$/packages/barback/src/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/asset/internal_asset.dart" afterPath="$PROJECT_DIR$/packages/barback/src/asset/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/internal_asset.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/internal_asset.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/asset/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/internal_asset.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/asset/internal_asset.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/asset/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/internal_asset.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/asset/internal_asset.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/asset/internal_asset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/internal_style.dart" afterPath="$PROJECT_DIR$/packages/path/src/internal_style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/internal_style.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/internal_style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/internal_style.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/internal_style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/internal_style.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/internal_style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/reflection/iterable.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/reflection/iterable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/iterable.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/iterable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/iterable.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/iterable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/iterable.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/iterable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/iterable_zip.dart" afterPath="$PROJECT_DIR$/packages/collection/iterable_zip.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/iterable_zip.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/iterable_zip.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/iterable_zip.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/iterable_zip.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/iterable_zip.dart" afterPath="$PROJECT_DIR$/web/packages/collection/iterable_zip.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/json.dart" afterPath="$PROJECT_DIR$/packages/petitparser/json.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/json.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/json.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/json.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/json.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/json.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/json.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/lazy_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/lazy_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/lazy_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/lazy_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/lazy_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/lazy_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/lazy_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/lazy_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/lazy_trace.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/lazy_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/lazy_trace.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/lazy_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/lazy_trace.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/lazy_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/lazy_trace.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/lazy_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/lazy_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/lazy_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/lazy_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/lazy_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/lazy_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/lazy_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/lazy_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/lazy_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/lisp.dart" afterPath="$PROJECT_DIR$/packages/petitparser/lisp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/lisp.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/lisp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/lisp.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/lisp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/lisp.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/lisp.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/location.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/location.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/location.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/location.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/location.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/location.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/location.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/location.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/location.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/log.dart" afterPath="$PROJECT_DIR$/packages/barback/src/log.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/log.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/log.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/log.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/log.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/log.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/log.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/management.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/management.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/management.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/management.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/management.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/management.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/management.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/management.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/manifest.json" afterPath="$PROJECT_DIR$/build/web/manifest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/transformers/manifest.txt" afterPath="$PROJECT_DIR$/.pub/transformers/manifest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/media_galleries.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/media_galleries.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/media_galleries.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/media_galleries.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/media_galleries.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/media_galleries.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/media_galleries.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/media_galleries.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils/multiset.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils/multiset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/multiset.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/multiset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils/multiset.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils/multiset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils/multiset.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils/multiset.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/name.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/name.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/name.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/name.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/name.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/name.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/name.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/name.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/name.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/named.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/named.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/named.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/named.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/named.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/named.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/named.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/named.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/natives.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/natives.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/natives.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/natives.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/natives.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/natives.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/natives.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/natives.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/node.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/node.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/node.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/node.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/node_status.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/node_status.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/node_status.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/node_status.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/node_status.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/node_status.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/node_status.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/node_status.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/node_streams.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/node_streams.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/node_streams.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/node_streams.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/node_streams.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/node_streams.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/node_streams.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/node_streams.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/notifications.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/notifications.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/notifications.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/notifications.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/notifications.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/notifications.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/notifications.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/notifications.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/omnibox.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/omnibox.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/omnibox.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/omnibox.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/omnibox.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/omnibox.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/omnibox.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/omnibox.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/reflection/optimize.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/reflection/optimize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/optimize.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/optimize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/optimize.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/optimize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/optimize.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/optimize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/package_graph.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/package_graph.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/package_graph.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/package_graph.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/package_graph.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/package_graph.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/package_graph.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/package_graph.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/package_provider.dart" afterPath="$PROJECT_DIR$/packages/barback/src/package_provider.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/package_provider.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/package_provider.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/package_provider.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/package_provider.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/package_provider.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/package_provider.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/page_action.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/page_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/page_action.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/page_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/page_action.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/page_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/page_action.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/page_action.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/page_capture.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/page_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/page_capture.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/page_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/page_capture.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/page_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/page_capture.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/page_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/parent.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/parent.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/parent.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/parent.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/parent.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/parent.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/parent.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/parent.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/parsed_path.dart" afterPath="$PROJECT_DIR$/packages/path/src/parsed_path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/parsed_path.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/parsed_path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/parsed_path.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/parsed_path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/parsed_path.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/parsed_path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/parser.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/json/parser.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/json/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/parser.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/parser.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/parser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/json/parser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/json/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/parser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/parser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/parser.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/json/parser.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/json/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/parser.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/parser.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/parser.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/json/parser.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/json/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/parser.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/parser.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/parser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/parsers.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/parsers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/parsers.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/parsers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/parsers.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/parsers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/parsers.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/parsers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/path.dart" afterPath="$PROJECT_DIR$/packages/path/path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/path.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/path.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/path.dart" afterPath="$PROJECT_DIR$/web/packages/path/path.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/path_exception.dart" afterPath="$PROJECT_DIR$/packages/path/src/path_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/path_exception.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/path_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/path_exception.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/path_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/path_exception.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/path_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/permissions.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/permissions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/permissions.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/permissions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/permissions.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/permissions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/permissions.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/permissions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/petitparser.dart" afterPath="$PROJECT_DIR$/packages/petitparser/petitparser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/petitparser.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/petitparser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/petitparser.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/petitparser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/petitparser.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/petitparser.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/phase.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/phase.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/phase.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/phase.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/phase_forwarder.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/phase_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase_forwarder.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase_forwarder.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/phase_forwarder.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/phase_forwarder.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/phase_output.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/phase_output.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase_output.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/phase_output.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase_output.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/phase_output.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/phase_output.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/phase_output.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/pool/pool.dart" afterPath="$PROJECT_DIR$/packages/pool/pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/pool/pool.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/pool/pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/pool/pool.dart" afterPath="$PROJECT_DIR$/web/images/packages/pool/pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/pool/pool.dart" afterPath="$PROJECT_DIR$/web/packages/pool/pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/style/posix.dart" afterPath="$PROJECT_DIR$/packages/path/src/style/posix.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/style/posix.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/style/posix.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/style/posix.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/style/posix.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/style/posix.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/style/posix.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/power.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/power.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/power.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/power.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/power.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/power.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/power.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/power.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/iterators/preceding.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/iterators/preceding.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/preceding.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/iterators/preceding.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/preceding.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/iterators/preceding.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/iterators/preceding.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/iterators/preceding.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/predicates.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/predicates.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/predicates.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/predicates.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/predicates.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/predicates.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/predicates.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/predicates.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/priority_queue.dart" afterPath="$PROJECT_DIR$/packages/collection/priority_queue.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/priority_queue.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/priority_queue.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/priority_queue.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/priority_queue.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/priority_queue.dart" afterPath="$PROJECT_DIR$/web/packages/collection/priority_queue.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/privacy.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/privacy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/privacy.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/privacy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/privacy.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/privacy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/privacy.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/privacy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/processes.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/processes.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/processes.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/processes.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/processes.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/processes.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/processes.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/processes.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/processing.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/processing.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/processing.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/processing.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/processing.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/processing.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/processing.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/processing.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/debug/profile.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/debug/profile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/profile.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/profile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/profile.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/profile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/debug/profile.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/debug/profile.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/debug/progress.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/debug/progress.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/progress.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/progress.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/progress.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/progress.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/debug/progress.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/debug/progress.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/proxy.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/proxy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/proxy.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/proxy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/proxy.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/proxy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/proxy.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/proxy.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/push_messaging.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/push_messaging.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/push_messaging.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/push_messaging.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/push_messaging.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/push_messaging.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/push_messaging.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/push_messaging.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/src/queue_list.dart" afterPath="$PROJECT_DIR$/packages/collection/src/queue_list.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/src/queue_list.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/src/queue_list.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/src/queue_list.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/src/queue_list.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/src/queue_list.dart" afterPath="$PROJECT_DIR$/web/packages/collection/src/queue_list.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/reflection.dart" afterPath="$PROJECT_DIR$/packages/petitparser/reflection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/reflection.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/reflection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/reflection.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/reflection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/reflection.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/reflection.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/repeaters.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/repeaters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/repeaters.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/repeaters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/repeaters.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/repeaters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/repeaters.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/repeaters.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/runtime.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/runtime.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/runtime.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/runtime.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/runtime.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/runtime.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/runtime.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/runtime.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/script_badge.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/script_badge.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/script_badge.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/script_badge.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/script_badge.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/script_badge.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/script_badge.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/script_badge.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/serial.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/serial.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/serial.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/serial.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/serial.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/serial.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/serial.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/serial.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/serialize.dart" afterPath="$PROJECT_DIR$/packages/barback/src/serialize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/serialize.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/serialize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/serialize.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/serialize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/serialize.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/serialize.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/sessions.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/sessions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sessions.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sessions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/sessions.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/sessions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/sessions.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/sessions.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/signed_in_devices.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/signed_in_devices.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/signed_in_devices.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/signed_in_devices.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/signed_in_devices.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/signed_in_devices.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/signed_in_devices.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/signed_in_devices.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/smalltalk.dart" afterPath="$PROJECT_DIR$/packages/petitparser/smalltalk.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/smalltalk.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/smalltalk.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/smalltalk.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/smalltalk.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/smalltalk.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/smalltalk.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/socket.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/socket.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/socket.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/socket.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/socket.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/sockets.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/sockets.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sockets.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sockets.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/sockets.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/sockets.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/sockets.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/sockets.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/source_span.dart" afterPath="$PROJECT_DIR$/packages/source_span/source_span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/source_span.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/source_span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/source_span.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/source_span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/source_span.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/source_span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/span.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/span.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/span.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/span.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/span_exception.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/span_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_exception.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/span_exception.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/span_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/span_exception.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/span_exception.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/span_mixin.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/span_mixin.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_mixin.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_mixin.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/span_mixin.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/span_mixin.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/span_mixin.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/span_mixin.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/span_with_context.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/span_with_context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_with_context.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/span_with_context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/span_with_context.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/span_with_context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/span_with_context.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/span_with_context.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/stack_trace.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/stack_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/stack_trace.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/stack_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/stack_trace.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/stack_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/stack_trace.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/stack_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/stack_zone_specification.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/stack_zone_specification.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/stack_zone_specification.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/stack_zone_specification.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/stack_zone_specification.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/stack_zone_specification.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/stack_zone_specification.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/stack_zone_specification.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/lisp/standard.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/lisp/standard.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/standard.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/lisp/standard.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/standard.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/lisp/standard.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/standard.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/lisp/standard.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/static_asset_cascade.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/static_asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/static_asset_cascade.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/static_asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/static_asset_cascade.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/static_asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/static_asset_cascade.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/static_asset_cascade.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/storage.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/storage.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/storage.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/storage.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/storage.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/storage.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/storage.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/storage.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils/stream_pool.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils/stream_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/stream_pool.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/stream_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils/stream_pool.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils/stream_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils/stream_pool.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils/stream_pool.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils/stream_replayer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils/stream_replayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/stream_replayer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils/stream_replayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils/stream_replayer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils/stream_replayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils/stream_replayer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils/stream_replayer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/style.dart" afterPath="$PROJECT_DIR$/packages/path/src/style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/style.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/style.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/style.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/style.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/sync_file_system.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/sync_file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sync_file_system.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/sync_file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/sync_file_system.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/sync_file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/sync_file_system.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/sync_file_system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/system.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/system.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/system.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/system.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/system.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/tab_capture.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/tab_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tab_capture.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tab_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/tab_capture.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/tab_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/tab_capture.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/tab_capture.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/tabs.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/tabs.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tabs.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tabs.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/tabs.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/tabs.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/tabs.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/tabs.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/test.dart" afterPath="$PROJECT_DIR$/packages/petitparser/test.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/test.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/test.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/test.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/test.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/test.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/test.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/nodes/text.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/nodes/text.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/text.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/nodes/text.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/text.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/nodes/text.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/nodes/text.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/nodes/text.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/core/token.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/core/token.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/token.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/core/token.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/token.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/core/token.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/core/token.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/core/token.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/top_sites.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/top_sites.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/top_sites.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/top_sites.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/top_sites.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/top_sites.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/top_sites.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/top_sites.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/debug/trace.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/debug/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/trace.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/trace.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/debug/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/trace.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/trace.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/debug/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/trace.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/debug/trace.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/debug/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/trace.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/transform.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/petitparser/src/reflection/transform.dart" afterPath="$PROJECT_DIR$/packages/petitparser/src/reflection/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/transform.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/petitparser/src/reflection/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/transform.dart" afterPath="$PROJECT_DIR$/web/images/packages/petitparser/src/reflection/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/transform.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/transform.dart" afterPath="$PROJECT_DIR$/web/packages/petitparser/src/reflection/transform.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/transform_logger.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/transform_logger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transform_logger.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transform_logger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transform_logger.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transform_logger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/transform_logger.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/transform_logger.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/transform_node.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/transform_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/transform_node.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/transform_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/transform_node.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/transform_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/transform_node.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/transform_node.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/transformer.dart" afterPath="$PROJECT_DIR$/packages/chrome/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/visitors/transformer.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/visitors/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/transformer.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/visitors/transformer.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/visitors/transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/graph/transformer_classifier.dart" afterPath="$PROJECT_DIR$/packages/barback/src/graph/transformer_classifier.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/transformer_classifier.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/graph/transformer_classifier.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/graph/transformer_classifier.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/graph/transformer_classifier.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/graph/transformer_classifier.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/graph/transformer_classifier.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/transformer_group.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/transformer_group.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transformer_group.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/transformer_group.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transformer_group.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/transformer_group.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/transformer_group.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/transformer_group.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/tts.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/tts.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tts.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tts.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/tts.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/tts.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/tts.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/tts.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/tts_engine.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/tts_engine.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tts_engine.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/tts_engine.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/tts_engine.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/tts_engine.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/tts_engine.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/tts_engine.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/type.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/type.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/type.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/type.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/type.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/type.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/type.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/type.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/types.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/types.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/types.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/types.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/types.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/types.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/types.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/types.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/src/unmodifiable_wrappers.dart" afterPath="$PROJECT_DIR$/packages/collection/src/unmodifiable_wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/src/unmodifiable_wrappers.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/src/unmodifiable_wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/src/unmodifiable_wrappers.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/src/unmodifiable_wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/src/unmodifiable_wrappers.dart" afterPath="$PROJECT_DIR$/web/packages/collection/src/unmodifiable_wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/unparsed_frame.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/unparsed_frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/unparsed_frame.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/unparsed_frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/unparsed_frame.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/unparsed_frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/unparsed_frame.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/unparsed_frame.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/style/url.dart" afterPath="$PROJECT_DIR$/packages/path/src/style/url.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/style/url.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/style/url.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/style/url.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/style/url.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/style/url.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/style/url.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/usb.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/usb.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/usb.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/usb.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/usb.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/usb.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/usb.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/usb.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/utils.dart" afterPath="$PROJECT_DIR$/packages/barback/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/src/utils.dart" afterPath="$PROJECT_DIR$/packages/collection/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/utils.dart" afterPath="$PROJECT_DIR$/packages/path/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/source_span/src/utils.dart" afterPath="$PROJECT_DIR$/packages/source_span/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/utils.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/src/utils.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/utils.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/source_span/src/utils.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/source_span/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/utils.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/utils.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/src/utils.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/utils.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/source_span/src/utils.dart" afterPath="$PROJECT_DIR$/web/images/packages/source_span/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/utils.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/utils.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/src/utils.dart" afterPath="$PROJECT_DIR$/web/packages/collection/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/utils.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/source_span/src/utils.dart" afterPath="$PROJECT_DIR$/web/packages/source_span/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/utils.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/utils.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/visitors/visitable.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/visitors/visitable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/visitable.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/visitable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/visitable.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/visitable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/visitors/visitable.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/visitors/visitable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/visitors/visitor.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/visitors/visitor.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/visitor.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/visitor.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/visitor.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/visitor.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/visitors/visitor.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/visitors/visitor.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/stack_trace/src/vm_trace.dart" afterPath="$PROJECT_DIR$/packages/stack_trace/src/vm_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/vm_trace.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/stack_trace/src/vm_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/stack_trace/src/vm_trace.dart" afterPath="$PROJECT_DIR$/web/images/packages/stack_trace/src/vm_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/stack_trace/src/vm_trace.dart" afterPath="$PROJECT_DIR$/web/packages/stack_trace/src/vm_trace.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/wallpaper.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/wallpaper.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/wallpaper.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/wallpaper.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/wallpaper.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/wallpaper.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/wallpaper.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/wallpaper.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/web_navigation.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/web_navigation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/web_navigation.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/web_navigation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/web_navigation.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/web_navigation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/web_navigation.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/web_navigation.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/web_request.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/web_request.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/web_request.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/web_request.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/web_request.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/chrome/gen/windows.dart" afterPath="$PROJECT_DIR$/packages/chrome/gen/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/path/src/style/windows.dart" afterPath="$PROJECT_DIR$/packages/path/src/style/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/windows.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/chrome/gen/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/path/src/style/windows.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/path/src/style/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/chrome/gen/windows.dart" afterPath="$PROJECT_DIR$/web/images/packages/chrome/gen/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/path/src/style/windows.dart" afterPath="$PROJECT_DIR$/web/images/packages/path/src/style/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/chrome/gen/windows.dart" afterPath="$PROJECT_DIR$/web/packages/chrome/gen/windows.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/path/src/style/windows.dart" afterPath="$PROJECT_DIR$/web/packages/path/src/style/windows.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/collection/wrappers.dart" afterPath="$PROJECT_DIR$/packages/collection/wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/collection/wrappers.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/collection/wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/collection/wrappers.dart" afterPath="$PROJECT_DIR$/web/images/packages/collection/wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/collection/wrappers.dart" afterPath="$PROJECT_DIR$/web/packages/collection/wrappers.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/images/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" afterPath="$PROJECT_DIR$/web/packages/barback/src/transformer/wrapping_aggregate_transformer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/utils/writable.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/utils/writable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/writable.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/utils/writable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/writable.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/utils/writable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/utils/writable.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/utils/writable.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml/visitors/writer.dart" afterPath="$PROJECT_DIR$/packages/xml/xml/visitors/writer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/writer.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml/visitors/writer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/writer.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml/visitors/writer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml/visitors/writer.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml/visitors/writer.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/xml/xml.dart" afterPath="$PROJECT_DIR$/packages/xml/xml.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/fonts/packages/xml/xml.dart" afterPath="$PROJECT_DIR$/web/fonts/packages/xml/xml.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/images/packages/xml/xml.dart" afterPath="$PROJECT_DIR$/web/images/packages/xml/xml.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/packages/xml/xml.dart" afterPath="$PROJECT_DIR$/web/packages/xml/xml.dart" />
     </list>
     <ignored path="VoteBoxUI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,18 +968,40 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state vertical-scroll-proportion="-22.72">
+              <caret line="536" column="5" selection-start-line="536" selection-start-column="5" selection-end-line="536" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VoteBoxUI-htmlSource.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VoteBoxUI-cssSource.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VoteBoxUI-htmlSource.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.31924883">
+              <caret line="74" column="10" selection-start-line="74" selection-start-column="10" selection-end-line="74" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.dart.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/main.dart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -49,18 +1010,18 @@
       <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9599529">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,8 +1046,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/web/manifest.json" />
-        <option value="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/web/main.dart" />
+        <option value="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
       </list>
     </option>
   </component>
@@ -98,9 +1060,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="434" />
-    <option name="width" value="1486" />
-    <option name="height" value="1032" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1098" />
+    <option name="height" value="1888" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -126,7 +1089,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -159,20 +1121,66 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VoteBoxUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VoteBoxUI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\seclab2\Documents\GitHub\VoteBoxUI\web" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -197,6 +1205,90 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -218,12 +1310,26 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -254,6 +1360,9 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
   </component>
   <component name="SbtLocalSettings">
     <option name="modificationStamps">
@@ -266,6 +1375,9 @@
     </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="" />
@@ -276,6 +1388,8 @@
       <workItem from="1440642162608" duration="899000" />
       <workItem from="1440772314843" duration="62000" />
       <workItem from="1440784092360" duration="1381000" />
+      <workItem from="1440873540188" duration="2297000" />
+      <workItem from="1440875907894" duration="469000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -293,15 +1407,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2958000" />
+    <option name="totallyTimeSpent" value="5724000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="434" y="0" width="1486" height="1032" extended-state="0" />
+    <frame x="-9" y="-9" width="1098" height="1888" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -309,7 +1422,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19686648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16388889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -322,10 +1435,19 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -344,6 +1466,74 @@
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="15" selection-start-line="108" selection-start-column="15" selection-end-line="108" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding />
         </state>
@@ -353,7 +1543,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -389,35 +1581,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9599529">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.72">
+          <caret line="536" column="5" selection-start-line="536" selection-start-column="5" selection-end-line="536" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31924883">
+          <caret line="74" column="10" selection-start-line="74" selection-start-column="10" selection-end-line="74" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

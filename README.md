@@ -4,13 +4,11 @@ Chrome App for the user interface of a voting session of the STAR-Vote system
 # To use in Windows:
 
 ## Compilation for Devs
-First, install pub.
 
-Second,  make sure that Chrome is NOT running (you must QUIT out of it, either by
-right clicking or command-q; if it's still running, even if you closed every tab
-with command-w, it won't open the app correctly until you quit chrome first)
+First, install pub and Dart. Easiest way to do this is to install Chocolatey -- this is shown on the Dart site whenever you
+decide to install the Dart SDK -- and use that to download the packages.
 
-Third, run the following command in the terminal, after cd'ing into the VoteBoxUI directory
+Then, run the following commands in the terminal, after cd'ing into the VoteBoxUI directory
 
 `pub get`
 `pub build`
@@ -24,16 +22,18 @@ Third, run the following command in the terminal, after cd'ing into the VoteBoxU
 # To use in Mac OS X:
 
 ## Compilation for Devs
-First, install pub.
+First, install pub and Dart.
 
-Second,  make sure that Chrome is NOT running (you must QUIT out of it, either by 
+Second,  make sure that Chrome is NOT running (you must QUIT out of it, either by
 right clicking or command-q; if it's still running, even if you closed every tab
 with command-w, it won't open the app correctly until you quit chrome first)
 
 Third, run the following command in the terminal, after cd'ing into the VoteBoxUI directory
 
 `pub get`
+
 `pub build`
+
 `cp build/web/main.dart.js web/main.dart.js`
 
 ## Launch for Devs

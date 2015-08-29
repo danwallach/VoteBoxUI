@@ -42,7 +42,9 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 
-  querySelector('#finishUp').onClick.listen((MouseEvent e) => chrome.app.window.current().close());
+  querySelector('#finishUp').onClick.listen((MouseEvent e) => submitScreen);
+  querySelector('#endVoting').onClick.listen((MouseEvent e) => confirmScreen);
+
 }
 
 /**
@@ -531,6 +533,42 @@ void displayReviewPage(Ballot b) {
   reviewCol2.style.visibility = "visible";
 
 }
+
+void submitScreen(MouseEvent e){
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector("#finishUp").style.display = "none";
+  querySelector("#finishUp").style.visibility = "hidden";
+
+  /* Undisplay review */
+  querySelector("#reviews").style.visibility = "hidden";
+  querySelector("#reviews").style.display = "none";
+
+  /* Display submit screen */
+  querySelector("#submitScreen").style.visibility = "visible";
+  querySelector("#submitScreen").style.display = "block";
+
+}
+
+
+void confirmScreen(MouseEvent e) async {
+
+  querySelector("#submitScreen").style.visibility = "hidden";
+  querySelector("#submitScreen").style.display = "none";
+
+  querySelector("#confirmation").style.visibility = "visible";
+  querySelector("#confirmation").style.display = "block";
+
+  /* Await the construction of this future so we can quit */
+  await new Future.delayed(const Duration(seconds: 5), () => "5");
+
+  chrome.app.window.current().close();
+}
+
+
+
+
+
 
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent
