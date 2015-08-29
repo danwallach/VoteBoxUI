@@ -574,7 +574,6 @@ Future endVoting(Event e) async {
   chrome.app.window.current().close();
 }
 
-
 Future confirmScreen() async {
 
   print("Confirming!");
@@ -585,7 +584,7 @@ Future confirmScreen() async {
   querySelector('#confirmation').style.display = "block";
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 5), () => '5');
+  return new Future.delayed(const Duration(seconds: 30), () => '30');
 
 }
 
