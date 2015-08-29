@@ -9,6 +9,8 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 main() async {
 
+  chrome.app.window.current().fullscreen();
+
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
