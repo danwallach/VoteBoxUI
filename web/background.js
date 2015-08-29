@@ -44,9 +44,9 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
         console.log("No file was detected.");
       }
 
-      createdWindow.fullscreen();
-      createdWindow.onkeydown(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
-      createdWindow.onkeyup(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+      //createdWindow.fullscreen();
+      //createdWindow.onkeydown(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
+      //createdWindow.onkeyup(function(e) { if (e.keyCode == 27 /* ESC */) { e.preventDefault(); }});
     }
   );
 

@@ -39,12 +39,13 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 
-  querySelector('#finishUp').onClick.listen((e) => intermediateSubmitScreen);
-  querySelector('#endVoting').onClick.listen((e) => () async {
-      await confirmScreen();
-      chrome.app.window.current().close();
-  });
+  querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
+
+  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, ballot));
+
+  querySelector('#endVoting').onClick.listen((e) => endVoting(e));
 }
+
 
 /**
  * Attempt to block undesired key combinations
@@ -533,7 +534,7 @@ void displayReviewPage(Ballot b) {
 
 }
 
-void intermediateSubmitScreen(){
+void submitScreen(Event e){
 
   print("Submitting!");
 
@@ -549,6 +550,28 @@ void intermediateSubmitScreen(){
   querySelector('#submitScreen').style.visibility = "visible";
   querySelector('#submitScreen').style.display = "block";
 
+}
+
+void returnToBallot (Event e, ballot){
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector('#finishUp').style.display = "block";
+  querySelector('#finishUp').style.visibility = "visible";
+
+  /* Undisplay review */
+  querySelector('#reviews').style.visibility = "visible";
+  querySelector('#reviews').style.display = "block";
+
+  /* Display submit screen */
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
+
+  gotoReview(e, ballot);
+}
+
+Future endVoting(Event e) async {
+  await confirmScreen();
+  chrome.app.window.current().close();
 }
 
 
