@@ -3,7 +3,7 @@
   "name": "VoteBoxUI",
   "short_name": "VoteBoxUI",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "minimum_chrome_version": "39",
 
   "icons": {
