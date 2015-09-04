@@ -24,8 +24,14 @@ main() async {
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
   /* Set up listeners for the different buttons clicked */
-  querySelector('#ID').onClick.listen(getID);
-  /* TODO: perhaps check for 'enter key' event on textinputelement */
+  querySelector('#ID').onClick.listen((MouseEvent event) => getID());
+  (querySelector('#idText') as TelephoneInputElement).onKeyPress.listen(
+    (KeyEvent e){
+      if (e.keyCode == KeyCode.ENTER) {
+        getID();
+      }
+  });
+
 
   querySelector('#okay').onClick.listen(close);
 
@@ -54,12 +60,12 @@ main() async {
  */
 void blockKeys(KeyEvent event){
 
-  if(event.keyCode == 27 /* ESC */ ||
-    (event.altKey && (event.which == 115 /* F4 */ || event.which == 9 /* Tab */)) ||
-    (event.keyCode == 91) /* Windows Key ... doesn't work of course */) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    event.stopPropagation();
+  if(event.keyCode == KeyCode.ESC || (event.keyCode == KeyCode.WIN_KEY) ||
+    (event.altKey && (event.keyCode == KeyCode.F4 || event.keyCode == KeyCode.TAB))) {
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      event.stopPropagation();
   }
 }
 
@@ -72,7 +78,7 @@ void close(MouseEvent event) {
 /**
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
-void getID(MouseEvent event) {
+void getID() {
   String ID = (querySelector('#idText') as TextInputElement).value;
 
   /* TODO check for non-numerals and validate with Supervisor */
@@ -576,7 +582,7 @@ Future endVoting(Event e) async {
   chrome.app.window.current().close();
 }
 
-Future confirmScreen() async {
+Future confirmScreen() {
 
   print("Confirming!");
   querySelector('#submitScreen').style.visibility = "hidden";
@@ -585,9 +591,8 @@ Future confirmScreen() async {
   querySelector('#confirmation').style.visibility = "visible";
   querySelector('#confirmation').style.display = "block";
 
-  /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 30), () => '30');
-
+  /* Return this future to time out after 60s and trigger closing the app */
+  return new Future.delayed(const Duration(seconds: 60));
 }
 
 /**
