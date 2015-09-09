@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VoteBoxUI.iws" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="VoteBoxUI-cssSource.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5837264">
-              <caret line="500" column="18" selection-start-line="500" selection-start-column="18" selection-end-line="500" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.15271227">
+              <caret line="457" column="24" selection-start-line="457" selection-start-column="24" selection-end-line="457" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -526,7 +521,7 @@
       <workItem from="1441221709687" duration="2145000" />
       <workItem from="1441379459802" duration="4177000" />
       <workItem from="1441383985888" duration="9942000" />
-      <workItem from="1441833533939" duration="311000" />
+      <workItem from="1441833533939" duration="739000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -600,11 +595,17 @@
       <option name="project" value="LOCAL" />
       <updated>1441396077477</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixing review page header wording and spacing">
+      <created>1441833872070</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1441833872070</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36890000" />
+    <option name="totallyTimeSpent" value="37318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1098" height="1888" extended-state="6" />
@@ -612,6 +613,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -632,7 +634,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879817" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -662,7 +663,8 @@
     <MESSAGE value="Font size fix on review page for PSYC consistency/usability. Fixes #11." />
     <MESSAGE value="Modifying text in instructions to match button text in page after review screen. Fixes #12." />
     <MESSAGE value="ID input now handling enter presses" />
-    <option name="LAST_COMMIT_MESSAGE" value="ID input now handling enter presses" />
+    <MESSAGE value="Fixing review page header wording and spacing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing review page header wording and spacing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1145,8 +1147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5837264">
-          <caret line="500" column="18" selection-start-line="500" selection-start-column="18" selection-end-line="500" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.15271227">
+          <caret line="457" column="24" selection-start-line="457" selection-start-column="24" selection-end-line="457" selection-end-column="24" />
           <folding />
         </state>
       </provider>
