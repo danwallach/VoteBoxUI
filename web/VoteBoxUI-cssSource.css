@@ -481,7 +481,7 @@ input[type="radio"]{
     font-family: inherit;
 	font-style: inherit;
 	font-size: 24px;
-	line-height: 26px;
+	line-height: 20px;
 	text-align: left;
 	padding-bottom: 22px;
 	margin-bottom: 0;
@@ -492,13 +492,13 @@ input[type="radio"]{
 	width: 400px;
 	display: inline-block;
 	float: left;
-	margin-top: 135px;
+	margin-top: 145px;
 }
 #review2{
 	width: 400px;
 	display: inline-block;
 	float: right;
-	margin-top: 135px;
+	margin-top: 145px;
 }
 .race { /*review screen*/
     cursor: pointer;
