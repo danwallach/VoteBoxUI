@@ -9,8 +9,7 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 main() async {
 
-  /* Hacky way of getting focus to textbox if user clicks somewhere */
-  document.onClick.listen((MouseEvent e) => querySelector("#idText").focus());
+  chrome.app.window.current().fullscreen();
 
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
@@ -25,6 +24,13 @@ main() async {
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
   /* Set up listeners for the different buttons clicked */
+  querySelector('.changeOptionsButton').onClick.listen((MouseEvent e) =>
+          (e){
+            querySelector('#confirmOptions').style.visibility = "visible";
+            querySelector('#changeOptionsSelection').text = (e.currentTarget() as ButtonElement).innerHtml;
+          }
+  );
+
   querySelector('#ID').onClick.listen(getID);
   /* TODO: perhaps check for 'enter key' event on textinputelement */
 
@@ -42,8 +48,13 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 
-  querySelector('#finishUp').onClick.listen((MouseEvent e) => chrome.app.window.current().close());
+  querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
+
+  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, ballot));
+
+  querySelector('#endVoting').onClick.listen((e) => endVoting(e));
 }
+
 
 /**
  * Attempt to block undesired key combinations
@@ -111,10 +122,10 @@ void gotoInfo(MouseEvent event) {
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent event, Ballot b) {
+void gotoReview(MouseEvent e, Ballot b) {
 
   /* Set the delta to purposefully get to the review page */
-  update(event, b.size()-b.getCurrentPage(), b);
+  update(e, b.size()-b.getCurrentPage(), b);
 }
 
 void update(MouseEvent event, int delta, Ballot b) {
@@ -529,6 +540,60 @@ void displayReviewPage(Ballot b) {
 
   reviewCol1.style.visibility = "visible";
   reviewCol2.style.visibility = "visible";
+
+}
+
+void submitScreen(Event e){
+
+  print("Submitting!");
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector('#finishUp').style.display = "none";
+  querySelector('#finishUp').style.visibility = "hidden";
+
+  /* Undisplay review */
+  querySelector('#reviews').style.visibility = "hidden";
+  querySelector('#reviews').style.display = "none";
+
+  /* Display submit screen */
+  querySelector('#submitScreen').style.visibility = "visible";
+  querySelector('#submitScreen').style.display = "block";
+
+}
+
+void returnToBallot (Event e, ballot){
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector('#finishUp').style.display = "block";
+  querySelector('#finishUp').style.visibility = "visible";
+
+  /* Undisplay review */
+  querySelector('#reviews').style.visibility = "visible";
+  querySelector('#reviews').style.display = "block";
+
+  /* Display submit screen */
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
+
+  gotoReview(e, ballot);
+}
+
+Future endVoting(Event e) async {
+  await confirmScreen();
+  chrome.app.window.current().close();
+}
+
+Future confirmScreen() async {
+
+  print("Confirming!");
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
+
+  querySelector('#confirmation').style.visibility = "visible";
+  querySelector('#confirmation').style.display = "block";
+
+  /* Await the construction of this future so we can quit */
+  return new Future.delayed(const Duration(seconds: 30), () => '30');
 
 }
 

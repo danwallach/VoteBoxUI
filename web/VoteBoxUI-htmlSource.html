@@ -15,12 +15,12 @@
 
         <!--Options Page-->
         <div id="options">
-            <button id="standard">No Vote Changes</button>
-            <button id="duringVoting">Vote Changes During Voting</button>
-            <button id="printChanges">Vote Changes After Voting</button>
+            <button id="standard" class="changeOptionsButton">No Vote Changes</button>
+            <button id="duringVoting" class="changeOptionsButton">Vote Changes During Voting</button>
+            <button id="printChanges" class="changeOptionsButton">Vote Changes After Voting</button>
             <br>
 
-            <div id="changeOptions">
+            <div id="changeOptions" style="visibility: hidden">
                 <div id="locationOption">
                     <label>Location of Changes: </label><br>
                     <input type="radio" id="location1"><label for="location1">None</label><br>
@@ -74,7 +74,8 @@
                 </div>
             </div>
 
-            <button id="confirmOptions">Confirm and Continue</button>
+            <label id="changeOptionsSelection"></label>
+            <button id="confirmOptions" style="visibility: hidden">Confirm and Continue</button>
         </div>
 
         <dialog>
@@ -85,7 +86,7 @@
         <div id="test" style="visibility: visible">SelectionOutput</div>-->
 
         <!--Authentication Number-->
-        <div id="auth">
+        <div id="auth" style="visibility: hidden">
             <label id="enterID" for="idText"> Enter your 5-digit voting machine pin to
                 <br>access your precinct's ballot</label><!--enterID-->
             <p><input type="text" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
