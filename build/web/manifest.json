@@ -3,7 +3,7 @@
   "name": "VoteBoxUI",
   "short_name": "VoteBoxUI",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "minimum_chrome_version": "39",
 
   "icons": {
@@ -27,8 +27,8 @@
 
   "file_handlers": {
     "any": {
-      "types": [
-        "*"
+      "extensions": [
+        "xml"
       ]
     }
   },

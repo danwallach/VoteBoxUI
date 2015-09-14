@@ -9,8 +9,7 @@ import 'package:chrome/chrome_app.dart' as chrome;
 
 main() async {
 
-  /* Hacky way of getting focus to textbox if user clicks somewhere */
-  document.onClick.listen((MouseEvent e) => querySelector("#idText").focus());
+  chrome.app.window.current().fullscreen();
 
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
@@ -25,8 +24,14 @@ main() async {
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
   /* Set up listeners for the different buttons clicked */
-  querySelector('#ID').onClick.listen(getID);
-  /* TODO: perhaps check for 'enter key' event on textinputelement */
+  querySelector('#ID').onClick.listen((MouseEvent event) => getID());
+  (querySelector('#idText') as TelephoneInputElement).onKeyPress.listen(
+    (KeyEvent e){
+      if (e.keyCode == KeyCode.ENTER) {
+        getID();
+      }
+  });
+
 
   querySelector('#okay').onClick.listen(close);
 
@@ -42,20 +47,25 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
 
-  querySelector('#finishUp').onClick.listen((MouseEvent e) => chrome.app.window.current().close());
+  querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
+
+  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, ballot));
+
+  querySelector('#endVoting').onClick.listen((e) => endVoting(e));
 }
+
 
 /**
  * Attempt to block undesired key combinations
  */
 void blockKeys(KeyEvent event){
 
-  if(event.keyCode == 27 /* ESC */ ||
-    (event.altKey && (event.which == 115 /* F4 */ || event.which == 9 /* Tab */)) ||
-    (event.keyCode == 91) /* Windows Key ... doesn't work of course */) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    event.stopPropagation();
+  if(event.keyCode == KeyCode.ESC || (event.keyCode == KeyCode.WIN_KEY) ||
+    (event.altKey && (event.keyCode == KeyCode.F4 || event.keyCode == KeyCode.TAB))) {
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      event.stopPropagation();
   }
 }
 
@@ -68,7 +78,7 @@ void close(MouseEvent event) {
 /**
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
-void getID(MouseEvent event) {
+void getID() {
   String ID = (querySelector('#idText') as TextInputElement).value;
 
   /* TODO check for non-numerals and validate with Supervisor */
@@ -111,10 +121,10 @@ void gotoInfo(MouseEvent event) {
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent event, Ballot b) {
+void gotoReview(MouseEvent e, Ballot b) {
 
   /* Set the delta to purposefully get to the review page */
-  update(event, b.size()-b.getCurrentPage(), b);
+  update(e, b.size()-b.getCurrentPage(), b);
 }
 
 void update(MouseEvent event, int delta, Ballot b) {
@@ -530,6 +540,59 @@ void displayReviewPage(Ballot b) {
   reviewCol1.style.visibility = "visible";
   reviewCol2.style.visibility = "visible";
 
+}
+
+void submitScreen(Event e){
+
+  print("Submitting!");
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector('#finishUp').style.display = "none";
+  querySelector('#finishUp').style.visibility = "hidden";
+
+  /* Undisplay review */
+  querySelector('#reviews').style.visibility = "hidden";
+  querySelector('#reviews').style.display = "none";
+
+  /* Display submit screen */
+  querySelector('#submitScreen').style.visibility = "visible";
+  querySelector('#submitScreen').style.display = "block";
+
+}
+
+void returnToBallot (Event e, ballot){
+
+  /* Get rid of original "Print Your Ballot" button on bottom bar */
+  querySelector('#finishUp').style.display = "block";
+  querySelector('#finishUp').style.visibility = "visible";
+
+  /* Undisplay review */
+  querySelector('#reviews').style.visibility = "visible";
+  querySelector('#reviews').style.display = "block";
+
+  /* Display submit screen */
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
+
+  gotoReview(e, ballot);
+}
+
+Future endVoting(Event e) async {
+  await confirmScreen();
+  chrome.app.window.current().close();
+}
+
+Future confirmScreen() {
+
+  print("Confirming!");
+  querySelector('#submitScreen').style.visibility = "hidden";
+  querySelector('#submitScreen').style.display = "none";
+
+  querySelector('#confirmation').style.visibility = "visible";
+  querySelector('#confirmation').style.display = "block";
+
+  /* Return this future to time out after 60s and trigger closing the app */
+  return new Future.delayed(const Duration(seconds: 60));
 }
 
 /**
