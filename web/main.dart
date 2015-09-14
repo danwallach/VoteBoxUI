@@ -23,12 +23,36 @@ main() async {
   ballot = await loadBallot();
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
-  /* Set up listeners for the different buttons clicked */
-  querySelector('.changeOptionsButton').onClick.listen((MouseEvent e) =>
-          (e){
-            querySelector('#confirmOptions').style.visibility = "visible";
-            querySelector('#changeOptionsSelection').text = (e.currentTarget() as ButtonElement).innerHtml;
+  /* If review type option is chosen... */
+  querySelectorAll('input[name=\"reviewType\"]').onClick.listen(
+          (MouseEvent e){
+            querySelector('#inlineTypeOption').style.visibility =
+            ((querySelector('#reviewType1') as RadioButtonInputElement).checked || (querySelector('#reviewType3') as RadioButtonInputElement).checked) ? "visible":"hidden";
           }
+  );
+
+  /* Set up listeners for the different buttons clicked */
+  querySelectorAll('.changeOptionsButton').onClick.listen(
+
+          (MouseEvent e){
+            querySelector('#confirmOptions').style.visibility = "visible";
+            querySelector('#changeOptionsSelection').innerHtml = "You've selected <font color=\"red\">${(e.currentTarget as ButtonElement).innerHtml}";
+
+            querySelector("#changeOptions").style.visibility = ((e.currentTarget as ButtonElement).innerHtml != "No Vote Changes") ?  "visible" :"hidden";
+            querySelector("#changeOptions").style.display = ((e.currentTarget as ButtonElement).innerHtml != "No Vote Changes") ?  "block" :"none";
+
+            if (querySelector('#inlineTypeOption').style.visibility == "visible") {
+              querySelector('#inlineTypeOption').style.visibility = "inherit";
+            }
+          }
+  );
+
+  /* Go to auth screen once options are set up*/
+  querySelector('#confirmOptions').onClick.listen(
+      (MouseEvent e){
+        querySelector('#options').style.display ="none";
+        querySelector('#auth').style.visibility="visible";
+      }
   );
 
   querySelector('#ID').onClick.listen(getID);

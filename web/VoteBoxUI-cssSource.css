@@ -106,6 +106,45 @@ box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 .container_hf {width: 800px; margin: 0 auto; display: block;
 } /*width was 768px*/
 
+/* Options page div */
+#options {
+	position: absolute;
+	top: 10%;
+	left: 6%;
+	font-size: 20px;
+	line-height: 35px;
+}
+
+.optionLabel {
+	font-size: 26px;
+}
+
+#changeOptions {
+	position: relative;
+	left: 5%;
+	margin: 10px 0;
+}
+
+.changeOptionsButton {
+	height: 50px;
+	width: 300px;
+	padding: 10px 10px;
+	margin: 0 10px 20px;
+	display: block;
+	font-size: 18px;
+	float: right
+}
+
+
+#confirmOptions {
+	position: absolute;
+	left: 38.5%;
+	height: 50px;
+	width: 225px;
+	font-size: 18px;
+}
+
+
 /* Popup modal dialog that tell users their 5 digit auth number was incorrect */
 #IDdialog {
 

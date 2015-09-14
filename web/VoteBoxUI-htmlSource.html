@@ -23,63 +23,63 @@
             <button id="standard" class="changeOptionsButton">No Vote Changes</button>
             <button id="duringVoting" class="changeOptionsButton">Vote Changes During Voting</button>
             <button id="printChanges" class="changeOptionsButton">Vote Changes After Voting</button>
-            <br>
+            <br><br>
 
             <div id="changeOptions" style="visibility: hidden">
                 <div id="locationOption">
-                    <label>Location of Changes: </label><br>
-                    <input type="radio" id="location1"><label for="location1">None</label><br>
-                    <input type="radio" id="location2"><label for="location2">Top of Ballot</label><br>
-                    <input type="radio" id="location3"><label for="location3">Bottom of Ballot</label><br>
-                    <input type="radio" id="location4"><label for="location4">Top of Screen</label><br>
-                    <input type="radio" id="location5"><label for="location5">Bottom of Screen</label><br>
-                    <input type="radio" id="location6"><label for="location6">Top Left</label><br>
-                    <input type="radio" id="location7"><label for="location7">Top Right</label><br>
-                    <input type="radio" id="location8"><label for="location8">Bottom Right</label><br>
-                    <input type="radio" id="location9"><label for="location9">Bottom Left</label><br>
+                    <label class="optionLabel">Location of Changes: </label><br>
+                    <input type="radio" name="location" id="location1"><label for="location1">None</label><br>
+                    <input type="radio" name="location" id="location2"><label for="location2">Top of Ballot</label><br>
+                    <input type="radio" name="location" id="location3"><label for="location3">Bottom of Ballot</label><br>
+                    <input type="radio" name="location" id="location4"><label for="location4">Top of Screen</label><br>
+                    <input type="radio" name="location" id="location5"><label for="location5">Bottom of Screen</label><br>
+                    <input type="radio" name="location" id="location6"><label for="location6">Top Left</label><br>
+                    <input type="radio" name="location" id="location7"><label for="location7">Top Right</label><br>
+                    <input type="radio" name="location" id="location8"><label for="location8">Bottom Right</label><br>
+                    <input type="radio" name="location" id="location9"><label for="location9">Bottom Left</label><br>
                     <br>
                 </div>
 
                 <div id="numberOption">
-                    <label>Number of Changes: </label><br>
-                    <input type="radio" id="number1"><label for="number1">One (1)</label><br>
-                    <input type="radio" id="number2"><label for="number2">Two (2)</label><br>
-                    <input type="radio" id="number3"><label for="number3">Eight (8)</label><br>
+                    <label class="optionLabel">Number of Changes: </label><br>
+                    <input type="radio" name="number" id="number1"><label for="number1">One (1)</label><br>
+                    <input type="radio" name="number" id="number2"><label for="number2">Two (2)</label><br>
+                    <input type="radio" name="number" id="number3"><label for="number3">Eight (8)</label><br>
                     <br>
                 </div>
 
                 <div id="changeTypeOption">
-                    <label>Type of Change: </label><br>
-                    <input type="radio" id="changeType1"><label for="changeType1">Change Selection</label><br>
-                    <input type="radio" id="changeType2"><label for="changeType2">No Selection</label><br>
-                    <input type="radio" id="changeType3"><label for="changeType3">Combination</label><br>
+                    <label class="optionLabel">Type of Change: </label><br>
+                    <input type="radio" name="changeType" id="changeType1"><label for="changeType1">Change Selection</label><br>
+                    <input type="radio" name="changeType" id="changeType2"><label for="changeType2">No Selection</label><br>
+                    <input type="radio" name="changeType" id="changeType3"><label for="changeType3">Combination</label><br>
                     <br>
                 </div>
 
                 <div id="correctionOption">
-                    <label>User Correction: </label><br>
-                    <input type="radio" id="correct1"><label for="correct1">On</label><br>
-                    <input type="radio" id="correct2"><label for="correct2">Off</label><br>
+                    <label class="optionLabel">User Correction: </label><br>
+                    <input type="radio" name="correction" id="correct1"><label for="correct1">On</label><br>
+                    <input type="radio" name="correction" id="correct2"><label for="correct2">Off</label><br>
                     <br>
                 </div>
 
                 <div id="reviewTypeOption">
-                    <label>Type of Review: </label><br>
-                    <input type="radio" id="reviewType1"><label for="reviewType1">Inline Confirmation</label><br>
-                    <input type="radio" id="reviewType2"><label for="reviewType2">End-of-Ballot</label><br>
-                    <input type="radio" id="reviewType3"><label for="reviewType3">Both</label><br>
+                    <label class="optionLabel">Type of Review: </label><br>
+                    <input type="radio" name="reviewType" id="reviewType1"><label for="reviewType1">Inline Confirmation</label><br>
+                    <input type="radio" name="reviewType" id="reviewType2"><label for="reviewType2">End-of-Ballot</label><br>
+                    <input type="radio" name="reviewType" id="reviewType3"><label for="reviewType3">Both</label><br>
                     <br>
                 </div>
 
-                <div id="inlineTypeOption">
-                    <label>Type of Inline Confirmation: </label><br>
-                    <input type="radio" id="inlineType1"><label for="inlineType1">Pop-up</label><br>
-                    <input type="radio" id="inlineType2"><label for="inlineType2">Intermediate Screen</label><br>
+                <div id="inlineTypeOption" style="visibility: hidden">
+                    <label class="optionLabel">Type of Inline Confirmation: </label><br>
+                    <input type="radio" name="inlineType" id="inlineType1"><label for="inlineType1">Pop-up</label><br>
+                    <input type="radio" name="inlineType" id="inlineType2"><label for="inlineType2">Intermediate Screen</label><br>
                     <br>
                 </div>
             </div>
 
-            <label id="changeOptionsSelection"></label>
+            <label id="changeOptionsSelection"></label><br><br>
             <button id="confirmOptions" style="visibility: hidden">Confirm and Continue</button>
         </div>
             
