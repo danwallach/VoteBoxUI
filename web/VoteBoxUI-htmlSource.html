@@ -15,14 +15,66 @@
 
         <!--Options Page-->
         <div id="options">
-            <label>Select options for testing: </label>
-            <div id="voteFlippingType">
-                <input name="type1" type="radio" id="type1" class="optionRadio">
-                <input name="type2" type="radio" id="type2" class="optionRadio">
-                <input name="type3" type="radio" id="type3" class="optionRadio">
-                <input name="type4" type="radio" id="type4" class="optionRadio">
+            <button id="standard">No Vote Changes</button>
+            <button id="duringVoting">Vote Changes During Voting</button>
+            <button id="printChanges">Vote Changes After Voting</button>
+            <br>
+
+            <div id="changeOptions">
+                <div id="locationOption">
+                    <label>Location of Changes: </label><br>
+                    <input type="radio" id="location1"><label for="location1">None</label><br>
+                    <input type="radio" id="location2"><label for="location2">Top of Ballot</label><br>
+                    <input type="radio" id="location3"><label for="location3">Bottom of Ballot</label><br>
+                    <input type="radio" id="location4"><label for="location4">Top of Screen</label><br>
+                    <input type="radio" id="location5"><label for="location5">Bottom of Screen</label><br>
+                    <input type="radio" id="location6"><label for="location6">Top Left</label><br>
+                    <input type="radio" id="location7"><label for="location7">Top Right</label><br>
+                    <input type="radio" id="location8"><label for="location8">Bottom Right</label><br>
+                    <input type="radio" id="location9"><label for="location9">Bottom Left</label><br>
+                    <br>
+                </div>
+
+                <div id="numberOption">
+                    <label>Number of Changes: </label><br>
+                    <input type="radio" id="number1"><label for="number1">One (1)</label><br>
+                    <input type="radio" id="number2"><label for="number2">Two (2)</label><br>
+                    <input type="radio" id="number3"><label for="number3">Eight (8)</label><br>
+                    <br>
+                </div>
+
+                <div id="changeTypeOption">
+                    <label>Type of Change: </label><br>
+                    <input type="radio" id="changeType1"><label for="changeType1">Change Selection</label><br>
+                    <input type="radio" id="changeType2"><label for="changeType2">No Selection</label><br>
+                    <input type="radio" id="changeType3"><label for="changeType3">Combination</label><br>
+                    <br>
+                </div>
+
+                <div id="correctionOption">
+                    <label>User Correction: </label><br>
+                    <input type="radio" id="correct1"><label for="correct1">On</label><br>
+                    <input type="radio" id="correct2"><label for="correct2">Off</label><br>
+                    <br>
+                </div>
+
+                <div id="reviewTypeOption">
+                    <label>Type of Review: </label><br>
+                    <input type="radio" id="reviewType1"><label for="reviewType1">Inline Confirmation</label><br>
+                    <input type="radio" id="reviewType2"><label for="reviewType2">End-of-Ballot</label><br>
+                    <input type="radio" id="reviewType3"><label for="reviewType3">Both</label><br>
+                    <br>
+                </div>
+
+                <div id="inlineTypeOption">
+                    <label>Type of Inline Confirmation: </label><br>
+                    <input type="radio" id="inlineType1"><label for="reviewType1">Pop-up</label><br>
+                    <input type="radio" id="inlineType2"><label for="reviewType2">Intermediate Screen</label><br>
+                    <br>
+                </div>
             </div>
-            <p><button id="optionsConfirm">Confirm and Begin</button></p>
+
+            <button id="confirmOptions">Confirm and Continue</button>
         </div>
 
         <dialog>
