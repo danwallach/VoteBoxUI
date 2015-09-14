@@ -156,6 +156,15 @@ void update(MouseEvent event, int delta, Ballot b) {
 
   /* Display the new page (either next or previous) */
   if(b.getCurrentPage() != b.size()) {
+
+    /* Change vote */
+
+
+    /* If the inline confirmation is enabled */
+    if(inlineConfirmation) {
+      inlineCheck();
+    }
+
     /* Record information on currentPage in the Ballot */
     record(b);
     display(b.getCurrentPage() + delta, b);
@@ -163,6 +172,7 @@ void update(MouseEvent event, int delta, Ballot b) {
     review(event, b.getCurrentPage()+delta, b);
   }
 }
+
 
 /**
  * Records the current selection state of the current Race in the Ballot
