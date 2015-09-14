@@ -8,10 +8,15 @@
 
 <body>
 
-<div id="Container">
-
+  <div id="Container">
+  
     <div id="header"></div>
     <div id="Content">
+        
+        <dialog id ="IDdialog">
+          <p>You must correctly enter your 5-digit voting machine pin to access your ballot.<br><br>Please try again.</p>
+          <button id="okay">OK</button>
+        </dialog>
 
         <!--Options Page-->
         <div id="options">
@@ -68,8 +73,8 @@
 
                 <div id="inlineTypeOption">
                     <label>Type of Inline Confirmation: </label><br>
-                    <input type="radio" id="inlineType1"><label for="reviewType1">Pop-up</label><br>
-                    <input type="radio" id="inlineType2"><label for="reviewType2">Intermediate Screen</label><br>
+                    <input type="radio" id="inlineType1"><label for="inlineType1">Pop-up</label><br>
+                    <input type="radio" id="inlineType2"><label for="inlineType2">Intermediate Screen</label><br>
                     <br>
                 </div>
             </div>
@@ -77,42 +82,38 @@
             <label id="changeOptionsSelection"></label>
             <button id="confirmOptions" style="visibility: hidden">Confirm and Continue</button>
         </div>
-
-        <dialog>
-            <p>You must enter correctly your 5-digit voting machine pin.</p>
-            <button id="okay">Okay</button>
-        </dialog>
+            
         <!--For Testing
         <div id="test" style="visibility: visible">SelectionOutput</div>-->
-
+    
         <!--Authentication Number-->
         <div id="auth" style="visibility: hidden">
-            <label id="enterID" for="idText"> Enter your 5-digit voting machine pin to
-                <br>access your precinct's ballot</label><!--enterID-->
-            <p><input type="text" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
+          <label id="enterID" for="idText"> Enter your 5-digit voting machine pin to
+              <br>access your precinct's ballot</label><!--enterID-->
+            <p><input type="tel" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
             <p><button id="ID"> Submit </button></p>
         </div>
-
-        <!-- Election Information -->
-        <div id="info" style="visibility:hidden">
-            <h1><strong>Ballot for the General Election</strong></h1>
-            <p>City of Houston <br>
-                Harris County, Texas</p>
-            <p>Precinct 101A<br>
-                Congressional District 7<br>
-                State Representative District 134<br>
-                State Board of Education District 2</p>
-            <p>November 8, 2016</p>
-            <button id="button_begin" type="button"> Begin Voting </button>
-        </div> <!--info-->
-
-        <!--How to complete ballot -->
-        <div id="first_instructions" style="visibility:hidden">
-            <h1><strong>How to vote </strong></h1>
-            <p><strong>To vote for the candidate of your choice,</strong>
-                touch that person's name. The box will turn blue.</p>
-        </div><!--first_instructions-->
-
+        
+          <!-- Election Information -->
+          <div id="info" style="visibility:hidden">
+              <h1><strong>Ballot for the General Election</strong></h1>
+              <p>City of Houston <br>
+              Harris County, Texas</p>
+              <p>Precinct 101A<br>
+              Congressional District 7<br>
+              State Representative District 134<br>
+              State Board of Education District 2</p>
+              <p>November 8, 2016</p>
+              <button id="button_begin" type="button"> Begin Voting </button>
+          </div> <!--info-->
+        
+          <!--How to complete ballot -->    
+          <div id="first_instructions" style="visibility:hidden">
+              <h1><strong>How to vote </strong></h1>
+              <p><strong>To vote for the candidate of your choice,</strong> 
+                  touch that person's name. The box will turn blue.</p>
+          </div><!--first_instructions-->
+    
         <!-- Ballot completion -->
         <div id="VotingContentDIV" style = "visibility: hidden" class="votingInstructions">
 
@@ -126,98 +127,99 @@
             <div id="votes">
                 <div id="first" class="option">
                     <div class= "voteButton"><label>
-                        <input name="vote" type="radio" id="radio1" class= "vote">
+                        <input name="vote" type="radio" id="radio1" class= "vote" >
                         <img src="images/check_selected copy-01.png"> </label>
                     </div>
                     <div id="c1" class="optionIdentifier"></div>
                     <div id="p1" class="optionGroup"> Party1</div>
-                </div> <!--close of first-->
+               </div> <!--close of first-->
             </div>
 
         </div> <!--VotingContentDIV-->
-
+        
         <!--Review-->
-        <div id="reviews" style="visibility:hidden">
-
+        <div id="reviews" style="visibility:hidden"> 
+           
             <div id="reviewTop" style="visibility:hidden">
                 <p id="reviewHeader"><strong>Review what you're voting for</strong></p>
-                <p id="reviewInstructions"> <strong>This screen shows everything you voted for.</strong> Review it carefully. If you are ready to print your ballot, touch <strong>Print your ballot.</strong></p>
+                <p id="reviewInstructions"> <strong>This screen shows everything you voted for.</strong> Review it carefully to make sure everything is correct.
+                    If you are ready to print your ballot, touch <strong>Print your ballot.</strong></p>
             </div> <!--reviewTop-->
-
-            <div id="review1" style="visibility:hidden">
-
+            
+            <div id="review1" style="visibility:hidden">  
+            
                 <div id="race1" class="race">
                     <div id="raceTit1" class="title"></div>
                     <div id="raceBox1" class="noSel">
                         <div id="race1p" class="raceSel"></div>
-                        <strong><div id="party1" class="party" ></div></strong>
+                        <strong><div id="party1" class="party" ></div></strong> 
                     </div>
                 </div>
-
+    
             </div> <!--review1-->
-
-            <div id = "review2" style="visibility:hidden">
-
+        
+            <div id = "review2" style="visibility:hidden"> 
+        
                 <div id="race14" class="race">
-                    <div id="raceTit14" class="title"></div>
+                     <div id="raceTit14" class="title"></div>
                     <div id="raceBox14" class="noSel">
-                        <div id="race14p" class="raceSel"></div>
-                        <strong><div id="party14" class="party" ></div></strong>
+                        <div id="race14p" class="raceSel"></div>  
+                        <strong><div id="party14" class="party" ></div></strong> 
                     </div>
                 </div>
-
+          
             </div> <!--review2-->
 
         </div> <!--reviews-->
-
-        <!-- Are you finished?-->
-        <div id="submitScreen" style="visibility: hidden">
-            <p id="submitHeading"><strong> Are you finished?</strong></p>
-            <p id="submitText">If you want to make changes, touch the <strong>Return to ballot</strong> button.<br><br>
-                If you are ready to print your ballot, touch the <strong>Print</strong> button.</p>
-            <div id="submitScreenBtns">
-                <button id="returnToBallot" type="button"> Return to ballot </button>
-                <button id="endVoting" type="button">Print your ballot</button>
-            </div><!--submitScreenBtns-->
-        </div><!--submitScreen-->
-
-        <!--Confirmation Screen-->
-        <div id="confirmation" style="visibility: hidden">
-            <p id="confHeading"><strong> Thank you for completing your ballot!</strong></p>
-            <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both.
-            <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
-        </div>
-
+            
     </div> <!-- Content -->
 
+    <!-- Are you finished?-->
+    <div id="submitScreen" style="visibility: hidden">
+        <p id="submitHeading"><strong> Are you finished?</strong></p>
+        <p id="submitText">If you want to make changes, touch the <strong>Return to ballot</strong> button.<br><br>
+            If you are ready to print your ballot, touch the <strong>Print your ballot</strong> button.</p>
+        <div id="submitScreenBtns">
+            <button id="returnToBallot" type="button">Return to ballot</button>
+            <button id="endVoting" type="button">Print your ballot</button>
+        </div><!--submitScreenBtns-->
+    </div><!--submitScreen-->
+
+    <!--Confirmation Screen-->
+    <div id="confirmation" style="visibility: hidden">
+        <p id="confHeading"><strong> Thank you for completing your ballot. <span style="text-decoration: underline;">Now you need to cast your ballot!</span></strong></p>
+        <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both.
+        <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
+    </div>
+    
     <!--Bottom Content-->
     <div id="footer">
         <div id="Bottom" class="container_hf"> <!--container_hf keeps buttons 
             from spreading across bottom footer bar-->
-            <input name="" type="text" id="Debug" size="100" style="visibility: hidden">
+            <input name="" type="text" id="Debug" size="100" style="visibility: hidden"> 
             <!-- <p id="next_instructions" style="visibility:hidden"> Click to go to Step 2: Make Your Choices </p> TO DELETE -->
-
+          
             <!-- Buttons -->
-            <!--Buttons on Instruction Screen -->
-            <button id="Back" type="button" style="visibility:hidden">Back</button><!--Takes voter back to how to vote screen-->
-            <button id="Begin" type="button" style="visibility:hidden">Next</button> <!--Begins ballot completion loop, but next in total voting process-->
+                <!--Buttons on Instruction Screen -->
+                <button id="Back" type="button" style="visibility:hidden">Back</button><!--Takes voter back to how to vote screen-->
+                <button id="Begin" type="button" style="visibility:hidden">Next</button> <!--Begins ballot completion loop, but next in total voting process-->
+        
+                <!--Buttons and progress element used in ballot completion section -->
+                <button id="Previous" type="button" style= "visibility: hidden">Back</button>
 
-            <!--Buttons and progress element used in ballot completion section -->
-            <button id="Previous" type="button" style= "visibility: hidden">Back</button>
+                <div id="progress"></div> <!--Ballot Completion Progress: XX of 27-->
 
-            <div id="progress"></div> <!--Ballot Completion Progress: XX of 27-->
-
-            <button id="Next" type="button" class="next" style= "visibility: hidden">Next</button>
-            <button id="Review" type="button"  style= "visibility: hidden">Return to Review<br></button>
-            <button id="finishUp" type="button"  style="visibility: hidden"> Print your ballot </button>
-
+                <button id="Next" type="button" class="next" style= "visibility: hidden">Next</button>
+                <button id="Review" type="button"  style= "visibility: hidden">Return to Review<br></button>
+                <button id="finishUp" type="button"  style="visibility: hidden">Print your ballot</button>
+                
         </div> <!-- Bottom -->
     </div><!-- Footer -->
+                      
+  </div><!--container -->
 
-</div><!--container -->
-
-<script src="main.dart" type="application/dart"></script>
-<script src="packages/chrome/bootstrap.js" defer></script>
+  <script src="main.dart" type="application/dart"></script>
+  <script src="packages/chrome/bootstrap.js" defer></script>
 </body>
 
 </html>
