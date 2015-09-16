@@ -498,22 +498,20 @@ input[type="radio"]{
 
 /*Review Screen*/
 #reviews{
-	position: absolute;
 	width: 845px;
 	height: 1650px;
 	display: none;
 	top: 0;
-	left: 50%;
-	margin-left: -423px;
 	margin-top: 0;
+	visibility: visible;
+	margin-left: -423px;
+	left: 50%;
+	position: absolute;
 }
 #reviewTop{
-	position: absolute;
 	width: 845px;
 	display: block;
 	top: 0;
-	left: 50%;
-	margin-left: -423px;
 	margin-top: 0;
 	font-family: inherit;
 	font-style: inherit;
@@ -530,24 +528,21 @@ input[type="radio"]{
     font-family: inherit;
 	font-style: inherit;
 	font-size: 24px;
-	line-height: 20px;
+	line-height: 28px;
 	text-align: left;
-	padding-bottom: 22px;
-	margin-bottom: 0;
 	outline: 0;
 	display: block;
+	margin: 0.7em 0;
 }
 #review1{
 	width: 400px;
 	display: inline-block;
 	float: left;
-	margin-top: 145px;
 }
 #review2{
 	width: 400px;
 	display: inline-block;
 	float: right;
-	margin-top: 145px;
 }
 .race { /*review screen*/
     cursor: pointer;
