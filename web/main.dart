@@ -161,9 +161,9 @@ void update(MouseEvent event, int delta, Ballot b) {
 
 
     /* If the inline confirmation is enabled */
-    if(inlineConfirmation) {
+    /*if(inlineConfirmation) {
       inlineCheck();
-    }
+    }*/
 
     /* Record information on currentPage in the Ballot */
     record(b);
