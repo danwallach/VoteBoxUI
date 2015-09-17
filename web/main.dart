@@ -209,8 +209,8 @@ void update(MouseEvent event, int delta, Ballot b) {
     /* Record information on currentPage in the Ballot */
     record(b);
 
-    /* If the inline confirmation is enabled, display that first, assuming we're going to next race */
-    if(inlineConfirmation && (event.currentTarget as ButtonElement).id == "Next") {
+    /* If the inline confirmation is enabled, display the inline first, assuming we're moving forward */
+    if(inlineConfirmation && delta>0) {
 
       /* Change vote if we're voteflipping and progressing */
       if(voteFlippingType == "Vote Changes During Voting"){
@@ -225,7 +225,7 @@ void update(MouseEvent event, int delta, Ballot b) {
       display(b.getCurrentPage(), b);
 
       /* Display popup or inline screen -- always moving forward 1 */
-      displayInlineConfirmation(b);
+      displayInlineConfirmation(b, delta);
 
     } else {
       /* Inline confirmation is disabled or "Return to Review" or "Previous" button hit */
@@ -305,12 +305,12 @@ void changeSelection(Race raceToChange) {
 /**
  *
  */
-void displayInlineConfirmation(Ballot b){
+void displayInlineConfirmation(Ballot b, int delta){
 
   if(dialogConfirmation) {
-    displayDialogConfirmation(b);
+    displayDialogConfirmation(b, delta);
   } else {
-    displayIntermediateConfirmation(b);
+    displayIntermediateConfirmation(b, delta);
   }
 
 }
@@ -318,7 +318,7 @@ void displayInlineConfirmation(Ballot b){
 /**
  *
  */
-void displayDialogConfirmation(Ballot b) {
+void displayDialogConfirmation(Ballot b, int delta) {
 
   /* Display the notice and listen for button click */
   (querySelector('inlineConfirmation') as DialogElement).showModal();
@@ -328,7 +328,7 @@ void displayDialogConfirmation(Ballot b) {
   querySelector('#dialogYes').onClick.listen(
           (MouseEvent e){
             (querySelector('inlineConfirmation') as DialogElement).close('');
-            display(b.getCurrentPage()+1, b);
+            display(b.getCurrentPage()+delta, b);
           }
   );
 
@@ -343,7 +343,7 @@ void displayDialogConfirmation(Ballot b) {
 /**
  *
  */
-void displayIntermediateConfirmation(Ballot b) {
+void displayIntermediateConfirmation(Ballot b, int delta) {
 
   /* Clear the current page of voting and buttons and display intermediate screen */
   querySelector("#VotingContentDIV").style.display = "none";
@@ -355,7 +355,7 @@ void displayIntermediateConfirmation(Ballot b) {
   querySelector('#Yes').onClick.listen(
           (MouseEvent e){
             /* Redisplay of everything is handled by display */
-            display(b.getCurrentPage()+1, b);
+            display(b.getCurrentPage()+delta, b);
           }
   );
 

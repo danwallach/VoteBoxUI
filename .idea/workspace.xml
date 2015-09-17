@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -35,8 +29,8 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21049528">
-              <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.3331368">
+              <caret line="202" column="5" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
               <folding>
                 <element signature="e#86#122#0" expanded="true" />
               </folding>
@@ -509,7 +503,7 @@
       <workItem from="1442422390572" duration="589000" />
       <workItem from="1442428314169" duration="3724000" />
       <workItem from="1442438135221" duration="1594000" />
-      <workItem from="1442440785358" duration="11182000" />
+      <workItem from="1442440785358" duration="11740000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -547,11 +541,17 @@
       <option name="project" value="LOCAL" />
       <updated>1442449702172</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Vote-flipping logic seems to be all in place. Initial pre-tests have everything functioning (normally without flipping but with the flipping framework in existence). &#10;&#10;Still need to create a dialog, intermediate screen, and proper vote changing lists from the options.">
+      <created>1442452143039</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1442452143039</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39628000" />
+    <option name="totallyTimeSpent" value="40186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1098" height="1888" extended-state="6" />
@@ -604,7 +604,8 @@
     <MESSAGE value="Options page currently linked to rest of program. Just need to actually set the options and respond accordingly." />
     <MESSAGE value="Working on implementing inline confirmation logic" />
     <MESSAGE value="Much of voteflipping framework in place" />
-    <option name="LAST_COMMIT_MESSAGE" value="Much of voteflipping framework in place" />
+    <MESSAGE value="Vote-flipping logic seems to be all in place. Initial pre-tests have everything functioning (normally without flipping but with the flipping framework in existence). &#10;&#10;Still need to create a dialog, intermediate screen, and proper vote changing lists from the options." />
+    <option name="LAST_COMMIT_MESSAGE" value="Vote-flipping logic seems to be all in place. Initial pre-tests have everything functioning (normally without flipping but with the flipping framework in existence). &#10;&#10;Still need to create a dialog, intermediate screen, and proper vote changing lists from the options." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1179,8 +1180,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21049528">
-          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.3331368">
+          <caret line="202" column="5" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
           <folding>
             <element signature="e#86#122#0" expanded="true" />
           </folding>
