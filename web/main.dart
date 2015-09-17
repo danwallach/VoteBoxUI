@@ -15,6 +15,7 @@ List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
 bool endOfBallotReview;
 bool dialogConfirmation;
+bool userCorrection;
 String voteFlippingType;
 
 
@@ -40,8 +41,10 @@ main() async {
   /* If review type option is chosen... */
   querySelectorAll('input[name=\"reviewType\"]').onClick.listen(
           (MouseEvent e){
-            querySelector('#inlineTypeOption').style.visibility =
-            ((querySelector('#reviewType1') as RadioButtonInputElement).checked || (querySelector('#reviewType3') as RadioButtonInputElement).checked) ? "visible":"hidden";
+            /* Set the inlineConfirmation while we're here */
+            inlineConfirmation = ((querySelector('#reviewType1') as RadioButtonInputElement).checked || (querySelector('#reviewType3') as RadioButtonInputElement).checked);
+            querySelector('#inlineTypeOption').style.visibility = inlineConfirmation ? "visible":"hidden";
+            querySelector('#inlineTypeOption').style.display = inlineConfirmation ? "block":"none";
           }
   );
 
@@ -50,16 +53,16 @@ main() async {
 
           (MouseEvent e){
             querySelector('#confirmOptions').style.visibility = "visible";
+            querySelector('#reviewOptions').style.visibility = "visible";
+
             querySelector('#changeOptionsSelection').innerHtml = "You've selected <font color=\"red\">${(e.currentTarget as ButtonElement).innerHtml}";
 
             voteFlippingType = (e.currentTarget as ButtonElement).innerHtml.trim();
 
+
             querySelector("#changeOptions").style.visibility = (voteFlippingType != "No Vote Changes") ?  "visible" :"hidden";
             querySelector("#changeOptions").style.display = (voteFlippingType != "No Vote Changes") ?  "block" :"none";
-
-            if (querySelector('#inlineTypeOption').style.visibility == "visible") {
-              querySelector('#inlineTypeOption').style.visibility = "inherit";
-            }
+            querySelector('#reviewOptions').style.marginTop = (voteFlippingType != "No Vote Changes") ?  "0" :"7%";
           }
   );
 
@@ -104,6 +107,32 @@ main() async {
   querySelector('#endVoting').onClick.listen((e) => endVoting(e));
 }
 
+/**
+ *
+ */
+void recordOptions(){
+
+  /* Get a section of races to change */
+
+
+  /* Add the appropriate race numbers to the raceChangeSet */
+
+
+  /* Get the type of change and insert appropriately into typeOfChange list */
+
+
+  /* Set booleans for endOfBallotReview, inlineConfirmation, dialogConfirmation */
+  endOfBallotReview   = ( (querySelector('#reviewType2') as RadioButtonInputElement).checked ||
+                          (querySelector('#reviewType3') as RadioButtonInputElement).checked  );
+
+  inlineConfirmation  = ( (querySelector('#reviewType1') as RadioButtonInputElement).checked ||
+                          (querySelector('#reviewType3') as RadioButtonInputElement).checked  );
+
+  dialogConfirmation  =   (querySelector('#inlineType1') as RadioButtonInputElement).checked;
+
+  userCorrection      =   (querySelector('#correct1') as RadioButtonInputElement).checked;
+
+}
 
 /**
  * Attempt to block undesired key combinations
@@ -462,10 +491,13 @@ void display(int pageToDisplay, Ballot b) {
     /* Since we're going to the review page, flip here */
     if(endOfBallotReview) {
       /* Change all the relevant votes now (unless they've been flipped already) */
-      changeVotes(b);
+      if(voteFlippingType == "Vote Changes During Voting") {
+        changeVotes(b);
+      }
+
       displayReviewPage(b);
     } else {
-      /* Proceed to printing page (display review to ensure cleanup of voting div) */
+      /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
       displayReviewPage(b);
       submitScreen(null);
     }
