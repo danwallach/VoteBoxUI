@@ -6,6 +6,17 @@ import 'dart:html' hide XmlDocument;
 import 'dart:async';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
+import 'dart:math';
+
+
+List<int> raceChangeSet = new List<int>();
+List<int> changedSet = new List<int>();
+List<String> typeOfChange = new List<String>();
+bool inlineConfirmation;
+bool endOfBallotReview;
+bool dialogConfirmation;
+String voteFlippingType;
+
 
 main() async {
 
@@ -23,6 +34,9 @@ main() async {
   ballot = await loadBallot();
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
+  /*****************************************************************************************************************************
+                                                      OPTIONS PAGE
+  *****************************************************************************************************************************/
   /* If review type option is chosen... */
   querySelectorAll('input[name=\"reviewType\"]').onClick.listen(
           (MouseEvent e){
@@ -38,8 +52,10 @@ main() async {
             querySelector('#confirmOptions').style.visibility = "visible";
             querySelector('#changeOptionsSelection').innerHtml = "You've selected <font color=\"red\">${(e.currentTarget as ButtonElement).innerHtml}";
 
-            querySelector("#changeOptions").style.visibility = ((e.currentTarget as ButtonElement).innerHtml != "No Vote Changes") ?  "visible" :"hidden";
-            querySelector("#changeOptions").style.display = ((e.currentTarget as ButtonElement).innerHtml != "No Vote Changes") ?  "block" :"none";
+            voteFlippingType = (e.currentTarget as ButtonElement).innerHtml.trim();
+
+            querySelector("#changeOptions").style.visibility = (voteFlippingType != "No Vote Changes") ?  "visible" :"hidden";
+            querySelector("#changeOptions").style.display = (voteFlippingType != "No Vote Changes") ?  "block" :"none";
 
             if (querySelector('#inlineTypeOption').style.visibility == "visible") {
               querySelector('#inlineTypeOption').style.visibility = "inherit";
@@ -50,15 +66,24 @@ main() async {
   /* Go to auth screen once options are set up*/
   querySelector('#confirmOptions').onClick.listen(
       (MouseEvent e){
+        recordOptions();
         querySelector('#options').style.display ="none";
         querySelector('#auth').style.visibility="visible";
       }
   );
 
+  /*****************************************************************************************************************************
+                                                    END OPTIONS PAGE
+   *****************************************************************************************************************************/
+
   querySelector('#ID').onClick.listen(getID);
   /* TODO: perhaps check for 'enter key' event on textinputelement */
 
-  querySelector('#okay').onClick.listen(close);
+  querySelector('#okay').onClick.listen(
+          (MouseEvent event) {
+            (querySelector('dialog') as DialogElement).close('');
+          }
+  );
 
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
@@ -94,12 +119,6 @@ void blockKeys(KeyEvent event){
   }
 }
 
-/**
- * Closes the modal dialog
- */
-void close(MouseEvent event) {
-  (querySelector('dialog') as DialogElement).close('');
-}
 /**
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
@@ -157,21 +176,170 @@ void update(MouseEvent event, int delta, Ballot b) {
   /* Display the new page (either next or previous) */
   if(b.getCurrentPage() != b.size()) {
 
-    /* Change vote */
-
-
-    /* If the inline confirmation is enabled */
-    /*if(inlineConfirmation) {
-      inlineCheck();
-    }*/
 
     /* Record information on currentPage in the Ballot */
     record(b);
-    display(b.getCurrentPage() + delta, b);
+
+    /* If the inline confirmation is enabled, display that first, assuming we're going to next race */
+    if(inlineConfirmation && (event.currentTarget as ButtonElement).id == "Next") {
+
+      /* Change vote if we're voteflipping and progressing */
+      if(voteFlippingType == "Vote Changes During Voting"){
+
+        /* This should change the vote if it hasn't been changed before */
+        changeVote(b, b.getCurrentPage());
+      }
+
+      /* Redisplay the current page with updated information
+       * This is so popup can see updated information. Inline screen can just clear this out.
+       */
+      display(b.getCurrentPage(), b);
+
+      /* Display popup or inline screen -- always moving forward 1 */
+      displayInlineConfirmation(b);
+
+    } else {
+      /* Inline confirmation is disabled or "Return to Review" or "Previous" button hit */
+      /* Just display the next screen */
+      display(b.getCurrentPage() + delta, b);
+    }
+
+
+    /* If we're on the review page, review the race */
   } else {
     review(event, b.getCurrentPage()+delta, b);
   }
 }
+
+/**
+ *
+ */
+void changeVotes(Ballot b){
+
+  for(int raceToChange in raceChangeSet){
+    changeVote(b, raceToChange);
+  }
+
+}
+
+/**
+ *
+ */
+void changeVote(Ballot b, int raceToChange) {
+
+  /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
+  /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) */
+  if(raceChangeSet.contains(raceToChange) && !changedSet.contains(raceToChange)) {
+
+    /* Check what type of change  for the current index */
+    if(typeOfChange.elementAt(raceChangeSet.indexOf(raceToChange)) == "change") {
+      changeSelection(b.getRace(raceToChange));
+    } else  {
+      b.getRace(raceToChange).noSelection();
+    }
+
+  }
+
+}
+
+/**
+ *
+ */
+void changeSelection(Race raceToChange) {
+
+  int raceLength = raceToChange.options.length;
+  Random rng = new Random();
+
+  /* If it's voted already, have to make sure to actually change it to something else (what if there's only one option?) */
+  if(raceToChange.hasVoted()) {
+
+    int currentIndex = raceToChange.options.indexOf(raceToChange.getSelectedOption());
+    int i;
+
+    /* Generate random ints in range until we get something different */
+    for(i=rng.nextInt(raceLength); i==currentIndex; i=rng.nextInt(raceLength));
+
+    raceToChange.markSelection(raceToChange.options.elementAt(i).identifier);
+
+  } else {
+
+    /* Get a random integer from 0 to length-1 */
+    int randIndex = rng.nextInt(raceLength);
+
+    /* Select this random option */
+    raceToChange.markSelection(raceToChange.options.elementAt(randIndex).identifier);
+  }
+
+}
+
+
+/**
+ *
+ */
+void displayInlineConfirmation(Ballot b){
+
+  if(dialogConfirmation) {
+    displayDialogConfirmation(b);
+  } else {
+    displayIntermediateConfirmation(b);
+  }
+
+}
+
+/**
+ *
+ */
+void displayDialogConfirmation(Ballot b) {
+
+  /* Display the notice and listen for button click */
+  (querySelector('inlineConfirmation') as DialogElement).showModal();
+
+
+  /* Close and display the next page if yes */
+  querySelector('#dialogYes').onClick.listen(
+          (MouseEvent e){
+            (querySelector('inlineConfirmation') as DialogElement).close('');
+            display(b.getCurrentPage()+1, b);
+          }
+  );
+
+  /* Close this if no */
+  querySelector('#dialogNo').onClick.listen(
+          (MouseEvent e){
+            (querySelector('inlineConfirmation') as DialogElement).close('');
+          }
+  );
+}
+
+/**
+ *
+ */
+void displayIntermediateConfirmation(Ballot b) {
+
+  /* Clear the current page of voting and buttons and display intermediate screen */
+  querySelector("#VotingContentDIV").style.display = "none";
+  querySelector("#Next").style.visibility = "hidden";
+  querySelector("#Previous").style.visibility = "hidden";
+
+
+  /* Display the next page if yes */
+  querySelector('#Yes').onClick.listen(
+          (MouseEvent e){
+            /* Redisplay of everything is handled by display */
+            display(b.getCurrentPage()+1, b);
+          }
+  );
+
+  /* Go back to last page if no */
+  querySelector('#No').onClick.listen(
+          (MouseEvent e){
+            /* Redisplay of everything is handled by display */
+            display(b.getCurrentPage(), b);
+          }
+  );
+
+}
+
 
 
 /**
@@ -229,6 +397,9 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
   }
 }
 
+/**
+ *
+ */
 void reviewRace(Race race) {
 
   /* Make review div invisible */
@@ -285,10 +456,22 @@ void display(int pageToDisplay, Ballot b) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
+  /* Displaying the review page */
   if(pageToDisplay >= b.size()) {
 
-    displayReviewPage(b);
+    /* Since we're going to the review page, flip here */
+    if(endOfBallotReview) {
+      /* Change all the relevant votes now (unless they've been flipped already) */
+      changeVotes(b);
+      displayReviewPage(b);
+    } else {
+      /* Proceed to printing page (display review to ensure cleanup of voting div) */
+      displayReviewPage(b);
+      submitScreen(null);
+    }
+
     b.updateCurrentPage(b.size());
+
   } else {
 
     /* Update progress */
