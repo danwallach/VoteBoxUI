@@ -9768,7 +9768,7 @@ z=document.querySelector("#verifyDialog")
 y=J.Y(z)
 y.shf(z,"")
 x=a.vi(a.qe())
-y.N0(z,"beforeend",x.d?"<p>You voted for<br><b>"+H.d(x.Lc().gxG())+"\t"+H.d(x.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br>Is this correct?</p>",null,null)
+y.N0(z,"beforeend",x.d?"<p>You voted for<br><b>"+H.d(x.Lc().gxG())+"\t"+H.d(x.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br><br>Is this correct?</p>",null,null)
 w=document.createElement("button",null)
 w.id="dialogYes"
 w.className="dialogButton"
