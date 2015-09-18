@@ -96,7 +96,7 @@ main() async {
 
   querySelector('#okay').onClick.listen(
           (MouseEvent event) {
-            (querySelector('#IDDialog') as DialogElement).close('');
+            (querySelector('#IDdialog') as DialogElement).close('');
           }
   );
 

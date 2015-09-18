@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-cssSource.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" afterPath="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/build/web/VoteBoxUI-htmlSource.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" afterPath="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
@@ -33,8 +34,8 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5436321">
-              <caret line="493" column="42" selection-start-line="493" selection-start-column="42" selection-end-line="493" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.3832547">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
                 <element signature="e#86#122#0" expanded="true" />
               </folding>
@@ -45,7 +46,7 @@
       <file leaf-file-name="VoteBoxUI-htmlSource.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-49.846153">
+            <state vertical-scroll-proportion="-137.96153">
               <caret line="211" column="68" selection-start-line="211" selection-start-column="68" selection-end-line="211" selection-end-column="68" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -71,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="12" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="12" />
+              <caret line="195" column="15" selection-start-line="195" selection-start-column="15" selection-end-line="195" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -117,9 +118,9 @@
       <list>
         <option value="$PROJECT_DIR$/web/manifest.json" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" />
         <option value="$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html" />
         <option value="$PROJECT_DIR$/web/main.dart" />
+        <option value="$PROJECT_DIR$/web/VoteBoxUI-cssSource.css" />
       </list>
     </option>
   </component>
@@ -500,7 +501,7 @@
       <workItem from="1442428314169" duration="3724000" />
       <workItem from="1442438135221" duration="1594000" />
       <workItem from="1442440785358" duration="11897000" />
-      <workItem from="1442588774282" duration="6094000" />
+      <workItem from="1442588774282" duration="7197000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -580,11 +581,17 @@
       <option name="project" value="LOCAL" />
       <updated>1442594614846</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Put text into verification dialog buttons and changed hiding for &quot;Yes&quot;/&quot;No&quot; buttons to display:none to preserve button placement.">
+      <created>1442595027149</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1442595027149</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46437000" />
+    <option name="totallyTimeSpent" value="47540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1098" height="1888" extended-state="6" />
@@ -644,7 +651,8 @@
     <MESSAGE value="Should be finished setting up dealing with options now." />
     <MESSAGE value="Implemented intermediate screen" />
     <MESSAGE value="Fixed some button issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some button issues" />
+    <MESSAGE value="Put text into verification dialog buttons and changed hiding for &quot;Yes&quot;/&quot;No&quot; buttons to display:none to preserve button placement." />
+    <option name="LAST_COMMIT_MESSAGE" value="Put text into verification dialog buttons and changed hiding for &quot;Yes&quot;/&quot;No&quot; buttons to display:none to preserve button placement." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1206,17 +1214,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="12" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-49.846153">
+        <state vertical-scroll-proportion="-137.96153">
           <caret line="211" column="68" selection-start-line="211" selection-start-column="68" selection-end-line="211" selection-end-column="68" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1237,10 +1237,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-cssSource.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="15" selection-start-line="195" selection-start-column="15" selection-end-line="195" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5436321">
-          <caret line="493" column="42" selection-start-line="493" selection-start-column="42" selection-end-line="493" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.3832547">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
             <element signature="e#86#122#0" expanded="true" />
           </folding>

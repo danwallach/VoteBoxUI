@@ -9771,9 +9771,11 @@ y.N0(z,"beforeend",a.vi(a.qe()).d?"<p>You voted for<br><b>"+H.d(a.vi(a.qe()).Lc(
 x=document.createElement("button",null)
 x.id="dialogYes"
 x.className="dialogButton"
+x.textContent="Yes"
 w=document.createElement("button",null)
 w.id="dialogNo"
 w.className="dialogButton"
+w.textContent="No"
 z.appendChild(x)
 z.appendChild(w)
 y.kH(z)
@@ -9793,9 +9795,9 @@ J.Cr(y,"beforeend",a.vi(a.qe()).d?"<p>You voted for<br><b>"+H.d(a.vi(a.qe()).Lc(
 x=document.querySelector("#Yes")
 w=document.querySelector("#No")
 z=x.style
-z.visibility="visible"
+z.display="block"
 z=w.style
-z.visibility="visible"
+z.display="block"
 z=J.X(x)
 H.J(new W.O(0,z.Q,z.a,W.V(new F.Vz(a,b,x,w)),z.b),[H.N(z,0)]).Y()
 z=J.X(w)
@@ -10120,7 +10122,7 @@ z=document.querySelector("#auth").style
 z.visibility="visible"},null,null,2,0,null,3,"call"]},
 QA:{
 "^":"r:19;",
-$1:[function(a){H.Go(document.querySelector("#IDDialog"),"$isrV").close("")},null,null,2,0,null,33,"call"]},
+$1:[function(a){H.Go(document.querySelector("#IDdialog"),"$isrV").close("")},null,null,2,0,null,33,"call"]},
 Cv:{
 "^":"r:19;Q",
 $1:[function(a){var z,y
@@ -10196,17 +10198,17 @@ $1:[function(a){J.mm(this.Q,"")},null,null,2,0,null,3,"call"]},
 Vz:{
 "^":"r:19;Q,a,b,c",
 $1:[function(a){var z=this.b.style
-z.visibility="hidden"
+z.display="none"
 z=this.c.style
-z.visibility="hidden"
+z.display="none"
 z=this.Q
 F.GX(J.WB(z.qe(),this.a),z)},null,null,2,0,null,3,"call"]},
 Kd:{
 "^":"r:19;Q,a,b",
 $1:[function(a){var z=this.a.style
-z.visibility="hidden"
+z.display="none"
 z=this.b.style
-z.visibility="hidden"
+z.display="none"
 z=this.Q
 F.GX(z.qe(),z)},null,null,2,0,null,3,"call"]},
 aO:{
