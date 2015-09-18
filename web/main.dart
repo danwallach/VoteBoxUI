@@ -414,9 +414,11 @@ void displayDialogConfirmation(Ballot b, int delta) {
 
   inlineConfirmation.innerHtml = "";
 
+  Race currentRace = b.getRace(b.getCurrentPage());
+
   /* Show an appropriate confirmation message */
-  inlineConfirmation.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
-      "<p>You voted for<br><b>${b.getRace(b.getCurrentPage()).getSelectedOption()}</b><br>Is this correct?</p>" :
+  inlineConfirmation.appendHtml(currentRace.hasVoted()?
+      "<p>You voted for<br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
       "<p>You did not vote for anyone.<br>Is this correct?</p>");
 
   /* Build the buttons */
