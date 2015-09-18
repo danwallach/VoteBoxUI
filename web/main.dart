@@ -84,7 +84,7 @@ main() async {
 
   querySelector('#okay').onClick.listen(
           (MouseEvent event) {
-            (querySelector('dialog') as DialogElement).close('');
+            (querySelector('#IDDialog') as DialogElement).close('');
           }
   );
 
@@ -320,22 +320,43 @@ void displayInlineConfirmation(Ballot b, int delta){
  */
 void displayDialogConfirmation(Ballot b, int delta) {
 
-  /* Display the notice and listen for button click */
-  (querySelector('inlineConfirmation') as DialogElement).showModal();
+  DialogElement inlineConfirmation = new DialogElement();
+  inlineConfirmation.id = "inlineConfirmation";
 
+  /* Show an appropriate confirmation message */
+  inlineConfirmation.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
+      "<p>You voted for<br><b>${b.getRace(b.getCurrentPage()).getSelectedOption()}</b><br>Is this correct?</p>" :
+      "<p>You did not vote for anyone.<br>Is this correct?</p>");
+
+  /* Build the buttons */
+  ButtonInputElement dialogYes = new ButtonInputElement();
+  dialogYes.id = "dialogYes";
+  dialogYes.className = "dialogButton";
+
+  ButtonInputElement dialogNo = new ButtonInputElement();
+  dialogNo.id = "dialogNo";
+  dialogNo.className = "dialogButton";
+
+
+  /* Add them to the dialog */
+  inlineConfirmation.append(dialogYes);
+  inlineConfirmation.append(dialogNo);
+
+  /* Display the notice and listen for button click */
+  inlineConfirmation.showModal();
 
   /* Close and display the next page if yes */
-  querySelector('#dialogYes').onClick.listen(
+  dialogYes.onClick.listen(
           (MouseEvent e){
-            (querySelector('inlineConfirmation') as DialogElement).close('');
+            inlineConfirmation.close('');
             display(b.getCurrentPage()+delta, b);
           }
   );
 
   /* Close this if no */
-  querySelector('#dialogNo').onClick.listen(
+  dialogNo.onClick.listen(
           (MouseEvent e){
-            (querySelector('inlineConfirmation') as DialogElement).close('');
+            inlineConfirmation.close('');
           }
   );
 }
