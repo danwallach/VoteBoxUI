@@ -320,7 +320,7 @@ void displayInlineConfirmation(Ballot b, int delta){
  */
 void displayDialogConfirmation(Ballot b, int delta) {
 
-  DialogElement inlineConfirmation = new DialogElement();
+  DialogElement inlineConfirmation = document.createElement('dialog');
   inlineConfirmation.id = "inlineConfirmation";
 
   /* Show an appropriate confirmation message */
