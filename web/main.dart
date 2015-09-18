@@ -35,9 +35,9 @@ main() async {
   ballot = await loadBallot();
   print("Ballot has ${ballot.size()} races and propositions detected.");
 
-  /*****************************************************************************************************************************
+  /*****************************************************************************************************************************\
                                                       OPTIONS PAGE
-  *****************************************************************************************************************************/
+  \*****************************************************************************************************************************/
   /* If review type option is chosen... */
   querySelectorAll('input[name=\"reviewType\"]').onClick.listen(
           (MouseEvent e){
@@ -48,16 +48,28 @@ main() async {
           }
   );
 
-  /* Set up listeners for the different buttons clicked */
+  /* Check for one of the main mode buttons to be clicked */
   querySelectorAll('.changeOptionsButton').onClick.listen(
 
           (MouseEvent e){
+
+            /* Make all the button font weights normal again */
+            (querySelectorAll('.changeOptionsButton') as ElementList<ButtonElement>).forEach(
+                (ButtonElement b) {
+                  b.style.fontWeight = "normal";
+                }
+            );
+
+            /* Bold the selected one */
+            ButtonElement buttonClicked = (e.currentTarget as ButtonElement);
+            buttonClicked.style.fontWeight = "bold";
+
             querySelector('#confirmOptions').style.visibility = "visible";
             querySelector('#reviewOptions').style.visibility = "visible";
 
-            querySelector('#changeOptionsSelection').innerHtml = "You've selected <font color=\"red\">${(e.currentTarget as ButtonElement).innerHtml}";
+            querySelector('#changeOptionsSelection').innerHtml = "You've selected <font color=\"red\">${buttonClicked.text}";
 
-            voteFlippingType = (e.currentTarget as ButtonElement).innerHtml.trim();
+            voteFlippingType = buttonClicked.text.trim();
 
 
             querySelector("#changeOptions").style.visibility = (voteFlippingType != "No Vote Changes") ?  "visible" :"hidden";
@@ -75,9 +87,9 @@ main() async {
       }
   );
 
-  /*****************************************************************************************************************************
+  /*****************************************************************************************************************************\
                                                     END OPTIONS PAGE
-   *****************************************************************************************************************************/
+  \*****************************************************************************************************************************/
 
   querySelector('#ID').onClick.listen(getID);
   /* TODO: perhaps check for 'enter key' event on textinputelement */
@@ -180,11 +192,11 @@ void recordOptions(){
       /* Checks if either this type was selected or it has to be selected */
       if(rand == 0 || numNoSelectionType > raceChangeList.length ~/ 2) {
 
-          raceChangeList.add("Change Selection");
+          typeOfChange.add("Change Selection");
           numChangeType++;
 
       } else {
-        raceChangeList.add("No Selection");
+        typeOfChange.add("No Selection");
         numNoSelectionType++;
       }
 
@@ -407,11 +419,11 @@ void displayDialogConfirmation(Ballot b, int delta) {
       "<p>You did not vote for anyone.<br>Is this correct?</p>");
 
   /* Build the buttons */
-  ButtonInputElement dialogYes = new ButtonInputElement();
+  ButtonElement dialogYes = new ButtonElement();
   dialogYes.id = "dialogYes";
   dialogYes.className = "dialogButton";
 
-  ButtonInputElement dialogNo = new ButtonInputElement();
+  ButtonElement dialogNo = new ButtonElement();
   dialogNo.id = "dialogNo";
   dialogNo.className = "dialogButton";
 
@@ -456,8 +468,8 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   "<p>You did not vote for anyone.<br>Is this correct?</p>");
 
   /* Display the buttons */
-  ButtonInputElement yesButton = querySelector('#Yes');
-  ButtonInputElement noButton  = querySelector('#No');
+  ButtonElement yesButton = querySelector('#Yes');
+  ButtonElement noButton  = querySelector('#No');
   yesButton.style.visibility = "visible";
   noButton.style.visibility = "visible";
 
