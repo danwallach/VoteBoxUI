@@ -449,18 +449,36 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   querySelector("#Next").style.visibility = "hidden";
   querySelector("#Previous").style.visibility = "hidden";
 
+  /* Display intermediate screen */
+  DivElement inlineConfirmationDiv = new DivElement();
+  inlineConfirmationDiv.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
+  "<p>You voted for<br><b>${b.getRace(b.getCurrentPage()).getSelectedOption()}</b><br>Is this correct?</p>" :
+  "<p>You did not vote for anyone.<br>Is this correct?</p>");
+
+  /* Display the buttons */
+  ButtonInputElement yesButton = querySelector('#Yes');
+  ButtonInputElement noButton  = querySelector('#No');
+  yesButton.style.visibility = "visible";
+  noButton.style.visibility = "visible";
+
 
   /* Display the next page if yes */
-  querySelector('#Yes').onClick.listen(
+  yesButton.onClick.listen(
           (MouseEvent e){
+            yesButton.style.visibility = "hidden";
+            noButton.style.visibility = "hidden";
+
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage()+delta, b);
           }
   );
 
-  /* Go back to last page if no */
-  querySelector('#No').onClick.listen(
+  /* Go back to previous page if no */
+  noButton.onClick.listen(
           (MouseEvent e){
+            yesButton.style.visibility = "hidden";
+            noButton.style.visibility = "hidden";
+
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage(), b);
           }
