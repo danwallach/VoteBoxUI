@@ -9,7 +9,7 @@ import 'package:chrome/chrome_app.dart' as chrome;
 import 'dart:math';
 
 
-List<int> raceChangeSet = new List<int>();
+List<int> raceChangeList = new List<int>();
 List<int> changedSet = new List<int>();
 List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
@@ -112,13 +112,91 @@ main() async {
  */
 void recordOptions(){
 
+  /* Gets the first location selected */
+  RadioButtonInputElement selected = (querySelectorAll('input[name=\"location\"]') as ElementList<RadioButtonInputElement>).firstWhere(
+          (RadioButtonInputElement e){ return e.checked;}
+  );
+
   /* Get a section of races to change */
+  switch(selected.text){
 
+    /* Add the appropriate race numbers to the raceChangeSet */
 
-  /* Add the appropriate race numbers to the raceChangeSet */
+    /* First 14 races */
+    case "Top of Ballot":     for(int i=0; i<14; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* Last 13 races */
+    case "Bottom of Ballot":  for(int i=14; i<27; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 1-7 and 15-21 */
+    case "Top of Screen":     for(int i=0; i<7; i++){ raceChangeList.add(i); }
+                              for(int i=14; i<20; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 8-14 and 22-27 */
+    case "Bottom of Screen":  for(int i=7; i<14; i++){ raceChangeList.add(i); }
+                              for(int i=21; i<27; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 1-7 */
+    case "Top Left":          for(int i=0; i<7; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 15-21 */
+    case "Top Right":         for(int i=14; i<21; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 22-27 */
+    case "Bottom Right":      for(int i=21; i<27; i++){ raceChangeList.add(i); }
+                              break;
+
+    /* 8-14 */
+    case "Bottom Left":       for(int i=7; i<14; i++){ raceChangeList.add(i); }
+                              break;
+
+  }
 
 
   /* Get the type of change and insert appropriately into typeOfChange list */
+  selected = (querySelectorAll('input[name=\"changeType\"]') as ElementList<RadioButtonInputElement>).firstWhere(
+          (RadioButtonInputElement e){ return e.checked;}
+  );
+
+  /* Check for combination */
+  if (selected.text == "Combination") {
+
+    Random rng = new Random();
+
+    int numChangeType=0;
+    int numNoSelectionType=0;
+
+    /* Trying to randomly assign half */
+    for(int i=0; i<raceChangeList.length;i++){
+
+      int rand = rng.nextInt(2);
+
+      /* Checks if either this type was selected or it has to be selected */
+      if(rand == 0 || numNoSelectionType > raceChangeList.length ~/ 2) {
+
+          raceChangeList.add("Change Selection");
+          numChangeType++;
+
+      } else {
+        raceChangeList.add("No Selection");
+        numNoSelectionType++;
+      }
+
+    }
+
+  } else {
+
+    /* Otherwise just put the text directly in */
+    for(int i=0; i<raceChangeList.length; i++) {
+      typeOfChange.add(selected.text);
+    }
+  }
 
 
   /* Set booleans for endOfBallotReview, inlineConfirmation, dialogConfirmation */
@@ -245,7 +323,7 @@ void update(MouseEvent event, int delta, Ballot b) {
  */
 void changeVotes(Ballot b){
 
-  for(int raceToChange in raceChangeSet){
+  for(int raceToChange in raceChangeList){
     changeVote(b, raceToChange);
   }
 
@@ -258,10 +336,10 @@ void changeVote(Ballot b, int raceToChange) {
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) */
-  if(raceChangeSet.contains(raceToChange) && !changedSet.contains(raceToChange)) {
+  if(raceChangeList.contains(raceToChange) && !changedSet.contains(raceToChange)) {
 
     /* Check what type of change  for the current index */
-    if(typeOfChange.elementAt(raceChangeSet.indexOf(raceToChange)) == "change") {
+    if(typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
       changeSelection(b.getRace(raceToChange));
     } else  {
       b.getRace(raceToChange).noSelection();
@@ -400,7 +478,12 @@ void record(Ballot b){
   Iterable<DivElement> selected;
 
   /* Get the currently selected candidate button(s) on the page */
-  selected = (querySelector("#votes").querySelectorAll(".option") as ElementList<DivElement>).where((DivElement el) => isSelected(el));
+  selected = (querySelector("#votes").querySelectorAll(".option") as ElementList<DivElement>).where(
+
+          (DivElement e) {
+            return (e.querySelector(".vote") as InputElement).checked;
+          }
+  );
 
   /* There should never be more than one selected radio button... */
   if(selected.length == 1) {
@@ -414,13 +497,6 @@ void record(Ballot b){
     b.getRace(b.getCurrentPage()).noSelection();
   }
 
-}
-
-/**
- * Returns the checked state of this radio button
- */
-bool isSelected(DivElement e) {
-  return (e.querySelector(".vote") as InputElement).checked;
 }
 
 /**
