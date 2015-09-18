@@ -9763,25 +9763,24 @@ for(w=C.pr.j1(y);w===x;w=C.pr.j1(y));if(w<0||w>=z.length)return H.e(z,w)
 a.eI(z[w].Q)}else{v=C.pr.j1(y)
 if(v<0||v>=z.length)return H.e(z,v)
 a.eI(z[v].Q)}},
-qW:function(a,b){var z,y,x,w,v
-z=document.createElement("dialog",null)
-z.id="inlineConfirmation"
-y=a.vi(a.qe()).d?"<p>You voted for<br><b>"+H.d(a.vi(a.qe()).Lc())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br>Is this correct?</p>"
-x=J.Y(z)
-x.N0(z,"beforeend",y,null,null)
+qW:function(a,b){var z,y,x,w
+z=document.querySelector("#verifyDialog")
+y=J.Y(z)
+y.shf(z,"")
+y.N0(z,"beforeend",a.vi(a.qe()).d?"<p>You voted for<br><b>"+H.d(a.vi(a.qe()).Lc())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br>Is this correct?</p>",null,null)
+x=document.createElement("button",null)
+x.id="dialogYes"
+x.className="dialogButton"
 w=document.createElement("button",null)
-w.id="dialogYes"
+w.id="dialogNo"
 w.className="dialogButton"
-v=document.createElement("button",null)
-v.id="dialogNo"
-v.className="dialogButton"
+z.appendChild(x)
 z.appendChild(w)
-z.appendChild(v)
-x.kH(z)
-x=J.X(w)
-H.J(new W.O(0,x.Q,x.a,W.V(new F.a0(a,b,z)),x.b),[H.N(x,0)]).Y()
-x=J.X(v)
-H.J(new W.O(0,x.Q,x.a,W.V(new F.hz(z)),x.b),[H.N(x,0)]).Y()},
+y.kH(z)
+y=J.X(x)
+H.J(new W.O(0,y.Q,y.a,W.V(new F.a0(a,b,z)),y.b),[H.N(y,0)]).Y()
+y=J.X(w)
+H.J(new W.O(0,y.Q,y.a,W.V(new F.hz(z)),y.b),[H.N(y,0)]).Y()},
 ry:function(a,b){var z,y,x,w
 z=document.querySelector("#VotingContentDIV").style
 z.display="none"

@@ -410,8 +410,9 @@ void displayInlineConfirmation(Ballot b, int delta){
  */
 void displayDialogConfirmation(Ballot b, int delta) {
 
-  DialogElement inlineConfirmation = document.createElement('dialog');
-  inlineConfirmation.id = "inlineConfirmation";
+  DialogElement inlineConfirmation = querySelector('#verifyDialog');
+
+  inlineConfirmation.innerHtml = "";
 
   /* Show an appropriate confirmation message */
   inlineConfirmation.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
@@ -422,11 +423,12 @@ void displayDialogConfirmation(Ballot b, int delta) {
   ButtonElement dialogYes = new ButtonElement();
   dialogYes.id = "dialogYes";
   dialogYes.className = "dialogButton";
+  dialogYes.text = "Yes";
 
   ButtonElement dialogNo = new ButtonElement();
   dialogNo.id = "dialogNo";
   dialogNo.className = "dialogButton";
-
+  dialogNo.text = "No";
 
   /* Add them to the dialog */
   inlineConfirmation.append(dialogYes);
@@ -470,15 +472,15 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   /* Display the buttons */
   ButtonElement yesButton = querySelector('#Yes');
   ButtonElement noButton  = querySelector('#No');
-  yesButton.style.visibility = "visible";
-  noButton.style.visibility = "visible";
+  yesButton.style.display = "block";
+  noButton.style.display = "block";
 
 
   /* Display the next page if yes */
   yesButton.onClick.listen(
           (MouseEvent e){
-            yesButton.style.visibility = "hidden";
-            noButton.style.visibility = "hidden";
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
 
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage()+delta, b);
@@ -488,8 +490,8 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   /* Go back to previous page if no */
   noButton.onClick.listen(
           (MouseEvent e){
-            yesButton.style.visibility = "hidden";
-            noButton.style.visibility = "hidden";
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
 
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage(), b);
