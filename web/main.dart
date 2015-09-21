@@ -350,6 +350,8 @@ void changeVote(Ballot b, int raceToChange) {
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) */
   if(raceChangeList.contains(raceToChange) && !changedSet.contains(raceToChange)) {
 
+    print("$raceToChange");
+
     /* Check what type of change  for the current index */
     if(typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
       changeSelection(b.getRace(raceToChange));
@@ -468,6 +470,7 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   querySelector("#VotingContentDIV").style.display = "none";
   querySelector("#Next").style.visibility = "hidden";
   querySelector("#Previous").style.display = "none";
+  querySelector("#Review").style.visibility = "hidden";
 
   /* Display intermediate screen */
   if(querySelector("#inlineConfirmationDiv") != null) querySelector("#inlineConfirmationDiv").remove();
@@ -480,11 +483,20 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
   "<p>You did not select anyone.<br>Is this correct?</p>");
 
-  /* Display the buttons */
-  ButtonElement yesButton = querySelector('#Yes');
-  ButtonElement noButton  = querySelector('#No');
+  /* Create the buttons */
+  ButtonElement yesButton = new ButtonElement();
+  yesButton.id = "Yes";
   yesButton.style.display = "block";
+  yesButton.text = "Yes";
+
+  ButtonElement noButton  = new ButtonElement();
+  noButton.id = "No";
   noButton.style.display = "block";
+  noButton.text = "No";
+
+  /* Add these buttons in the proper places */
+  querySelector("#Bottom").insertBefore(noButton, querySelector("#progress"));
+  querySelector("#Bottom").insertBefore(yesButton, querySelector("#Next"));
 
 
   querySelector("#Content").append(inlineConfirmationDiv);
@@ -498,6 +510,7 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
             yesButton.style.display = "none";
             noButton.style.display = "none";
 
+            print("$delta");
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage()+delta, b);
           }
@@ -668,6 +681,8 @@ void display(int pageToDisplay, Ballot b) {
     /* Show proper button */
     ButtonElement nextButton = querySelector("#Next");
     nextButton.style.visibility = "visible";
+    nextButton.style.display = "block";
+
 
     /* If nothing has already been selected show "skip" , otherwise "next" (maybe relevant for straight party) */
     if(race.hasVoted()) {
@@ -961,19 +976,29 @@ void submitScreen(Event e){
 
 void returnToBallot (Event e, ballot){
 
-  /* Get rid of original "Print Your Ballot" button on bottom bar */
-  querySelector('#finishUp').style.display = "block";
-  querySelector('#finishUp').style.visibility = "visible";
 
-  /* Undisplay review */
-  querySelector('#reviews').style.visibility = "visible";
-  querySelector('#reviews').style.display = "block";
-
-  /* Display submit screen */
+  /* Undisplay submit screen */
   querySelector('#submitScreen').style.visibility = "hidden";
   querySelector('#submitScreen').style.display = "none";
 
-  gotoReview(e, ballot);
+  if(endOfBallotReview) {
+
+    /* Display "Print your ballot" */
+    querySelector('#finishUp').style.display = "block";
+    querySelector('#finishUp').style.visibility = "visible";
+
+    /* Display review */
+    querySelector('#reviews').style.visibility = "visible";
+    querySelector('#reviews').style.display = "block";
+
+    gotoReview(e, ballot);
+
+  } else {
+
+    display(ballot.size()-1, ballot);
+  }
+
+
 }
 
 Future endVoting(Event e) async {

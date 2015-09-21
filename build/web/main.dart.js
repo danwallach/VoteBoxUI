@@ -9745,15 +9745,17 @@ if($.Vf===!0)F.qW(c,b)
 else F.ry(c,b)}else F.GX(J.WB(c.qe(),b),c)}else F.nl(a,J.WB(c.qe(),b),c)},
 GZ:function(a){var z,y,x
 for(z=$.bY(),y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x)F.p1(a,z[x])},
-p1:function(a,b){var z,y
+p1:function(a,b){var z,y,x
 z=$.bY()
 if((z&&C.Nm).tg(z,b)){z=$.iM()
 z=!(z&&C.Nm).tg(z,b)}else z=!1
-if(z){z=$.Nu()
-y=$.bY()
-y=(y&&C.Nm).OY(y,b)
-if(y<0||y>=z.length)return H.e(z,y)
-if(J.mG(z[y],"Change Selection"))F.rG(a.vi(b))
+if(z){y=H.d(b)
+H.qw(y)
+z=$.Nu()
+x=$.bY()
+x=(x&&C.Nm).OY(x,b)
+if(x<0||x>=z.length)return H.e(z,x)
+if(J.mG(z[x],"Change Selection"))F.rG(a.vi(b))
 else a.vi(b).TU()}},
 rG:function(a){var z,y,x,w,v
 z=a.a
@@ -9793,17 +9795,25 @@ z=document.querySelector("#Next").style
 z.visibility="hidden"
 z=document.querySelector("#Previous").style
 z.display="none"
+z=document.querySelector("#Review").style
+z.visibility="hidden"
 if(document.querySelector("#inlineConfirmationDiv")!=null)J.Mp(document.querySelector("#inlineConfirmationDiv"))
 y=a.vi(a.qe())
 x=document.createElement("div",null)
 x.id="inlineConfirmationDiv"
 J.Cr(x,"beforeend",a.vi(a.qe()).d?"<p>You selected <br><b>"+H.d(y.Lc().gxG())+"\t"+H.d(y.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not select anyone.<br>Is this correct?</p>",null,null)
-w=document.querySelector("#Yes")
-v=document.querySelector("#No")
+w=document.createElement("button",null)
+w.id="Yes"
 z=w.style
 z.display="block"
+w.textContent="Yes"
+v=document.createElement("button",null)
+v.id="No"
 z=v.style
 z.display="block"
+v.textContent="No"
+document.querySelector("#Bottom").insertBefore(v,document.querySelector("#progress"))
+document.querySelector("#Bottom").insertBefore(w,document.querySelector("#Next"))
 document.querySelector("#Content").appendChild(x)
 z=J.X(w)
 H.J(new W.O(0,z.Q,z.a,W.V(new F.Vz(a,b,w,v)),z.b),[H.N(z,0)]).Y()
@@ -9854,6 +9864,8 @@ z.visibility="hidden"}x=b.vi(a)
 w=document.querySelector("#Next")
 z=w.style
 z.visibility="visible"
+z=w.style
+z.display="block"
 if(x.d){w.className="next"
 w.textContent="Next"}else{w.className="skip"
 w.textContent="Skip"}F.d4(x)
@@ -10169,19 +10181,19 @@ wf:{
 "^":"r:2;Q",
 $1:[function(a){var z,y
 z=this.Q.Q
-y=document.querySelector("#finishUp").style
-y.display="block"
-y=document.querySelector("#finishUp").style
-y.visibility="visible"
-y=document.querySelector("#reviews").style
-y.visibility="visible"
-y=document.querySelector("#reviews").style
-y.display="block"
 y=document.querySelector("#submitScreen").style
 y.visibility="hidden"
 y=document.querySelector("#submitScreen").style
 y.display="none"
-F.pn(a,J.aF(J.WS(z),z.qe()),z)
+if($.GH===!0){y=document.querySelector("#finishUp").style
+y.display="block"
+y=document.querySelector("#finishUp").style
+y.visibility="visible"
+y=document.querySelector("#reviews").style
+y.visibility="visible"
+y=document.querySelector("#reviews").style
+y.display="block"
+F.pn(a,J.aF(J.WS(z),z.qe()),z)}else F.GX(J.aF(J.WS(z),1),z)
 return},null,null,2,0,null,3,"call"]},
 Oa:{
 "^":"r:2;",
@@ -10206,7 +10218,8 @@ z.top="500px"
 J.mm(this.Q,"")},null,null,2,0,null,3,"call"]},
 Vz:{
 "^":"r:19;Q,a,b,c",
-$1:[function(a){var z=document.querySelector("#inlineConfirmationDiv").style
+$1:[function(a){var z,y
+z=document.querySelector("#inlineConfirmationDiv").style
 z.display="none"
 z=document.querySelector("#Next").style
 z.visibility="visible"
@@ -10216,8 +10229,10 @@ z=this.b.style
 z.display="none"
 z=this.c.style
 z.display="none"
-z=this.Q
-F.GX(J.WB(z.qe(),this.a),z)},null,null,2,0,null,3,"call"]},
+z=this.a
+P.P(H.d(z))
+y=this.Q
+F.GX(J.WB(y.qe(),z),y)},null,null,2,0,null,3,"call"]},
 Kd:{
 "^":"r:19;Q,a,b",
 $1:[function(a){var z=document.querySelector("#inlineConfirmationDiv").style
