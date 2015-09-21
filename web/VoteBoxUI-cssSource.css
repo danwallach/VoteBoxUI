@@ -243,6 +243,7 @@ strong {
 	left: 50%;
 	margin-left: -400px;
 }
+
 #enterID{
 	margin-left: auto;
 	margin-right: auto;
@@ -322,6 +323,17 @@ strong {
 	display: block;
 }
 
+#inlineConfirmationDiv {
+	position: relative;
+	top: 600px;
+	width: 85%;
+	height: 100%;
+	margin: 0 auto;
+	display: block;
+	font-size: 3em;
+	text-align: center;
+	line-height: 2em;
+}
 
 
 /* Ballot Completion Section */
@@ -718,7 +730,7 @@ input[type="radio"]{
     text-align: center;
 	box-sizing: border-box;
  }
- #Next.skip{ /*nav button displayed when a voter does NOT makes a selection*/
+ #Next.skip,#Yes{ /*nav button displayed when a voter does NOT makes a selection*/
 	 display: inline-block;
 	 padding: 4px 105px 0 45px;
     background-position: 140px -180px;
@@ -766,7 +778,7 @@ input[type="radio"]{
 }
 
 /* Back Nav*/
-#Back, #Previous{
+#Back, #Previous, #No {
 	display:inline-block;
 	padding: 4px 45px 0 80px;
 	background-position: 25px -120px; /*originally set at 60px -80px*/

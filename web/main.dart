@@ -246,7 +246,7 @@ void getID(MouseEvent event) {
 
   /* TODO check for non-numerals and validate with Supervisor */
   if(ID=="" || ID.length < 5){
-    DialogElement dialog = querySelector('dialog') as DialogElement;
+    DialogElement dialog = querySelector('#IDdialog') as DialogElement;
     dialog.showModal();
   }
   else{
@@ -410,39 +410,42 @@ void displayInlineConfirmation(Ballot b, int delta){
  */
 void displayDialogConfirmation(Ballot b, int delta) {
 
-  DialogElement inlineConfirmation = querySelector('#verifyDialog');
+  DialogElement verifyDialog = querySelector('#verifyDialog');
 
-  inlineConfirmation.innerHtml = "";
+  querySelector("#VotingContentDIV").style.top = "175px";
+
+  verifyDialog.innerHtml = "";
 
   Race currentRace = b.getRace(b.getCurrentPage());
 
   /* Show an appropriate confirmation message */
-  inlineConfirmation.appendHtml(currentRace.hasVoted()?
-      "<p>You voted for<br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
-      "<p>You did not vote for anyone.<br><br>Is this correct?</p>");
+  verifyDialog.appendHtml(currentRace.hasVoted()?
+      "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
+      "<p>You did not select anyone.<br><br>Is this correct?</p>");
 
   /* Build the buttons */
-  ButtonElement dialogYes = new ButtonElement();
-  dialogYes.id = "dialogYes";
-  dialogYes.className = "dialogButton";
-  dialogYes.text = "Yes";
-
   ButtonElement dialogNo = new ButtonElement();
   dialogNo.id = "dialogNo";
   dialogNo.className = "dialogButton";
   dialogNo.text = "No";
 
+  ButtonElement dialogYes = new ButtonElement();
+  dialogYes.id = "dialogYes";
+  dialogYes.className = "dialogButton";
+  dialogYes.text = "Yes";
+
   /* Add them to the dialog */
-  inlineConfirmation.append(dialogYes);
-  inlineConfirmation.append(dialogNo);
+  verifyDialog.append(dialogNo);
+  verifyDialog.append(dialogYes);
 
   /* Display the notice and listen for button click */
-  inlineConfirmation.showModal();
+  verifyDialog.showModal();
 
   /* Close and display the next page if yes */
   dialogYes.onClick.listen(
           (MouseEvent e){
-            inlineConfirmation.close('');
+            querySelector("#VotingContentDIV").style.top = "500px";
+            verifyDialog.close('');
             display(b.getCurrentPage()+delta, b);
           }
   );
@@ -450,7 +453,8 @@ void displayDialogConfirmation(Ballot b, int delta) {
   /* Close this if no */
   dialogNo.onClick.listen(
           (MouseEvent e){
-            inlineConfirmation.close('');
+            querySelector("#VotingContentDIV").style.top = "500px";
+            verifyDialog.close('');
           }
   );
 }
@@ -463,13 +467,18 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   /* Clear the current page of voting and buttons and display intermediate screen */
   querySelector("#VotingContentDIV").style.display = "none";
   querySelector("#Next").style.visibility = "hidden";
-  querySelector("#Previous").style.visibility = "hidden";
+  querySelector("#Previous").style.display = "none";
 
   /* Display intermediate screen */
+  if(querySelector("#inlineConfirmationDiv") != null) querySelector("#inlineConfirmationDiv").remove();
+
+  Race currentRace = b.getRace(b.getCurrentPage());
+
   DivElement inlineConfirmationDiv = new DivElement();
+  inlineConfirmationDiv.id = "inlineConfirmationDiv";
   inlineConfirmationDiv.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
-  "<p>You voted for<br><b>${b.getRace(b.getCurrentPage()).getSelectedOption()}</b><br>Is this correct?</p>" :
-  "<p>You did not vote for anyone.<br>Is this correct?</p>");
+  "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
+  "<p>You did not select anyone.<br>Is this correct?</p>");
 
   /* Display the buttons */
   ButtonElement yesButton = querySelector('#Yes');
@@ -478,9 +487,14 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   noButton.style.display = "block";
 
 
+  querySelector("#Content").append(inlineConfirmationDiv);
+
   /* Display the next page if yes */
   yesButton.onClick.listen(
           (MouseEvent e){
+            querySelector("#inlineConfirmationDiv").style.display = "none";
+            querySelector("#Next").style.visibility = "visible";
+            querySelector("#Previous").style.display = "block";
             yesButton.style.display = "none";
             noButton.style.display = "none";
 
@@ -492,6 +506,10 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   /* Go back to previous page if no */
   noButton.onClick.listen(
           (MouseEvent e){
+
+            querySelector("#inlineConfirmationDiv").style.display = "none";
+            querySelector("#Next").style.visibility = "visible";
+            querySelector("#Previous").style.display = "block";
             yesButton.style.display = "none";
             noButton.style.display = "none";
 
@@ -776,7 +794,7 @@ void displayRace(Race race) {
     partyDiv.id = "p$currentIndex";
     partyDiv.style.color = o.wasSelected() ? "white" : "black";
     partyDiv.className = "optionGroup";
-    partyDiv.text=(o.groupAssociation != null) ? o.groupAssociation : "";
+    partyDiv.text=o.groupAssociation;
 
     /* Add all of these to the optiondiv and then add this option to the current vote div */
     optionDiv.append(voteButtonDiv);
@@ -900,7 +918,7 @@ void displayReviewPage(Ballot b) {
     DivElement partySelection = new DivElement();
     partySelection.id = "party${i+1}";
     partySelection.className = "party";
-    partySelection.text = currentRace.hasVoted() && (currentRace.getSelectedOption().groupAssociation != null) ?
+    partySelection.text = currentRace.hasVoted() ?
                             currentRace.getSelectedOption().groupAssociation :
                             "";
 
@@ -1013,7 +1031,9 @@ class Option {
   String groupAssociation;
   bool _voted=false;
 
-  Option(this.identifier, {this.groupAssociation});
+  Option(this.identifier, {groupAssociation}){
+    this.groupAssociation= (groupAssociation==null) ? "" : groupAssociation;
+  }
 
   bool wasSelected(){
     return _voted;
@@ -1135,7 +1155,8 @@ class Ballot {
 
       for (XmlElement element in XMLcandidates) {
         candidates.add(new Option(element.findElements("name").first.text,
-                                  groupAssociation: element.findElements("party").first.text));
+                                  groupAssociation: (element.findElements("party").first.text != null) ?
+                                                        element.findElements("party").first.text : ""));
       }
 
       Race currentRace = new Race(title, candidates, "race");

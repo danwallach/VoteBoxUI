@@ -171,15 +171,16 @@ dialog {
 	height: 13%;
 	width: 100%;
 	text-align: center;
-	padding: 1.5em 0 0.5em;
+	padding: 1em 0 1.5em;
 	margin: .25em auto;
 	border: 0;
 	border-top: .25em solid #002EB8;
 	box-shadow: 0 .125em .667em rgba(0,0,0,0.75);
-	position: fixed;
 	font-size: 2.5em;
 	font-style: inherit;
 	font-weight: inherit;
+	position: absolute;
+	top: 75%;
 }
 
 dialog::backdrop {
@@ -242,6 +243,7 @@ strong {
 	left: 50%;
 	margin-left: -400px;
 }
+
 #enterID{
 	margin-left: auto;
 	margin-right: auto;
@@ -321,6 +323,17 @@ strong {
 	display: block;
 }
 
+#inlineConfirmationDiv {
+	position: relative;
+	top: 600px;
+	width: 85%;
+	height: 100%;
+	margin: 0 auto;
+	display: block;
+	font-size: 3em;
+	text-align: center;
+	line-height: 2em;
+}
 
 
 /* Ballot Completion Section */
@@ -717,7 +730,7 @@ input[type="radio"]{
     text-align: center;
 	box-sizing: border-box;
  }
- #Next.skip{ /*nav button displayed when a voter does NOT makes a selection*/
+ #Next.skip,#Yes{ /*nav button displayed when a voter does NOT makes a selection*/
 	 display: inline-block;
 	 padding: 4px 105px 0 45px;
     background-position: 140px -180px;
@@ -765,7 +778,7 @@ input[type="radio"]{
 }
 
 /* Back Nav*/
-#Back, #Previous{
+#Back, #Previous, #No {
 	display:inline-block;
 	padding: 4px 45px 0 80px;
 	background-position: 25px -120px; /*originally set at 60px -80px*/

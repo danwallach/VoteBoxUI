@@ -9711,7 +9711,7 @@ z.bb(a)
 z.Hq(a)}},"$1","T",2,0,45,33],
 pg:[function(a){var z,y
 z=H.Go(document.querySelector("#idText"),"$isje").value
-if(z===""||z.length<5)H.Go(document.querySelector("dialog"),"$isrV").showModal()
+if(z===""||z.length<5)H.Go(document.querySelector("#IDdialog"),"$isrV").showModal()
 else{y=document.querySelector("#info").style
 y.visibility="visible"
 y=document.querySelector("#ID").style
@@ -9765,44 +9765,50 @@ if(v<0||v>=z.length)return H.e(z,v)
 a.eI(z[v].Q)}},
 qW:function(a,b){var z,y,x,w,v
 z=document.querySelector("#verifyDialog")
+y=document.querySelector("#VotingContentDIV").style
+y.top="175px"
 y=J.Y(z)
 y.shf(z,"")
 x=a.vi(a.qe())
-y.N0(z,"beforeend",x.d?"<p>You voted for<br><b>"+H.d(x.Lc().gxG())+"\t"+H.d(x.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br><br>Is this correct?</p>",null,null)
+y.N0(z,"beforeend",x.d?"<p>You selected <br><b>"+H.d(x.Lc().gxG())+"\t"+H.d(x.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not select anyone.<br><br>Is this correct?</p>",null,null)
 w=document.createElement("button",null)
-w.id="dialogYes"
+w.id="dialogNo"
 w.className="dialogButton"
-w.textContent="Yes"
+w.textContent="No"
 v=document.createElement("button",null)
-v.id="dialogNo"
+v.id="dialogYes"
 v.className="dialogButton"
-v.textContent="No"
+v.textContent="Yes"
 z.appendChild(w)
 z.appendChild(v)
 y.kH(z)
-y=J.X(w)
-H.J(new W.O(0,y.Q,y.a,W.V(new F.a0(a,b,z)),y.b),[H.N(y,0)]).Y()
 y=J.X(v)
+H.J(new W.O(0,y.Q,y.a,W.V(new F.a0(a,b,z)),y.b),[H.N(y,0)]).Y()
+y=J.X(w)
 H.J(new W.O(0,y.Q,y.a,W.V(new F.hz(z)),y.b),[H.N(y,0)]).Y()},
-ry:function(a,b){var z,y,x,w
+ry:function(a,b){var z,y,x,w,v
 z=document.querySelector("#VotingContentDIV").style
 z.display="none"
 z=document.querySelector("#Next").style
 z.visibility="hidden"
 z=document.querySelector("#Previous").style
-z.visibility="hidden"
-y=document.createElement("div",null)
-J.Cr(y,"beforeend",a.vi(a.qe()).d?"<p>You voted for<br><b>"+H.d(a.vi(a.qe()).Lc())+"</b><br>Is this correct?</p>":"<p>You did not vote for anyone.<br>Is this correct?</p>",null,null)
-x=document.querySelector("#Yes")
-w=document.querySelector("#No")
-z=x.style
-z.display="block"
+z.display="none"
+if(document.querySelector("#inlineConfirmationDiv")!=null)J.Mp(document.querySelector("#inlineConfirmationDiv"))
+y=a.vi(a.qe())
+x=document.createElement("div",null)
+x.id="inlineConfirmationDiv"
+J.Cr(x,"beforeend",a.vi(a.qe()).d?"<p>You selected <br><b>"+H.d(y.Lc().gxG())+"\t"+H.d(y.Lc().gGD())+"</b><br>Is this correct?</p>":"<p>You did not select anyone.<br>Is this correct?</p>",null,null)
+w=document.querySelector("#Yes")
+v=document.querySelector("#No")
 z=w.style
 z.display="block"
-z=J.X(x)
-H.J(new W.O(0,z.Q,z.a,W.V(new F.Vz(a,b,x,w)),z.b),[H.N(z,0)]).Y()
+z=v.style
+z.display="block"
+document.querySelector("#Content").appendChild(x)
 z=J.X(w)
-H.J(new W.O(0,z.Q,z.a,W.V(new F.Kd(a,x,w)),z.b),[H.N(z,0)]).Y()},
+H.J(new W.O(0,z.Q,z.a,W.V(new F.Vz(a,b,w,v)),z.b),[H.N(z,0)]).Y()
+z=J.X(v)
+H.J(new W.O(0,z.Q,z.a,W.V(new F.Kd(a,w,v)),z.b),[H.N(z,0)]).Y()},
 OB:function(a){var z,y
 z=H.HD(new W.wz(document.querySelector("#votes").querySelectorAll(".option")),"$isHU",[W.Wy],"$asHU")
 y=z.ev(z,new F.aO())
@@ -9928,8 +9934,7 @@ m=d.style
 l=p.Bu()?"white":"black"
 m.color=l
 d.className="optionGroup"
-m=p.a
-d.textContent=m!=null?m:""
+d.textContent=p.a
 n.appendChild(i)
 n.appendChild(e)
 n.appendChild(d)
@@ -9991,7 +9996,7 @@ p.textContent=u.d?u.Lc().gxG():"You did not vote for anyone. If you want to vote
 o=document.createElement("div",null)
 o.id="party"+s
 o.className="party"
-o.textContent=u.d&&u.Lc().gGD()!=null?u.Lc().gGD():""
+o.textContent=u.d?u.Lc().gGD():""
 q.appendChild(p)
 J.Cr(q,"beforeend","<strong>"+H.d(J.iT(o))+"</strong>",null,null)
 t.appendChild(r)
@@ -10189,16 +10194,25 @@ M9:{
 $1:function(a){return J.K0(a)}},
 a0:{
 "^":"r:19;Q,a,b",
-$1:[function(a){var z
+$1:[function(a){var z=document.querySelector("#VotingContentDIV").style
+z.top="500px"
 J.mm(this.b,"")
 z=this.Q
 F.GX(J.WB(z.qe(),this.a),z)},null,null,2,0,null,3,"call"]},
 hz:{
 "^":"r:19;Q",
-$1:[function(a){J.mm(this.Q,"")},null,null,2,0,null,3,"call"]},
+$1:[function(a){var z=document.querySelector("#VotingContentDIV").style
+z.top="500px"
+J.mm(this.Q,"")},null,null,2,0,null,3,"call"]},
 Vz:{
 "^":"r:19;Q,a,b,c",
-$1:[function(a){var z=this.b.style
+$1:[function(a){var z=document.querySelector("#inlineConfirmationDiv").style
+z.display="none"
+z=document.querySelector("#Next").style
+z.visibility="visible"
+z=document.querySelector("#Previous").style
+z.display="block"
+z=this.b.style
 z.display="none"
 z=this.c.style
 z.display="none"
@@ -10206,7 +10220,13 @@ z=this.Q
 F.GX(J.WB(z.qe(),this.a),z)},null,null,2,0,null,3,"call"]},
 Kd:{
 "^":"r:19;Q,a,b",
-$1:[function(a){var z=this.a.style
+$1:[function(a){var z=document.querySelector("#inlineConfirmationDiv").style
+z.display="none"
+z=document.querySelector("#Next").style
+z.visibility="visible"
+z=document.querySelector("#Previous").style
+z.display="block"
+z=this.a.style
 z.display="none"
 z=this.b.style
 z.display="none"
@@ -10286,7 +10306,11 @@ for(;w.D();){s=w.Q
 r=s.VT("name")
 r=J.yO(r.Mi(J.iN(r.Q)))
 q=s.VT("party")
-t.push(new F.p5(r,J.yO(q.Mi(J.iN(q.Q))),!1))}this.Q.push(new F.Os(v,t,null,"race",!1))}p=a.ly("proposition")
+if(J.yO(q.Mi(J.iN(q.Q)))!=null){q=s.VT("party")
+q=J.yO(q.Mi(J.iN(q.Q)))}else q=""
+r=new F.p5(r,null,!1)
+r.a=q==null?"":q
+t.push(r)}this.Q.push(new F.Os(v,t,null,"race",!1))}p=a.ly("proposition")
 for(y=H.J(new H.MH(null,J.Nx(p.Q),p.a),[H.N(p,0),H.N(p,1)]);y.D();){o=y.Q
 w=o.VT("title")
 v=J.yO(w.Mi(J.iN(w.Q)))
@@ -10294,8 +10318,12 @@ w=o.VT("propositionText")
 n=J.yO(w.Mi(J.iN(w.Q)))
 m=[]
 m.$builtinTypeInfo=[F.p5]
-m.push(new F.p5("Yes",null,!1))
-m.push(new F.p5("No",null,!1))
+w=new F.p5("Yes",null,!1)
+w.a=""
+m.push(w)
+w=new F.p5("No",null,!1)
+w.a=""
+m.push(w)
 this.Q.push(new F.Os(v,m,n,"proposition",!1))}},
 X:function(a){var z,y,x,w
 for(z=this.Q,y=z.length,x="",w=0;w<z.length;z.length===y||(0,H.lk)(z),++w)x+=z[w].X(0)+"\n"
