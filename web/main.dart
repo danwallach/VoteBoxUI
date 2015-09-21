@@ -11,7 +11,7 @@ import 'dart:convert' show JSON;
 
 
 List<int> raceChangeList = new List<int>();
-List<int> changedSet = new List<int>();
+List<int> alreadyChangedList = new List<int>();
 List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
 bool endOfBallotReview;
@@ -132,8 +132,21 @@ void recordOptions(){
           (RadioButtonInputElement e){ return e.checked;}
   );
 
+  String labelSelectionStr = querySelector('label[for=\"${selected.id}\"]').text;
+  print("${labelSelectionStr}");
+
+  selected = (querySelectorAll('input[name=\"number\"]') as ElementList<RadioButtonInputElement>).firstWhere(
+          (RadioButtonInputElement e){ return e.checked;}
+  );
+
+  String numStr = querySelector('label[for=\"${selected.id}\"]').text;
+
+  int numToChange = int.parse( numStr.substring(numStr.length-2,numStr.length-1));
+
+  Random random = new Random();
+
   /* Get a section of races to change */
-  switch(selected.text){
+  switch(labelSelectionStr){
 
     /* Add the appropriate race numbers to the raceChangeSet */
 
@@ -156,21 +169,25 @@ void recordOptions(){
                               break;
 
     /* 1-7 */
-    case "Top Left":          for(int i=0; i<7; i++){ raceChangeList.add(i); }
+    case "Top Left":          for(int i=0; i<8; i++){ raceChangeList.add(i); }
                               break;
 
     /* 15-21 */
-    case "Top Right":         for(int i=14; i<21; i++){ raceChangeList.add(i); }
+    case "Top Right":         for(int i=14; i<22; i++){ raceChangeList.add(i); }
                               break;
 
     /* 22-27 */
-    case "Bottom Right":      for(int i=21; i<27; i++){ raceChangeList.add(i); }
+    case "Bottom Right":      for(int i=19; i<27; i++){ raceChangeList.add(i); }
                               break;
 
     /* 8-14 */
-    case "Bottom Left":       for(int i=7; i<14; i++){ raceChangeList.add(i); }
+    case "Bottom Left":       for(int i=6; i<14; i++){ raceChangeList.add(i); }
                               break;
 
+  }
+
+  for(int i=random.nextInt(raceChangeList.length); raceChangeList.length>numToChange; i=random.nextInt(raceChangeList.length)){
+    raceChangeList.remove(raceChangeList.elementAt(i));
   }
 
 
@@ -179,8 +196,11 @@ void recordOptions(){
           (RadioButtonInputElement e){ return e.checked;}
   );
 
+  labelSelectionStr = querySelector('label[for=\"${selected.id}\"]').text;
+  print("${labelSelectionStr}");
+
   /* Check for combination */
-  if (selected.text == "Combination") {
+  if (labelSelectionStr == "Combination") {
 
     Random rng = new Random();
 
@@ -209,7 +229,7 @@ void recordOptions(){
 
     /* Otherwise just put the text directly in */
     for(int i=0; i<raceChangeList.length; i++) {
-      typeOfChange.add(selected.text);
+      typeOfChange.add(labelSelectionStr);
     }
   }
 
@@ -224,6 +244,11 @@ void recordOptions(){
   dialogConfirmation  =   (querySelector('#inlineType1') as RadioButtonInputElement).checked;
 
   userCorrection      =   (querySelector('#correct1') as RadioButtonInputElement).checked;
+
+
+  print("Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedList\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
+  "$inlineConfirmation\nendOfBallotReview: $endOfBallotReview\ndialogConfirmation: $dialogConfirmation\nuserCorrection: $userCorrection\nvoteFlippingType: $voteFlippingType");
+
 
 }
 
@@ -351,7 +376,7 @@ void changeVote(Ballot b, int raceToChange) {
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) */
-  if(raceChangeList.contains(raceToChange) && !changedSet.contains(raceToChange)) {
+  if(raceChangeList.contains(raceToChange) && !alreadyChangedList.contains(raceToChange)) {
 
     print("$raceToChange");
 
@@ -362,6 +387,7 @@ void changeVote(Ballot b, int raceToChange) {
       b.getRace(raceToChange).noSelection();
     }
 
+    alreadyChangedList.add(raceToChange);
   }
 
 }
