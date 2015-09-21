@@ -335,7 +335,7 @@ void update(MouseEvent event, int delta, Ballot b) {
 
 /**
  *
- */
+*/
 void changeVotes(Ballot b){
 
   for(int raceToChange in raceChangeList){
