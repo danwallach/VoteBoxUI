@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 import 'dart:math';
+import 'dart:convert' show JSON;
 
 
 List<int> raceChangeList = new List<int>();
@@ -116,7 +117,9 @@ main() async {
 
   querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, ballot));
 
-  querySelector('#endVoting').onClick.listen((e) => endVoting(e));
+  querySelector('#endVoting').onClick.listen((e) => endVoting(ballot));
+
+
 }
 
 /**
@@ -1001,12 +1004,12 @@ void returnToBallot (Event e, ballot){
 
 }
 
-Future endVoting(Event e) async {
-  await confirmScreen();
+Future endVoting(Ballot finalizedBallot) async {
+  await confirmScreen(finalizedBallot);
   chrome.app.window.current().close();
 }
 
-Future confirmScreen() async {
+Future confirmScreen(Ballot finalizedBallot) async {
 
   print("Confirming!");
   querySelector('#submitScreen').style.visibility = "hidden";
@@ -1015,11 +1018,35 @@ Future confirmScreen() async {
   querySelector('#confirmation').style.visibility = "visible";
   querySelector('#confirmation').style.display = "block";
 
+  await printFinalizedBallotSilent(finalizedBallot);
+
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 30), () => '30');
-
 }
+/**
+ * As its name suggests, prints the voter's final selections
+ * of out to the printer
+ *
+ * This version IS expected to print silently (BUT NOT SECURELY!)
+ * THIS SHOULD NOT BE USED IN ANY ACTUAL ELECTIONS EVER! IT IS ONLY
+ * SUPOPSED TO BE IN THE LIGHTWEIGHT VERSION USED FOR UI/UX TESTING!
+ *
+ * The plan is to do so by sending the HTML out as a HTTP POST request
+ */
+Future printFinalizedBallotSilent(Ballot finalizedBallot) async {
+  String host = '127.0.0.1';
+  String port = '8888';
+  String url = "http://$host:$port/";
 
+  print ('Now sending JSON-encoded list of race mappings');
+  //Create the POST request
+  HttpRequest request2 = new HttpRequest();
+  request2.open('POST', url);
+  request2.onLoad.listen((event) => print(
+      'Request complete ${event.target.responseText}'));
+
+  return request2.send(finalizedBallot.toJSON());
+}
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent
  * to be converted into a Ballot object
@@ -1059,6 +1086,8 @@ class Option {
   Option(this.identifier, {groupAssociation}){
     this.groupAssociation= (groupAssociation==null) ? "" : groupAssociation;
   }
+  //Empty option for using in mappings to represent no selection
+  Option.empty() : identifier = null, groupAssociation = null;
 
   bool wasSelected(){
     return _voted;
@@ -1206,6 +1235,111 @@ class Ballot {
 
     }
 
+  }
+
+  /*
+  * For getting a easily convertable list of
+  * all the options that have been voted on.
+  *
+  * This method  was originally created to help out the toMappingList() method,
+  * but I expect this will be fairly useful to use in other features in the future
+  *
+  * An 'EmptyOption' means that the user didn't vote
+  **/
+  List<Option> toOptionList() {
+    List<dynamic> outputList = new List<Option>();
+    for (Race race in _races) {
+      Option chosenOption = null;
+
+      if (race.hasVoted()) {
+        print ('Current Race has been voted in');
+        chosenOption = race.getSelectedOption();
+        assert (chosenOption.wasSelected == true);
+
+      } else {
+        print ('Current Race has NOT been voted in');
+        chosenOption = new Option.empty();
+        chosenOption.mark();
+      }
+
+      outputList.add(chosenOption);
+    }
+    return outputList;
+  }
+
+  /*
+  * For getting a easily convertable list of
+  * all the races and selections, with each race represented as
+  * a map of strings to strings.
+  *
+  * The map keys will be
+  *   'RACE' for the current Race's name (as a String)
+  *   'IDENTIFIER' for the chosen Option's identifier (ie name of the person or proposition)
+  *   'GROUP' for the chosen Option's group (generally the party of a candidate)
+  *
+  *
+  * An 'EmptyOption' meant that the user didn't vote! We know it's an empty option if
+  * BOTH identifier and group are null.
+  **/
+  List<Map<String, String>> toStringMappingList() {
+    print ('starting conversion to a map');
+    List <dynamic> outputList = new List<Map<String, String>>();
+    List <dynamic> optionList = this.toOptionList();
+
+    for (int i=0; i<_races.length; i++) {
+      Map<dynamic, dynamic> currentMap = new Map<String, String>();
+
+      /**Get the race's title**/
+      Race currentRace = _races.elementAt(i);
+      String raceName = currentRace.title;
+      print('race name below:');
+      print(raceName);
+      currentMap['RACE'] = raceName;
+
+
+      /**Get the identifier and group**/
+      Option currentOption = optionList[i];
+      assert(currentOption.wasSelected());
+      //if (currentOption.identifier == null && currentOption.group == null) {
+      //If hasVoted() is true but the identifier and group are BOTH null,
+      //then it means that this is an 'EmptyOption' and the user didn't vote
+      //}
+
+      //getting the identifier
+      if (currentOption.identifier == null) {
+        //THIS MEANS THAT THERE WAS NO SUBMITTED VOTE
+        currentMap['IDENTIFIER'] = '';
+        //if this is null but the group is not null, we have a serious problem
+        assert (currentOption.groupAssociation == null);
+
+      } else {
+        print ('found an identifier');
+        print (currentOption.identifier);
+        currentMap['IDENTIFIER'] = currentOption.identifier;
+      }
+
+
+      //getting the group
+      if (currentOption.groupAssociation == null) {
+        //Either there was no submitted vote (ie identifier is also null),
+        //OR the option just didn't have a group
+        currentMap['GROUP'] = '';
+
+      } else {
+        print ('found a group');
+        print (currentOption.groupAssociation);
+        currentMap['GROUP'] = currentOption.groupAssociation;
+        //if this isn't null but the identifier is null, we have as serious problem
+        assert (currentOption.identifier != null);
+      }
+
+      outputList.add(currentMap);
+    }
+    return outputList;
+  }
+
+  String toJSON() {
+    return JSON.encode(this.toStringMappingList());
   }
 
   String toString(){
