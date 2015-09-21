@@ -1,0 +1,9 @@
+name: VoteBoxUI
+description: A sample Dart Chrome packaged application
+dependencies:
+  chrome: any
+  xml: "^2.3.2"
+transformers:
+- chrome
+- $dart2js:
+    csp: true
