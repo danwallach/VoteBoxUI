@@ -13,6 +13,7 @@ import 'dart:collection';
 
 List<int> raceChangeList = new List<int>();
 HashMap<int,String> alreadyChangedMap = new HashMap<int, String>();
+HashMap<int,String> preChangedMap = new HashMap<int, String>();
 List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
 bool endOfBallotReview;
@@ -30,12 +31,12 @@ main() async {
   document.onKeyDown.listen(blockKeys);
   document.onKeyUp.listen(blockKeys);
 
-  Ballot ballot;
+  Ballot actuallyCastBallot;
 
   /* Load the Ballot from the XML file reference passed through localdata */
   print("Loading ballot...");
-  ballot = await loadBallot();
-  print("Ballot has ${ballot.size()} races and propositions detected.");
+  actuallyCastBallot = await loadBallot();
+  print("Ballot has ${actuallyCastBallot.size()} races and propositions detected.");
 
   /*****************************************************************************************************************************\
                                                       OPTIONS PAGE
@@ -105,20 +106,20 @@ main() async {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => beginElection(e, ballot));
+  querySelector('#Begin').onClick.listen((MouseEvent e) => beginElection(e, actuallyCastBallot));
 
   /* TODO straight party? */
 
-  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, ballot));
-  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, ballot));
+  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, actuallyCastBallot));
+  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, actuallyCastBallot));
 
-  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, ballot));
+  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, actuallyCastBallot));
 
   querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
 
-  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, ballot));
+  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, actuallyCastBallot));
 
-  querySelector('#endVoting').onClick.listen((e) => endVoting(ballot));
+  querySelector('#endVoting').onClick.listen((e) => endVoting(actuallyCastBallot));
 
 
 }
@@ -366,58 +367,55 @@ void update(MouseEvent event, int delta, Ballot b) {
 }
 
 /**
- *
-*/
-Ballot changeVotes(Ballot actuallyCastBallot){
+ * Mutates actuallyCastBallot, flipping races determined by raceChangeList
+ */
+void changeVotes(Ballot actuallyCastBallot){
 
   Ballot currentVersion;
 
   for(int raceToChange in raceChangeList){
-    currentVersion = changeVote(actuallyCastBallot, raceToChange);
+    changeVote(actuallyCastBallot, raceToChange);
   }
-
-  /* This should return a copy of the changed version of actuallyCastBallot */
-  return currentVersion;
 
 }
 
 /**
  *
  */
-Ballot changeVote(Ballot actuallyCastBallot, int raceToChange) {
+void changeVote(Ballot actuallyCastBallot, int raceToChangeIndex) {
 
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) with userCorrection */
-  if(raceChangeList.contains(raceToChange) && !(userCorrection && alreadyChangedMap.containsKey(raceToChange))) {
+  if(raceChangeList.contains(raceToChangeIndex) && !(userCorrection && alreadyChangedMap.containsKey(raceToChangeIndex))) {
 
     /* If not already changed, change it */
-    if(!alreadyChangedMap.containsKey(raceToChange)) {
+    if(!alreadyChangedMap.containsKey(raceToChangeIndex)) {
+
+      Race raceBeingChanged = actuallyCastBallot.getRace(raceToChangeIndex);
+      preChangedMap[raceToChangeIndex] = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
 
       /* Check what type of change  for the current index */
-      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
-        changeSelection(actuallyCastBallot.getRace(raceToChange));
-        alreadyChangedMap[raceToChange] = actuallyCastBallot.getRace(raceToChange).getSelectedOption().identifier;
+      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChangeIndex)) == "Change Selection") {
+        changeSelection(actuallyCastBallot.getRace(raceToChangeIndex));
+        alreadyChangedMap[raceToChangeIndex] = actuallyCastBallot.getRace(raceToChangeIndex).getSelectedOption().identifier;
       } else {
-        actuallyCastBallot.getRace(raceToChange).noSelection();
-        alreadyChangedMap[raceToChange] = "";
-
+        actuallyCastBallot.getRace(raceToChangeIndex).noSelection();
+        alreadyChangedMap[raceToChangeIndex] = "";
       }
 
 
     } else {
       /* Change it back */
-      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
-        actuallyCastBallot.getRace(raceToChange).markSelection(alreadyChangedMap[raceToChange]);
+      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChangeIndex)) == "Change Selection") {
+        actuallyCastBallot.getRace(raceToChangeIndex).markSelection(alreadyChangedMap[raceToChangeIndex]);
       } else {
-        actuallyCastBallot.getRace(raceToChange).noSelection();
+        actuallyCastBallot.getRace(raceToChangeIndex).noSelection();
       }
     }
 
   }
 
-  /* This should return a copy of the changed version of actuallyCastBallot */
-  return actuallyCastBallot;
 }
 
 /**
@@ -1086,13 +1084,38 @@ Future confirmScreen(Ballot actuallyCastBallot) async {
   querySelector('#confirmation').style.visibility = "visible";
   querySelector('#confirmation').style.display = "block";
 
-  /* "voteFlipped" contains flips by now unless print-flipping */
+  Ballot voteFlippedBallot;
+
+  /* For now set "voterIntent" to "actuallyCast" */
+  Ballot voterIntentBallot = actuallyCastBallot;
 
   /* Print flipping */
   if(voteFlippingType == "Vote Changes After Voting") {
 
-    /* Change the "actuallyCast" and set "voteFlipped" to it */
-    voteFlippedBallot = changeVotes(actuallyCastBallot);
+    /* Change the "actuallyCast" and set "voteFlipped" to it because in this case these are the same */
+    changeVotes(actuallyCastBallot);
+    voteFlippedBallot = actuallyCastBallot;
+
+  } else {
+
+    /* Set "voteFlipped" to "actuallyCast" to get what the voter is about to cast */
+    /* TODO make sure this is a copy, not reference to actuallyCast */
+    voteFlippedBallot = actuallyCastBallot;
+
+    for(int i in alreadyChangedMap.keys) {
+
+      /* Mark voteFlipped in case any flipped races were corrected (so we can reconstruct all flipped) */
+      /* Set the ith race to the option that the flipper selected originally */
+      voteFlippedBallot.getRace(i).markSelection(alreadyChangedMap[i]);
+
+      /* Mark voterIntent to get all the voter choices before flipping (so we can reconstruct voter choices on
+       * nonflipped races. We assume on flipped races that the first selection was the intended selection... */
+      if(preChangedMap[i] != null) {
+        voterIntentBallot.getRace(i).markSelection(preChangedMap[i]);
+      } else {
+        voterIntentBallot.getRace(i).noSelection();
+      }
+    }
 
   }
 
