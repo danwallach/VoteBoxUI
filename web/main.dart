@@ -20,6 +20,7 @@ bool endOfBallotReview;
 bool dialogConfirmation;
 bool userCorrection;
 String voteFlippingType;
+String currentPage="Options Page";
 
 
 main() async {
@@ -45,7 +46,7 @@ main() async {
   querySelectorAll('input[name=\"reviewType\"]').onClick.listen(
           (MouseEvent e){
             /* Set the inlineConfirmation while we're here */
-            inlineConfirmation = ((querySelector('#reviewType1') as RadioButtonInputElement).checked || (querySelector('#reviewType3') as RadioButtonInputElement).checked);
+            inlineConfirmation = ((querySelector('#reviewTypeInline') as RadioButtonInputElement).checked || (querySelector('#reviewTypeBoth') as RadioButtonInputElement).checked);
             querySelector('#inlineTypeOption').style.visibility = inlineConfirmation ? "visible":"hidden";
             querySelector('#inlineTypeOption').style.display = inlineConfirmation ? "block":"none";
           }
@@ -87,6 +88,7 @@ main() async {
         recordOptions();
         querySelector('#options').style.display ="none";
         querySelector('#auth').style.visibility="visible";
+        currentPage="Authentication Page";
       }
   );
 
@@ -235,15 +237,15 @@ void recordOptions(){
 
 
   /* Set booleans for endOfBallotReview, inlineConfirmation, dialogConfirmation */
-  endOfBallotReview   = ( (querySelector('#reviewType2') as RadioButtonInputElement).checked ||
-                          (querySelector('#reviewType3') as RadioButtonInputElement).checked  );
+  endOfBallotReview   = ( (querySelector('#reviewTypeEndOfBallot') as RadioButtonInputElement).checked ||
+                          (querySelector('#reviewTypeBoth') as RadioButtonInputElement).checked  );
 
-  inlineConfirmation  = ( (querySelector('#reviewType1') as RadioButtonInputElement).checked ||
-                          (querySelector('#reviewType3') as RadioButtonInputElement).checked  );
+  inlineConfirmation  = ( (querySelector('#reviewTypeInline') as RadioButtonInputElement).checked ||
+                          (querySelector('#reviewTypeBoth') as RadioButtonInputElement).checked  );
 
-  dialogConfirmation  =   (querySelector('#inlineType1') as RadioButtonInputElement).checked;
+  dialogConfirmation  =   (querySelector('#inlineTypePopup') as RadioButtonInputElement).checked;
 
-  userCorrection      =   (querySelector('#correct1') as RadioButtonInputElement).checked;
+  userCorrection      =   (querySelector('#correctOn') as RadioButtonInputElement).checked;
 
 
   print("Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedMap\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
@@ -278,11 +280,11 @@ void getID(MouseEvent event) {
     dialog.showModal();
   }
   else{
-
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
     querySelector("#idText").style.display="none";
+    currentPage = "Information Page";
   }
 
 }
@@ -296,6 +298,7 @@ void gotoFirstInstructions(MouseEvent event) {
   querySelector("#Back").style.visibility="visible"; //shows the back button that takes you to the election info page
   querySelector("#Begin").style.visibility="visible"; //shows the button that is pressed to start voting
   querySelector("#info").style.display="none"; //makes the instructions invisible
+  currentPage = "First Instructions Page";
 }
 
 /**
@@ -306,13 +309,14 @@ void gotoInfo(MouseEvent event) {
   querySelector("#Back").style.visibility="hidden";
   querySelector("#first_instructions").style.display="none"; //makes the instructions invisible
   querySelector("#info").style.display="block"; //shows election information page or start
-
+  currentPage = "Information Page";
 }
 
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
 void gotoReview(MouseEvent e, Ballot b) {
+
 
   /* Set the delta to purposefully get to the review page */
   update(e, b.size()-b.getCurrentPage(), b);
@@ -350,13 +354,17 @@ void update(MouseEvent event, int delta, Ballot b) {
 
       }
 
+      currentPage = "Inline Confirmation: Race ${b.getCurrentPage()+1}";
+
       /* Display popup or inline screen -- always moving forward 1 */
       displayInlineConfirmation(b, delta);
+
 
     } else {
       /* Inline confirmation is disabled or "Return to Review" or "Previous" button hit */
       /* Just display the next screen */
       display(b.getCurrentPage() + delta, b);
+
     }
 
 
@@ -364,6 +372,7 @@ void update(MouseEvent event, int delta, Ballot b) {
   } else {
     review(event, b.getCurrentPage()+delta, b);
   }
+
 }
 
 /**
@@ -512,6 +521,7 @@ void displayDialogConfirmation(Ballot b, int delta) {
           (MouseEvent e){
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
+            currentPage = "race${b.getCurrentPage()+1}";
           }
   );
 }
@@ -643,6 +653,8 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
   if(pageToDisplay >= b.size()) {
 
     displayReviewPage(b);
+
+    currentPage = "Review Page";
     b.updateCurrentPage(b.size());
 
   } else {
@@ -653,6 +665,9 @@ void review(MouseEvent event, int pageToDisplay, Ballot b) {
     Race race = b.getRace(pageToDisplay);
 
     reviewRace(race);
+
+    currentPage = "Review: Race ${pageToDisplay+1}";
+
     b.updateCurrentPage(pageToDisplay);
   }
 }
@@ -705,6 +720,7 @@ void beginElection(MouseEvent e, Ballot b) {
 
   /* Display the first race */
   display(0, b);
+  currentPage = "Race 1";
 }
 
 
@@ -727,6 +743,8 @@ void display(int pageToDisplay, Ballot b) {
       }
 
       displayReviewPage(b);
+      currentPage = "Review Page";
+
     } else {
       /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
       displayReviewPage(b);
@@ -764,6 +782,8 @@ void display(int pageToDisplay, Ballot b) {
     }
 
     displayRace(race);
+
+    currentPage = "Race ${pageToDisplay+1}";
     b.updateCurrentPage(pageToDisplay);
   }
 }
@@ -1027,6 +1047,8 @@ void displayReviewPage(Ballot b) {
 
 void submitScreen(Event e){
 
+  currentPage = "Submit Screen";
+
   print("Submitting!");
 
   /* Get rid of original "Print Your Ballot" button on bottom bar */
@@ -1071,6 +1093,7 @@ void returnToBallot (Event e, ballot){
 }
 
 Future endVoting(Ballot actuallyCastBallot) async {
+  currentPage = "End Voting Page";
   await confirmScreen(actuallyCastBallot);
   chrome.app.window.current().close();
 }
@@ -1456,5 +1479,112 @@ class Ballot {
     return strRep;
   }
 }
+
+
+
+/* ============================================================================= *\
+                                      LOGGING
+\* ============================================================================= */
+
+class EventTrigger {
+
+  String triggerID;
+  String triggerName;
+  String triggerClass;
+  String triggerType;
+
+  EventTrigger (EventTarget t) {
+    Element tE = t as Element;
+
+    triggerID = tE.id;
+    triggerName = tE.localName;
+    triggerClass = tE.className;
+    triggerType = tE.nodeName;
+  }
+}
+
+
+class LogEvent {
+
+  DateTime time;
+  EventTrigger sourceID;
+  String pageTitle;
+  String eventType;
+
+  LogEvent(Event e) {
+
+    time = new DateTime.now();
+    sourceID = new EventTrigger(e.currentTarget);
+    eventType = e.type;
+    pageTitle = currentPage;
+  }
+
+}
+
+class LogEventPair {
+  LogEvent begin;
+  LogEvent end;
+
+  LogEventPair(this.begin, this.end);
+}
+
+class LogEventInterval {
+
+  Duration intervalLength;
+  LogEventPair pairForInterval;
+
+  LogEventInterval(LogEvent begin, LogEvent end){
+    intervalLength = begin.time.difference(end.time);
+    pairForInterval = new LogEventPair(begin, end);
+  }
+
+}
+
+class Logger {
+
+  List<LogEvent> log;
+  List<LogEventInterval> intervalLog;
+  LinkedHashMap<String, Ballot> ballotLog;
+
+  Logger(){
+    log = new List<LogEvent>();
+    intervalLog = new List<LogEventInterval>();
+    ballotLog = new LinkedHashMap<String, Ballot>();
+  }
+
+  void logEvent(Event e){
+    log.add(new LogEvent(e));
+  }
+
+  void logBallot(String designation, Ballot b){
+    ballotLog[designation] = b;
+  }
+
+  String report(){
+
+    String reportString = "";
+
+    /* Include all the logEvents */
+    for(LogEvent logEvent in log){
+      reportString += logEvent.summary();
+    }
+
+
+    for(LogEventInterval interval in intervalLog) {
+      reportString += interval.summary();
+    }
+
+    for(String designation in ballotLog.keys){
+      reportString += ballotLog[designation].summary();
+    }
+
+
+
+    return reportString;
+  }
+
+}
+
+
 
 
