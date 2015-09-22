@@ -13,7 +13,7 @@ import 'dart:collection';
 
 List<int> raceChangeList = new List<int>();
 HashMap<int,String> alreadyChangedMap = new HashMap<int, String>();
-HashMap<int,String> preChangedMap = new HashMap<int, String>();
+HashMap<int,String> voterIntentMap = new HashMap<int, String>();
 List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
 bool endOfBallotReview;
@@ -393,6 +393,22 @@ void changeVotes(Ballot actuallyCastBallot){
  */
 void changeVote(Ballot actuallyCastBallot, int raceToChangeIndex) {
 
+  /* Get what the voter is trying to put into the race */
+  Race raceBeingChanged = actuallyCastBallot.getRace(raceToChangeIndex);
+
+  /* Check if the vote has been changed yet */
+  if(raceChangeList.contains(raceToChangeIndex)) {
+
+    String potentialSelection = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
+
+    /* If it has changed, make sure the selection is different before changing (we want the most recent non-flipped selection) */
+    voterIntentMap[raceToChangeIndex] = (potentialSelection == alreadyChangedMap[raceToChangeIndex]) ?  voterIntentMap[raceToChangeIndex] :
+                                                                                                        potentialSelection;
+
+  } else {
+    /* Since it hasn't been changed yet, get the current selection state of the ballot */
+    voterIntentMap[raceToChangeIndex] = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
+  }
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) with userCorrection */
@@ -400,9 +416,6 @@ void changeVote(Ballot actuallyCastBallot, int raceToChangeIndex) {
 
     /* If not already changed, change it */
     if(!alreadyChangedMap.containsKey(raceToChangeIndex)) {
-
-      Race raceBeingChanged = actuallyCastBallot.getRace(raceToChangeIndex);
-      preChangedMap[raceToChangeIndex] = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
 
       /* Check what type of change  for the current index */
       if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChangeIndex)) == "Change Selection") {
@@ -1133,8 +1146,8 @@ Future confirmScreen(Ballot actuallyCastBallot) async {
 
       /* Mark voterIntent to get all the voter choices before flipping (so we can reconstruct voter choices on
        * nonflipped races. We assume on flipped races that the first selection was the intended selection... */
-      if(preChangedMap[i] != null) {
-        voterIntentBallot.getRace(i).markSelection(preChangedMap[i]);
+      if(voterIntentMap[i] != null) {
+        voterIntentBallot.getRace(i).markSelection(voterIntentMap[i]);
       } else {
         voterIntentBallot.getRace(i).noSelection();
       }
@@ -1478,6 +1491,10 @@ class Ballot {
 
     return strRep;
   }
+
+  String summary(){
+    return "";
+  }
 }
 
 
@@ -1519,6 +1536,10 @@ class LogEvent {
     pageTitle = currentPage;
   }
 
+  String toString() {
+    return "";
+  }
+
 }
 
 class LogEventPair {
@@ -1526,6 +1547,10 @@ class LogEventPair {
   LogEvent end;
 
   LogEventPair(this.begin, this.end);
+
+  String summary(){
+    return "";
+  }
 }
 
 class LogEventInterval {
@@ -1536,6 +1561,10 @@ class LogEventInterval {
   LogEventInterval(LogEvent begin, LogEvent end){
     intervalLength = begin.time.difference(end.time);
     pairForInterval = new LogEventPair(begin, end);
+  }
+
+  String summary(){
+    return "";
   }
 
 }
@@ -1566,7 +1595,7 @@ class Logger {
 
     /* Include all the logEvents */
     for(LogEvent logEvent in log){
-      reportString += logEvent.summary();
+      reportString += logEvent.toString();
     }
 
 
@@ -1577,8 +1606,6 @@ class Logger {
     for(String designation in ballotLog.keys){
       reportString += ballotLog[designation].summary();
     }
-
-
 
     return reportString;
   }
