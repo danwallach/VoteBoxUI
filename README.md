@@ -10,6 +10,8 @@ decide to install the Dart SDK -- and use that to download the packages.
 
 Then, run the following commands in the terminal, after cd'ing into the VoteBoxUI directory
 
+`pub get`
+
 `pub build`
 
 `xcopy /Y build\web\main.dart.js web\main.dart.js`
@@ -17,6 +19,22 @@ Then, run the following commands in the terminal, after cd'ing into the VoteBoxU
 ## Launch for Devs
 `"absolute\path\to\chrome.exe" --profile-directory=Default --app-id=WhateverYourAppIDIS "absolute\path\to\electionfile.xml"`
 
+
+# To use in Linux:
+
+## Compilation for Devs
+First, install pub and Dart.
+
+Then run the following in the terminal after cd'ing into the VoteBoxUI directory
+
+`pub get`
+
+`pub build`
+
+`cp -v ./build/web/main.dart.js ./web/main.dart.js`
+
+## Launch for Devs
+`/opt/google/chrome/google-chrome --profile-directory=Default --app-id=whateverYourAppIDis Absolute/Path/to/Election/File.xml`
 
 
 # To use in Mac OS X:
@@ -29,6 +47,8 @@ right clicking or command-q; if it's still running, even if you closed every tab
 with command-w, it won't open the app correctly until you quit chrome first)
 
 Third, run the following command in the terminal, after cd'ing into the VoteBoxUI directory
+
+`pub get`
 
 `pub build`
 

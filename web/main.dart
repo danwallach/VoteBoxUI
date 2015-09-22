@@ -332,7 +332,8 @@ void update(MouseEvent event, int delta, Ballot b) {
       /* Change vote if we're voteflipping and progressing */
       if(voteFlippingType == "Vote Changes During Voting"){
 
-        /* This should change the vote if it hasn't been changed before */
+        /* This should only randomly flip the vote if it hasn't been flipped before, otherwise flip to previously
+         * selected flip chosen by changeVote for this Race */
         changeVote(b, b.getCurrentPage());
       }
 
@@ -367,18 +368,24 @@ void update(MouseEvent event, int delta, Ballot b) {
 /**
  *
 */
-void changeVotes(Ballot b){
+Ballot changeVotes(Ballot actuallyCastBallot){
+
+  Ballot currentVersion;
 
   for(int raceToChange in raceChangeList){
-    changeVote(b, raceToChange);
+    currentVersion = changeVote(actuallyCastBallot, raceToChange);
   }
+
+  /* This should return a copy of the changed version of actuallyCastBallot */
+  return currentVersion;
 
 }
 
 /**
  *
  */
-void changeVote(Ballot b, int raceToChange) {
+Ballot changeVote(Ballot actuallyCastBallot, int raceToChange) {
+
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) with userCorrection */
@@ -389,10 +396,10 @@ void changeVote(Ballot b, int raceToChange) {
 
       /* Check what type of change  for the current index */
       if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
-        changeSelection(b.getRace(raceToChange));
-        alreadyChangedMap[raceToChange] = b.getRace(raceToChange).getSelectedOption().identifier;
+        changeSelection(actuallyCastBallot.getRace(raceToChange));
+        alreadyChangedMap[raceToChange] = actuallyCastBallot.getRace(raceToChange).getSelectedOption().identifier;
       } else {
-        b.getRace(raceToChange).noSelection();
+        actuallyCastBallot.getRace(raceToChange).noSelection();
         alreadyChangedMap[raceToChange] = "";
 
       }
@@ -401,14 +408,16 @@ void changeVote(Ballot b, int raceToChange) {
     } else {
       /* Change it back */
       if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
-        b.getRace(raceToChange).markSelection(alreadyChangedMap[raceToChange]);
+        actuallyCastBallot.getRace(raceToChange).markSelection(alreadyChangedMap[raceToChange]);
       } else {
-        b.getRace(raceToChange).noSelection();
+        actuallyCastBallot.getRace(raceToChange).noSelection();
       }
     }
 
   }
 
+  /* This should return a copy of the changed version of actuallyCastBallot */
+  return actuallyCastBallot;
 }
 
 /**
@@ -1063,12 +1072,12 @@ void returnToBallot (Event e, ballot){
 
 }
 
-Future endVoting(Ballot finalizedBallot) async {
-  await confirmScreen(finalizedBallot);
+Future endVoting(Ballot actuallyCastBallot) async {
+  await confirmScreen(actuallyCastBallot);
   chrome.app.window.current().close();
 }
 
-Future confirmScreen(Ballot finalizedBallot) async {
+Future confirmScreen(Ballot actuallyCastBallot) async {
 
   print("Confirming!");
   querySelector('#submitScreen').style.visibility = "hidden";
@@ -1077,7 +1086,18 @@ Future confirmScreen(Ballot finalizedBallot) async {
   querySelector('#confirmation').style.visibility = "visible";
   querySelector('#confirmation').style.display = "block";
 
-  await printFinalizedBallotSilent(finalizedBallot);
+  /* "voteFlipped" contains flips by now unless print-flipping */
+
+  /* Print flipping */
+  if(voteFlippingType == "Vote Changes After Voting") {
+
+    /* Change the "actuallyCast" and set "voteFlipped" to it */
+    voteFlippedBallot = changeVotes(actuallyCastBallot);
+
+  }
+
+
+  await printFinalizedBallotSilent(actuallyCastBallot);
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 30), () => '30');
