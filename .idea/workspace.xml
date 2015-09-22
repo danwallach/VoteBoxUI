@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
+    <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="Comme">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,8 +29,8 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4124031">
-              <caret line="1133" column="10" selection-start-line="1133" selection-start-column="10" selection-end-line="1133" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.49918166">
+              <caret line="937" column="5" selection-start-line="937" selection-start-column="5" selection-end-line="937" selection-end-column="5" />
               <folding>
                 <element signature="e#86#122#0" expanded="true" />
               </folding>
@@ -541,7 +541,7 @@
       <workItem from="1442890131961" duration="48000" />
       <workItem from="1442890189301" duration="8958000" />
       <workItem from="1442947283835" duration="2574000" />
-      <workItem from="1442951769043" duration="11142000" />
+      <workItem from="1442951769043" duration="11566000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -717,11 +717,17 @@
       <option name="project" value="LOCAL" />
       <updated>1442962059781</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Refactored actuallyCastBallot to make it global and simplify access.">
+      <created>1442963138784</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1442963138784</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96808000" />
+    <option name="totallyTimeSpent" value="97232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -767,7 +773,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working on implementing inline confirmation logic" />
     <MESSAGE value="Much of voteflipping framework in place" />
     <MESSAGE value="Vote-flipping logic seems to be all in place. Initial pre-tests have everything functioning (normally without flipping but with the flipping framework in existence). &#10;&#10;Still need to create a dialog, intermediate screen, and proper vote changing lists from the options." />
     <MESSAGE value="Reworked some of the logic to essentially give inline confirmation on ANY *forward* move (i.e. a move towards the review screen). This handles both going race-by-race and also jumping back to the review screen." />
@@ -792,7 +797,8 @@
     <MESSAGE value="Put in basic code for creating the three Ballot versions (actuallyCast, voterIntent, and voteFlipped)" />
     <MESSAGE value="Changed some element ids to be more intelligible. Implemented a currentPage global variable to make page logging a little easier. Implemented a series of logging objects for logging." />
     <MESSAGE value="Made it so that the voter intent for vote-flipping would be the most recent attempted selection that is not the flipped value." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made it so that the voter intent for vote-flipping would be the most recent attempted selection that is not the flipped value." />
+    <MESSAGE value="Refactored actuallyCastBallot to make it global and simplify access." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored actuallyCastBallot to make it global and simplify access." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1428,8 +1434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4124031">
-          <caret line="1133" column="10" selection-start-line="1133" selection-start-column="10" selection-end-line="1133" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.49918166">
+          <caret line="937" column="5" selection-start-line="937" selection-start-column="5" selection-end-line="937" selection-end-column="5" />
           <folding>
             <element signature="e#86#122#0" expanded="true" />
           </folding>

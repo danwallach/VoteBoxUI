@@ -390,23 +390,6 @@ void changeVotes(){
  */
 void changeVote(int raceToChangeIndex) {
 
-  /* Get what the voter is trying to put into the race */
-  Race raceBeingChanged = actuallyCastBallot.getRace(raceToChangeIndex);
-
-  /* Check if the vote has been changed yet */
-  if(raceChangeList.contains(raceToChangeIndex)) {
-
-    String potentialSelection = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
-
-    /* If it has changed, make sure the selection is different before changing (we want the most recent non-flipped selection) */
-    voterIntentMap[raceToChangeIndex] = (potentialSelection == alreadyChangedMap[raceToChangeIndex]) ?  voterIntentMap[raceToChangeIndex] :
-                                                                                                        potentialSelection;
-
-  } else {
-    /* Since it hasn't been changed yet, get the current selection state of the ballot */
-    voterIntentMap[raceToChangeIndex] = raceBeingChanged.hasVoted() ? raceBeingChanged.getSelectedOption().identifier : null;
-  }
-
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
   /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) with userCorrection */
   if(raceChangeList.contains(raceToChangeIndex) && !(userCorrection && alreadyChangedMap.containsKey(raceToChangeIndex))) {
@@ -937,12 +920,17 @@ void respondToClick(MouseEvent e, Race race) {
   InputElement target = ((e.currentTarget as Element).querySelector(".vote") as InputElement);
   target.checked = !target.checked;
 
-  /* Add the image */
 
   /* Now update this Race */
   if(target.checked) {
     race.markSelection((e.currentTarget as Element).querySelector(".optionIdentifier").text);
-    voterIntentMap[actuallyCastBallot.getCurrentPage()] = race.getSelectedOption().identifier;
+
+    /* Do this here so that we can keep track of what was actually clicked vs what we changed */
+    /* Check if this race is a flipped one (otherwise we don't have to keep track) */
+    if(alreadyChangedMap.containsKey(actuallyCastBallot.getCurrentPage())) {
+      voterIntentMap[actuallyCastBallot.getCurrentPage()] = race.getSelectedOption().identifier;
+    }
+
     /* Update the button as well if in */
     if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
       querySelector("#Next").className = "next";
@@ -958,13 +946,16 @@ void respondToClick(MouseEvent e, Race race) {
     }
 
     race.noSelection();
-    voterIntentMap[actuallyCastBallot.getCurrentPage()] = null;
 
+    /* Do this here so that we can keep track of what was actually clicked vs what we changed */
+    /* Check if this race is a flipped one (otherwise we don't have to keep track) */
+    if(alreadyChangedMap.containsKey(actuallyCastBallot.getCurrentPage())) {
+      voterIntentMap[actuallyCastBallot.getCurrentPage()] = null;
+    }
   }
 
   /* Just redisplay the page to take care of everything */
   displayRace(race);
-
 }
 
 /**
