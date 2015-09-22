@@ -21,6 +21,7 @@ bool dialogConfirmation;
 bool userCorrection;
 String voteFlippingType;
 String currentPage="Options Page";
+Ballot actuallyCastBallot;
 
 
 main() async {
@@ -31,8 +32,6 @@ main() async {
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
   document.onKeyUp.listen(blockKeys);
-
-  Ballot actuallyCastBallot;
 
   /* Load the Ballot from the XML file reference passed through localdata */
   print("Loading ballot...");
@@ -108,20 +107,20 @@ main() async {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((MouseEvent e) => beginElection(e, actuallyCastBallot));
+  querySelector('#Begin').onClick.listen((e) => beginElection);
 
   /* TODO straight party? */
 
-  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1, actuallyCastBallot));
-  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1, actuallyCastBallot));
+  querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1));
+  querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1));
 
-  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview(e, actuallyCastBallot));
+  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview);
 
   querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
 
-  querySelector('#returnToBallot').onClick.listen((e) => returnToBallot(e, actuallyCastBallot));
+  querySelector('#returnToBallot').onClick.listen(returnToBallot);
 
-  querySelector('#endVoting').onClick.listen((e) => endVoting(actuallyCastBallot));
+  querySelector('#endVoting').onClick.listen((e) => endVoting);
 
 
 }
@@ -315,21 +314,21 @@ void gotoInfo(MouseEvent event) {
 /**
  * Triggers on 'Return to Review' and re-renders the 'Review' page
  */
-void gotoReview(MouseEvent e, Ballot b) {
+void gotoReview(MouseEvent e) {
 
 
   /* Set the delta to purposefully get to the review page */
-  update(e, b.size()-b.getCurrentPage(), b);
+  update(e, actuallyCastBallot.size()-actuallyCastBallot.getCurrentPage());
 }
 
-void update(MouseEvent event, int delta, Ballot b) {
+void update(MouseEvent event, int delta) {
 
   /* Display the new page (either next or previous) */
-  if(b.getCurrentPage() != b.size()) {
+  if(actuallyCastBallot.getCurrentPage() != actuallyCastBallot.size()) {
 
 
     /* Record information on currentPage in the Ballot */
-    record(b);
+    record(actuallyCastBallot);
 
     /* If the inline confirmation is enabled, display the inline first, assuming we're moving forward */
     if(inlineConfirmation && delta>0) {
@@ -339,38 +338,38 @@ void update(MouseEvent event, int delta, Ballot b) {
 
         /* This should only randomly flip the vote if it hasn't been flipped before, otherwise flip to previously
          * selected flip chosen by changeVote for this Race */
-        changeVote(b, b.getCurrentPage());
+        changeVote(actuallyCastBallot.getCurrentPage());
       }
 
       /* Redisplay the current page with updated information
        * This is so popup can see updated information. Inline screen can just clear this out.
        */
-      display(b.getCurrentPage(), b);
+      display(actuallyCastBallot.getCurrentPage());
 
       /* Need to re-hide back and next */
-      if(b.getCurrentPage()+delta >= b.size()) {
+      if(actuallyCastBallot.getCurrentPage()+delta >= actuallyCastBallot.size()) {
         querySelector("#Next").style.display = "none";
         querySelector("#Previous").style.visibility = "hidden";
 
       }
 
-      currentPage = "Inline Confirmation: Race ${b.getCurrentPage()+1}";
+      currentPage = "Inline Confirmation: Race ${actuallyCastBallot.getCurrentPage()+1}";
 
       /* Display popup or inline screen -- always moving forward 1 */
-      displayInlineConfirmation(b, delta);
+      displayInlineConfirmation(delta);
 
 
     } else {
       /* Inline confirmation is disabled or "Return to Review" or "Previous" button hit */
       /* Just display the next screen */
-      display(b.getCurrentPage() + delta, b);
+      display(actuallyCastBallot.getCurrentPage() + delta);
 
     }
 
 
     /* If we're on the review page, review the race */
   } else {
-    review(event, b.getCurrentPage()+delta, b);
+    review(event, actuallyCastBallot.getCurrentPage()+delta);
   }
 
 }
@@ -378,12 +377,10 @@ void update(MouseEvent event, int delta, Ballot b) {
 /**
  * Mutates actuallyCastBallot, flipping races determined by raceChangeList
  */
-void changeVotes(Ballot actuallyCastBallot){
-
-  Ballot currentVersion;
+void changeVotes(){
 
   for(int raceToChange in raceChangeList){
-    changeVote(actuallyCastBallot, raceToChange);
+    changeVote(raceToChange);
   }
 
 }
@@ -391,7 +388,7 @@ void changeVotes(Ballot actuallyCastBallot){
 /**
  *
  */
-void changeVote(Ballot actuallyCastBallot, int raceToChangeIndex) {
+void changeVote(int raceToChangeIndex) {
 
   /* Get what the voter is trying to put into the race */
   Race raceBeingChanged = actuallyCastBallot.getRace(raceToChangeIndex);
@@ -474,12 +471,12 @@ void changeSelection(Race raceToChange) {
 /**
  *
  */
-void displayInlineConfirmation(Ballot b, int delta){
+void displayInlineConfirmation(int delta){
 
   if(dialogConfirmation) {
-    displayDialogConfirmation(b, delta);
+    displayDialogConfirmation(delta);
   } else {
-    displayIntermediateConfirmation(b, delta);
+    displayIntermediateConfirmation(delta);
   }
 
 }
@@ -487,7 +484,7 @@ void displayInlineConfirmation(Ballot b, int delta){
 /**
  *
  */
-void displayDialogConfirmation(Ballot b, int delta) {
+void displayDialogConfirmation(int delta) {
 
   DialogElement verifyDialog = querySelector('#verifyDialog');
 
@@ -495,7 +492,7 @@ void displayDialogConfirmation(Ballot b, int delta) {
 
   verifyDialog.innerHtml = "";
 
-  Race currentRace = b.getRace(b.getCurrentPage());
+  Race currentRace = actuallyCastBallot.getRace(actuallyCastBallot.getCurrentPage());
 
   /* Show an appropriate confirmation message */
   verifyDialog.appendHtml(currentRace.hasVoted()?
@@ -525,7 +522,7 @@ void displayDialogConfirmation(Ballot b, int delta) {
           (MouseEvent e){
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
-            display(b.getCurrentPage()+delta, b);
+            display(actuallyCastBallot.getCurrentPage()+delta);
           }
   );
 
@@ -534,7 +531,7 @@ void displayDialogConfirmation(Ballot b, int delta) {
           (MouseEvent e){
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
-            currentPage = "race${b.getCurrentPage()+1}";
+            currentPage = "race${actuallyCastBallot.getCurrentPage()+1}";
           }
   );
 }
@@ -542,7 +539,7 @@ void displayDialogConfirmation(Ballot b, int delta) {
 /**
  *
  */
-void displayIntermediateConfirmation(Ballot b, int delta) {
+void displayIntermediateConfirmation(int delta) {
 
   /* Clear the current page of voting and buttons and display intermediate screen */
   querySelector("#VotingContentDIV").style.display = "none";
@@ -553,11 +550,11 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
   /* Display intermediate screen */
   if(querySelector("#inlineConfirmationDiv") != null) querySelector("#inlineConfirmationDiv").remove();
 
-  Race currentRace = b.getRace(b.getCurrentPage());
+  Race currentRace = actuallyCastBallot.getRace(actuallyCastBallot.getCurrentPage());
 
   DivElement inlineConfirmationDiv = new DivElement();
   inlineConfirmationDiv.id = "inlineConfirmationDiv";
-  inlineConfirmationDiv.appendHtml(b.getRace(b.getCurrentPage()).hasVoted()?
+  inlineConfirmationDiv.appendHtml(actuallyCastBallot.getRace(actuallyCastBallot.getCurrentPage()).hasVoted()?
   "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
   "<p>You did not select anyone.<br>Is this correct?</p>");
 
@@ -589,7 +586,7 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
             noButton.style.display = "none";
 
             /* Redisplay of everything is handled by display */
-            display(b.getCurrentPage()+delta, b);
+            display(actuallyCastBallot.getCurrentPage()+delta);
 
             querySelector("#Bottom").querySelector("#No").remove();
             querySelector("#Bottom").querySelector("#Yes").remove();
@@ -607,10 +604,10 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
             noButton.style.display = "none";
 
             /* Redisplay of everything is handled by display */
-            display(b.getCurrentPage(), b);
+            display(actuallyCastBallot.getCurrentPage());
 
             /* Need to re-hide back and next */
-            if(b.getCurrentPage()+delta >= b.size()) {
+            if(actuallyCastBallot.getCurrentPage()+delta >= actuallyCastBallot.size()) {
               querySelector("#Next").style.display = "none";
               querySelector("#Previous").style.visibility = "hidden";
               querySelector("#Review").style.visibility = "visible";
@@ -659,29 +656,29 @@ void record(Ballot b){
 /**
  * Renders the pageToDisplay in the Ballot as HTML in the UI as a "reviewed" page
  */
-void review(MouseEvent event, int pageToDisplay, Ballot b) {
+void review(MouseEvent event, int pageToDisplay) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
-  if(pageToDisplay >= b.size()) {
+  if(pageToDisplay >= actuallyCastBallot.size()) {
 
-    displayReviewPage(b);
+    displayReviewPage();
 
     currentPage = "Review Page";
-    b.updateCurrentPage(b.size());
+    actuallyCastBallot.updateCurrentPage(actuallyCastBallot.size());
 
   } else {
 
     /* Update progress */
-    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
+    querySelector("#progress").text = "${pageToDisplay+1} of ${actuallyCastBallot.size()}";
 
-    Race race = b.getRace(pageToDisplay);
+    Race race = actuallyCastBallot.getRace(pageToDisplay);
 
     reviewRace(race);
 
     currentPage = "Review: Race ${pageToDisplay+1}";
 
-    b.updateCurrentPage(pageToDisplay);
+    actuallyCastBallot.updateCurrentPage(pageToDisplay);
   }
 }
 
@@ -713,7 +710,7 @@ void reviewRace(Race race) {
 /**
  * Triggers on 'Next' after 'Begin', displays the first race in the election
  */
-void beginElection(MouseEvent e, Ballot b) {
+void beginElection() {
 
   /* Erase first instructions */
   querySelector("#first_instructions").style.display="none";
@@ -732,7 +729,7 @@ void beginElection(MouseEvent e, Ballot b) {
   querySelector("#VotingContentDIV").style.display = "block";
 
   /* Display the first race */
-  display(0, b);
+  display(0);
   currentPage = "Race 1";
 }
 
@@ -741,42 +738,42 @@ void beginElection(MouseEvent e, Ballot b) {
 /**
  * Renders the pageToDisplay in the Ballot as HTML in the UI
  */
-void display(int pageToDisplay, Ballot b) {
+void display(int pageToDisplay) {
 
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   /* Displaying the review page */
-  if(pageToDisplay >= b.size()) {
+  if(pageToDisplay >= actuallyCastBallot.size()) {
 
     /* Since we're going to the review page, flip here */
     if(endOfBallotReview) {
       /* Change all the relevant votes now (unless they've been flipped already) */
       if(voteFlippingType == "Vote Changes During Voting") {
-        changeVotes(b);
+        changeVotes();
       }
 
-      displayReviewPage(b);
+      displayReviewPage();
       currentPage = "Review Page";
 
     } else {
       /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
-      displayReviewPage(b);
+      displayReviewPage();
       submitScreen(null);
     }
 
-    b.updateCurrentPage(b.size());
+    actuallyCastBallot.updateCurrentPage(actuallyCastBallot.size());
 
   } else {
 
     /* Update progress */
-    querySelector("#progress").text = "${pageToDisplay+1} of ${b.size()}";
+    querySelector("#progress").text = "${pageToDisplay+1} of ${actuallyCastBallot.size()}";
 
     if (pageToDisplay>0)
       querySelector("#Previous").style.visibility = "visible";
     else
       querySelector("#Previous").style.visibility = "hidden";
 
-    Race race = b.getRace(pageToDisplay);
+    Race race = actuallyCastBallot.getRace(pageToDisplay);
 
     /* Show proper button */
     ButtonElement nextButton = querySelector("#Next");
@@ -797,7 +794,7 @@ void display(int pageToDisplay, Ballot b) {
     displayRace(race);
 
     currentPage = "Race ${pageToDisplay+1}";
-    b.updateCurrentPage(pageToDisplay);
+    actuallyCastBallot.updateCurrentPage(pageToDisplay);
   }
 }
 
@@ -945,7 +942,7 @@ void respondToClick(MouseEvent e, Race race) {
   /* Now update this Race */
   if(target.checked) {
     race.markSelection((e.currentTarget as Element).querySelector(".optionIdentifier").text);
-
+    voterIntentMap[actuallyCastBallot.getCurrentPage()] = race.getSelectedOption().identifier;
     /* Update the button as well if in */
     if (querySelector("#Next").style.display == "block" && querySelector("#Next").style.visibility == "visible") {
       querySelector("#Next").className = "next";
@@ -961,6 +958,8 @@ void respondToClick(MouseEvent e, Race race) {
     }
 
     race.noSelection();
+    voterIntentMap[actuallyCastBallot.getCurrentPage()] = null;
+
   }
 
   /* Just redisplay the page to take care of everything */
@@ -971,7 +970,7 @@ void respondToClick(MouseEvent e, Race race) {
 /**
  * Renders the review page for the current state of this Ballot
  */
-void displayReviewPage(Ballot b) {
+void displayReviewPage() {
 
   /* Clear all other HTML */
   querySelector("#VotingContentDIV").style.display = "none";
@@ -1004,10 +1003,10 @@ void displayReviewPage(Ballot b) {
   reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
 
   /* Go through all the races and add them to the columns (14 max in each?) */
-  for (int i=0; i<b.size(); i++) {
+  for (int i=0; i<actuallyCastBallot.size(); i++) {
 
     /* Get the ith race */
-    Race currentRace = b.getRace(i);
+    Race currentRace = actuallyCastBallot.getRace(i);
 
     /* Create a div for it */
     DivElement raceDiv = new DivElement();
@@ -1046,7 +1045,7 @@ void displayReviewPage(Ballot b) {
     raceDiv.append(raceBox);
 
     /* Set up a listener for click on raceDiv */
-    raceDiv.onClick.listen((MouseEvent e) => review(e, i, b));
+    raceDiv.onClick.listen((MouseEvent e) => review(e, i));
 
     /* Send to correct column */
     querySelector("#review${(i<14) ? "1" : "2"}").append(raceDiv);
@@ -1078,7 +1077,7 @@ void submitScreen(Event e){
 
 }
 
-void returnToBallot (Event e, ballot){
+void returnToBallot (Event e){
 
 
   /* Undisplay submit screen */
@@ -1095,23 +1094,23 @@ void returnToBallot (Event e, ballot){
     querySelector('#reviews').style.visibility = "visible";
     querySelector('#reviews').style.display = "block";
 
-    gotoReview(e, ballot);
+    gotoReview(e);
 
   } else {
 
-    display(ballot.size()-1, ballot);
+    display(actuallyCastBallot.size()-1);
   }
 
 
 }
 
-Future endVoting(Ballot actuallyCastBallot) async {
+Future endVoting() async {
   currentPage = "End Voting Page";
-  await confirmScreen(actuallyCastBallot);
+  await confirmScreen();
   chrome.app.window.current().close();
 }
 
-Future confirmScreen(Ballot actuallyCastBallot) async {
+Future confirmScreen() async {
 
   print("Confirming!");
   querySelector('#submitScreen').style.visibility = "hidden";
@@ -1129,7 +1128,7 @@ Future confirmScreen(Ballot actuallyCastBallot) async {
   if(voteFlippingType == "Vote Changes After Voting") {
 
     /* Change the "actuallyCast" and set "voteFlipped" to it because in this case these are the same */
-    changeVotes(actuallyCastBallot);
+    changeVotes();
     voteFlippedBallot = actuallyCastBallot;
 
   } else {
@@ -1156,7 +1155,7 @@ Future confirmScreen(Ballot actuallyCastBallot) async {
   }
 
 
-  await printFinalizedBallotSilent(actuallyCastBallot);
+  await printFinalizedBallotSilent();
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 30), () => '30');
@@ -1171,7 +1170,7 @@ Future confirmScreen(Ballot actuallyCastBallot) async {
  *
  * The plan is to do so by sending the HTML out as a HTTP POST request
  */
-Future printFinalizedBallotSilent(Ballot finalizedBallot) async {
+Future printFinalizedBallotSilent() async {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/";
@@ -1183,7 +1182,7 @@ Future printFinalizedBallotSilent(Ballot finalizedBallot) async {
   request2.onLoad.listen((event) => print(
       'Request complete ${event.target.responseText}'));
 
-  return request2.send(finalizedBallot.toJSON());
+  return request2.send(actuallyCastBallot.toJSON());
 }
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent
