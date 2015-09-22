@@ -8,10 +8,11 @@ import 'package:xml/xml.dart';
 import 'package:chrome/chrome_app.dart' as chrome;
 import 'dart:math';
 import 'dart:convert' show JSON;
+import 'dart:collection';
 
 
 List<int> raceChangeList = new List<int>();
-List<int> alreadyChangedList = new List<int>();
+HashMap<int,String> alreadyChangedMap = new HashMap<int, String>();
 List<String> typeOfChange = new List<String>();
 bool inlineConfirmation;
 bool endOfBallotReview;
@@ -133,7 +134,6 @@ void recordOptions(){
   );
 
   String labelSelectionStr = querySelector('label[for=\"${selected.id}\"]').text;
-  print("${labelSelectionStr}");
 
   selected = (querySelectorAll('input[name=\"number\"]') as ElementList<RadioButtonInputElement>).firstWhere(
           (RadioButtonInputElement e){ return e.checked;}
@@ -197,7 +197,6 @@ void recordOptions(){
   );
 
   labelSelectionStr = querySelector('label[for=\"${selected.id}\"]').text;
-  print("${labelSelectionStr}");
 
   /* Check for combination */
   if (labelSelectionStr == "Combination") {
@@ -246,7 +245,7 @@ void recordOptions(){
   userCorrection      =   (querySelector('#correct1') as RadioButtonInputElement).checked;
 
 
-  print("Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedList\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
+  print("Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedMap\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
   "$inlineConfirmation\nendOfBallotReview: $endOfBallotReview\ndialogConfirmation: $dialogConfirmation\nuserCorrection: $userCorrection\nvoteFlippingType: $voteFlippingType");
 
 
@@ -342,6 +341,13 @@ void update(MouseEvent event, int delta, Ballot b) {
        */
       display(b.getCurrentPage(), b);
 
+      /* Need to re-hide back and next */
+      if(b.getCurrentPage()+delta >= b.size()) {
+        querySelector("#Next").style.display = "none";
+        querySelector("#Previous").style.visibility = "hidden";
+
+      }
+
       /* Display popup or inline screen -- always moving forward 1 */
       displayInlineConfirmation(b, delta);
 
@@ -375,19 +381,32 @@ void changeVotes(Ballot b){
 void changeVote(Ballot b, int raceToChange) {
 
   /* Get the currently selected (recorded) vote and see if it's part of the raceChangeSet */
-  /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) */
-  if(raceChangeList.contains(raceToChange) && !alreadyChangedList.contains(raceToChange)) {
+  /* Also make sure it hasn't yet been changed (e.g. once during inline before final review) with userCorrection */
+  if(raceChangeList.contains(raceToChange) && !(userCorrection && alreadyChangedMap.containsKey(raceToChange))) {
 
-    print("$raceToChange");
+    /* If not already changed, change it */
+    if(!alreadyChangedMap.containsKey(raceToChange)) {
 
-    /* Check what type of change  for the current index */
-    if(typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
-      changeSelection(b.getRace(raceToChange));
-    } else  {
-      b.getRace(raceToChange).noSelection();
+      /* Check what type of change  for the current index */
+      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
+        changeSelection(b.getRace(raceToChange));
+        alreadyChangedMap[raceToChange] = b.getRace(raceToChange).getSelectedOption().identifier;
+      } else {
+        b.getRace(raceToChange).noSelection();
+        alreadyChangedMap[raceToChange] = "";
+
+      }
+
+
+    } else {
+      /* Change it back */
+      if (typeOfChange.elementAt(raceChangeList.indexOf(raceToChange)) == "Change Selection") {
+        b.getRace(raceToChange).markSelection(alreadyChangedMap[raceToChange]);
+      } else {
+        b.getRace(raceToChange).noSelection();
+      }
     }
 
-    alreadyChangedList.add(raceToChange);
   }
 
 }
@@ -539,9 +558,11 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
             yesButton.style.display = "none";
             noButton.style.display = "none";
 
-            print("$delta");
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage()+delta, b);
+
+            querySelector("#Bottom").querySelector("#No").remove();
+            querySelector("#Bottom").querySelector("#Yes").remove();
           }
   );
 
@@ -557,6 +578,18 @@ void displayIntermediateConfirmation(Ballot b, int delta) {
 
             /* Redisplay of everything is handled by display */
             display(b.getCurrentPage(), b);
+
+            /* Need to re-hide back and next */
+            if(b.getCurrentPage()+delta >= b.size()) {
+              querySelector("#Next").style.display = "none";
+              querySelector("#Previous").style.visibility = "hidden";
+              querySelector("#Review").style.visibility = "visible";
+            }
+
+            querySelector("#Bottom").querySelector("#No").remove();
+            querySelector("#Bottom").querySelector("#Yes").remove();
+
+
           }
   );
 
