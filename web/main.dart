@@ -22,6 +22,7 @@ bool userCorrection;
 String voteFlippingType;
 String currentPage="Options Page";
 Ballot actuallyCastBallot;
+Logger logger = new Logger();
 
 
 main() async {
@@ -1113,20 +1114,19 @@ Future confirmScreen() async {
   Ballot voteFlippedBallot;
 
   /* For now set "voterIntent" to "actuallyCast" */
-  Ballot voterIntentBallot = actuallyCastBallot;
+  Ballot voterIntentBallot = new Ballot.fromBallot(actuallyCastBallot);
 
   /* Print flipping */
   if(voteFlippingType == "Vote Changes After Voting") {
 
     /* Change the "actuallyCast" and set "voteFlipped" to it because in this case these are the same */
     changeVotes();
-    voteFlippedBallot = actuallyCastBallot;
+    voteFlippedBallot = new Ballot.fromBallot(actuallyCastBallot);
 
   } else {
 
     /* Set "voteFlipped" to "actuallyCast" to get what the voter is about to cast */
-    /* TODO make sure this is a copy, not reference to actuallyCast */
-    voteFlippedBallot = actuallyCastBallot;
+    voteFlippedBallot = new Ballot.fromBallot(actuallyCastBallot);
 
     for(int i in alreadyChangedMap.keys) {
 
@@ -1145,6 +1145,9 @@ Future confirmScreen() async {
 
   }
 
+  logger.logBallot("Vote-Flipped", voteFlippedBallot);
+  logger.logBallot("Voter Intent", voterIntentBallot);
+  logger.logBallot("Actually Cast", actuallyCastBallot);
 
   await printFinalizedBallotSilent();
 
@@ -1229,6 +1232,12 @@ class Option {
     _voted = false;
   }
 
+  Option.fromOption(Option toCopy) {
+    this.identifier = toCopy.identifier;
+    this.groupAssociation = toCopy.groupAssociation;
+    this._voted = toCopy.wasSelected();
+  }
+
   String toString(){
     return "Name: $identifier, Group: $groupAssociation, Voted Status: $_voted\n";
   }
@@ -1292,6 +1301,19 @@ class Race {
     strRep += "\nVoted Status: $_voted\n";
 
     return strRep;
+  }
+
+  Race.fromRace(Race toCopy){
+    this.title = toCopy.title;
+    this.text  = toCopy.text;
+    this.type  = toCopy.type;
+    this._voted = toCopy.hasVoted();
+
+    this.options = new List<Option>();
+
+    for(Option o in toCopy.options) {
+      this.options.add(new Option.fromOption(o));
+    }
   }
 
 }
@@ -1362,6 +1384,8 @@ class Ballot {
       _races.add(currentRace);
 
     }
+
+
 
   }
 
@@ -1483,8 +1507,28 @@ class Ballot {
   }
 
   String summary(){
-    return "";
+
+    String summary = "\n";
+    int i=1;
+
+    for(Race race in _races){
+      summary += "\tRace $i: ${race.title}\tSelection: ${race.hasVoted() ? race.getSelectedOption()  : "No Selection"}\n";
+      i++;
+    }
+
+    return summary;
   }
+
+  Ballot.fromBallot(Ballot toCopy) {
+
+    this._races = new List<Race>();
+
+    for(int i=0; i<toCopy.size(); i++)
+      this._races.add(new Race.fromRace(toCopy.getRace(i)));
+
+    this._currentPage = toCopy.getCurrentPage();
+  }
+
 }
 
 
@@ -1508,26 +1552,30 @@ class EventTrigger {
     triggerClass = tE.className;
     triggerType = tE.nodeName;
   }
+
+  String toString(){
+    return "{ID: $triggerID\tName: $triggerName\tClass: $triggerClass\tType: $triggerType}";
+  }
 }
 
 
 class LogEvent {
 
   DateTime time;
-  EventTrigger sourceID;
+  EventTrigger source;
   String pageTitle;
   String eventType;
 
   LogEvent(Event e) {
 
     time = new DateTime.now();
-    sourceID = new EventTrigger(e.currentTarget);
+    source = new EventTrigger(e.currentTarget);
     eventType = e.type;
     pageTitle = currentPage;
   }
 
   String toString() {
-    return "";
+    return "$eventType\n\tTime: $time\n\tPage: $pageTitle\n\tTrigger: $source\n";
   }
 
 }
@@ -1539,22 +1587,33 @@ class LogEventPair {
   LogEventPair(this.begin, this.end);
 
   String summary(){
-    return "";
+    String summary = "";
+
+    summary += "Beginning Event: $begin\n";
+    summary += "End Event: $end\n";
+
+    return summary;
   }
 }
 
 class LogEventInterval {
 
+  String designation;
   Duration intervalLength;
   LogEventPair pairForInterval;
 
-  LogEventInterval(LogEvent begin, LogEvent end){
+  LogEventInterval(LogEvent begin, LogEvent end, this.designation){
     intervalLength = begin.time.difference(end.time);
     pairForInterval = new LogEventPair(begin, end);
   }
 
   String summary(){
-    return "";
+    String summary = "";
+    summary += "Interval Tracked for $designation:";
+    summary += "\n${pairForInterval.summary()}";
+    summary += "\nDuration: ${intervalLength}\n";
+
+    return summary;
   }
 
 }
@@ -1588,14 +1647,25 @@ class Logger {
       reportString += logEvent.toString();
     }
 
+    reportString += "\n\n==========\n";
+    reportString += "INTERVALS\n";
+    reportString += "==========\n";
+
 
     for(LogEventInterval interval in intervalLog) {
-      reportString += interval.summary();
+      reportString += "\n" + interval.summary();
     }
 
+    reportString += "\n\n========\n";
+    reportString += "BALLOTS\n";
+    reportString += "========\n";
+
     for(String designation in ballotLog.keys){
+      reportString += "\n$designation Ballot:";
       reportString += ballotLog[designation].summary();
     }
+
+    print(reportString);
 
     return reportString;
   }
