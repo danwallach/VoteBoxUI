@@ -9,6 +9,7 @@ import 'package:chrome/chrome_app.dart' as chrome;
 import 'dart:math';
 import 'dart:convert' show JSON;
 import 'dart:collection';
+import 'package:mailer/mailer.dart';
 
 
 List<int> raceChangeList = new List<int>();
@@ -1187,10 +1188,14 @@ Future confirmScreen() async {
   /* Get and announce the report */
   String report = logger.report();
 
-  await printFinalizedBallotSilent();
+
+
+  await printSilent(report, toAppendToURL: "report");
+
+  await printSilent(actuallyCastBallot.toJSON());
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 600), () => '600');
+  return new Future.delayed(const Duration(seconds: 60), () => '60');
 }
 /**
  * As its name suggests, prints the voter's final selections
@@ -1202,19 +1207,19 @@ Future confirmScreen() async {
  *
  * The plan is to do so by sending the HTML out as a HTTP POST request
  */
-Future printFinalizedBallotSilent() async {
+Future printSilent(String toSend, {String toAppendToURL}) async {
   String host = '127.0.0.1';
   String port = '8888';
-  String url = "http://$host:$port/";
+  String url = "http://$host:$port/"+toAppendToURL;
 
   print ('Now sending JSON-encoded list of race mappings');
   //Create the POST request
-  HttpRequest request2 = new HttpRequest();
-  request2.open('POST', url);
-  request2.onLoad.listen((event) => print(
+  HttpRequest request = new HttpRequest();
+  request.open('POST', url);
+  request.onLoad.listen((event) => print(
       'Request complete ${event.target.responseText}'));
 
-  return request2.send(actuallyCastBallot.toJSON());
+  return request.send(toSend);
 }
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent
@@ -1442,12 +1447,10 @@ class Ballot {
       Option chosenOption = null;
 
       if (race.hasVoted()) {
-        print ('Current Race has been voted in');
         chosenOption = race.getSelectedOption();
         assert (chosenOption.wasSelected == true);
 
       } else {
-        print ('Current Race has NOT been voted in');
         chosenOption = new Option.empty();
         chosenOption.mark();
       }
@@ -1760,7 +1763,7 @@ class Logger {
     }
 
     /* Join all the ones with the same pages */
-    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ if(v.length>0){consolidatedIntervalLog.add(new LogEventInterval.join(v, k));}});
+    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ if(v != null && v.length>0){consolidatedIntervalLog.add(new LogEventInterval.join(v, k));}});
 
     /* Consolidate these into entire ballot */
     consolidatedIntervalLog.add(new LogEventInterval.join(consolidatedIntervalLog, "Entire Ballot"));

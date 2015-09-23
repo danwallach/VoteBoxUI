@@ -17,6 +17,7 @@ import 'dart:async';
 final String HOST = r"127.0.0.1"; // eg: localhost
 final int PORT = 8888;
 final String DATA_FILE = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json";
+String justWritten = "";
 
 void main() {
 
@@ -28,20 +29,25 @@ void main() {
           break;
         case "POST": 
           handlePost(request);
-          print ('NOW TO PRINT!');
 
-          
-          if (Platform.operatingSystem != 'macos') {
-            print ('Printing for windows! Your operating system is ${Platform.operatingSystem}');
-            //Process.run('dart', ['printStylizedBallotUsingFoxitFromJSON.dart'], workingDirectory: r'C:\Users\seclab2\Desktop\nonSecuredWebServer\', runInShell:false)
-            //.then((ProcessResult p) => print("${p.stdout}"));
-            runPrintingScript('printStylizedBallotUsingFoxitFromJSON.dart');
+          if(justWritten != "results") {
+            print('NOW TO PRINT!');
+
+
+            if (Platform.operatingSystem != 'macos') {
+              print('Printing for windows! Your operating system is ${Platform.operatingSystem}');
+              runScript('printStylizedBallotUsingFoxitFromJSON.dart');
+            } else {
+              print('Printing for mac! Your operating system is ${Platform.operatingSystem}');
+              runScript('printStylizedBallotUsingLPRFromJSON.dart');
+            }
+            print('FINISHED TRYING TO PRINT');
+            print('IF NOTHING PRINTED OUT, DOUBLE CHECK THAT THE PATH TO THE PRINTER IS CORRECT');
+
           } else {
-            print ('Printing for mac! Your operating system is ${Platform.operatingSystem}');  
-            runPrintingScript('printStylizedBallotUsingLPRFromJSON.dart');
+            runScript('emailResults.dart');
           }
-          print('FINISHED TRYING TO PRINT');
-          print('IF NOTHING PRINTED OUT, DOUBLE CHECK THAT THE PATH TO THE PRINTER IS CORRECT');
+
           //exit(0);
           break;
         case "OPTIONS": 
@@ -87,11 +93,19 @@ void handleGet(HttpRequest req) {
 void handlePost(HttpRequest req) {
   HttpResponse res = req.response;
   print("${req.method}: ${req.uri.path}");
-  
+
+  String toWrite = DATA_FILE;
+
+  if(req.uri.path != r"http://127.0.0.1:8888/") {
+    toWrite = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt";
+    justWritten = "results";
+  }
+
   addCorsHeaders(res);
   
   req.listen((List<int> buffer) {
-    File file = new File(DATA_FILE);
+
+    File file = new File(toWrite);
     IOSink ioSink = file.openWrite(); // save the data to the file
     ioSink.add(buffer);
     ioSink.close();
@@ -102,21 +116,21 @@ void handlePost(HttpRequest req) {
   });
 }
 /**
-  Runs another dart script (the file is in the same directory) that will perform the following actions:
+  Runs another dart script (the file is in the same directory) that will perform the following actions for printing:
     1. Read in the saved JSON file,
     2. Convert the data into a string that is valid, stylized HTML
     3. Write that new string to a .html file
     4. Use prince to convert the new .html into a rendered pdf (with the barcode!)
     5. Use lpr to (silently!) print out that new pdf
 */
-Future runPrintingScript(String dartScriptName) async {
+Future runScript(String dartScriptName) async {
   try {
     return Process.run('dart', [dartScriptName], workingDirectory: r'C:\Users\seclab2\Desktop\nonSecuredWebServer\', runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
   } catch (exception, StackTrace) {
-    print('Uh oh! Problem running our printing script!');
+    print('Uh oh! Problem running our script!');
     print(exception);
     print(StackTrace);
-    return Future.error("Script error");
+    return new Future.error("Script error");
   }
 }
 /**
