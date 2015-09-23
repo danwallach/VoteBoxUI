@@ -1183,7 +1183,6 @@ Future confirmScreen() async {
 
   }
 
-
   logger.logBallot("Vote-Flipped", voteFlippedBallot);
   logger.logBallot("Voter Intent", voterIntentBallot);
   logger.logBallot("Actually Cast", actuallyCastBallot);
@@ -1199,9 +1198,9 @@ Future confirmScreen() async {
     print(stacktrace);
   }
 
-  //await printSilent(report, "report");
+  await printSilent(report, "report");
 
-  //await printSilent(actuallyCastBallot.toJSON(), "");
+  await printSilent(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 60), () => '60');
@@ -1358,7 +1357,7 @@ class Race {
   }
 
   String summary(){
-    return "${_voted ?  this.getSelectedOption().summary() : "No Selection"}\t[${title}]";
+    return "${_voted ?  this.getSelectedOption().summary() : "No Selection"} [${title}]";
   }
 
   Race.fromRace(Race toCopy){
@@ -1561,7 +1560,7 @@ class Ballot {
 
     for(Race race in _races){
       print("$race");
-      summary += "\tRace $i: \t${race.summary()}\n";
+      summary += "\tRace $i: ${race.summary()}\n";
       i++;
     }
 
@@ -1601,7 +1600,7 @@ class EventTrigger {
   }
 
   String toString(){
-    return "{ID: $triggerID\tClass: $triggerClass\tType: $triggerType}";
+    return "{ID: $triggerID, Class: $triggerClass, Type: $triggerType}";
   }
 }
 

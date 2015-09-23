@@ -4,9 +4,9 @@ import 'dart:convert' show JSON;
 import 'dart:core'; 
 main() async {
 
-  String inputFileName = r'C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json';
-  String outputHTMLFileName = r'C:\Users\seclab2\Desktop\nonSecuredWebServer\printThis.html';
-  String outputPDFFileName = r'C:\Users\seclab2\Desktop\nonSecuredWebServer\printThis.pdf';
+  String inputFileName = 'data.json';
+  String outputHTMLFileName = 'printThis.html';
+  String outputPDFFileName = 'printThis.pdf';
   String outputString;
 
   //MAKE SURE THIS IS CORRECT IF SOMETHING FAILS TO PRINT!!!
@@ -16,10 +16,6 @@ main() async {
   print('Starting script at ... ${(await Process.run('cd',[], runInShell: true)).stdout}');
 
   new File(inputFileName).readAsString().then((String contents) {
-    print(contents);
-    print('now converted:');
-    print(JSON.decode(contents));
-    print('now generating HTML');
 
     try {
       outputString = (generatePrintableHTML(JSON.decode(contents)));
@@ -29,8 +25,6 @@ main() async {
       return;
     }
 
-    print ('This is the outputString ->');
-    print (outputString);
 
     final String fileName = outputHTMLFileName;
     File outputHTMLFile = new File (fileName);
@@ -49,10 +43,9 @@ main() async {
     }
 
     //Write the output String to our newly created file
-    print('Writing to the .html file');
     try {
       outputHTMLFile.writeAsStringSync(outputString);
-    } catch (exception, StackTrace) {
+    } catch (exception, stackTrace) {
       print('Uh oh! Failed to write to ${outputHTMLFileName}');
       print(exception);
       print(stackTrace);
@@ -63,19 +56,14 @@ main() async {
     //Convert the HTML file to a pdf file
     //Turns out there isn't an easier way to do multiple synchrous processes that these .then lambdas -_-
     print ('Converting the .html file to the stylized pdf file');
-    Process.run(r'C:\Program Files (x86)\Prince\Engine\bin\prince.exe', [outputHTMLFileName, '-o', outputPDFFileName], runInShell:false)
+    Process.run(r'C:\Program Files (x86)\Prince\Engine\bin\prince.exe', [outputHTMLFileName, '-o', outputPDFFileName],
+                workingDirectory: Directory.current.path, runInShell:false)
       .then ((ProcessResult results) {
-        print(results.stdout);
-
-        print ('(Hopefully) Finished Conversion of HTML file to PDF');
-        print ('Now to try to print out the file');
-
-
 
         //USED IN MAC - LPR DIDNT WORK FOR ME IN WINDOWS!  Process.run('lpr', [outputPDFFileName], runInShell:true)
-        Process.run(r'C:\Program Files (x86)\Foxit Software\Foxit Reader\FoxitReader.exe', [r'/t', outputPDFFileName, printerName], runInShell:false)
+        Process.run(r'C:\Program Files (x86)\Foxit Software\Foxit Reader\FoxitReader.exe', [r'/t', outputPDFFileName, printerName],
+                    workingDirectory: Directory.current.path, runInShell:false)
           .then ((ProcessResult results){
-            print(results.stdout);
             print ('SHOULD BE DONE NOW! If this has not sent something to the print queue yet, something is wrong');
           }).catchError((c) {
             print ('There was this type of (c) error -> ${c.runtimeType}');
@@ -91,7 +79,7 @@ main() async {
     //Errors that get passed up from lower down in the chain (closes up the original opened File)
     print ('There was this type of (a) error -> ${a.runtimeType}');
     print ('trying to print the error directly -> ${a}');
-    print ('This error came from the outermost .catchError in the main() of this file');
+    print ('This error came from the outermost .catchError in the main() of the foxit using file');
   });
 }
 
@@ -298,12 +286,6 @@ String handleOneBlockHTML(blockNumber, inputRaceMap) {
             assert (helperArray[0] != '');
             assert (helperArray[1] != '');
 
-            print("\n\n\n\n testing - these should be two names!-> ");
-            print(helperArray[0]);
-            print('\nand\n');
-            print(helperArray[1]); 
-            print("from this array -> ");
-            print (helperArray);
             //Takes as inputs the blocknumber, candidate 1, candidate 2, the party, and the name of the race
             return generateBlock_Race_TwoPersonSelection(blockNumber, helperArray[0], helperArray[1], group, race);
         } else {

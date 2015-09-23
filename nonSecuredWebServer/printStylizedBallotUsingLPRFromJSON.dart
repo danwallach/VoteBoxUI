@@ -7,11 +7,11 @@ void main() {
   String outputHTMLFileName = 'printThis.html';
   String outputPDFFileName = 'printThis.pdf';
   String outputString;
-
+  print("USING LPR");
   new File(inputFileName).readAsString().then((String contents) {
-    print(contents);
+    //print(contents);
     print('now converted:');
-    print(JSON.decode(contents));
+    //print(JSON.decode(contents));
     print('now generating HTML');
 
     try {
@@ -83,6 +83,8 @@ void main() {
     print ('trying to print the error directly -> ${a}');
     print ('This error came from the outermost .catchError in the main() of this file');
   });
+    print("DONE USING LPR");
+
 }
 
 

@@ -19,7 +19,6 @@ final int PORT = 8888;
 final String DATA_FILE = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json";
 String justWritten = "";
 int i = 1;
-String wd = "./";
 
 void main() {
 
@@ -40,6 +39,8 @@ void main() {
               print('Printing for windows! Your operating system is ${Platform.operatingSystem}');
               runScript(['printStylizedBallotUsingFoxitFromJSON.dart']);
             } else {
+              print("JDGFHJDGHJDGHJ");
+              exit(0);
               print('Printing for mac! Your operating system is ${Platform.operatingSystem}');
               runScript(['printStylizedBallotUsingLPRFromJSON.dart']);
             }
@@ -48,12 +49,7 @@ void main() {
 
           } else {
 
-            print('Your operating system is ${Platform.operatingSystem}');
-
-            if (Platform.operatingSystem != 'macos') {
-              wd=r"C:\Users\seclab2\Desktop\nonSecuredWebServer";
-            }
-
+            print("Emailing results...");
             runScript(['emailResults.dart', 'results${i}.txt']);
             i++;
           }
@@ -107,31 +103,24 @@ void handlePost(HttpRequest req) {
 
   String toWrite = DATA_FILE;
 
-  if(req.uri.path != "/") {
-    //toWrite = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt";
+  if(req.uri.path == "/report") {
     toWrite = "results${i}.txt";
     justWritten = "results";
+  } else {
+    justWritten = "";
   }
+
 
   addCorsHeaders(res);
   
   req.listen((List<int> buffer) {
 
-    /* Write to results#.txt */
+    /* Write to results#.txt or data.json*/
     File file = new File(toWrite);
     IOSink ioSink = file.openWrite(); // save the data to the file
     ioSink.add(buffer);
     ioSink.close();
 
-    /* Write to results.txt */
-    file = new File("results.txt");
-    ioSink = file.openWrite(); // save the data to the file
-    ioSink.add(buffer);
-    ioSink.close();
-
-    // return the same results back to the client
-    res.add(buffer);
-    res.close();
   });
 }
 /**
@@ -144,7 +133,8 @@ void handlePost(HttpRequest req) {
 */
 Future runScript(List<String> arguments) async {
   try {
-    return Process.run('dart', arguments, workingDirectory: wd, runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
+    return Process.run('dart', arguments, workingDirectory: Directory.current.path, runInShell:false)
+            .then((ProcessResult result)=> print("${result.stdout}"));
   } catch (exception, StackTrace) {
     print('Uh oh! Problem running our script!');
     print(exception);
