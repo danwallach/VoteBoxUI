@@ -1166,7 +1166,11 @@ Future confirmScreen() async {
 
       /* Mark voteFlipped in case any flipped races were corrected (so we can reconstruct all flipped) */
       /* Set the ith race to the option that the flipper selected originally */
-      voteFlippedBallot.getRace(i).markSelection(alreadyChangedMap[i]);
+      if(alreadyChangedMap[i] =="") {
+        voteFlippedBallot.getRace(i).noSelection();
+      } else {
+        voteFlippedBallot.getRace(i).markSelection(alreadyChangedMap[i]);
+      }
 
       /* Mark voterIntent to get all the voter choices before flipping (so we can reconstruct voter choices on
        * nonflipped races. We assume on flipped races that the first selection was the intended selection... */
@@ -1178,6 +1182,7 @@ Future confirmScreen() async {
     }
 
   }
+
 
   logger.logBallot("Vote-Flipped", voteFlippedBallot);
   logger.logBallot("Voter Intent", voterIntentBallot);
@@ -1194,9 +1199,9 @@ Future confirmScreen() async {
     print(stacktrace);
   }
 
-  await printSilent(report, "report");
+  //await printSilent(report, "report");
 
-  await printSilent(actuallyCastBallot.toJSON(), "");
+  //await printSilent(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 60), () => '60');
@@ -1286,6 +1291,10 @@ class Option {
   String toString(){
     return "Name: $identifier, Group: $groupAssociation, Voted Status: $_voted\n";
   }
+
+  String summary(){
+    return identifier+" "+groupAssociation;
+  }
 }
 
 
@@ -1346,6 +1355,10 @@ class Race {
     strRep += "\nVoted Status: $_voted\n";
 
     return strRep;
+  }
+
+  String summary(){
+    return "${_voted ?  this.getSelectedOption().summary() : "No Selection"}\t[${title}]";
   }
 
   Race.fromRace(Race toCopy){
@@ -1547,8 +1560,8 @@ class Ballot {
     int i=1;
 
     for(Race race in _races){
-      summary += "\tRace $i: \t${race.hasVoted() ?  race.getSelectedOption().identifier+" "+race.getSelectedOption().groupAssociation  :
-                                                    "No Selection"}\t[${race.title}]\n";
+      print("$race");
+      summary += "\tRace $i: \t${race.summary()}\n";
       i++;
     }
 
@@ -1701,7 +1714,7 @@ class Logger {
   }
 
   void logBallot(String designation, Ballot b){
-    ballotLog[designation] = b;
+    ballotLog[designation] = new Ballot.fromBallot(b);
   }
 
   String report(){
@@ -1712,8 +1725,10 @@ class Logger {
     reportString += "OPTIONS\n";
     reportString += "========\n";
 
-    reportString += "Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedMap\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
-    "$inlineConfirmation\nendOfBallotReview: $endOfBallotReview\ndialogConfirmation: $dialogConfirmation\nuserCorrection: $userCorrection\nvoteFlippingType: $voteFlippingType";
+    reportString += "Options: \nList of Changed Races: ${raceChangeList.map((int element){ return element+1;})}\n"+
+    "Type Of Change: $typeOfChange\nInline Confirmation: ${inlineConfirmation?"On":"Off"}\nEnd of Ballot Review: "+
+    "${endOfBallotReview?"On":"Off"}\nType of Inline Confirmation: ${inlineConfirmation ? (dialogConfirmation ? "Pop-up":
+    "Intermediate Screen"):"N/A"}\nUser Correction: ${userCorrection?"On":"Off"}\nVote Flipping Type: $voteFlippingType";
 
     reportString += "\n\n========\n";
     reportString += " EVENTS\n";
@@ -1762,7 +1777,13 @@ class Logger {
     }
 
     /* Join all the ones with the same pages */
-    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ if(v != null && v.length>0){consolidatedIntervalLog.add(new LogEventInterval.join(v, k));}});
+    pagesToIntervalLists.forEach(
+            (String k, List<LogEventInterval> v){
+              if(v != null && v.length>0){
+                consolidatedIntervalLog.add(new LogEventInterval.join(v, k));
+              }
+            }
+    );
 
     /* Consolidate these into entire ballot */
     LogEventInterval entireBallotInterval = new LogEventInterval.join(consolidatedIntervalLog, "Entire Ballot");

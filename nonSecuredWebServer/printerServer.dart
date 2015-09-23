@@ -18,7 +18,8 @@ final String HOST = r"127.0.0.1"; // eg: localhost
 final int PORT = 8888;
 final String DATA_FILE = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json";
 String justWritten = "";
-String wd = r"C:\Users\seclab2\Desktop\nonSecuredWebServer";
+int i = 1;
+String wd = "./";
 
 void main() {
 
@@ -37,17 +38,24 @@ void main() {
 
             if (Platform.operatingSystem != 'macos') {
               print('Printing for windows! Your operating system is ${Platform.operatingSystem}');
-              runScript('printStylizedBallotUsingFoxitFromJSON.dart');
+              runScript(['printStylizedBallotUsingFoxitFromJSON.dart']);
             } else {
               print('Printing for mac! Your operating system is ${Platform.operatingSystem}');
-              runScript('printStylizedBallotUsingLPRFromJSON.dart');
+              runScript(['printStylizedBallotUsingLPRFromJSON.dart']);
             }
             print('FINISHED TRYING TO PRINT');
             print('IF NOTHING PRINTED OUT, DOUBLE CHECK THAT THE PATH TO THE PRINTER IS CORRECT');
 
           } else {
-            wd="./";
-            runScript('emailResults.dart');
+
+            print('Your operating system is ${Platform.operatingSystem}');
+
+            if (Platform.operatingSystem != 'macos') {
+              wd=r"C:\Users\seclab2\Desktop\nonSecuredWebServer";
+            }
+
+            runScript(['emailResults.dart', 'results${i}.txt']);
+            i++;
           }
 
           justWritten = "";
@@ -101,7 +109,7 @@ void handlePost(HttpRequest req) {
 
   if(req.uri.path != "/") {
     //toWrite = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt";
-    toWrite = "results.txt";
+    toWrite = "results${i}.txt";
     justWritten = "results";
   }
 
@@ -109,8 +117,15 @@ void handlePost(HttpRequest req) {
   
   req.listen((List<int> buffer) {
 
+    /* Write to results#.txt */
     File file = new File(toWrite);
     IOSink ioSink = file.openWrite(); // save the data to the file
+    ioSink.add(buffer);
+    ioSink.close();
+
+    /* Write to results.txt */
+    file = new File("results.txt");
+    ioSink = file.openWrite(); // save the data to the file
     ioSink.add(buffer);
     ioSink.close();
 
@@ -127,9 +142,9 @@ void handlePost(HttpRequest req) {
     4. Use prince to convert the new .html into a rendered pdf (with the barcode!)
     5. Use lpr to (silently!) print out that new pdf
 */
-Future runScript(String dartScriptName) async {
+Future runScript(List<String> arguments) async {
   try {
-    return Process.run('dart', [dartScriptName], workingDirectory: wd, runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
+    return Process.run('dart', arguments, workingDirectory: wd, runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
   } catch (exception, StackTrace) {
     print('Uh oh! Problem running our script!');
     print(exception);
