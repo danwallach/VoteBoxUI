@@ -1619,22 +1619,33 @@ class LogEventPair {
 
 class LogEventInterval {
 
-  String designation;
+  String pageForInterval;
   Duration intervalLength;
   LogEventPair pairForInterval;
 
-  LogEventInterval(LogEvent begin, LogEvent end, this.designation){
+  LogEventInterval(LogEvent begin, LogEvent end, this.pageForInterval){
     intervalLength = begin.time.difference(end.time);
     pairForInterval = new LogEventPair(begin, end);
   }
 
   String summary(){
     String summary = "";
-    summary += "Interval Tracked for $designation:";
+    summary += "Interval Tracked for $pageForInterval:";
     summary += "\n${pairForInterval.summary()}";
     summary += "\nDuration: ${intervalLength}\n";
 
     return summary;
+  }
+
+  LogEventInterval.join(List<LogEventInterval> toJoin, this.pageForInterval){
+
+    this.pairForInterval = new LogEventPair(toJoin.elementAt(0).pairForInterval.begin, toJoin.elementAt(toJoin.length-1).pairForInterval.end);
+    this.intervalLength = Duration.ZERO;
+
+    for(LogEventInterval toBeJoined in toJoin) {
+      this.intervalLength += toBeJoined.intervalLength;
+    }
+
   }
 
 }
@@ -1653,6 +1664,22 @@ class Logger {
 
   void logEvent(Event e){
     log.add(new LogEvent(e));
+
+    int secondToLast = log.length-2;
+
+    /* Check if this is different pageTitle from the one before it */
+    if(log.elementAt(log.length-1).pageTitle != log.elementAt(log.length-2)) {
+
+      LogEvent initiator;
+
+      /* If this has a different page, then we should find the first event on this page */
+      for(int i=secondToLast; log.elementAt(i).pageTitle == log.elementAt(secondToLast).pageTitle && i>=0; i--){
+        initiator = log.elementAt(i);
+      }
+
+      /* Note this will only find contiguous events, which I think makes sense here */
+      intervalLog.add(new LogEventInterval(initiator, log.elementAt(secondToLast), initiator.pageTitle));
+    }
   }
 
   void logBallot(String designation, Ballot b){
@@ -1674,6 +1701,38 @@ class Logger {
 
 
     for(LogEventInterval interval in intervalLog) {
+      reportString += "\n" + interval.summary();
+    }
+
+    reportString += "\n\n======================\n";
+    reportString += "CONSOLIDATED INTERVALS\n";
+    reportString += "=======================\n";
+
+    List<LogEventInterval> consolidatedIntervalLog = new List<LogEventInterval>();
+    LinkedHashMap<String, List<LogEventInterval>> pagesToIntervalLists = new LinkedHashMap<String, List<LogEventInterval>>();
+
+    for(LogEventInterval interval in intervalLog) {
+
+      /* Get the page */
+      String thisPage = interval.pageForInterval;
+
+      /* Convert it to simplified form to add the intervals with pages for races associated with dialogs/inline to the
+         same mapping as the regular page */
+
+      /* If we haven't encountered yet, initialise it */
+      if(pagesToIntervalLists[thisPage] == null) {
+        pagesToIntervalLists[thisPage] = new List<LogEventInterval>();
+      }
+
+      /* Add it to this list */
+      pagesToIntervalLists[thisPage].add(interval);
+    }
+
+    /* Join all the ones with the same pages */
+    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ consolidatedIntervalLog.add(new LogEventInterval.join(v, k));});
+
+    /* Now print all of them */
+    for(LogEventInterval interval in consolidatedIntervalLog) {
       reportString += "\n" + interval.summary();
     }
 
