@@ -101,6 +101,7 @@ main() async {
 
   querySelector('#okay').onClick.listen(
           (MouseEvent event) {
+            logger.logEvent(event);
             (querySelector('#IDdialog') as DialogElement).close('');
           }
   );
@@ -108,7 +109,7 @@ main() async {
   querySelector('#button_begin').onClick.listen(gotoFirstInstructions);
 
   querySelector('#Back').onClick.listen(gotoInfo);
-  querySelector('#Begin').onClick.listen((e) => beginElection);
+  querySelector('#Begin').onClick.listen(beginElection);
 
   /* TODO straight party? */
 
@@ -117,11 +118,11 @@ main() async {
 
   querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview);
 
-  querySelector('#finishUp').onClick.listen((e) => submitScreen(e));
+  querySelector('#finishUp').onClick.listen(submitScreen);
 
   querySelector('#returnToBallot').onClick.listen(returnToBallot);
 
-  querySelector('#endVoting').onClick.listen((e) => endVoting);
+  querySelector('#endVoting').onClick.listen(endVoting);
 
 
 }
@@ -272,6 +273,9 @@ void blockKeys(KeyEvent event){
  * On click from 'Submit' for ID, this will pull the ID and right now just moves on.
  */
 void getID(MouseEvent event) {
+
+  logger.logEvent(event);
+
   String ID = (querySelector('#idText') as TextInputElement).value;
 
   /* TODO check for non-numerals and validate with Supervisor */
@@ -293,6 +297,7 @@ void getID(MouseEvent event) {
  * Triggers on 'Begin' and renders the 'First Instructions' page
  */
 void gotoFirstInstructions(MouseEvent event) {
+  logger.logEvent(event);
   querySelector("#first_instructions").style.display="block"; //de-invisibles
   querySelector("#first_instructions").style.visibility="visible"; //displays instructions
   querySelector("#Back").style.visibility="visible"; //shows the back button that takes you to the election info page
@@ -305,6 +310,7 @@ void gotoFirstInstructions(MouseEvent event) {
  * Triggers on 'Back' and renders the 'Instructions' page
  */
 void gotoInfo(MouseEvent event) {
+  logger.logEvent(event);
   querySelector("#Begin").style.visibility="hidden"; //hides the begin and back buttons shown on the instructions page
   querySelector("#Back").style.visibility="hidden";
   querySelector("#first_instructions").style.display="none"; //makes the instructions invisible
@@ -323,6 +329,8 @@ void gotoReview(MouseEvent e) {
 }
 
 void update(MouseEvent event, int delta) {
+
+  logger.logEvent(event);
 
   /* Display the new page (either next or previous) */
   if(actuallyCastBallot.getCurrentPage() != actuallyCastBallot.size()) {
@@ -504,6 +512,7 @@ void displayDialogConfirmation(int delta) {
   /* Close and display the next page if yes */
   dialogYes.onClick.listen(
           (MouseEvent e){
+            logger.logEvent(e);
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
             display(actuallyCastBallot.getCurrentPage()+delta);
@@ -513,9 +522,10 @@ void displayDialogConfirmation(int delta) {
   /* Close this if no */
   dialogNo.onClick.listen(
           (MouseEvent e){
+            logger.logEvent(e);
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
-            currentPage = "race${actuallyCastBallot.getCurrentPage()+1}";
+            currentPage = "Race ${actuallyCastBallot.getCurrentPage()+1}";
           }
   );
 }
@@ -563,6 +573,7 @@ void displayIntermediateConfirmation(int delta) {
   /* Display the next page if yes */
   yesButton.onClick.listen(
           (MouseEvent e){
+            logger.logEvent(e);
             querySelector("#inlineConfirmationDiv").style.display = "none";
             querySelector("#Next").style.visibility = "visible";
             querySelector("#Previous").style.display = "block";
@@ -580,7 +591,7 @@ void displayIntermediateConfirmation(int delta) {
   /* Go back to previous page if no */
   noButton.onClick.listen(
           (MouseEvent e){
-
+            logger.logEvent(e);
             querySelector("#inlineConfirmationDiv").style.display = "none";
             querySelector("#Next").style.visibility = "visible";
             querySelector("#Previous").style.display = "block";
@@ -642,6 +653,8 @@ void record(Ballot b){
  */
 void review(MouseEvent event, int pageToDisplay) {
 
+  logger.logEvent(event);
+
   if (pageToDisplay < 0) pageToDisplay = 0;
 
   if(pageToDisplay >= actuallyCastBallot.size()) {
@@ -694,8 +707,9 @@ void reviewRace(Race race) {
 /**
  * Triggers on 'Next' after 'Begin', displays the first race in the election
  */
-void beginElection() {
+void beginElection(Event e) {
 
+  logger.logEvent(e);
   /* Erase first instructions */
   querySelector("#first_instructions").style.display="none";
 
@@ -917,6 +931,8 @@ void displayRace(Race race) {
  */
 void respondToClick(MouseEvent e, Race race) {
 
+  logger.logEvent(e);
+
   /* Toggle the target of the click */
   InputElement target = ((e.currentTarget as Element).querySelector(".vote") as InputElement);
   target.checked = !target.checked;
@@ -1051,6 +1067,8 @@ void displayReviewPage() {
 
 void submitScreen(Event e){
 
+  logger.logEvent(e);
+
   currentPage = "Submit Screen";
 
   print("Submitting!");
@@ -1070,7 +1088,6 @@ void submitScreen(Event e){
 }
 
 void returnToBallot (Event e){
-
 
   /* Undisplay submit screen */
   querySelector('#submitScreen').style.visibility = "hidden";
@@ -1096,7 +1113,8 @@ void returnToBallot (Event e){
 
 }
 
-Future endVoting() async {
+Future endVoting(Event e) async {
+  logger.logEvent(e);
   currentPage = "End Voting Page";
   await confirmScreen();
   chrome.app.window.current().close();
@@ -1148,6 +1166,9 @@ Future confirmScreen() async {
   logger.logBallot("Vote-Flipped", voteFlippedBallot);
   logger.logBallot("Voter Intent", voterIntentBallot);
   logger.logBallot("Actually Cast", actuallyCastBallot);
+
+  /* Get and announce the report */
+  String report = logger.report();
 
   await printFinalizedBallotSilent();
 
