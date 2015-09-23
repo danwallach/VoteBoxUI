@@ -18,6 +18,7 @@ final String HOST = r"127.0.0.1"; // eg: localhost
 final int PORT = 8888;
 final String DATA_FILE = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json";
 String justWritten = "";
+String wd = r"C:\Users\seclab2\Desktop\nonSecuredWebServer";
 
 void main() {
 
@@ -45,9 +46,11 @@ void main() {
             print('IF NOTHING PRINTED OUT, DOUBLE CHECK THAT THE PATH TO THE PRINTER IS CORRECT');
 
           } else {
+            wd="./";
             runScript('emailResults.dart');
           }
 
+          justWritten = "";
           //exit(0);
           break;
         case "OPTIONS": 
@@ -126,7 +129,7 @@ void handlePost(HttpRequest req) {
 */
 Future runScript(String dartScriptName) async {
   try {
-    return Process.run('dart', [dartScriptName], workingDirectory: r'C:\Users\seclab2\Desktop\nonSecuredWebServer\', runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
+    return Process.run('dart', [dartScriptName], workingDirectory: wd, runInShell:false).then((ProcessResult p) => print("${p.stdout}"));;
   } catch (exception, StackTrace) {
     print('Uh oh! Problem running our script!');
     print(exception);

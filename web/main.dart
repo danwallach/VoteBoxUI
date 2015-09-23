@@ -1497,7 +1497,6 @@ class Ballot {
       //then it means that this is an 'EmptyOption' and the user didn't vote
       //}
 
-      print("identifier");
       //getting the identifier
       if (currentOption.identifier == null) {
         //THIS MEANS THAT THERE WAS NO SUBMITTED VOTE
@@ -1509,7 +1508,6 @@ class Ballot {
         currentMap['IDENTIFIER'] = currentOption.identifier;
       }
 
-      print("group");
       //getting the group
       if (currentOption.groupAssociation == null) {
         //Either there was no submitted vote (ie identifier is also null),

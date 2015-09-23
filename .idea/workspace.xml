@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nonSecuredWebServer/emailResults.dart" afterPath="$PROJECT_DIR$/nonSecuredWebServer/emailResults.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart" afterPath="$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VoteBoxUI.iws" />
@@ -31,24 +29,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3322884">
-              <caret line="1545" column="9" selection-start-line="1545" selection-start-column="9" selection-end-line="1545" selection-end-column="9" />
+            <state vertical-scroll-proportion="-6.928571">
+              <caret line="1498" column="0" selection-start-line="1498" selection-start-column="0" selection-end-line="1498" selection-end-column="0" />
               <folding>
-                <element signature="e#0#54393#0" expanded="true" />
+                <element signature="e#0#54344#0" expanded="true" />
                 <element signature="e#86#122#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="printerServer.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="printerServer.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.7267267">
+              <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -162,9 +160,9 @@
         <option value="$PROJECT_DIR$/nonSecuredWebServer/pubspec.yaml" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/nonSecuredWebServer/printStylizedBallotUsingFoxitFromJSON.dart" />
-        <option value="$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart" />
         <option value="$PROJECT_DIR$/nonSecuredWebServer/emailResults.dart" />
         <option value="$PROJECT_DIR$/web/main.dart" />
+        <option value="$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart" />
       </list>
     </option>
   </component>
@@ -643,7 +641,7 @@
       <workItem from="1442951769043" duration="19156000" />
       <workItem from="1442971682687" duration="1452000" />
       <workItem from="1442975446046" duration="671000" />
-      <workItem from="1442977840358" duration="17959000" />
+      <workItem from="1442977840358" duration="18826000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -873,11 +871,17 @@
       <option name="project" value="LOCAL" />
       <updated>1442997586584</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Some fixes to get email working">
+      <created>1443000778520</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1443000778520</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124904000" />
+    <option name="totallyTimeSpent" value="125771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1080" y="0" width="1912" height="1080" extended-state="4" />
@@ -923,7 +927,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Put text into verification dialog buttons and changed hiding for &quot;Yes&quot;/&quot;No&quot; buttons to display:none to preserve button placement." />
     <MESSAGE value="Random dialog bug fixed" />
     <MESSAGE value="Fixed selection display on inline dialog" />
     <MESSAGE value="Fixed further styling on dialog" />
@@ -948,7 +951,8 @@
     <MESSAGE value="Various indexing fixes etc. Seems like the actual creation of logs is working fine, something during reporting is bugging out." />
     <MESSAGE value="Logging is all handled well now. Just need to send the data somewhere. Probably should also log options settings as well. &#10;&#10;Fixed some random UI bugs I encountered mostly dealing with intermediate screen logic on review races." />
     <MESSAGE value="Try to commandeer the printing server to pull double duty and send emails out of the results. Pending testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Try to commandeer the printing server to pull double duty and send emails out of the results. Pending testing." />
+    <MESSAGE value="Some fixes to get email working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some fixes to get email working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -968,7 +972,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1024,7 +1028,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1080,7 +1084,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1136,7 +1140,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1192,7 +1196,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1248,7 +1252,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1296,7 +1300,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1315,7 +1319,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
           </folding>
         </state>
@@ -1478,16 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/emailResults.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1500,11 +1494,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3322884">
-          <caret line="1545" column="9" selection-start-line="1545" selection-start-column="9" selection-end-line="1545" selection-end-column="9" />
+        <state vertical-scroll-proportion="-6.928571">
+          <caret line="1498" column="0" selection-start-line="1498" selection-start-column="0" selection-end-line="1498" selection-end-column="0" />
           <folding>
-            <element signature="e#0#54393#0" expanded="true" />
+            <element signature="e#0#54344#0" expanded="true" />
             <element signature="e#86#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7267267">
+          <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
