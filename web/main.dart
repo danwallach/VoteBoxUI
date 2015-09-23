@@ -489,7 +489,7 @@ void displayDialogConfirmation(int delta) {
   /* Show an appropriate confirmation message */
   verifyDialog.appendHtml(currentRace.hasVoted()?
       "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
-      "<p>You did not select any"+((currentRace.type == "rsce")? "one":"thing")+".<br><br>Is this correct?</p>");
+      "<p>You did not select any"+((currentRace.type == "race")? "one":"thing")+".<br><br>Is this correct?</p>");
 
   /* Build the buttons */
   ButtonElement dialogNo = new ButtonElement();
@@ -536,6 +536,8 @@ void displayDialogConfirmation(int delta) {
  */
 void displayIntermediateConfirmation(int delta) {
 
+  bool reviewing = (querySelector("#Review").style.visibility == "visible");
+
   /* Clear the current page of voting and buttons and display intermediate screen */
   querySelector("#VotingContentDIV").style.display = "none";
   querySelector("#Next").style.visibility = "hidden";
@@ -551,7 +553,7 @@ void displayIntermediateConfirmation(int delta) {
   inlineConfirmationDiv.id = "inlineConfirmationDiv";
   inlineConfirmationDiv.appendHtml(actuallyCastBallot.getRace(actuallyCastBallot.getCurrentPage()).hasVoted()?
   "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
-  "<p>You did not select any"+((currentRace.type == "rsce")? "one":"thing")+".<br>Is this correct?</p>");
+  "<p>You did not select any"+((currentRace.type == "race")? "one":"thing")+".<br>Is this correct?</p>");
 
   /* Create the buttons */
   ButtonElement yesButton = new ButtonElement();
@@ -563,6 +565,7 @@ void displayIntermediateConfirmation(int delta) {
   noButton.id = "No";
   noButton.style.display = "block";
   noButton.text = "No";
+  noButton.className = reviewing.toString();
 
   /* Add these buttons in the proper places */
   querySelector("#Bottom").insertBefore(noButton, querySelector("#progress"));
@@ -603,7 +606,7 @@ void displayIntermediateConfirmation(int delta) {
             display(actuallyCastBallot.getCurrentPage());
 
             /* Need to re-hide back and next */
-            if(actuallyCastBallot.getCurrentPage()+delta >= actuallyCastBallot.size()) {
+            if(actuallyCastBallot.getCurrentPage()+delta >= actuallyCastBallot.size() && (e.currentTarget as Element).className == "true") {
               querySelector("#Next").style.display = "none";
               querySelector("#Previous").style.visibility = "hidden";
               querySelector("#Review").style.visibility = "visible";
@@ -757,7 +760,20 @@ void display(int pageToDisplay) {
     } else {
       /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
       displayReviewPage();
-      submitScreen(null);
+
+      currentPage = "Submit Screen";
+
+      /* Get rid of original "Print Your Ballot" button on bottom bar */
+      querySelector('#finishUp').style.display = "none";
+      querySelector('#finishUp').style.visibility = "hidden";
+
+      /* Undisplay review */
+      querySelector('#reviews').style.visibility = "hidden";
+      querySelector('#reviews').style.display = "none";
+
+      /* Display submit screen */
+      querySelector('#submitScreen').style.visibility = "visible";
+      querySelector('#submitScreen').style.display = "block";
     }
 
     actuallyCastBallot.updateCurrentPage(actuallyCastBallot.size());
@@ -1174,7 +1190,7 @@ Future confirmScreen() async {
   await printFinalizedBallotSilent();
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 60), () => '60');
+  return new Future.delayed(const Duration(seconds: 600), () => '600');
 }
 /**
  * As its name suggests, prints the voter's final selections
@@ -1466,8 +1482,6 @@ class Ballot {
       /**Get the race's title**/
       Race currentRace = _races.elementAt(i);
       String raceName = currentRace.title;
-      print('race name below:');
-      print(raceName);
       currentMap['RACE'] = raceName;
 
 
@@ -1487,8 +1501,6 @@ class Ballot {
         assert (currentOption.groupAssociation == null);
 
       } else {
-        print ('found an identifier');
-        print (currentOption.identifier);
         currentMap['IDENTIFIER'] = currentOption.identifier;
       }
 
@@ -1500,8 +1512,6 @@ class Ballot {
         currentMap['GROUP'] = '';
 
       } else {
-        print ('found a group');
-        print (currentOption.groupAssociation);
         currentMap['GROUP'] = currentOption.groupAssociation;
         //if this isn't null but the identifier is null, we have as serious problem
         assert (currentOption.identifier != null);
@@ -1534,9 +1544,8 @@ class Ballot {
     int i=1;
 
     for(Race race in _races){
-      summary += "\tRace $i: ${race.title}\tSelection: ${race.hasVoted() ?
-                                                          race.getSelectedOption().identifier+" "+race.getSelectedOption().groupAssociation  :
-                                                          "No Selection"}\n";
+      summary += "\tRace $i: \t${race.hasVoted() ?  race.getSelectedOption().identifier+" "+race.getSelectedOption().groupAssociation  :
+                                                    "No Selection"}\t[${race.title}]\n";
       i++;
     }
 
@@ -1625,7 +1634,7 @@ class LogEventInterval {
   LogEventPair pairForInterval;
 
   LogEventInterval(LogEvent begin, LogEvent end, this.pageForInterval){
-    intervalLength = begin.time.difference(end.time);
+    intervalLength = end.time.difference(begin.time);
     pairForInterval = new LogEventPair(begin, end);
   }
 
@@ -1633,14 +1642,13 @@ class LogEventInterval {
     String summary = "";
     summary += "Interval Tracked for $pageForInterval:";
     summary += "\n${pairForInterval.summary()}";
-    summary += "\nDuration: ${intervalLength}\n";
+    summary += "Duration: ${intervalLength}\n\n";
 
     return summary;
   }
 
   LogEventInterval.join(List<LogEventInterval> toJoin, this.pageForInterval){
 
-    print("ToJoin: $toJoin");
     this.pairForInterval = new LogEventPair(toJoin.elementAt(0).pairForInterval.begin, toJoin.elementAt(toJoin.length-1).pairForInterval.end);
     this.intervalLength = Duration.ZERO;
 
@@ -1666,25 +1674,27 @@ class Logger {
 
   void logEvent(Event e){
 
-    print("$e");
     log.add(new LogEvent(e));
 
     int secondToLast = log.length-2;
 
     /* Check if this is different pageTitle from the one before it */
-    if(secondToLast >= 0 && log.elementAt(log.length-1).pageTitle != log.elementAt(secondToLast)) {
+    if(secondToLast >= 0) {
 
-      LogEvent initiator;
+      if(log.elementAt(log.length-1).pageTitle != log.elementAt(secondToLast).pageTitle) {
 
-      /* If this has a different page, then we should find the first event on this page */
-      for(int i=secondToLast; i>=0 && log.elementAt(i).pageTitle == log.elementAt(secondToLast).pageTitle; i--){
-        initiator = log.elementAt(i);
+        LogEvent ender = log.elementAt(log.length-1);
+        LogEvent initiator = log.elementAt(secondToLast);
+
+        /* If this has a different page, then we should find the first event on this page */
+        for (int i = secondToLast; (i>=0) && (log.elementAt(i).pageTitle == ender.pageTitle); i--) {
+          initiator = log.elementAt(i-1);
+        }
+
+        /* Note this will only find contiguous events, which I think makes sense here */
+        intervalLog.add(new LogEventInterval(initiator, ender, ender.pageTitle));
       }
-
-      /* Note this will only find contiguous events, which I think makes sense here */
-      intervalLog.add(new LogEventInterval(initiator, log.elementAt(secondToLast), initiator.pageTitle));
     }
-    print("${log.elementAt(log.length-1)}");
   }
 
   void logBallot(String designation, Ballot b){
@@ -1716,6 +1726,22 @@ class Logger {
     List<LogEventInterval> consolidatedIntervalLog = new List<LogEventInterval>();
     LinkedHashMap<String, List<LogEventInterval>> pagesToIntervalLists = new LinkedHashMap<String, List<LogEventInterval>>();
 
+    /* Getting weird null related error when I check it during the loop, so init here */
+    for(LogEventInterval interval in intervalLog) {
+      /* Get the page */
+      String thisPage = interval.pageForInterval;
+
+      /* Convert it to simplified form to add the intervals with pages for races associated with dialogs/inline to the
+         same mapping as the regular page */
+      if(thisPage.substring(0,4) == "Race") {
+
+        /* We should get "Race #(#)" and if it's extra, we'll just trim it off */
+        thisPage = thisPage.padRight(7).substring(0, 7).trim();
+      }
+
+      pagesToIntervalLists[thisPage] = new List<LogEventInterval>();
+    }
+
     for(LogEventInterval interval in intervalLog) {
 
       /* Get the page */
@@ -1729,17 +1755,15 @@ class Logger {
         thisPage = thisPage.padRight(7).substring(0, 7).trim();
       }
 
-      /* If we haven't encountered yet, initialise it */
-      if(pagesToIntervalLists[thisPage] == null) {
-        pagesToIntervalLists[thisPage] = new List<LogEventInterval>();
-      }
-
       /* Add it to this list */
       pagesToIntervalLists[thisPage].add(interval);
     }
 
     /* Join all the ones with the same pages */
-    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ consolidatedIntervalLog.add(new LogEventInterval.join(v, k));});
+    pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ if(v.length>0){consolidatedIntervalLog.add(new LogEventInterval.join(v, k));}});
+
+    /* Consolidate these into entire ballot */
+    consolidatedIntervalLog.add(new LogEventInterval.join(consolidatedIntervalLog, "Entire Ballot"));
 
     /* Now print all of them */
     for(LogEventInterval interval in consolidatedIntervalLog) {
