@@ -116,7 +116,7 @@ main() async {
   querySelector('#Previous').onClick.listen((MouseEvent e) => update(e, -1));
   querySelector('#Next').onClick.listen((MouseEvent e) => update(e, 1));
 
-  querySelector('#Review').onClick.listen((MouseEvent e) => gotoReview);
+  querySelector('#Review').onClick.listen(gotoReview);
 
   querySelector('#finishUp').onClick.listen(submitScreen);
 
@@ -489,7 +489,7 @@ void displayDialogConfirmation(int delta) {
   /* Show an appropriate confirmation message */
   verifyDialog.appendHtml(currentRace.hasVoted()?
       "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
-      "<p>You did not select anyone.<br><br>Is this correct?</p>");
+      "<p>You did not select any"+((currentRace.type == "rsce")? "one":"thing")+".<br><br>Is this correct?</p>");
 
   /* Build the buttons */
   ButtonElement dialogNo = new ButtonElement();
@@ -550,7 +550,7 @@ void displayIntermediateConfirmation(int delta) {
   inlineConfirmationDiv.id = "inlineConfirmationDiv";
   inlineConfirmationDiv.appendHtml(actuallyCastBallot.getRace(actuallyCastBallot.getCurrentPage()).hasVoted()?
   "<p>You selected <br><b>${currentRace.getSelectedOption().identifier}\t${currentRace.getSelectedOption().groupAssociation}</b><br>Is this correct?</p>" :
-  "<p>You did not select anyone.<br>Is this correct?</p>");
+  "<p>You did not select any"+((currentRace.type == "rsce")? "one":"thing")+".<br>Is this correct?</p>");
 
   /* Create the buttons */
   ButtonElement yesButton = new ButtonElement();
@@ -1561,7 +1561,6 @@ class Ballot {
 class EventTrigger {
 
   String triggerID;
-  String triggerName;
   String triggerClass;
   String triggerType;
 
@@ -1569,13 +1568,12 @@ class EventTrigger {
     Element tE = t as Element;
 
     triggerID = tE.id;
-    triggerName = tE.localName;
     triggerClass = tE.className;
     triggerType = tE.nodeName;
   }
 
   String toString(){
-    return "{ID: $triggerID\tName: $triggerName\tClass: $triggerClass\tType: $triggerType}";
+    return "{ID: $triggerID\tClass: $triggerClass\tType: $triggerType}";
   }
 }
 
@@ -1663,23 +1661,26 @@ class Logger {
   }
 
   void logEvent(Event e){
+
+    print("$e");
     log.add(new LogEvent(e));
 
     int secondToLast = log.length-2;
 
     /* Check if this is different pageTitle from the one before it */
-    if(log.elementAt(log.length-1).pageTitle != log.elementAt(log.length-2)) {
+    if(secondToLast >= 0 && log.elementAt(log.length-1).pageTitle != log.elementAt(secondToLast)) {
 
       LogEvent initiator;
 
       /* If this has a different page, then we should find the first event on this page */
-      for(int i=secondToLast; log.elementAt(i).pageTitle == log.elementAt(secondToLast).pageTitle && i>=0; i--){
+      for(int i=secondToLast; i>=0 && log.elementAt(i).pageTitle == log.elementAt(secondToLast).pageTitle; i--){
         initiator = log.elementAt(i);
       }
 
       /* Note this will only find contiguous events, which I think makes sense here */
       intervalLog.add(new LogEventInterval(initiator, log.elementAt(secondToLast), initiator.pageTitle));
     }
+    print("${log.elementAt(log.length-1)}");
   }
 
   void logBallot(String designation, Ballot b){
@@ -1721,7 +1722,7 @@ class Logger {
       if(thisPage.substring(0,4) == "Race") {
 
         /* We should get "Race #(#)" and if it's extra, we'll just trim it off */
-        thisPage = thisPage.substring(0, 8).trim();
+        thisPage = thisPage.padRight(7).substring(0, 7).trim();
       }
 
       /* If we haven't encountered yet, initialise it */

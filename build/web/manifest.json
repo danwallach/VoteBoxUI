@@ -3,12 +3,12 @@
   "name": "VoteBoxUI-VoteFlipping",
   "short_name": "VoteFlippingUI",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "minimum_chrome_version": "39",
 
   "icons": {
     "16": "vote16.png",
-    "128": "vote128.png"
+    "128": "voteFLIPPED128.png"
   },
 
   "app": {
