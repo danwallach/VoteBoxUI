@@ -362,7 +362,7 @@ void update(MouseEvent event, int delta) {
 
       }
 
-      currentPage = "Inline Confirmation: Race ${actuallyCastBallot.getCurrentPage()+1}";
+      currentPage = "Race ${actuallyCastBallot.getCurrentPage()+1} Inline Confirmation";
 
       /* Display popup or inline screen -- always moving forward 1 */
       displayInlineConfirmation(delta);
@@ -673,7 +673,7 @@ void review(MouseEvent event, int pageToDisplay) {
 
     reviewRace(race);
 
-    currentPage = "Review: Race ${pageToDisplay+1}";
+    currentPage = "Race ${pageToDisplay+1} Review";
 
     actuallyCastBallot.updateCurrentPage(pageToDisplay);
   }
@@ -1718,6 +1718,11 @@ class Logger {
 
       /* Convert it to simplified form to add the intervals with pages for races associated with dialogs/inline to the
          same mapping as the regular page */
+      if(thisPage.substring(0,4) == "Race") {
+
+        /* We should get "Race #(#)" and if it's extra, we'll just trim it off */
+        thisPage = thisPage.substring(0, 8).trim();
+      }
 
       /* If we haven't encountered yet, initialise it */
       if(pagesToIntervalLists[thisPage] == null) {
