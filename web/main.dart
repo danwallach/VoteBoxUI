@@ -525,6 +525,7 @@ void displayDialogConfirmation(int delta) {
             logger.logEvent(e);
             querySelector("#VotingContentDIV").style.top = "500px";
             verifyDialog.close('');
+            display(actuallyCastBallot.getCurrentPage());
             currentPage = "Race ${actuallyCastBallot.getCurrentPage()+1}";
           }
   );
@@ -1173,7 +1174,7 @@ Future confirmScreen() async {
   await printFinalizedBallotSilent();
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 30), () => '30');
+  return new Future.delayed(const Duration(seconds: 60), () => '60');
 }
 /**
  * As its name suggests, prints the voter's final selections
@@ -1533,7 +1534,9 @@ class Ballot {
     int i=1;
 
     for(Race race in _races){
-      summary += "\tRace $i: ${race.title}\tSelection: ${race.hasVoted() ? race.getSelectedOption()  : "No Selection"}\n";
+      summary += "\tRace $i: ${race.title}\tSelection: ${race.hasVoted() ?
+                                                          race.getSelectedOption().identifier+" "+race.getSelectedOption().groupAssociation  :
+                                                          "No Selection"}\n";
       i++;
     }
 
@@ -1637,6 +1640,7 @@ class LogEventInterval {
 
   LogEventInterval.join(List<LogEventInterval> toJoin, this.pageForInterval){
 
+    print("ToJoin: $toJoin");
     this.pairForInterval = new LogEventPair(toJoin.elementAt(0).pairForInterval.begin, toJoin.elementAt(toJoin.length-1).pairForInterval.end);
     this.intervalLength = Duration.ZERO;
 

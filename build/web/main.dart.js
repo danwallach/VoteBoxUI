@@ -3262,15 +3262,14 @@ if(!("name" in lK))lK.name="lK"
 $desc=$collectedClasses$.lK[1]
 lK.prototype=$desc
 lK.$__fields__=["Q","a"]
-function aj(a,b,c,d){this.Q=a
+function aj(a,b,c){this.Q=a
 this.a=b
 this.b=c
-this.c=d
 this.$deferredAction()}aj.builtin$cls="aj"
 if(!("name" in aj))aj.name="aj"
 $desc=$collectedClasses$.aj[1]
 aj.prototype=$desc
-aj.$__fields__=["Q","a","b","c"]
+aj.$__fields__=["Q","a","b"]
 function Vu(a,b,c,d){this.Q=a
 this.a=b
 this.b=c
@@ -10550,7 +10549,7 @@ u.b.q(0,"Actually Cast",r)
 $.aQ().Jr()
 z=3
 return H.AZ(F.pW(),Xn,y)
-case 3:x=P.dT(C.oM,new F.bk(),null)
+case 3:x=P.dT(C.GO,new F.bk(),null)
 z=1
 break
 case 1:return H.AZ(x,0,y,null)
@@ -10677,6 +10676,7 @@ $.aQ().FY(a)
 z=document.querySelector("#VotingContentDIV").style
 z.top="500px"
 J.GE(this.Q,"")
+F.GX($.fl.qe())
 $.tZ="Race "+H.d(J.WB($.fl.qe(),1))},null,null,2,0,null,3,"call"]},
 Vz:{
 "^":"r:19;Q,a,b",
@@ -10746,7 +10746,7 @@ xz:{
 $1:[function(a){return F.nl(a,this.Q)},null,null,2,0,null,3,"call"]},
 bk:{
 "^":"r:0;",
-$0:function(){return"30"}},
+$0:function(){return"60"}},
 rn:{
 "^":"r:2;",
 $1:[function(a){return P.P("Request complete "+H.d(J.CA(J.G0(a))))},null,null,2,0,null,33,"call"]},
@@ -10870,7 +10870,7 @@ return x+"\n"},
 Hq:function(){var z,y,x,w,v,u,t
 for(z=this.Q,y=z.length,x="\n",w=1,v=0;v<z.length;z.length===y||(0,H.lk)(z),++v){u=z[v]
 t="\tRace "+w+": "+H.d(u.Q)+"\tSelection: "
-x+=t+H.d(u.Wr()?u.Lc():"No Selection")+"\n";++w}return x},
+x+=t+H.d(u.Wr()?J.WB(J.WB(u.Lc().gxG()," "),u.Lc().gGD()):"No Selection")+"\n";++w}return x},
 mZ:function(a){var z,y,x
 this.Q=H.J([],[F.Os])
 z=J.Y(a)
@@ -10883,19 +10883,21 @@ static:{tf:function(a){var z=new F.lK(null,0)
 z.mZ(a)
 return z}}},
 aj:{
-"^":"a;Q,a,b,c",
-X:function(a){return"{ID: "+H.d(this.Q)+"\tName: "+this.a+"\tClass: "+H.d(this.b)+"\tType: "+H.d(this.c)+"}"},
+"^":"a;Q,a,b",
+X:function(a){return"{ID: "+H.d(this.Q)+"\tClass: "+H.d(this.a)+"\tType: "+H.d(this.b)+"}"},
 oa:function(a){H.Go(a,"$iscv")
 this.Q=a.id
-this.a=a.localName
-this.b=a.className
-this.c=a.nodeName},
-static:{Lv:function(a){var z=new F.aj(null,null,null,null)
+this.a=a.className
+this.b=a.nodeName},
+static:{Lv:function(a){var z=new F.aj(null,null,null)
 z.oa(a)
 return z}}},
 Vu:{
 "^":"a;Q,a,b,c",
-X:function(a){return H.d(this.c)+"\n\tTime: "+this.Q.X(0)+"\n\tPage: "+this.b+"\n\tTrigger: "+this.a.X(0)+"\n"}},
+X:function(a){var z,y
+z=H.d(this.c)+"\n\tTime: "+this.Q.X(0)+"\n\tPage: "+this.b+"\n\tTrigger: "
+y=this.a
+return z+("{ID: "+H.d(y.Q)+"\tClass: "+H.d(y.a)+"\tType: "+H.d(y.b)+"}")+"\n"}},
 aA:{
 "^":"a;Q,a",
 Hq:function(){return"Beginning Event: "+J.Lz(this.Q)+"\n"+("End Event: "+this.a.X(0)+"\n")}},
@@ -10903,6 +10905,7 @@ Ey:{
 "^":"a;Q,zk:a<,ip:b<",
 Hq:function(){return"Interval Tracked for "+H.d(this.Q)+":"+("\n"+this.b.Hq())+("\nDuration: "+J.Lz(this.a)+"\n")},
 dw:function(a,b){var z,y,x,w
+P.P("ToJoin: "+H.d(a))
 z=J.w1(a)
 this.b=new F.aA(z.Zv(a,0).gip().Q,z.Zv(a,J.aF(z.gv(a),1)).gip().a)
 this.a=C.RT
@@ -11929,7 +11932,7 @@ C.NU=new P.R8()
 C.l0=new E.NQ()
 C.xf=new E.Bc()
 C.RT=new P.a6(0)
-C.oM=new P.a6(3e7)
+C.GO=new P.a6(6e7)
 C.Mc=function(hooks) {
   if (typeof dartExperimentalFixupGetTag != "function") return hooks;
   hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
