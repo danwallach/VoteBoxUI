@@ -96,8 +96,9 @@ void handlePost(HttpRequest req) {
 
   String toWrite = DATA_FILE;
 
-  if(req.uri.path != r"http://127.0.0.1:8888/") {
-    toWrite = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt";
+  if(req.uri.path != "/") {
+    //toWrite = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt";
+    toWrite = "results.txt";
     justWritten = "results";
   }
 

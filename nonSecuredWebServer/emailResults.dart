@@ -4,7 +4,7 @@ import "dart:io";
 
 main() async {
 
-  String inputFileName = r'C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt';
+  String inputFileName = "./results.txt"; //r'C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt';
 
   /* Set up using gmail for this */
   GmailSmtpOptions options = new GmailSmtpOptions()

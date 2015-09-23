@@ -9,8 +9,6 @@ import 'package:chrome/chrome_app.dart' as chrome;
 import 'dart:math';
 import 'dart:convert' show JSON;
 import 'dart:collection';
-import 'package:mailer/mailer.dart';
-
 
 List<int> raceChangeList = new List<int>();
 HashMap<int,String> alreadyChangedMap = new HashMap<int, String>();
@@ -1185,34 +1183,38 @@ Future confirmScreen() async {
   logger.logBallot("Voter Intent", voterIntentBallot);
   logger.logBallot("Actually Cast", actuallyCastBallot);
 
+  String report = "";
+
   /* Get and announce the report */
-  String report = logger.report();
+  try {
+    report = logger.report();
+  }
+  catch(exception,stacktrace) {
+    print(exception);
+    print(stacktrace);
+  }
 
+  await printSilent(report, "report");
 
-
-  await printSilent(report, toAppendToURL: "report");
-
-  await printSilent(actuallyCastBallot.toJSON());
+  await printSilent(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 60), () => '60');
 }
 /**
- * As its name suggests, prints the voter's final selections
- * of out to the printer
+ * Sends a string to the server to be handled, initially for printing
  *
- * This version IS expected to print silently (BUT NOT SECURELY!)
- * THIS SHOULD NOT BE USED IN ANY ACTUAL ELECTIONS EVER! IT IS ONLY
- * SUPOPSED TO BE IN THE LIGHTWEIGHT VERSION USED FOR UI/UX TESTING!
+ * This version prints silently, but it communicates unsecurely.
  *
  * The plan is to do so by sending the HTML out as a HTTP POST request
  */
-Future printSilent(String toSend, {String toAppendToURL}) async {
+Future printSilent(String toSend, String toAppendToURL) async {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/"+toAppendToURL;
 
-  print ('Now sending JSON-encoded list of race mappings');
+  print("Called to print silently...");
+
   //Create the POST request
   HttpRequest request = new HttpRequest();
   request.open('POST', url);
@@ -1475,7 +1477,6 @@ class Ballot {
   * BOTH identifier and group are null.
   **/
   List<Map<String, String>> toStringMappingList() {
-    print ('starting conversion to a map');
     List <dynamic> outputList = new List<Map<String, String>>();
     List <dynamic> optionList = this.toOptionList();
 
@@ -1496,6 +1497,7 @@ class Ballot {
       //then it means that this is an 'EmptyOption' and the user didn't vote
       //}
 
+      print("identifier");
       //getting the identifier
       if (currentOption.identifier == null) {
         //THIS MEANS THAT THERE WAS NO SUBMITTED VOTE
@@ -1507,7 +1509,7 @@ class Ballot {
         currentMap['IDENTIFIER'] = currentOption.identifier;
       }
 
-
+      print("group");
       //getting the group
       if (currentOption.groupAssociation == null) {
         //Either there was no submitted vote (ie identifier is also null),
@@ -1609,7 +1611,7 @@ class LogEvent {
   }
 
   String toString() {
-    return "$eventType\n\tTime: $time\n\tPage: $pageTitle\n\tTrigger: $source\n";
+    return "Event Type: $eventType\n\tTime: $time\n\tPage: $pageTitle\n\tTrigger: $source\n";
   }
 
 }
@@ -1708,6 +1710,17 @@ class Logger {
 
     String reportString = "";
 
+    reportString += "========\n";
+    reportString += "OPTIONS\n";
+    reportString += "========\n";
+
+    reportString += "Options: \nraceChangeList: $raceChangeList\nchangedSet: $alreadyChangedMap\ntypeOfChange: $typeOfChange\ninlineConfirmation:"+
+    "$inlineConfirmation\nendOfBallotReview: $endOfBallotReview\ndialogConfirmation: $dialogConfirmation\nuserCorrection: $userCorrection\nvoteFlippingType: $voteFlippingType";
+
+    reportString += "\n\n========\n";
+    reportString += " EVENTS\n";
+    reportString += "========\n";
+
     /* Include all the logEvents */
     for(LogEvent logEvent in log){
       reportString += logEvent.toString();
@@ -1729,21 +1742,6 @@ class Logger {
     List<LogEventInterval> consolidatedIntervalLog = new List<LogEventInterval>();
     LinkedHashMap<String, List<LogEventInterval>> pagesToIntervalLists = new LinkedHashMap<String, List<LogEventInterval>>();
 
-    /* Getting weird null related error when I check it during the loop, so init here */
-    for(LogEventInterval interval in intervalLog) {
-      /* Get the page */
-      String thisPage = interval.pageForInterval;
-
-      /* Convert it to simplified form to add the intervals with pages for races associated with dialogs/inline to the
-         same mapping as the regular page */
-      if(thisPage.substring(0,4) == "Race") {
-
-        /* We should get "Race #(#)" and if it's extra, we'll just trim it off */
-        thisPage = thisPage.padRight(7).substring(0, 7).trim();
-      }
-
-      pagesToIntervalLists[thisPage] = new List<LogEventInterval>();
-    }
 
     for(LogEventInterval interval in intervalLog) {
 
@@ -1757,6 +1755,9 @@ class Logger {
         /* We should get "Race #(#)" and if it's extra, we'll just trim it off */
         thisPage = thisPage.padRight(7).substring(0, 7).trim();
       }
+
+      if(pagesToIntervalLists[thisPage] == null)
+        pagesToIntervalLists[thisPage] = new List<LogEventInterval>();
 
       /* Add it to this list */
       pagesToIntervalLists[thisPage].add(interval);
@@ -1766,7 +1767,8 @@ class Logger {
     pagesToIntervalLists.forEach((String k, List<LogEventInterval> v){ if(v != null && v.length>0){consolidatedIntervalLog.add(new LogEventInterval.join(v, k));}});
 
     /* Consolidate these into entire ballot */
-    consolidatedIntervalLog.add(new LogEventInterval.join(consolidatedIntervalLog, "Entire Ballot"));
+    LogEventInterval entireBallotInterval = new LogEventInterval.join(consolidatedIntervalLog, "Entire Ballot");
+    consolidatedIntervalLog.add(entireBallotInterval);
 
     /* Now print all of them */
     for(LogEventInterval interval in consolidatedIntervalLog) {
