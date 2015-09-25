@@ -12,11 +12,11 @@ main() async {
   //MAKE SURE THIS IS CORRECT IF SOMETHING FAILS TO PRINT!!!
   String printerName = r'Hewlett-Packard HP LaserJet P2055dn';
 
-  print('Test');
-  print('Starting script at ... ${(await Process.run('cd',[], runInShell: true)).stdout}');
+  print('Starting printing script at ${(await Process.run('cd',[], runInShell: true)).stdout}');
 
   new File(inputFileName).readAsString().then((String contents) {
 
+    print('Building HTML... ');
     try {
       outputString = (generatePrintableHTML(JSON.decode(contents)));
     } catch (exception, stackTrace) {
@@ -29,7 +29,7 @@ main() async {
     final String fileName = outputHTMLFileName;
     File outputHTMLFile = new File (fileName);
     //Create the output HTML file
-    print ('Creating the .html file for our stylized printout');
+    print ('Creating HTML file... ');
     try {
       if (outputHTMLFile.existsSync()) {
         outputHTMLFile.deleteSync();
@@ -43,6 +43,7 @@ main() async {
     }
 
     //Write the output String to our newly created file
+    print('Writing HTML to $outputHTMLFileName');
     try {
       outputHTMLFile.writeAsStringSync(outputString);
     } catch (exception, stackTrace) {
@@ -55,16 +56,17 @@ main() async {
 
     //Convert the HTML file to a pdf file
     //Turns out there isn't an easier way to do multiple synchrous processes that these .then lambdas -_-
-    print ('Converting the .html file to the stylized pdf file');
+    print ('Writing HTML to PDF... ');
     Process.run(r'C:\Program Files (x86)\Prince\Engine\bin\prince.exe', [outputHTMLFileName, '-o', outputPDFFileName],
                 workingDirectory: Directory.current.path, runInShell:false)
       .then ((ProcessResult results) {
 
+        print("Starting printjob... ");
         //USED IN MAC - LPR DIDNT WORK FOR ME IN WINDOWS!  Process.run('lpr', [outputPDFFileName], runInShell:true)
         Process.run(r'C:\Program Files (x86)\Foxit Software\Foxit Reader\FoxitReader.exe', [r'/t', outputPDFFileName, printerName],
                     workingDirectory: Directory.current.path, runInShell:false)
           .then ((ProcessResult results){
-            print ('SHOULD BE DONE NOW! If this has not sent something to the print queue yet, something is wrong');
+            print ('Print job submitted!');
           }).catchError((c) {
             print ('There was this type of (c) error -> ${c.runtimeType}');
             print ('trying to print the error directly -> ${c}');

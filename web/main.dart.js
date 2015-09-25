@@ -8241,7 +8241,7 @@ a6:{
 g:function(a,b){return new P.a6(this.Q+b.gm5())},
 T:function(a,b){return new P.a6(this.Q-b.gm5())},
 R:function(a,b){return new P.a6(C.CD.zQ(this.Q*b))},
-w:function(a,b){return C.CD.w(this.Q,b.gm5())},
+w:function(a,b){return this.Q<b.gm5()},
 A:function(a,b){return this.Q>b.gm5()},
 C:function(a,b){return this.Q>=b.gm5()},
 goD:function(){return C.CD.BU(this.Q,1000)},
@@ -10062,7 +10062,7 @@ v=J.X(document.querySelector("#endVoting"))
 H.J(new W.O(0,v.Q,v.a,W.V(F.Kf()),v.b),[H.N(v,0)]).Y()
 return H.AZ(null,0,y,null)
 case 1:return H.AZ(w,1,y)}}return H.AZ(null,E2,y,null)},"$0","lS",0,0,0],
-t2:function(){var z,y,x,w,v,u,t,s
+t2:function(){var z,y,x,w,v,u,t,s,r
 z=H.HD(new W.wz(document.querySelectorAll("input[name=\"location\"]")),"$isHU",[W.UM],"$asHU")
 z="label[for=\""+H.d(J.F8(z.XG(z,new F.j8())))+"\"]"
 y=document.querySelector(z).textContent
@@ -10071,29 +10071,53 @@ z="label[for=\""+H.d(J.F8(z.XG(z,new F.M9())))+"\"]"
 x=document.querySelector(z).textContent
 z=x.length
 w=H.BU(J.Nj(x,z-2,z-1),null,null)
-switch(y){case"Top of Ballot":for(v=0;v<14;++v)$.bY().push(v)
+switch(y){case"Top of Ballot":for(v=0;v<13;++v)$.bY().push(v)
 break
-case"Bottom of Ballot":for(v=14;v<27;++v)$.bY().push(v)
+case"Bottom of Ballot":for(v=13;v<27;++v)$.bY().push(v)
 break
-case"Top of Screen":for(v=0;v<7;++v)$.bY().push(v)
-for(v=14;v<20;++v)$.bY().push(v)
+case"Top of Screen":for(v=0;v<8;++v)$.bY().push(v)
+for(v=13;v<21;++v)$.bY().push(v)
 break
-case"Bottom of Screen":for(v=7;v<14;++v)$.bY().push(v)
-for(v=21;v<27;++v)$.bY().push(v)
+case"Bottom of Screen":for(v=5;v<13;++v)$.bY().push(v)
+for(v=19;v<27;++v)$.bY().push(v)
 break
 case"Top Left":for(v=0;v<8;++v)$.bY().push(v)
 break
-case"Top Right":for(v=14;v<22;++v)$.bY().push(v)
+case"Top Right":for(v=13;v<21;++v)$.bY().push(v)
 break
 case"Bottom Right":for(v=19;v<27;++v)$.bY().push(v)
 break
-case"Bottom Left":for(v=6;v<14;++v)$.bY().push(v)
-break}v=C.pr.j1($.bY().length)
-if(typeof w!=="number")return H.o(w)
-for(;z=$.bY(),u=z.length,u>w;v=C.pr.j1($.bY().length)){if(v<0||v>=u)return H.e(z,v);(z&&C.Nm).Rz(z,z[v])}z=H.HD(new W.wz(document.querySelectorAll("input[name=\"changeType\"]")),"$isHU",[W.UM],"$asHU")
+case"Bottom Left":for(v=5;v<13;++v)$.bY().push(v)
+break}z=H.HD(new W.wz(document.querySelectorAll("input[name=\"changeType\"]")),"$isHU",[W.UM],"$asHU")
 z="label[for=\""+H.d(J.F8(z.XG(z,new F.uJ())))+"\"]"
 y=document.querySelector(z).textContent
-if(y==="Combination")for(t=0,s=0,v=0;v<$.bY().length;++v)if(C.pr.j1(2)===0||s>($.bY().length/2|0)){$.Nu().push("Change Selection");++t}else{$.Nu().push("No Selection");++s}else for(v=0;v<$.bY().length;++v)$.Nu().push(y)
+if(y==="Change Selection")for(v=0;z=$.bY(),v<z.length;++v)if($.fl.vi(z[v]).a.length<2){z=$.bY()
+z.toString
+if(typeof z!=="object"||z===null||!!z.fixed$length)H.vh(new P.ub("removeAt"))
+if(v>=z.length)H.vh(P.D(v,null,null))
+z.splice(v,1)[0]
+z=$.bY()
+u=z.length
+if(u>=u)return H.e(z,u)
+if(J.UN(z[u],J.WS($.fl))){z=$.bY()
+u=z.length
+if(u>=u)return H.e(z,u)
+z.push(J.WB(z[u],1))}else{z=$.bY()
+if(0>=z.length)return H.e(z,0)
+if(J.vU(z[0],0)){z=$.bY()
+if(0>=z.length)return H.e(z,0)
+u=J.aF(z[0],1)
+z.toString
+if(typeof z!=="object"||z===null||!!z.fixed$length)H.vh(new P.ub("insert"))
+z.length
+z.splice(0,0,u)}}}v=C.pr.j1($.bY().length)
+if(typeof w!=="number")return H.o(w)
+for(;z=$.bY(),u=z.length,u>w;v=C.pr.j1($.bY().length)){if(v<0||v>=u)return H.e(z,v);(z&&C.Nm).Rz(z,z[v])}if(y==="Combination")for(t=0,s=0,v=0;v<$.bY().length;++v){if(C.pr.j1(2)===0){z=$.bY()
+u=z.length
+if(t<=(u/2|0)){r=$.fl
+if(v>=u)return H.e(z,v)
+z=r.vi(z[v]).a.length>=2}else z=!1}else z=!1
+if(z){$.Nu().push("Change Selection");++t}else{$.Nu().push("No Selection");++s}}else for(v=0;v<$.bY().length;++v)$.Nu().push(y)
 $.GH=H.Go(document.querySelector("#reviewTypeEndOfBallot"),"$isUM").checked===!0||H.Go(document.querySelector("#reviewTypeBoth"),"$isUM").checked===!0
 $.aA=H.Go(document.querySelector("#reviewTypeInline"),"$isUM").checked===!0||H.Go(document.querySelector("#reviewTypeBoth"),"$isUM").checked===!0
 $.Vf=H.Go(document.querySelector("#inlineTypePopup"),"$isUM").checked
@@ -10186,10 +10210,10 @@ y=z.length
 if(a.d){x=(z&&C.Nm).OY(z,a.Lc())
 for(w=C.pr.j1(y);w===x;w=C.pr.j1(y));z=a.a
 if(w<0||w>=z.length)return H.e(z,w)
-a.eI(z[w].Q)}else{v=C.pr.j1(y)
+a.eI(z[w].gxG())}else{v=C.pr.j1(y)
 z=a.a
 if(v<0||v>=z.length)return H.e(z,v)
-a.eI(z[v].Q)}},
+a.eI(z[v].gxG())}},
 qW:function(a){var z,y,x,w,v,u
 z=document.querySelector("#verifyDialog")
 y=document.querySelector("#VotingContentDIV").style
@@ -10411,14 +10435,14 @@ o=e.style
 l=p.Bu()?"white":"black"
 o.color=l
 e.className="optionIdentifier"
-e.textContent=p.Q
+e.textContent=p.gxG()
 d=document.createElement("div",null)
 d.id="p"+n
 o=d.style
 l=p.Bu()?"white":"black"
 o.color=l
 d.className="optionGroup"
-d.textContent=p.a
+d.textContent=p.gGD()
 m.appendChild(i)
 m.appendChild(e)
 m.appendChild(d)
@@ -10792,16 +10816,16 @@ eI:function(a){var z,y,x,w
 this.d=!0
 for(z=this.a,y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x){w=z[x]
 w.AC()
-if(J.mG(w.Q,a))w.nJ()}},
+if(J.mG(w.gxG(),a))w.nJ()}},
 Lc:function(){if(this.d){var z=this.a
 return(z&&C.Nm).XG(z,new F.cr())}return},
 TU:function(){var z,y,x
 this.d=!1
 for(z=this.a,y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x)z[x].AC()},
-X:function(a){var z,y,x,w,v
+X:function(a){var z,y,x,w
 z="Race: "+H.d(this.Q)+("\n\tText: "+H.d(this.b))+"\n\tOptions: \n"
-for(y=this.a,x=y.length,w=0;w<y.length;y.length===x||(0,H.lk)(y),++w){v=y[w]
-z+="\t\t"+("Name: "+H.d(v.Q)+", Group: "+H.d(v.a)+", Voted Status: "+v.b+"\n")}return z+("\nVoted Status: "+this.d+"\n")},
+for(y=this.a,x=y.length,w=0;w<y.length;y.length===x||(0,H.lk)(y),++w)z+="\t\t"+H.d(y[w])
+return z+("\nVoted Status: "+this.d+"\n")},
 Hq:function(){return H.d(this.d?this.Lc().Hq():"No Selection")+" ["+H.d(this.Q)+"]"},
 Pu:function(a){var z,y,x,w,v,u
 this.Q=a.Q
@@ -10812,8 +10836,8 @@ this.a=H.J([],[F.p5])
 for(z=a.a,y=z.length,x=0;x<z.length;z.length===y||(0,H.lk)(z),++x){w=z[x]
 v=this.a
 u=new F.p5(null,null,!1)
-u.Q=w.Q
-u.a=w.a
+u.Q=w.gxG()
+u.a=w.gGD()
 u.b=w.Bu()
 v.push(u)}},
 static:{Fa:function(a){var z=new F.Os(null,null,null,null,!1)

@@ -6,7 +6,7 @@ main(List<String> arguments) async {
 
   String fileName = arguments.elementAt(0);
 
-  print("$fileName");
+  print("Results saved to $fileName");
 
   //"./results.txt"; //r'C:\Users\seclab2\Desktop\nonSecuredWebServer\results.txt';
 
@@ -28,6 +28,6 @@ main(List<String> arguments) async {
     ..attachments.add(new Attachment(file: new File(fileName)));
 
   /* Send email */
-  transport.send(envelope).then((_) => print('Email sent!')).catchError((e) => print('Error: $e'));
+  transport.send(envelope).then((_) => print('Email sent! Recipients: ${envelope.recipients}')).catchError((e) => print('Error: $e'));
 
 }

@@ -16,7 +16,7 @@ import 'dart:async';
 
 final String HOST = r"127.0.0.1"; // eg: localhost
 final int PORT = 8888;
-final String DATA_FILE = r"C:\Users\seclab2\Desktop\nonSecuredWebServer\data.json";
+final String DATA_FILE = "data.json";
 String justWritten = "";
 int i = 1;
 
@@ -32,20 +32,15 @@ void main() {
           handlePost(request);
 
           if(justWritten != "results") {
-            print('NOW TO PRINT!');
-
 
             if (Platform.operatingSystem != 'macos') {
-              print('Printing for windows! Your operating system is ${Platform.operatingSystem}');
+              print('Your operating system is ${Platform.operatingSystem}. Printing for Windows... ');
               runScript(['printStylizedBallotUsingFoxitFromJSON.dart']);
             } else {
-              print("JDGFHJDGHJDGHJ");
-              exit(0);
-              print('Printing for mac! Your operating system is ${Platform.operatingSystem}');
+              print('Your operating system is ${Platform.operatingSystem}. Printing for Mac... ');
               runScript(['printStylizedBallotUsingLPRFromJSON.dart']);
             }
-            print('FINISHED TRYING TO PRINT');
-            print('IF NOTHING PRINTED OUT, DOUBLE CHECK THAT THE PATH TO THE PRINTER IS CORRECT');
+            print("Printing complete!");
 
           } else {
 

@@ -153,46 +153,41 @@ void recordOptions(){
 
     /* Add the appropriate race numbers to the raceChangeSet */
 
-    /* First 14 races */
-    case "Top of Ballot":     for(int i=0; i<14; i++){ raceChangeList.add(i); }
+    /* First 13 races */
+    case "Top of Ballot":     for(int i=0; i<13; i++){ raceChangeList.add(i); }
                               break;
 
-    /* Last 13 races */
-    case "Bottom of Ballot":  for(int i=14; i<27; i++){ raceChangeList.add(i); }
+    /* Last 14 races */
+    case "Bottom of Ballot":  for(int i=13; i<27; i++){ raceChangeList.add(i); }
                               break;
 
     /* 1-7 and 15-21 */
-    case "Top of Screen":     for(int i=0; i<7; i++){ raceChangeList.add(i); }
-                              for(int i=14; i<20; i++){ raceChangeList.add(i); }
+    case "Top of Screen":     for(int i=0; i<8; i++){ raceChangeList.add(i); }
+                              for(int i=13; i<21; i++){ raceChangeList.add(i); }
                               break;
 
-    /* 8-14 and 22-27 */
-    case "Bottom of Screen":  for(int i=7; i<14; i++){ raceChangeList.add(i); }
-                              for(int i=21; i<27; i++){ raceChangeList.add(i); }
+    /* 6-13 and 20-27 */
+    case "Bottom of Screen":  for(int i=5; i<13; i++){ raceChangeList.add(i); }
+                              for(int i=19; i<27; i++){ raceChangeList.add(i); }
                               break;
 
     /* 1-7 */
     case "Top Left":          for(int i=0; i<8; i++){ raceChangeList.add(i); }
                               break;
 
-    /* 15-21 */
-    case "Top Right":         for(int i=14; i<22; i++){ raceChangeList.add(i); }
+    /* 14-21 */
+    case "Top Right":         for(int i=13; i<21; i++){ raceChangeList.add(i); }
                               break;
 
-    /* 22-27 */
+    /* 20-27 */
     case "Bottom Right":      for(int i=19; i<27; i++){ raceChangeList.add(i); }
                               break;
 
-    /* 8-14 */
-    case "Bottom Left":       for(int i=6; i<14; i++){ raceChangeList.add(i); }
+    /* 6-13 */
+    case "Bottom Left":       for(int i=5; i<13; i++){ raceChangeList.add(i); }
                               break;
 
   }
-
-  for(int i=random.nextInt(raceChangeList.length); raceChangeList.length>numToChange; i=random.nextInt(raceChangeList.length)){
-    raceChangeList.remove(raceChangeList.elementAt(i));
-  }
-
 
   /* Get the type of change and insert appropriately into typeOfChange list */
   selected = (querySelectorAll('input[name=\"changeType\"]') as ElementList<RadioButtonInputElement>).firstWhere(
@@ -200,6 +195,36 @@ void recordOptions(){
   );
 
   labelSelectionStr = querySelector('label[for=\"${selected.id}\"]').text;
+
+  /* If it's all changes */
+  if (labelSelectionStr == "Change Selection") {
+
+    /* Go through the list of races */
+    for (int i = 0; i < raceChangeList.length; i++) {
+
+      /* Remove any that have only one candidate */
+      if (actuallyCastBallot.getRace(raceChangeList.elementAt(i)).options.length < 2) {
+
+        raceChangeList.removeAt(i);
+
+        /* Expand the range forward as long as we aren't already at the end */
+        if (raceChangeList.elementAt(raceChangeList.length)<actuallyCastBallot.size()) {
+          raceChangeList.add(raceChangeList.elementAt(raceChangeList.length) + 1);
+        }
+        /* Otherwise expand the range backwards as long as we aren't at the beginning */
+        else if (raceChangeList.elementAt(0)>0)
+        {
+          raceChangeList.insert(0, raceChangeList.elementAt(0)-1);
+        }
+      }
+    }
+  }
+
+  /* Randomly remove until we get down to the number we want */
+  for(int i=random.nextInt(raceChangeList.length); raceChangeList.length>numToChange; i=random.nextInt(raceChangeList.length)){
+    raceChangeList.remove(raceChangeList.elementAt(i));
+  }
+
 
   /* Check for combination */
   if (labelSelectionStr == "Combination") {
@@ -215,14 +240,20 @@ void recordOptions(){
       int rand = rng.nextInt(2);
 
       /* Checks if either this type was selected or it has to be selected */
-      if(rand == 0 || numNoSelectionType > raceChangeList.length ~/ 2) {
+      if(rand == 0 && numChangeType <= raceChangeList.length ~/ 2 && actuallyCastBallot.getRace(raceChangeList.elementAt(i)).options.length >= 2) {
 
           typeOfChange.add("Change Selection");
           numChangeType++;
 
       } else {
-        typeOfChange.add("No Selection");
-        numNoSelectionType++;
+
+        /* If we're trying to force this race */
+        //if(numNoSelectionType == raceChangeList.length - raceChangeList.length ~/ 2) {
+
+        //} else {
+          typeOfChange.add("No Selection");
+          numNoSelectionType++;
+        //}
       }
 
     }
