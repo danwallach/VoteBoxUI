@@ -22,6 +22,7 @@ String voteFlippingType;
 String currentPage="Options Page";
 Ballot actuallyCastBallot;
 Logger logger = new Logger();
+String ID;
 
 
 main() async {
@@ -314,6 +315,7 @@ void getID(MouseEvent event) {
     dialog.showModal();
   }
   else{
+    ID = querySelector("#idText").text;
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
@@ -1750,6 +1752,8 @@ class Logger {
   String report(){
 
     String reportString = "";
+
+    reportString += "User PIN: ${ID}\n";
 
     reportString += "========\n";
     reportString += "OPTIONS\n";
