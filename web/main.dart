@@ -1258,7 +1258,7 @@ Future contactServer(String toSend, String toAppendToURL) async {
   //Create the POST request
   HttpRequest request = new HttpRequest();
   request.open('POST', url);
-  await request.onLoad.listen((event) => print(
+  request.onLoad.listen((event) => print(
       'Request complete ${event.target.responseText}'));
 
   return request.send(toSend);

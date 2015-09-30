@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manifest.json" afterPath="$PROJECT_DIR$/web/manifest.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VoteBoxUI.iws" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="1237" column="28" selection-start-line="1237" selection-start-column="28" selection-end-line="1237" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.23776224">
+              <caret line="1237" column="2" selection-start-line="1237" selection-start-column="2" selection-end-line="1237" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -66,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09837963">
+            <state vertical-scroll-proportion="-3.2692308">
               <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
@@ -89,7 +89,7 @@
       <file leaf-file-name="printStylizedBallotUsingFoxitFromJSON.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printStylizedBallotUsingFoxitFromJSON.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
@@ -127,8 +127,8 @@
         <option value="$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart" />
         <option value="$PROJECT_DIR$/launchScripts/WindowsUpdateAndRun.bat" />
         <option value="$PROJECT_DIR$/nonSecuredWebServer/printStylizedBallotUsingFoxitFromJSON.dart" />
-        <option value="$PROJECT_DIR$/web/main.dart" />
         <option value="$PROJECT_DIR$/web/manifest.json" />
+        <option value="$PROJECT_DIR$/web/main.dart" />
       </list>
     </option>
   </component>
@@ -175,8 +175,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,7 +237,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -565,7 +565,8 @@
       <workItem from="1443634915957" duration="87000" />
       <workItem from="1443635068324" duration="319000" />
       <workItem from="1443639301316" duration="239000" />
-      <workItem from="1443639899614" duration="53000" />
+      <workItem from="1443639899614" duration="76000" />
+      <workItem from="1443640099985" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -825,11 +826,17 @@
       <option name="project" value="LOCAL" />
       <updated>1443639771182</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Updated manifest">
+      <created>1443639963865</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1443639963865</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146232000" />
+    <option name="totallyTimeSpent" value="146975000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -875,7 +882,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixing manifest for voteflipping version" />
     <MESSAGE value="Adding printing functionality" />
     <MESSAGE value="Updated version to 0.0.2" />
     <MESSAGE value="nonsecuredWebServer add" />
@@ -900,7 +906,8 @@
     <MESSAGE value="Updated time to close and manifest." />
     <MESSAGE value="Updated logging to include entered PIN" />
     <MESSAGE value="Updated time and set up kill request for server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated time and set up kill request for server" />
+    <MESSAGE value="Updated manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated manifest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1245,14 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printStylizedBallotUsingFoxitFromJSON.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printThis.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12854442">
@@ -1268,18 +1267,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.dart">
+    <entry file="file://$PROJECT_DIR$/web/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="1237" column="28" selection-start-line="1237" selection-start-column="28" selection-end-line="1237" selection-end-column="28" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/manifest.json">
+    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printStylizedBallotUsingFoxitFromJSON.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09837963">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23776224">
+          <caret line="1237" column="2" selection-start-line="1237" selection-start-column="2" selection-end-line="1237" selection-end-column="38" />
           <folding />
         </state>
       </provider>
