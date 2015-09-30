@@ -10557,7 +10557,9 @@ z=x}while(true)switch(z){case 0:$.aQ().FY(a)
 $.tZ="End Voting Page"
 z=2
 return H.AZ(F.Xn(),zY,y)
-case 2:$.U().a.rF().Q.Z("close")
+case 2:z=3
+return H.AZ(F.h9(null,"finish"),zY,y)
+case 3:$.U().a.rF().Q.Z("close")
 return H.AZ(null,0,y,null)
 case 1:return H.AZ(w,1,y)}}return H.AZ(null,zY,y,null)},"$1","Kf",2,0,50,3],
 Xn:function(){var z=0,y=new P.Zh(),x,w=2,v,u=[],t,s,r,q,p,o,n,m,l,k
@@ -10601,9 +10603,7 @@ P.P(r)}z=3
 return H.AZ(F.h9(t,"report"),Xn,y)
 case 3:z=4
 return H.AZ(F.h9($.fl.fN(),""),Xn,y)
-case 4:z=5
-return H.AZ(F.h9(null,"finish"),Xn,y)
-case 5:x=P.dT(C.mZ,new F.bk(),null)
+case 4:x=P.dT(C.mZ,new F.bk(),null)
 z=1
 break
 case 1:return H.AZ(x,0,y,null)

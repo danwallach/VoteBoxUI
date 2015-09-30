@@ -1166,6 +1166,7 @@ Future endVoting(Event e) async {
   logger.logEvent(e);
   currentPage = "End Voting Page";
   await confirmScreen();
+  await contactServer(null, "finish");
   chrome.app.window.current().close();
 }
 
@@ -1234,9 +1235,6 @@ Future confirmScreen() async {
   await contactServer(report, "report");
 
   await contactServer(actuallyCastBallot.toJSON(), "");
-
-  await contactServer(null, "finish");
-
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 180), () => '180');
