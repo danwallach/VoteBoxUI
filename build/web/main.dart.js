@@ -3057,11 +3057,11 @@ if(!("name" in fS))fS.name="fS"
 $desc=$collectedClasses$.fS[1]
 fS.prototype=$desc
 fS.$__fields__=[]
-function xj(){this.$deferredAction()}xj.builtin$cls="xj"
-if(!("name" in xj))xj.name="xj"
-$desc=$collectedClasses$.xj[1]
-xj.prototype=$desc
-xj.$__fields__=[]
+function z2(){this.$deferredAction()}z2.builtin$cls="z2"
+if(!("name" in z2))z2.name="z2"
+$desc=$collectedClasses$.z2[1]
+z2.prototype=$desc
+z2.$__fields__=[]
 function dE(){this.$deferredAction()}dE.builtin$cls="dE"
 if(!("name" in dE))dE.name="dE"
 $desc=$collectedClasses$.dE[1]
@@ -3220,11 +3220,11 @@ if(!("name" in bk))bk.name="bk"
 $desc=$collectedClasses$.bk[1]
 bk.prototype=$desc
 bk.$__fields__=[]
-function Vc(){this.$deferredAction()}Vc.builtin$cls="Vc"
-if(!("name" in Vc))Vc.name="Vc"
-$desc=$collectedClasses$.Vc[1]
-Vc.prototype=$desc
-Vc.$__fields__=[]
+function xj(){this.$deferredAction()}xj.builtin$cls="xj"
+if(!("name" in xj))xj.name="xj"
+$desc=$collectedClasses$.xj[1]
+xj.prototype=$desc
+xj.$__fields__=[]
 function p5(a,b,c){this.Q=a
 this.a=b
 this.b=c
@@ -3919,7 +3919,7 @@ if(!("name" in Sd))Sd.name="Sd"
 $desc=$collectedClasses$.Sd[1]
 Sd.prototype=$desc
 Sd.$__fields__=["Q"]
-return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,mh,lb,tD,hJ,bq,TZ,yS,cu,N5,mJ,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,y5,Eh,up,YU,nf,SS,E1,oR,ZP,yb,h7,QN,P4,q2,oe,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,a7,i1,xy,MH,A8,oi,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,Ik,JI,WV,zW,tK,OR,Bg,DL,b8,Z5,Pf,Zf,Fe,vs,da,pV,U7,vr,rH,cX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,j5,ii,MO,u8,yU,NO,KA,Vo,qB,ez,lx,LV,DS,yR,Wh,CR,Qk,to,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,KG,lf,Vj,uw,i8,Uk,zF,Ud,K8,by,oj,Mx,Sh,ti,Gs,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,JS,ub,ds,lj,UV,k5,VS,t7,HG,cK,kM,KN,QV,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,oU,vY,A5,RE,qs,rV,Wy,YN,bA,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,zU,wa,tb,Sg,pA,Mi,UM,XF,MX,hn,Og,cS,YI,eL,D8,ZY,DH,Ee,Qb,Lk,eC,Aj,Q0,FO,e7,KV,BH,zL,x5,Uj,G7,Ql,wL,l1,dX,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,CQ,YC,hq,w4,Nf,rh,dx,Gb,D9,i7,R,Cq,pu,O,qO,RX,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,Du,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,Hp,Nz,Jd,QS,hR,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,nA,Hg,fS,xj,dE,ZA,aH,N2,eE,V6,D7,hT,GS,L,em,VW,Lb,QA,Cv,ed,j8,M9,uJ,hz,xm,Vz,Kd,aO,p8,wW,Vg,xz,bk,Vc,p5,Os,cr,lK,aj,Vu,hN,Ey,TJ,EX,AQ,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,is,Hv,DE,CG,Sn,Ne,Si,QF,FX,Ec,XP,wU,iM,O9,n9,J8,t4,SX,pR,Pn,ux,pe,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Op,bR,YH,Xg,eH,ta,Cc,A6,hd,kw,Vk,de,dZ,Ew,Md,W6,wJ,lE,rI,km,Wr,WA,Ho,tq,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
+return[Lt,Gv,kn,PE,Ue,iC,kd,G,Po,m1,F,im,VA,E,PK,JO,f0,aX,NY,cC,RA,IY,JH,jl,vK,Iy,JM,Ua,ns,yo,yH,FA,Av,ku,jP,fP,WU,LP,XR,LI,FD,Cj,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,r,Bp,zx,q,Pe,mh,lb,tD,hJ,bq,TZ,yS,cu,N5,mJ,db,i5,N6,dC,wN,VX,VR,EK,Pb,tQ,y5,Eh,up,YU,nf,SS,E1,oR,ZP,yb,h7,QN,P4,q2,oe,yy,uU,rf,vS,n7,Gr,Ze,cZ,ho,a7,i1,xy,MH,A8,oi,SO,eG,fM,SU,iK,GD,th,ha,C6,Ft,O6,Ik,JI,WV,zW,tK,OR,Bg,DL,b8,Z5,Pf,Zf,Fe,vs,da,pV,U7,vr,rH,cX,ZL,rq,RW,YP,jZ,FZ,OM,qh,lz,Rl,Jb,M4,B5,PI,j4,i9,VV,Dy,lU,xp,j5,ii,MO,u8,yU,NO,KA,Vo,qB,ez,lx,LV,DS,yR,Wh,CR,Qk,to,dF,v1,uR,QX,YR,fB,t3,OH,m0,pK,R8,hj,MK,pQ,FG,k6,PL,fG,EQ,ey,b6,tj,zQ,u3,mW,LU,E9,lD,LG,Sw,KG,lf,Vj,uw,i8,Uk,zF,Ud,K8,by,oj,Mx,Sh,ti,Gs,CL,a2,fR,iP,CP,a6,P7,DW,Ge,LK,AT,bJ,eY,JS,ub,ds,lj,UV,k5,VS,t7,HG,cK,kM,KN,QV,An,zM,w,c8,FK,a,Od,Gz,I,Rn,wv,qE,Gh,fY,nB,Az,QP,IF,nx,oJ,BV,oU,vY,A5,RE,qs,rV,Wy,YN,bA,cm,Nh,IB,VG,wz,cv,l4,Fs,hY,ea,D0,as,hH,Yu,xn,nN,ec,zU,wa,tb,Sg,pA,Mi,UM,XF,MX,hn,Og,cS,YI,eL,D8,ZY,DH,Ee,Qb,Lk,eC,Aj,Q0,FO,e7,KV,BH,zL,x5,Uj,G7,Ql,wL,l1,dX,KR,qI,lp,I0,yN,zD,KK,fq,Tb,Iv,BT,yY,FB,y6,RH,w6,K5,CQ,YC,hq,w4,Nf,rh,dx,Gb,D9,i7,R,Cq,pu,O,qO,RX,JQ,Gm,vD,mD,Eg,m6,ct,tE,Ow,W9,dW,kb,yX,kF,mk,MM,fm,hF,Y0,ZJ,ui,jw,lv,pf,py,Ef,ee,wf,ih,tk,US,oB,yu,MI,bM,um,ju,OE,Du,rE,uz,NB,Ac,j2,Lx,d5,hy,aS,qF,Rk,Eo,Zv,GR,wD,zI,cB,Pi,zu,IU,E4,Gn,r7,Tz,Wk,DV,Hp,Nz,Jd,QS,hR,WZ,ET,T1,b0,Dg,Ob,GV,Pg,fj,nA,Hg,fS,z2,dE,ZA,aH,N2,eE,V6,D7,hT,GS,L,em,VW,Lb,QA,Cv,ed,j8,M9,uJ,hz,xm,Vz,Kd,aO,p8,wW,Vg,xz,bk,xj,p5,Os,cr,lK,aj,Vu,hN,Ey,TJ,EX,AQ,il,G8,NW,Su,aY,ll,M2,uI,Xx,GF,EV,ex,dS,eZ,ID,FF,NQ,Bc,Tt,OA,Qj,AN,Kt,al,jX,is,Hv,DE,CG,Sn,Ne,Si,QF,FX,Ec,XP,wU,iM,O9,n9,J8,t4,SX,pR,Pn,ux,pe,vt,Ct,Tr,nC,Nv,qf,Ej,DM,aI,Uf,vk,WC,KE,jb,Op,bR,YH,Xg,eH,ta,Cc,A6,hd,kw,Vk,de,dZ,Ew,Md,W6,wJ,lE,rI,km,Wr,WA,Ho,tq,AV,rP,fg,vw,zV,H6,Nq,SM,EI,Sd]}
 function setupProgram(a,b){"use strict"
 function generateAccessor(a9,b0,b1){var g=a9.split("-")
 var f=g[0]
@@ -9864,7 +9864,7 @@ $isqC:1,
 $isQV:1,
 $asQV:function(){return[P.CP]},
 "%":"Float64Array"},
-xj:{
+z2:{
 "^":"Pg;",
 gbx:function(a){return C.jV},
 p:function(a,b){var z=a.length
@@ -10135,7 +10135,8 @@ pg:[function(a){var z,y
 $.aQ().FY(a)
 z=H.Go(document.querySelector("#idText"),"$isje").value
 if(z===""||z.length<5)H.Go(document.querySelector("#IDdialog"),"$isrV").showModal()
-else{y=document.querySelector("#info").style
+else{document.querySelector("#idText").textContent
+y=document.querySelector("#info").style
 y.visibility="visible"
 y=document.querySelector("#ID").style
 y.display="none"
@@ -10597,27 +10598,29 @@ s=q
 r=H.ts(j)
 P.P(s)
 P.P(r)}z=3
-return H.AZ(F.vG(t,"report"),Xn,y)
+return H.AZ(F.h9(t,"report"),Xn,y)
 case 3:z=4
-return H.AZ(F.vG($.fl.fN(),""),Xn,y)
-case 4:x=P.dT(C.GO,new F.bk(),null)
+return H.AZ(F.h9($.fl.fN(),""),Xn,y)
+case 4:z=5
+return H.AZ(F.h9(null,"finish"),Xn,y)
+case 5:x=P.dT(C.mZ,new F.bk(),null)
 z=1
 break
 case 1:return H.AZ(x,0,y,null)
 case 2:return H.AZ(v,1,y)}}return H.AZ(null,Xn,y,null)},
-vG:function(a,b){var z=0,y=new P.Zh(),x,w=2,v,u,t,s
-function vG(c,d){if(c===1){v=d
+h9:function(a,b){var z=0,y=new P.Zh(),x,w=2,v,u,t,s
+function h9(c,d){if(c===1){v=d
 z=w}while(true)switch(z){case 0:u="http://127.0.0.1:8888/"+b
 P.P("Called to print silently...")
 t=new XMLHttpRequest()
 C.Dt.EP(t,"POST",u)
 s=H.J(new W.R(t,"load",!1),[null])
-H.J(new W.O(0,s.Q,s.a,W.V(new F.Vc()),s.b),[H.N(s,0)]).Y()
+H.J(new W.O(0,s.Q,s.a,W.V(new F.xj()),s.b),[H.N(s,0)]).Y()
 x=t.send(a)
 z=1
 break
 case 1:return H.AZ(x,0,y,null)
-case 2:return H.AZ(v,1,y)}}return H.AZ(null,vG,y,null)},
+case 2:return H.AZ(v,1,y)}}return H.AZ(null,h9,y,null)},
 W:function(){var z=0,y=new P.Zh(),x,w=2,v,u,t,s,r,q,p,o
 function $W(a,b){if(a===1){v=b
 z=w}while(true)switch(z){case 0:$.eI().toString
@@ -10798,8 +10801,8 @@ xz:{
 $1:[function(a){return F.nl(a,this.Q)},null,null,2,0,null,3,"call"]},
 bk:{
 "^":"r:0;",
-$0:function(){return"60"}},
-Vc:{
+$0:function(){return"180"}},
+xj:{
 "^":"r:2;",
 $1:[function(a){return P.P("Request complete "+H.d(J.CA(J.G0(a))))},null,null,2,0,null,33,"call"]},
 p5:{
@@ -10988,36 +10991,37 @@ v.a=x.Q.E8(u.Q)
 v.b=new F.hN(u,x)
 z.push(v)}}},
 Jr:function(){var z,y,x,w,v,u,t,s,r,q
-z=$.bY()
-z.toString
-z="Options: \nList of Changed Races: "+P.EP(H.J(new H.A8(z,new F.EX()),[null,null]),"(",")")+"\n"
-y="Type Of Change: "+H.d($.Nu())+"\nInline Confirmation: "
-x=$.aA===!0
-z+=y+(x?"On":"Off")+"\nEnd of Ballot Review: "
-y=($.GH===!0?"On":"Off")+"\nType of Inline Confirmation: "
-if(x)x=$.Vf===!0?"Pop-up":"Intermediate Screen"
-else x="N/A"
-x=y+x+"\nUser Correction: "
-w="========\nOPTIONS\n========\n"+(z+(x+($.yF===!0?"On":"Off")+"\nVote Flipping Type: "+H.d($.i2)))+"\n\n========\n EVENTS\n========\n"
-for(z=this.Q,y=z.length,v=0;v<z.length;z.length===y||(0,H.lk)(z),++v)w+=z[v].X(0)
-w+="\n\n==========\nINTERVALS\n==========\n"
-for(z=this.a,y=z.length,v=0;v<z.length;z.length===y||(0,H.lk)(z),++v)w+="\n"+z[v].Hq()
-w+="\n\n======================\nCONSOLIDATED INTERVALS\n=======================\n"
+z="User PIN: "+H.d($.SL)+"\n========\nOPTIONS\n========\n"
+y=$.bY()
+y.toString
+y="Options: \nList of Changed Races: "+P.EP(H.J(new H.A8(y,new F.EX()),[null,null]),"(",")")+"\n"
+x="Type Of Change: "+H.d($.Nu())+"\nInline Confirmation: "
+w=$.aA===!0
+y+=x+(w?"On":"Off")+"\nEnd of Ballot Review: "
+x=($.GH===!0?"On":"Off")+"\nType of Inline Confirmation: "
+if(w)w=$.Vf===!0?"Pop-up":"Intermediate Screen"
+else w="N/A"
+w=x+w+"\nUser Correction: "
+z=z+(y+(w+($.yF===!0?"On":"Off")+"\nVote Flipping Type: "+H.d($.i2)))+"\n\n========\n EVENTS\n========\n"
+for(y=this.Q,x=y.length,v=0;v<y.length;y.length===x||(0,H.lk)(y),++v)z+=y[v].X(0)
+z+="\n\n==========\nINTERVALS\n==========\n"
+for(y=this.a,x=y.length,v=0;v<y.length;y.length===x||(0,H.lk)(y),++v)z+="\n"+y[v].Hq()
+z+="\n\n======================\nCONSOLIDATED INTERVALS\n=======================\n"
 u=H.J([],[F.Ey])
 t=P.L5(null,null,null,P.I,[P.zM,F.Ey])
-for(z=this.a,y=z.length,v=0;v<z.length;z.length===y||(0,H.lk)(z),++v){s=z[v]
+for(y=this.a,x=y.length,v=0;v<y.length;y.length===x||(0,H.lk)(y),++v){s=y[v]
 r=s.Q
-x=J.rY(r)
-if(x.Nj(r,0,4)==="Race")r=C.xB.bS(C.xB.Nj(x.p9(r,7),0,7))
-if(t.p(0,r)==null){x=[]
-x.$builtinTypeInfo=[F.Ey]
-t.q(0,r,x)}J.bi(t.p(0,r),s)}t.aN(0,new F.AQ(u))
+w=J.rY(r)
+if(w.Nj(r,0,4)==="Race")r=C.xB.bS(C.xB.Nj(w.p9(r,7),0,7))
+if(t.p(0,r)==null){w=[]
+w.$builtinTypeInfo=[F.Ey]
+t.q(0,r,w)}J.bi(t.p(0,r),s)}t.aN(0,new F.AQ(u))
 u.push(F.Fg(u,"Entire Ballot"))
-for(z=u.length,v=0;v<u.length;u.length===z||(0,H.lk)(u),++v)w+="\n"+u[v].Hq()
-w+="\n\n========\nBALLOTS\n========\n"
-for(z=this.b,z=H.J(new H.i5(z),[H.N(z,0)]),y=z.Q,z=H.J(new H.N6(y,y.f,null,null),[H.N(z,0)]),z.b=z.Q.d;z.D();){q=z.c
-w=C.xB.g(w+("\n"+H.d(q)+" Ballot:"),this.b.p(0,q).Hq())}P.P(w)
-return w},
+for(y=u.length,v=0;v<u.length;u.length===y||(0,H.lk)(u),++v)z+="\n"+u[v].Hq()
+z+="\n\n========\nBALLOTS\n========\n"
+for(y=this.b,y=H.J(new H.i5(y),[H.N(y,0)]),x=y.Q,y=H.J(new H.N6(x,x.f,null,null),[H.N(y,0)]),y.b=y.Q.d;y.D();){q=y.c
+z=C.xB.g(z+("\n"+H.d(q)+" Ballot:"),this.b.p(0,q).Hq())}P.P(z)
+return z},
 ac:function(){this.Q=H.J([],[F.Vu])
 this.a=H.J([],[F.Ey])
 this.b=P.L5(null,null,null,P.I,F.lK)}},
@@ -11981,7 +11985,7 @@ C.NU=new P.R8()
 C.l0=new E.NQ()
 C.xf=new E.Bc()
 C.RT=new P.a6(0)
-C.GO=new P.a6(6e7)
+C.mZ=new P.a6(18e7)
 C.Mc=function(hooks) {
   if (typeof dartExperimentalFixupGetTag != "function") return hooks;
   hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
@@ -12177,6 +12181,7 @@ $.yF=null
 $.i2=null
 $.tZ="Options Page"
 $.fl=null
+$.SL=null
 $=null
 init.isHunkLoaded=function(a){return!!$dart_deferred_initializers$[a]}
 init.deferredInitialized=new Object(null)
