@@ -1231,12 +1231,15 @@ Future confirmScreen() async {
     print(stacktrace);
   }
 
-  await printSilent(report, "report");
+  await contactServer(report, "report");
 
-  await printSilent(actuallyCastBallot.toJSON(), "");
+  await contactServer(actuallyCastBallot.toJSON(), "");
+
+  await contactServer(null, "finish");
+
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 60), () => '120');
+  return new Future.delayed(const Duration(seconds: 180), () => '180');
 }
 /**
  * Sends a string to the server to be handled, initially for printing
@@ -1245,7 +1248,7 @@ Future confirmScreen() async {
  *
  * The plan is to do so by sending the HTML out as a HTTP POST request
  */
-Future printSilent(String toSend, String toAppendToURL) async {
+Future contactServer(String toSend, String toAppendToURL) async {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/"+toAppendToURL;
@@ -1255,7 +1258,7 @@ Future printSilent(String toSend, String toAppendToURL) async {
   //Create the POST request
   HttpRequest request = new HttpRequest();
   request.open('POST', url);
-  request.onLoad.listen((event) => print(
+  await request.onLoad.listen((event) => print(
       'Request complete ${event.target.responseText}'));
 
   return request.send(toSend);
