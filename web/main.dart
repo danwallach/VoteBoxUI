@@ -1234,7 +1234,7 @@ Future confirmScreen() async {
   await printSilent(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 60), () => '60');
+  return new Future.delayed(const Duration(seconds: 60), () => '120');
 }
 /**
  * Sends a string to the server to be handled, initially for printing
