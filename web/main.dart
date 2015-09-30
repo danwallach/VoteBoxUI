@@ -1166,7 +1166,7 @@ Future endVoting(Event e) async {
   logger.logEvent(e);
   currentPage = "End Voting Page";
   await confirmScreen();
-  await contactServer(null, "finish");
+  contactServer(null, "finish");
   chrome.app.window.current().close();
 }
 
@@ -1232,9 +1232,9 @@ Future confirmScreen() async {
     print(stacktrace);
   }
 
-  await contactServer(report, "report");
+  contactServer(report, "report");
 
-  await contactServer(actuallyCastBallot.toJSON(), "");
+  contactServer(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
   return new Future.delayed(const Duration(seconds: 5), () => '5');
@@ -1246,7 +1246,7 @@ Future confirmScreen() async {
  *
  * The plan is to do so by sending the HTML out as a HTTP POST request
  */
-Future contactServer(String toSend, String toAppendToURL) async {
+void contactServer(String toSend, String toAppendToURL) {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/"+toAppendToURL;
@@ -1255,13 +1255,8 @@ Future contactServer(String toSend, String toAppendToURL) async {
 
   //Create the POST request
   HttpRequest request = new HttpRequest();
-  request.open('POST', url);
-  Future done = request.onLoad.listen((event) => print(
-      'Request complete ${event.target.responseText}')).asFuture();
-
+  request.open('POST', url, async: false);
   request.send(toSend);
-
-  return done;
 }
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbf32fd-acad-4a41-a2de-c8e76b24cc26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/transformers/transformers.snapshot" afterPath="$PROJECT_DIR$/.pub/transformers/transformers.snapshot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/main.dart.js" afterPath="$PROJECT_DIR$/build/web/main.dart.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart.js" afterPath="$PROJECT_DIR$/web/main.dart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.dart" afterPath="$PROJECT_DIR$/web/main.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/web/manifest.json" afterPath="$PROJECT_DIR$/build/web/manifest.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manifest.json" afterPath="$PROJECT_DIR$/web/manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.pub/transformers/manifest.txt" afterPath="$PROJECT_DIR$/.pub/transformers/manifest.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VoteBoxUI.iws" />
@@ -36,18 +31,10 @@
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1225" column="35" selection-start-line="1225" selection-start-column="35" selection-end-line="1225" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stream.dart" pinned="false" current-in-tab="false">
-        <entry file="file://C:/tools/dart-sdk/lib/async/stream.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1409" column="9" selection-start-line="1409" selection-start-column="9" selection-end-line="1409" selection-end-column="9" />
-              <folding />
+              <caret line="1230" column="21" selection-start-line="1230" selection-start-column="21" selection-end-line="1230" selection-end-column="21" />
+              <folding>
+                <element signature="e#86#122#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,7 +43,7 @@
         <entry file="file://C:/tools/dart-sdk/lib/html/dartium/html_dartium.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19032" column="7" selection-start-line="19032" selection-start-column="7" selection-end-line="19032" selection-end-column="7" />
+              <caret line="19000" column="7" selection-start-line="19000" selection-start-column="7" selection-end-line="19000" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -95,8 +82,8 @@
       <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34599727">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.058499657">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -153,10 +140,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
-    <option name="y" value="104" />
-    <option name="width" value="893" />
-    <option name="height" value="900" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="916" />
+    <option name="height" value="1616" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -181,7 +168,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -246,6 +232,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -472,6 +459,38 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -512,6 +531,28 @@
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
       <envs />
       <method />
     </configuration>
@@ -582,7 +623,8 @@
       <workItem from="1443644308077" duration="12000" />
       <workItem from="1443644580939" duration="115000" />
       <workItem from="1443645136669" duration="704000" />
-      <workItem from="1443647622600" duration="3078000" />
+      <workItem from="1443647622600" duration="4027000" />
+      <workItem from="1443652675935" duration="703000" />
     </task>
     <task id="LOCAL-00001" summary="New idea dir">
       <created>1440439403090</created>
@@ -860,14 +902,20 @@
       <option name="project" value="LOCAL" />
       <updated>1443644670515</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Changing future setup for connecting to webserver">
+      <created>1443650929685</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1443650929685</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150908000" />
+    <option name="totallyTimeSpent" value="152560000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="104" width="893" height="900" extended-state="0" />
+    <frame x="-8" y="-8" width="916" height="1616" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -880,7 +928,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23147093" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23111111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -910,7 +958,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nonsecuredWebServer add" />
     <MESSAGE value="Fixed some options issues" />
     <MESSAGE value="Properly configured user corrections. Fixed some issues with displaying after refusing inline confirmations for races accessed from the review screen." />
     <MESSAGE value="Updated manifest to 0.0.4. Next milestone data logging" />
@@ -935,7 +982,8 @@
     <MESSAGE value="Updated manifest" />
     <MESSAGE value="Removed an await" />
     <MESSAGE value="Pub built everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pub built everything" />
+    <MESSAGE value="Changing future setup for connecting to webserver" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing future setup for connecting to webserver" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -991,7 +1039,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,7 +1070,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,7 +1101,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,7 +1132,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1107,7 +1163,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1136,7 +1194,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1158,7 +1218,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,7 +1235,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1270,13 +1334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4398844">
-          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/launchScripts/sonyWindowsUpdateAndRun.bat">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1285,11 +1342,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/tools/dart-sdk/lib/html/dartium/html_dartium.dart">
+    <entry file="file://$PROJECT_DIR$/nonSecuredWebServer/printerServer.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19032" column="7" selection-start-line="19032" selection-start-column="7" selection-end-line="19032" selection-end-column="7" />
-          <folding />
+        <state vertical-scroll-proportion="0.7968545">
+          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1301,18 +1357,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/tools/dart-sdk/lib/html/dartium/html_dartium.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19000" column="7" selection-start-line="19000" selection-start-column="7" selection-end-line="19000" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1225" column="35" selection-start-line="1225" selection-start-column="35" selection-end-line="1225" selection-end-column="35" />
-          <folding />
+          <caret line="1230" column="21" selection-start-line="1230" selection-start-column="21" selection-end-line="1230" selection-end-column="21" />
+          <folding>
+            <element signature="e#86#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34599727">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.058499657">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
