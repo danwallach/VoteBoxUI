@@ -1237,7 +1237,7 @@ Future confirmScreen() async {
   await contactServer(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 180), () => '180');
+  return new Future.delayed(const Duration(seconds: 5), () => '5');
 }
 /**
  * Sends a string to the server to be handled, initially for printing
@@ -1256,10 +1256,12 @@ Future contactServer(String toSend, String toAppendToURL) async {
   //Create the POST request
   HttpRequest request = new HttpRequest();
   request.open('POST', url);
-  request.onLoad.listen((event) => print(
-      'Request complete ${event.target.responseText}'));
+  Future done = request.onLoad.listen((event) => print(
+      'Request complete ${event.target.responseText}')).asFuture();
 
-  return request.send(toSend);
+  request.send(toSend);
+
+  return done;
 }
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent
