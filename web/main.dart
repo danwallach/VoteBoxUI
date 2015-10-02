@@ -307,7 +307,7 @@ void getID(MouseEvent event) {
 
   logger.logEvent(event);
 
-  String ID = (querySelector('#idText') as TextInputElement).value;
+  ID = (querySelector('#idText') as TextInputElement).value;
 
   /* TODO check for non-numerals and validate with Supervisor */
   if(ID=="" || ID.length < 5){
@@ -315,7 +315,6 @@ void getID(MouseEvent event) {
     dialog.showModal();
   }
   else{
-    ID = querySelector("#idText").text;
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
