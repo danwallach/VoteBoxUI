@@ -1236,7 +1236,7 @@ Future confirmScreen() async {
   await contactServer(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 180), () => '180');
+  return new Future.delayed(new Duration(seconds: 180), () => '180');
 }
 /**
  * Sends a string to the server to be handled as a HTTP POST request
