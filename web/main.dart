@@ -1166,7 +1166,7 @@ Future endVoting(Event e) async {
   logger.logEvent(e);
   currentPage = "End Voting Page";
   await confirmScreen();
-  contactServer(null, "finish");
+  await contactServer(null, "finish");
   chrome.app.window.current().close();
 }
 
@@ -1232,31 +1232,30 @@ Future confirmScreen() async {
     print(stacktrace);
   }
 
-  contactServer(report, "report");
+  await contactServer(report, "report");
 
-  contactServer(actuallyCastBallot.toJSON(), "");
+  await contactServer(actuallyCastBallot.toJSON(), "");
 
   /* Await the construction of this future so we can quit */
-  return new Future.delayed(const Duration(seconds: 5), () => '5');
+  return new Future.delayed(const Duration(seconds: 180), () => '180');
 }
 /**
- * Sends a string to the server to be handled, initially for printing
- *
- * This version prints silently, but it communicates unsecurely.
- *
- * The plan is to do so by sending the HTML out as a HTTP POST request
+ * Sends a string to the server to be handled as a HTTP POST request
  */
-void contactServer(String toSend, String toAppendToURL) {
+Future contactServer(String toSend, String toAppendToURL) {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/"+toAppendToURL;
 
   print("Called to print silently...");
 
-  //Create the POST request
+  /* Create and send POST */
   HttpRequest request = new HttpRequest();
-  request.open('POST', url, async: false);
+  request.open('POST', url);
   request.send(toSend);
+
+  /* Wait one second just to make sure server has request */
+  return new Future.delayed(const Duration(seconds:1), ()=> '1');
 }
 /**
  * Loads the ballot XML file from localdata and parses the XML as a String to be sent

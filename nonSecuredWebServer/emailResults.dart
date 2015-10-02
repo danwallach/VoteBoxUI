@@ -22,7 +22,7 @@ main(List<String> arguments) async {
   Envelope envelope = new Envelope()
     ..from = 'voteFlippingUI@gmail.com'
     ..fromName = 'VoteFlippingUI'
-    ..recipients.add('mpk2@rice.edu')
+    ..recipients.addAll(['mpk2@rice.edu']) 
     ..subject = 'VoteFlipping Study Results'
     ..text = "Here are your results!"
     ..attachments.add(new Attachment(file: new File(fileName)));

@@ -10,7 +10,7 @@ main() async {
   String outputString;
 
   //MAKE SURE THIS IS CORRECT IF SOMETHING FAILS TO PRINT!!!
-  String printerName = r'Hewlett-Packard HP LaserJet P2055dn';
+  String printerName = r'HP Deskjet 1010 series';
 
   print('Starting printing script at ${(await Process.run('cd',[], runInShell: true)).stdout}');
 

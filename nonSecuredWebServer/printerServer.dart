@@ -18,7 +18,7 @@ final String HOST = r"127.0.0.1"; // eg: localhost
 final int PORT = 8888;
 final String DATA_FILE = "data.json";
 String justWritten = "";
-int i = 1;
+String toWrite;
 
 void main() {
 
@@ -45,12 +45,11 @@ void main() {
           } else {
 
             print("Emailing results...");
-            runScript(['emailResults.dart', 'results${i}.txt']);
-            i++;
+            runScript(['emailResults.dart', toWrite]);
           }
 
           justWritten = "";
-          //exit(0);
+
           break;
         case "OPTIONS": 
           handleOptions(request);
@@ -96,11 +95,16 @@ void handlePost(HttpRequest req) {
   HttpResponse res = req.response;
   print("${req.method}: ${req.uri.path}");
 
-  String toWrite = DATA_FILE;
+  toWrite = DATA_FILE;
 
   if(req.uri.path == "/report") {
-    toWrite = "results${i}.txt";
+  	DateTime current = new DateTime.now();
+    toWrite = "results${current.toString().replaceAll(new RegExp(r':'),'\uA789')}.txt";
     justWritten = "results";
+  } else if(req.uri.path == "/finish") {
+    /* Wait for one second to make sure UI has closed */
+    sleep(new Duration(seconds: 1));
+  	exit(0);
   } else {
     justWritten = "";
   }
