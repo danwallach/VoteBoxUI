@@ -99,7 +99,8 @@ void handlePost(HttpRequest req) {
 
   if(req.uri.path == "/report") {
   	DateTime current = new DateTime.now();
-    toWrite = "results${current.toString().replaceAll(new RegExp(r':'),'\uA789')}.txt";
+    /* Replace all ':' with essentially identical unicode character */
+    toWrite = "results/results${current.toString().replaceAll(new RegExp(r':'),'\uA789')}.txt";
     justWritten = "results";
   } else if(req.uri.path == "/finish") {
     /* Wait for one second to make sure UI has closed */
@@ -114,8 +115,9 @@ void handlePost(HttpRequest req) {
   
   req.listen((List<int> buffer) {
 
-    /* Write to results#.txt or data.json*/
+    /* Write to results/results{timestamp}.txt or data.json*/
     File file = new File(toWrite);
+    file.createSync(recursive: true);
     IOSink ioSink = file.openWrite(); // save the data to the file
     ioSink.add(buffer);
     ioSink.close();
