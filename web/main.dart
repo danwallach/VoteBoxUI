@@ -1241,7 +1241,7 @@ Future confirmScreen() async {
 /**
  * Sends a string to the server to be handled as a HTTP POST request
  */
-Future contactServer(String toSend, String toAppendToURL) {
+Future contactServer(String toSend, String toAppendToURL) async {
   String host = '127.0.0.1';
   String port = '8888';
   String url = "http://$host:$port/"+toAppendToURL;
