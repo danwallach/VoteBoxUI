@@ -1,18 +1,15 @@
 part of xml;
 
-/**
- * XML doctype node.
- */
+/// XML doctype node.
 class XmlDoctype extends XmlData {
 
-  /**
-   * Create a doctype section with `text`.
-   */
+  /// Create a doctype section with `text`.
   XmlDoctype(String text) : super(text);
 
   @override
   XmlNodeType get nodeType => XmlNodeType.DOCUMENT_TYPE;
 
   @override
-  accept(XmlVisitor visitor) => visitor.visitDoctype(this);
+  /*E*/ accept/*<E>*/(XmlVisitor/*<E>*/ visitor) => visitor.visitDoctype(this);
+
 }

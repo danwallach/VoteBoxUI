@@ -3,7 +3,7 @@
   "name": "VoteBoxUI",
   "short_name": "VoteBoxUI",
   "description": "",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "minimum_chrome_version": "39",
 
   "icons": {
@@ -22,7 +22,8 @@
     "fileSystem",
     "*://*/*",
     "app.window.fullscreen",
-    "app.window.fullscreen.overrideEsc"
+    "app.window.fullscreen.overrideEsc",
+    "nativeMessaging"
   ],
 
   "file_handlers": {

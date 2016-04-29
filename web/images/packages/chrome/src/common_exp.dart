@@ -118,26 +118,31 @@ class ArrayBuffer extends ChromeObject {
   }
 }
 
-class _Uint8ListArrayBuffer implements ArrayBuffer {
-  List<int> _bytes;
-  JsObject _jsProxy;
-
-  _Uint8ListArrayBuffer( typed_data.Uint8List list) {
-    _bytes = list.toList();
-  }
-
-  List<int> getBytes() => _bytes;
-
-  JsObject get jsProxy {
-    if (_jsProxy == null) {
-      _jsProxy = new ArrayBuffer.fromBytes(_bytes).jsProxy;
-    }
-
-    return _jsProxy;
-  }
-
-  JsObject toJs() => jsProxy;
+class Date extends ChromeObject {
+  Date.fromProxy(jsProxy) : super.fromProxy(jsProxy);
 }
+
+// TODO: See ArrayBuffer.fromProxy.
+//class _Uint8ListArrayBuffer implements ArrayBuffer {
+//  List<int> _bytes;
+//  JsObject _jsProxy;
+//
+//  _Uint8ListArrayBuffer( typed_data.Uint8List list) {
+//    _bytes = list.toList();
+//  }
+//
+//  List<int> getBytes() => _bytes;
+//
+//  JsObject get jsProxy {
+//    if (_jsProxy == null) {
+//      _jsProxy = new ArrayBuffer.fromBytes(_bytes).jsProxy;
+//    }
+//
+//    return _jsProxy;
+//  }
+//
+//  JsObject toJs() => jsProxy;
+//}
 
 // TODO: this is a hack, to eliminate analysis warnings. remove as soon as possible
 class DeviceCallback {
@@ -147,6 +152,38 @@ class DeviceCallback {
 // TODO: this is a hack, to eliminate analysis warnings. remove as soon as possible
 class SuggestFilenameCallback {
   SuggestFilenameCallback.fromProxy(JsObject jsProxy);
+}
+
+class ProviderSuccessCallback {
+  ProviderSuccessCallback.fromProxy(JsObject jsProxy);
+}
+
+class ProviderErrorCallback {
+  ProviderErrorCallback.fromProxy(JsObject jsProxy);
+}
+
+class MetadataCallback {
+  MetadataCallback.fromProxy(JsObject jsProxy);
+}
+
+class EntriesCallback {
+  EntriesCallback.fromProxy(JsObject jsProxy);
+}
+
+class PrintersCallback {
+  PrintersCallback.fromProxy(JsObject jsProxy);
+}
+
+class FileDataCallback {
+  FileDataCallback.fromProxy(JsObject jsProxy);
+}
+
+class CapabilitiesCallback {
+  CapabilitiesCallback.fromProxy(JsObject jsProxy);
+}
+
+class PrintCallback {
+  PrintCallback.fromProxy(JsObject jsProxy);
 }
 
 // TODO:

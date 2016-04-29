@@ -52,14 +52,4 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
 });
 
 
-var port = chrome.runtime.connectNative('com.service.javahost');
-
-port.onMessage.addListener(function(msg) {
-    console.log("Received" + msg);
-});
-port.onDisconnect.addListener(function() {
-    console.log("Disconnected");
-});
-port.postMessage({ text: "Hello, my_application" });
-
 

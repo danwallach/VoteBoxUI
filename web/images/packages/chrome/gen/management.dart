@@ -77,6 +77,19 @@ class ChromeManagement extends ChromeApi {
   }
 
   /**
+   * Returns information about the calling extension, app, or theme. Note: This
+   * function can be used without requesting the 'management' permission in the
+   * manifest.
+   */
+  Future<ExtensionInfo> getSelf() {
+    if (_management == null) _throwNotAvailable();
+
+    var completer = new ChromeCompleter<ExtensionInfo>.oneArg(_createExtensionInfo);
+    _management.callMethod('getSelf', [completer.callback]);
+    return completer.future;
+  }
+
+  /**
    * Returns a list of [permission warnings](permission_warnings) for the given
    * extension id.
    * 
@@ -160,7 +173,7 @@ class ChromeManagement extends ChromeApi {
 
   /**
    * Display options to create shortcuts for an app. On Mac, only packaged app
-   * shortcuts can be created. This function is new in Chrome 37.
+   * shortcuts can be created.
    * 
    * [id] This should be the id from an app item of [management.ExtensionInfo].
    */
@@ -173,7 +186,7 @@ class ChromeManagement extends ChromeApi {
   }
 
   /**
-   * Set the launch type of an app. This function is new in Chrome 37.
+   * Set the launch type of an app.
    * 
    * [id] This should be the id from an app item of [management.ExtensionInfo].
    * 
@@ -190,8 +203,7 @@ class ChromeManagement extends ChromeApi {
   }
 
   /**
-   * Generate an app for a URL. Returns the generated bookmark app. This
-   * function is new in Chrome 37.
+   * Generate an app for a URL. Returns the generated bookmark app.
    * 
    * [url] The URL of a web page. The scheme of the URL can only be "http" or
    * "https".
@@ -248,10 +260,43 @@ class LaunchType extends ChromeObject {
 }
 
 /**
+ * A reason the item is disabled.
+ * enum of `unknown`, `permissions_increase`
+ */
+class ExtensionDisabledReason extends ChromeObject {
+  ExtensionDisabledReason();
+  ExtensionDisabledReason.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * The type of this extension, app, or theme.
+ * enum of `extension`, `hosted_app`, `packaged_app`, `legacy_packaged_app`,
+ * `theme`
+ */
+class ExtensionType extends ChromeObject {
+  ExtensionType();
+  ExtensionType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * How the extension was installed. One of<br>[admin]: The extension was
+ * installed because of an administrative policy,<br>[development]: The
+ * extension was loaded unpacked in developer mode,<br>[normal]: The extension
+ * was installed normally via a .crx file,<br>[sideload]: The extension was
+ * installed by other software on the machine,<br>[other]: The extension was
+ * installed by other means.
+ * enum of `admin`, `development`, `normal`, `sideload`, `other`
+ */
+class ExtensionInstallType extends ChromeObject {
+  ExtensionInstallType();
+  ExtensionInstallType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
  * Information about an installed extension, app, or theme.
  */
 class ExtensionInfo extends ChromeObject {
-  ExtensionInfo({String id, String name, String shortName, String description, String version, bool mayDisable, bool enabled, String disabledReason, bool isApp, String type, String appLaunchUrl, String homepageUrl, String updateUrl, bool offlineEnabled, String optionsUrl, List<IconInfo> icons, List<String> permissions, List<String> hostPermissions, String installType, LaunchType launchType, List<LaunchType> availableLaunchTypes}) {
+  ExtensionInfo({String id, String name, String shortName, String description, String version, bool mayDisable, bool enabled, ExtensionDisabledReason disabledReason, bool isApp, ExtensionType type, String appLaunchUrl, String homepageUrl, String updateUrl, bool offlineEnabled, String optionsUrl, List<IconInfo> icons, List<String> permissions, List<String> hostPermissions, ExtensionInstallType installType, LaunchType launchType, List<LaunchType> availableLaunchTypes}) {
     if (id != null) this.id = id;
     if (name != null) this.name = name;
     if (shortName != null) this.shortName = shortName;
@@ -320,10 +365,9 @@ class ExtensionInfo extends ChromeObject {
 
   /**
    * A reason the item is disabled.
-   * enum of `unknown`, `permissions_increase`
    */
-  String get disabledReason => jsProxy['disabledReason'];
-  set disabledReason(String value) => jsProxy['disabledReason'] = value;
+  ExtensionDisabledReason get disabledReason => _createExtensionDisabledReason(jsProxy['disabledReason']);
+  set disabledReason(ExtensionDisabledReason value) => jsProxy['disabledReason'] = jsify(value);
 
   /**
    * True if this is an app.
@@ -333,11 +377,9 @@ class ExtensionInfo extends ChromeObject {
 
   /**
    * The type of this extension, app, or theme.
-   * enum of `extension`, `hosted_app`, `packaged_app`, `legacy_packaged_app`,
-   * `theme`
    */
-  String get type => jsProxy['type'];
-  set type(String value) => jsProxy['type'] = value;
+  ExtensionType get type => _createExtensionType(jsProxy['type']);
+  set type(ExtensionType value) => jsProxy['type'] = jsify(value);
 
   /**
    * The launch url (only present for apps).
@@ -392,27 +434,19 @@ class ExtensionInfo extends ChromeObject {
   set hostPermissions(List<String> value) => jsProxy['hostPermissions'] = jsify(value);
 
   /**
-   * How the extension was installed. One of<br>[admin]: The extension was
-   * installed because of an administrative policy,<br>[development]: The
-   * extension was loaded unpacked in developer mode,<br>[normal]: The extension
-   * was installed normally via a .crx file,<br>[sideload]: The extension was
-   * installed by other software on the machine,<br>[other]: The extension was
-   * installed by other means.
-   * enum of `admin`, `development`, `normal`, `sideload`, `other`
+   * How the extension was installed.
    */
-  String get installType => jsProxy['installType'];
-  set installType(String value) => jsProxy['installType'] = value;
+  ExtensionInstallType get installType => _createExtensionInstallType(jsProxy['installType']);
+  set installType(ExtensionInstallType value) => jsProxy['installType'] = jsify(value);
 
   /**
-   * The app launch type (only present for apps). This property is new in Chrome
-   * 37.
+   * The app launch type (only present for apps).
    */
   LaunchType get launchType => _createLaunchType(jsProxy['launchType']);
   set launchType(LaunchType value) => jsProxy['launchType'] = jsify(value);
 
   /**
-   * The currently available launch types (only present for apps). This property
-   * is new in Chrome 37.
+   * The currently available launch types (only present for apps).
    */
   List<LaunchType> get availableLaunchTypes => listify(jsProxy['availableLaunchTypes'], _createLaunchType);
   set availableLaunchTypes(List<LaunchType> value) => jsProxy['availableLaunchTypes'] = jsify(value);
@@ -448,5 +482,8 @@ class ManagementUninstallSelfParams extends ChromeObject {
 }
 
 ExtensionInfo _createExtensionInfo(JsObject jsProxy) => jsProxy == null ? null : new ExtensionInfo.fromProxy(jsProxy);
+ExtensionDisabledReason _createExtensionDisabledReason(JsObject jsProxy) => jsProxy == null ? null : new ExtensionDisabledReason.fromProxy(jsProxy);
+ExtensionType _createExtensionType(JsObject jsProxy) => jsProxy == null ? null : new ExtensionType.fromProxy(jsProxy);
 IconInfo _createIconInfo(JsObject jsProxy) => jsProxy == null ? null : new IconInfo.fromProxy(jsProxy);
+ExtensionInstallType _createExtensionInstallType(JsObject jsProxy) => jsProxy == null ? null : new ExtensionInstallType.fromProxy(jsProxy);
 LaunchType _createLaunchType(JsObject jsProxy) => jsProxy == null ? null : new LaunchType.fromProxy(jsProxy);

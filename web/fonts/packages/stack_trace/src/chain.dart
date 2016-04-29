@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library stack_trace.chain;
-
 import 'dart:async';
 import 'dart:collection';
 import 'dart:math' as math;
@@ -14,11 +12,8 @@ import 'trace.dart';
 import 'utils.dart';
 
 /// A function that handles errors in the zone wrapped by [Chain.capture].
+@Deprecated("Will be removed in stack_trace 2.0.0.")
 typedef void ChainHandler(error, Chain chain);
-
-/// The line used in the string representation of stack chains to represent
-/// the gap between traces.
-const _gap = '===== asynchronous gap ===========================\n';
 
 /// A chain of stack traces.
 ///
@@ -41,7 +36,6 @@ const _gap = '===== asynchronous gap ===========================\n';
 ///             "$stackChain");
 ///     });
 class Chain implements StackTrace {
-
   /// The stack traces that make up this chain.
   ///
   /// Like the frames in a stack trace, the traces are ordered from most local
@@ -53,8 +47,14 @@ class Chain implements StackTrace {
   static StackZoneSpecification get _currentSpec =>
     Zone.current[#stack_trace.stack_zone.spec];
 
-  /// Runs [callback] in a [Zone] in which the current stack chain is tracked
-  /// and automatically associated with (most) errors.
+  /// If [when] is `true`, runs [callback] in a [Zone] in which the current
+  /// stack chain is tracked and automatically associated with (most) errors.
+  ///
+  /// If [when] is `false`, this does not track stack chains. Instead, it's
+  /// identical to [runZoned], except that it wraps any errors in [new
+  /// Chain.forTrace]—which will only wrap the trace unless there's a different
+  /// [Chain.capture] active. This makes it easy for the caller to only capture
+  /// stack chains in debug mode or during development.
   ///
   /// If [onError] is passed, any error in the zone that would otherwise go
   /// unhandled is passed to it, along with the [Chain] associated with that
@@ -68,7 +68,20 @@ class Chain implements StackTrace {
   /// considered unhandled.
   ///
   /// If [callback] returns a value, it will be returned by [capture] as well.
-  static capture(callback(), {ChainHandler onError}) {
+  static /*=T*/ capture/*<T>*/(/*=T*/ callback(),
+      {void onError(error, Chain chain), bool when: true}) {
+    if (!when) {
+      var newOnError;
+      if (onError != null) {
+        newOnError = (error, stackTrace) {
+          onError(error, new Chain.forTrace(stackTrace));
+        };
+      }
+
+      // TODO(rnystrom): Remove this cast if runZoned() gets a generic type.
+      return runZoned(callback, onError: newOnError) as dynamic/*=T*/;
+    }
+
     var spec = new StackZoneSpecification(onError);
     return runZoned(() {
       try {
@@ -79,7 +92,8 @@ class Chain implements StackTrace {
       }
     }, zoneSpecification: spec.toSpec(), zoneValues: {
       #stack_trace.stack_zone.spec: spec
-    });
+    }) as dynamic/*=T*/;
+    // TODO(rnystrom): Remove this cast if runZoned() gets a generic type.
   }
 
   /// Returns [futureOrStream] unmodified.
@@ -119,11 +133,15 @@ class Chain implements StackTrace {
 
   /// Parses a string representation of a stack chain.
   ///
-  /// Specifically, this parses the output of [Chain.toString].
+  /// If [chain] is the output of a call to [Chain.toString], it will be parsed
+  /// as a full stack chain. Otherwise, it will be parsed as in [Trace.parse]
+  /// and returned as a single-trace chain.
   factory Chain.parse(String chain) {
     if (chain.isEmpty) return new Chain([]);
+    if (!chain.contains(chainGap)) return new Chain([new Trace.parse(chain)]);
+
     return new Chain(
-        chain.split(_gap).map((trace) => new Trace.parseFriendly(trace)));
+        chain.split(chainGap).map((trace) => new Trace.parseFriendly(trace)));
   }
 
   /// Returns a new [Chain] comprised of [traces].
@@ -155,6 +173,7 @@ class Chain implements StackTrace {
     var nonEmptyTraces = foldedTraces.where((trace) {
       // Ignore traces that contain only folded frames.
       if (trace.frames.length > 1) return true;
+      if (trace.frames.isEmpty) return false;
 
       // In terse mode, the trace may have removed an outer folded frame,
       // leaving a single non-folded frame. We can detect a folded frame because
@@ -176,7 +195,7 @@ class Chain implements StackTrace {
   ///
   /// The trace version of a chain is just the concatenation of all the traces
   /// in the chain.
-  Trace toTrace() => new Trace(flatten(traces.map((trace) => trace.frames)));
+  Trace toTrace() => new Trace(traces.expand((trace) => trace.frames));
 
   String toString() {
     // Figure out the longest path so we know how much to pad.
@@ -191,6 +210,6 @@ class Chain implements StackTrace {
       return trace.frames.map((frame) {
         return '${padRight(frame.location, longest)}  ${frame.member}\n';
       }).join();
-    }).join(_gap);
+    }).join(chainGap);
   }
 }

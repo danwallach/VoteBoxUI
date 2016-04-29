@@ -2,11 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library pool;
-
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:async/async.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 /// Manages an abstract pool of resources with a limit on how many may be in use
@@ -45,15 +44,26 @@ class Pool {
 
   /// The timeout timer.
   ///
-  /// If [_timeout] isn't null, this timer is set as soon as the resource limit
-  /// is reached and is reset every time an resource is released or a new
-  /// resource is requested. If it fires, that indicates that the caller became
-  /// deadlocked, likely due to files waiting for additional files to be read
-  /// before they could be closed.
-  Timer _timer;
+  /// This timer is canceled as long as the pool is below the resource limit.
+  /// It's reset once the resource limit is reached and again every time an
+  /// resource is released or a new resource is requested. If it fires, that
+  /// indicates that the caller became deadlocked, likely due to files waiting
+  /// for additional files to be read before they could be closed.
+  ///
+  /// This is `null` if this pool shouldn't time out.
+  RestartableTimer _timer;
 
   /// The amount of time to wait before timing out the pending resources.
   final Duration _timeout;
+
+  /// A [FutureGroup] that tracks all the `onRelease` callbacks for resources
+  /// that have been marked releasable.
+  ///
+  /// This is `null` until [close] is called.
+  FutureGroup _closeGroup;
+
+  /// Whether [close] has been called.
+  bool get isClosed => _closeGroup != null;
 
   /// Creates a new pool with the given limit on how many resources may be
   /// allocated at once.
@@ -62,13 +72,23 @@ class Pool {
   /// all pending [request] futures will throw a [TimeoutException]. This is
   /// intended to avoid deadlocks.
   Pool(this._maxAllocatedResources, {Duration timeout})
-      : _timeout = timeout;
+      : _timeout = timeout {
+    if (timeout != null) {
+      // Start the timer canceled since we only want to start counting down once
+      // we've run out of available resources.
+      _timer = new RestartableTimer(timeout, _onTimeout)..cancel();
+    }
+  }
 
   /// Request a [PoolResource].
   ///
   /// If the maximum number of resources is already allocated, this will delay
   /// until one of them is released.
   Future<PoolResource> request() {
+    if (isClosed) {
+      throw new StateError("request() may not be called on a closed Pool.");
+    }
+
     if (_allocatedResources < _maxAllocatedResources) {
       _allocatedResources++;
       return new Future.value(new PoolResource._(this));
@@ -86,22 +106,60 @@ class Pool {
   /// Future.
   ///
   /// The return value of [callback] is piped to the returned Future.
-  Future withResource(callback()) {
-    return request().then((resource) =>
-        Chain.track(new Future.sync(callback)).whenComplete(resource.release));
+  Future/*<T>*/ withResource/*<T>*/(/*=T*/ callback()) {
+    if (isClosed) {
+      throw new StateError(
+          "withResource() may not be called on a closed Pool.");
+    }
+
+    // We can't use async/await here because we need to start the request
+    // synchronously in case the pool is closed immediately afterwards. Async
+    // functions have an asynchronous gap between calling and running the body,
+    // and [close] could be called during that gap. See #3.
+    return request().then((resource) {
+      return new Future.sync(callback).whenComplete(resource.release);
+    });
+  }
+
+  /// Closes the pool so that no more resources are requested.
+  ///
+  /// Existing resource requests remain unchanged.
+  ///
+  /// Any resources that are marked as releasable using
+  /// [PoolResource.allowRelease] are released immediately. Once all resources
+  /// have been released and any `onRelease` callbacks have completed, the
+  /// returned future completes successfully. If any `onRelease` callback throws
+  /// an error, the returned future completes with that error.
+  ///
+  /// This may be called more than once; it returns the same [Future] each time.
+  Future close() {
+    if (_closeGroup != null) return _closeGroup.future;
+
+    _resetTimer();
+
+    _closeGroup = new FutureGroup();
+    for (var callback in _onReleaseCallbacks) {
+      _closeGroup.add(new Future.sync(callback));
+    }
+
+    _allocatedResources -= _onReleaseCallbacks.length;
+    _onReleaseCallbacks.clear();
+
+    if (_allocatedResources == 0) _closeGroup.close();
+    return _closeGroup.future;
   }
 
   /// If there are any pending requests, this will fire the oldest one.
   void _onResourceReleased() {
     _resetTimer();
 
-    if (_requestedResources.isEmpty) {
+    if (_requestedResources.isNotEmpty) {
+      var pending = _requestedResources.removeFirst();
+      pending.complete(new PoolResource._(this));
+    } else {
       _allocatedResources--;
-      return;
+      if (isClosed && _allocatedResources == 0) _closeGroup.close();
     }
-
-    var pending = _requestedResources.removeFirst();
-    pending.complete(new PoolResource._(this));
   }
 
   /// If there are any pending requests, this will fire the oldest one after
@@ -109,14 +167,17 @@ class Pool {
   void _onResourceReleaseAllowed(onRelease()) {
     _resetTimer();
 
-    if (_requestedResources.isEmpty) {
+    if (_requestedResources.isNotEmpty) {
+      var pending = _requestedResources.removeFirst();
+      pending.complete(_runOnRelease(onRelease));
+    } else if (isClosed) {
+      _closeGroup.add(new Future.sync(onRelease));
+      _allocatedResources--;
+      if (_allocatedResources == 0) _closeGroup.close();
+    } else {
       _onReleaseCallbacks.add(
           Zone.current.bindCallback(onRelease, runGuarded: false));
-      return;
     }
-
-    var pending = _requestedResources.removeFirst();
-    pending.complete(_runOnRelease(onRelease));
   }
 
   /// Runs [onRelease] and returns a Future that completes to a resource once an
@@ -131,18 +192,19 @@ class Pool {
       _onReleaseCompleters.removeFirst().completeError(error, stackTrace);
     });
 
-    var completer = new Completer.sync();
+    var completer = new Completer<PoolResource>.sync();
     _onReleaseCompleters.add(completer);
     return completer.future;
   }
 
   /// A resource has been requested, allocated, or released.
   void _resetTimer() {
-    if (_timer != null) _timer.cancel();
-    if (_timeout == null || _requestedResources.isEmpty) {
-      _timer = null;
+    if (_timer == null) return;
+
+    if (_requestedResources.isEmpty) {
+      _timer.cancel();
     } else {
-      _timer = new Timer(_timeout, _onTimeout);
+      _timer.reset();
     }
   }
 
@@ -203,4 +265,3 @@ class PoolResource {
     _pool._onResourceReleaseAllowed(onRelease);
   }
 }
-

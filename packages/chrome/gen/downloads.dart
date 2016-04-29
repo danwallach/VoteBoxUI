@@ -197,9 +197,10 @@ class ChromeDownloads extends ChromeApi {
   }
 
   /**
-   * Prompt the user to accept a dangerous download. Does not automatically
-   * accept dangerous downloads. If the download is accepted, then an
-   * [onChanged] event will fire, otherwise nothing will happen. When all the
+   * Prompt the user to accept a dangerous download. Can only be called from a
+   * visible context (tab, window, or page/browser action popup). Does not
+   * automatically accept dangerous downloads. If the download is accepted, then
+   * an [onChanged] event will fire, otherwise nothing will happen. When all the
    * data is fetched into a temporary file and either the download is not
    * dangerous or the danger has been accepted, then the temporary file is
    * renamed to the target filename, the [state] changes to 'complete', and
@@ -298,11 +299,13 @@ class InterruptReason extends ChromeEnum {
   static const InterruptReason SERVER_NO_RANGE = const InterruptReason._('SERVER_NO_RANGE');
   static const InterruptReason SERVER_PRECONDITION = const InterruptReason._('SERVER_PRECONDITION');
   static const InterruptReason SERVER_BAD_CONTENT = const InterruptReason._('SERVER_BAD_CONTENT');
+  static const InterruptReason SERVER_UNAUTHORIZED = const InterruptReason._('SERVER_UNAUTHORIZED');
+  static const InterruptReason SERVER_CERT_PROBLEM = const InterruptReason._('SERVER_CERT_PROBLEM');
   static const InterruptReason USER_CANCELED = const InterruptReason._('USER_CANCELED');
   static const InterruptReason USER_SHUTDOWN = const InterruptReason._('USER_SHUTDOWN');
   static const InterruptReason CRASH = const InterruptReason._('CRASH');
 
-  static const List<InterruptReason> VALUES = const[FILE_FAILED, FILE_ACCESS_DENIED, FILE_NO_SPACE, FILE_NAME_TOO_LONG, FILE_TOO_LARGE, FILE_VIRUS_INFECTED, FILE_TRANSIENT_ERROR, FILE_BLOCKED, FILE_SECURITY_CHECK_FAILED, FILE_TOO_SHORT, NETWORK_FAILED, NETWORK_TIMEOUT, NETWORK_DISCONNECTED, NETWORK_SERVER_DOWN, NETWORK_INVALID_REQUEST, SERVER_FAILED, SERVER_NO_RANGE, SERVER_PRECONDITION, SERVER_BAD_CONTENT, USER_CANCELED, USER_SHUTDOWN, CRASH];
+  static const List<InterruptReason> VALUES = const[FILE_FAILED, FILE_ACCESS_DENIED, FILE_NO_SPACE, FILE_NAME_TOO_LONG, FILE_TOO_LARGE, FILE_VIRUS_INFECTED, FILE_TRANSIENT_ERROR, FILE_BLOCKED, FILE_SECURITY_CHECK_FAILED, FILE_TOO_SHORT, NETWORK_FAILED, NETWORK_TIMEOUT, NETWORK_DISCONNECTED, NETWORK_SERVER_DOWN, NETWORK_INVALID_REQUEST, SERVER_FAILED, SERVER_NO_RANGE, SERVER_PRECONDITION, SERVER_BAD_CONTENT, SERVER_UNAUTHORIZED, SERVER_CERT_PROBLEM, USER_CANCELED, USER_SHUTDOWN, CRASH];
 
   const InterruptReason._(String str): super(str);
 }

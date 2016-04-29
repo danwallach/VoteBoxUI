@@ -18,9 +18,7 @@ final _ENTITY = char('&')
   return _ENTITY_TO_CHAR[value];
 }))).seq(char(';')).pick(1);
 
-/**
- * Optimized parser to read character data.
- */
+/// Optimized parser to read character data.
 class _XmlCharacterDataParser extends Parser {
   final String _stopper;
   final int _stopperCode;
@@ -39,14 +37,6 @@ class _XmlCharacterDataParser extends Parser {
     var position = context.position;
     var start = position;
 
-    // helper to append the range scanned up to now
-    appendRun() {
-      if (start != position) {
-        output.write(input.substring(start, position));
-        start = position;
-      }
-    }
-
     // scan over the characters as fast as possible
     while (position < length) {
       var value = input.codeUnitAt(position);
@@ -55,7 +45,7 @@ class _XmlCharacterDataParser extends Parser {
       } else if (value == 38) {
         var result = _ENTITY.parseOn(context.success(null, position));
         if (result.isSuccess && result.value != null) {
-          appendRun();
+          output.write(input.substring(start, position));
           output.write(result.value);
           position = result.position;
           start = position;
@@ -66,7 +56,7 @@ class _XmlCharacterDataParser extends Parser {
         position++;
       }
     }
-    appendRun();
+    output.write(input.substring(start, position));
 
     // check for the minimum length
     return output.length < _minLength
@@ -74,6 +64,7 @@ class _XmlCharacterDataParser extends Parser {
         : context.success(output.toString(), position);
   }
 
+  @override
   List<Parser> get children => [_ENTITY];
 
   @override
@@ -340,9 +331,7 @@ final Map<String, String> _ENTITY_TO_CHAR = const {
   'zwnj': '\u200C'
 };
 
-/**
- * Encode a string to be serialized as an XML text node.
- */
+/// Encode a string to be serialized as an XML text node.
 String _encodeXmlText(String input) {
   return input.replaceAllMapped(_TEXT_PATTERN, (match) {
     // only & and < need to be encoded in text
@@ -352,10 +341,19 @@ String _encodeXmlText(String input) {
 
 final Pattern _TEXT_PATTERN = new RegExp(r'[&<]');
 
-/**
- * Encode a string to be serialized as an XML attribute value.
- */
+/// Encode a string to be serialized as an XML attribute value.
 String _encodeXmlAttributeValue(String input) {
-  // only " needs to be encoded in attribute value
-  return input.replaceAll('"', '&quot;');
+  // only ", &, and < needs to be encoded in attribute value
+  return input.replaceAllMapped(_ATTRIBUTE_PATTERN, (match) {
+    switch (match.group(0)) {
+      case '"':
+        return '&quot;';
+      case '&':
+        return '&amp;';
+      case '<':
+        return '&lt;';
+    }
+  });
 }
+
+final Pattern _ATTRIBUTE_PATTERN = new RegExp(r'["&<]');

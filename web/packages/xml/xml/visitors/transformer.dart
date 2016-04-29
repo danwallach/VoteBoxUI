@@ -1,38 +1,57 @@
 part of xml;
 
-/**
- * Transformer that creates an identical copy of the visited nodes.
- *
- * Subclass and override one or more of the methods to modify the generated copy.
- */
-class XmlTransformer extends XmlVisitor {
-  @override
-  visitAttribute(XmlAttribute node) =>
-      new XmlAttribute(visit(node.name), node.value);
+/// Transformer that creates an identical copy of the visited nodes.
+///
+/// Subclass can override one or more of the methods to modify the generated copy.
+class XmlTransformer extends XmlVisitor<XmlVisitable> {
 
   @override
-  visitCDATA(XmlCDATA node) => new XmlCDATA(node.text);
+  XmlAttribute visitAttribute(XmlAttribute node) {
+    return new XmlAttribute(visit(node.name), node.value);
+  }
 
   @override
-  visitComment(XmlComment node) => new XmlComment(node.text);
+  XmlCDATA visitCDATA(XmlCDATA node) {
+    return new XmlCDATA(node.text);
+  }
 
   @override
-  visitDoctype(XmlDoctype node) => new XmlDoctype(node.text);
+  XmlComment visitComment(XmlComment node) {
+    return new XmlComment(node.text);
+  }
 
   @override
-  visitDocument(XmlDocument node) => new XmlDocument(visitAll(node.children));
+  XmlDoctype visitDoctype(XmlDoctype node) {
+    return new XmlDoctype(node.text);
+  }
 
   @override
-  visitElement(XmlElement node) => new XmlElement(
-      visit(node.name), visitAll(node.attributes), visitAll(node.children));
+  XmlDocument visitDocument(XmlDocument node) {
+    return new XmlDocument(visitAll(node.children));
+  }
 
   @override
-  visitName(XmlName name) => new XmlName.fromString(name.qualified);
+  XmlDocumentFragment visitDocumentFragment(XmlDocumentFragment node) {
+    return new XmlDocumentFragment(visitAll(node.children));
+  }
 
   @override
-  visitProcessing(XmlProcessing node) =>
-      new XmlProcessing(node.target, node.text);
+  XmlElement visitElement(XmlElement node) {
+    return new XmlElement(visit(node.name), visitAll(node.attributes), visitAll(node.children));
+  }
 
   @override
-  visitText(XmlText node) => new XmlText(node.text);
+  XmlName visitName(XmlName name) {
+    return new XmlName.fromString(name.qualified);
+  }
+
+  @override
+  XmlProcessing visitProcessing(XmlProcessing node) {
+    return new XmlProcessing(node.target, node.text);
+  }
+
+  @override
+  XmlText visitText(XmlText node) {
+    return new XmlText(node.text);
+  }
 }

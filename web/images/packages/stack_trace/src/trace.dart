@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library trace;
-
 import 'dart:collection';
 import 'dart:math' as math;
 
@@ -83,12 +81,8 @@ class Trace implements StackTrace {
           "to 0.");
     }
 
-    try {
-      throw '';
-    } catch (_, nativeTrace) {
-      var trace = new Trace.from(nativeTrace);
-      return new LazyTrace(() => new Trace(trace.frames.skip(level + 1)));
-    }
+    var trace = new Trace.from(StackTrace.current);
+    return new LazyTrace(() => new Trace(trace.frames.skip(level + 1)));
   }
 
   /// Returns a new stack trace containing the same data as [trace].
@@ -111,7 +105,8 @@ class Trace implements StackTrace {
   /// Parses a string representation of a stack trace.
   ///
   /// [trace] should be formatted in the same way as a Dart VM or browser stack
-  /// trace.
+  /// trace. If it's formatted as a stack chain, this will return the equivalent
+  /// of [Chain.toTrace].
   factory Trace.parse(String trace) {
     try {
       if (trace.isEmpty) return new Trace(<Frame>[]);
@@ -120,6 +115,7 @@ class Trace implements StackTrace {
       if (trace.contains(_firefoxSafariTrace)) {
         return new Trace.parseFirefox(trace);
       }
+      if (trace.contains(chainGap)) return new Chain.parse(trace).toTrace();
       if (trace.contains(_friendlyTrace)) {
         return new Trace.parseFriendly(trace);
       }
@@ -261,7 +257,7 @@ class Trace implements StackTrace {
       };
     }
 
-    var newFrames = [];
+    var newFrames = <Frame>[];
     for (var frame in frames.reversed) {
       if (frame is UnparsedFrame || !predicate(frame)) {
         newFrames.add(frame);

@@ -1,17 +1,11 @@
-part of dart;
+part of petitparser.dart;
 
-/**
- * Dart grammar.
- */
+/// Dart grammar.
 class DartGrammar extends GrammarParser {
   DartGrammar() : super(new DartGrammarDefinition());
 }
 
-/**
- * Dart grammar definition.
- *
- * Adapted from [https://code.google.com/p/dart/source/browse/branches/bleeding_edge/dart/language/grammar/Dart.g].
- */
+/// Dart grammar definition.
 class DartGrammarDefinition extends GrammarDefinition {
 
   Parser token(input) {
@@ -23,7 +17,7 @@ class DartGrammarDefinition extends GrammarDefinition {
     if (input is! Parser && input is TrimmingParser) {
       throw new StateError('Invalid token parser: $input');
     }
-    return input.token().trim(ref(HIDDEN));
+    return input.token().trim(ref(HIDDEN_STUFF));
   }
 
 
@@ -63,11 +57,15 @@ class DartGrammarDefinition extends GrammarDefinition {
 
   // Pseudo-keywords that should also be valid identifiers.
   ABSTRACT()   => ref(token, 'abstract');
+  AS()         => ref(token, 'as');
   ASSERT()     => ref(token, 'assert');
   CLASS()      => ref(token, 'class');
+  DEFERRED()   => ref(token, 'deferred');
+  EXPORT()     => ref(token, 'export');
   EXTENDS()    => ref(token, 'extends');
   FACTORY()    => ref(token, 'factory');
   GET()        => ref(token, 'get');
+  HIDE()       => ref(token, 'hide');
   IMPLEMENTS() => ref(token, 'implements');
   IMPORT()     => ref(token, 'import');
   INTERFACE()  => ref(token, 'interface');
@@ -75,8 +73,11 @@ class DartGrammarDefinition extends GrammarDefinition {
   LIBRARY()    => ref(token, 'library');
   NATIVE()     => ref(token, 'native');
   NEGATE()     => ref(token, 'negate');
+  OF()         => ref(token, 'of');
   OPERATOR()   => ref(token, 'operator');
+  PART()       => ref(token, 'part');
   SET()        => ref(token, 'set');
+  SHOW()       => ref(token, 'show');
   SOURCE()     => ref(token, 'source');
   STATIC()     => ref(token, 'static');
   TYPEDEF()    => ref(token, 'typedef');
@@ -88,14 +89,24 @@ class DartGrammarDefinition extends GrammarDefinition {
 
   compilationUnit() =>
         ref(HASHBANG).optional()
-      & ref(directive).star()
+      & ref(libraryDirective).optional()
+      & ref(importDirective).star()
       & ref(topLevelDefinition).star();
 
-  directive() =>
-        ref(token, '#')
-      & ref(identifier)
-      & ref(arguments)
-      & ref(token, ';');
+  libraryDirective() =>
+        ref(LIBRARY) & ref(qualified) & ref(token, ';')
+      | ref(PART) & ref(OF) & ref(qualified) & ref(token, ';');
+
+  importDirective() =>
+        ref(IMPORT) & ref(SINGLE_LINE_STRING)
+            & ref(DEFERRED).optional()
+            & (ref(AS) & ref(identifier)).optional()
+            & ((ref(SHOW) | ref(HIDE)) & ref(identifier).separatedBy(ref(token, ','))).optional()
+            & ref(token, ';')
+      | ref(EXPORT) & ref(SINGLE_LINE_STRING)
+            & ((ref(SHOW) | ref(HIDE)) & ref(identifier).separatedBy(ref(token, ','))).optional()
+            & ref(token, ';')
+      | ref(PART) & ref(SINGLE_LINE_STRING) & ref(token, ';');
 
   topLevelDefinition() =>
         ref(classDefinition)
@@ -146,8 +157,8 @@ class DartGrammarDefinition extends GrammarDefinition {
       | ref(functionDeclaration) & ref(initializers).optional()
       | ref(namedConstructorDeclaration) & ref(initializers).optional();
 
-// An abstract method/operator, a field, or const constructor (which
-// all should be followed by a semicolon).
+  // An abstract method/operator, a field, or const constructor (which
+  // all should be followed by a semicolon).
   declaration() =>
         ref(constantConstructorDeclaration) & (ref(redirection) | ref(initializers)).optional()
       | ref(functionDeclaration) & ref(redirection)
@@ -245,8 +256,8 @@ class DartGrammarDefinition extends GrammarDefinition {
       | ref(token, '+=')
       | ref(token, '-=')
       | ref(token, '<<=')
-      | ref(token, '>') & ref(token, '>') & ref(token, '>') & ref(token, '=')
-      | ref(token, '>') & ref(token, '>') & ref(token, '=')
+      | ref(token, '>>>=')
+      | ref(token, '>>=')
       | ref(token, '&=')
       | ref(token, '^=')
       | ref(token, '|=');
@@ -261,20 +272,20 @@ class DartGrammarDefinition extends GrammarDefinition {
 
   shiftOperator() =>
         ref(token, '<<')
-      | ref(token, '>') & ref(token, '>') & ref(token, '>')
-      | ref(token, '>') & ref(token, '>');
+      | ref(token, '>>>')
+      | ref(token, '>>');
 
   relationalOperator() =>
-        ref(token, '>') & ref(token, '=')
+        ref(token, '>=')
       | ref(token, '>')
       | ref(token, '<=')
       | ref(token, '<');
 
   equalityOperator() =>
-        ref(token, '==')
-      | ref(token, '!=')
-      | ref(token, '===')
-      | ref(token, '!==');
+        ref(token, '===')
+      | ref(token, '!==')
+      | ref(token, '==')
+      | ref(token, '!=');
 
   bitwiseOperator() =>
         ref(token, '&')
@@ -327,29 +338,10 @@ class DartGrammarDefinition extends GrammarDefinition {
       | ref(type) & ref(identifier)
       ;
 
-  identifier() => ref(token, ref(IDENTIFIER)
-      | ref(ABSTRACT)
-      | ref(ASSERT)
-      | ref(CLASS)
-      | ref(EXTENDS)
-      | ref(FACTORY)
-      | ref(GET)
-      | ref(IMPLEMENTS)
-      | ref(IMPORT)
-      | ref(INTERFACE)
-      | ref(IS)
-      | ref(LIBRARY)
-      | ref(NATIVE)
-      | ref(NEGATE)
-      | ref(OPERATOR)
-      | ref(SET)
-      | ref(SOURCE)
-      | ref(STATIC)
-      | ref(TYPEDEF)
-      );
+  identifier() => ref(token, ref(IDENTIFIER));
 
   qualified() =>
-        ref(identifier) & (ref(token, '.') & ref(identifier)).optional()
+        ref(identifier) & (ref(token, '.') & ref(identifier)).star()
       ;
 
   type() =>
@@ -422,7 +414,7 @@ class DartGrammarDefinition extends GrammarDefinition {
       ;
 
   defaultCase() =>
-        ref(label).optional() & (ref(CASE) & ref(expression) & ref(token, ':')).star() & ref(DEFAULT) & ref(token, ':') & ref(statements)
+        ref(label).optional() & ref(DEFAULT) & ref(token, ':') & ref(statements)
       ;
 
   tryStatement() =>
@@ -476,7 +468,7 @@ class DartGrammarDefinition extends GrammarDefinition {
       ;
 
   expressionList() =>
-        ref(expression) & (ref(token, ',') & ref(expression)).star()
+        ref(expression).separatedBy(ref(token, ','))
       ;
 
   arguments() =>
@@ -484,12 +476,12 @@ class DartGrammarDefinition extends GrammarDefinition {
       ;
 
   argumentList() =>
-        ref(namedArgument) & (ref(token, ',') & ref(namedArgument)).star()
-      | ref(expressionList) & (ref(token, ',') & ref(namedArgument)).star()
+        ref(argumentElement).separatedBy(ref(token, ','))
       ;
 
-  namedArgument() =>
+  argumentElement() =>
         ref(label) & ref(expression)
+      | ref(expression)
       ;
 
   assignableExpression() =>
@@ -632,7 +624,8 @@ class DartGrammarDefinition extends GrammarDefinition {
       ;
 
   functionDeclaration() =>
-        ref(returnType).optional() & ref(identifier) & ref(formalParameterList)
+        ref(returnType) & ref(identifier) & ref(formalParameterList)
+      | ref(identifier) & ref(formalParameterList)
       ;
 
   functionPrefix() =>
@@ -648,42 +641,6 @@ class DartGrammarDefinition extends GrammarDefinition {
         ref(token, '=>') & ref(expression)
       | ref(block)
       ;
-
-  // -----------------------------------------------------------------
-  // Library files.
-  // -----------------------------------------------------------------
-  libraryUnit() =>
-        ref(libraryDefinition).end()
-      ;
-
-  libraryDefinition() =>
-        ref(LIBRARY) & ref(token, '{') & ref(libraryBody) & ref(token, '}')
-      ;
-
-  libraryBody() =>
-        ref(libraryImport).optional() & ref(librarySource).optional()
-      ;
-
-  libraryImport() =>
-        ref(IMPORT) & ref(token, '=') & ref(token, '[') & ref(importReferences).optional() & ref(token, ']')
-      ;
-
-  importReferences() =>
-        ref(importReference) & (ref(token, ',') & ref(importReference)).star() & ref(token, ',').optional()
-      ;
-
-  importReference() =>
-        (ref(token, IDENTIFIER) & ref(token, ':')).optional() & ref(token, STRING)
-      ;
-
-  librarySource() =>
-        ref(SOURCE) & ref(token, '=') & ref(token, '[') & ref(sourceUrls).optional() & ref(token, ']')
-      ;
-
-  sourceUrls() =>
-        ref(token, STRING) & (ref(token, ',') & ref(token, STRING)).star() & ref(token, ',').optional()
-      ;
-
 
   // -----------------------------------------------------------------
   // Lexical tokens.

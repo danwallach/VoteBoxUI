@@ -174,6 +174,20 @@ class ChromeSocketsTcp extends ChromeApi {
   }
 
   /**
+   * Start a TLS client connection over the connected TCP client socket.
+   * [socketId]: The existing, connected socket to use.
+   * [options]: Constraints and parameters for the TLS connection.
+   * [callback]: Called when the connection attempt is complete.
+   */
+  Future<int> secure(int socketId, [SecureOptions options]) {
+    if (_sockets_tcp == null) _throwNotAvailable();
+
+    var completer = new ChromeCompleter<int>.oneArg();
+    _sockets_tcp.callMethod('secure', [socketId, jsify(options), completer.callback]);
+    return completer.future;
+  }
+
+  /**
    * Sends data on the given TCP socket.
    * [socketId]: The socket identifier.
    * [data]: The data to send.
@@ -299,6 +313,30 @@ class SendInfo extends ChromeObject {
   set bytesSent(int value) => jsProxy['bytesSent'] = value;
 }
 
+class TLSVersionConstraints extends ChromeObject {
+  TLSVersionConstraints({String min, String max}) {
+    if (min != null) this.min = min;
+    if (max != null) this.max = max;
+  }
+  TLSVersionConstraints.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+
+  String get min => jsProxy['min'];
+  set min(String value) => jsProxy['min'] = value;
+
+  String get max => jsProxy['max'];
+  set max(String value) => jsProxy['max'] = value;
+}
+
+class SecureOptions extends ChromeObject {
+  SecureOptions({TLSVersionConstraints tlsVersion}) {
+    if (tlsVersion != null) this.tlsVersion = tlsVersion;
+  }
+  SecureOptions.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+
+  TLSVersionConstraints get tlsVersion => _createTLSVersionConstraints(jsProxy['tlsVersion']);
+  set tlsVersion(TLSVersionConstraints value) => jsProxy['tlsVersion'] = jsify(value);
+}
+
 /**
  * Result of the `getInfo` method.
  */
@@ -387,6 +425,7 @@ ReceiveErrorInfo _createReceiveErrorInfo(JsObject jsProxy) => jsProxy == null ? 
 CreateInfo _createCreateInfo(JsObject jsProxy) => jsProxy == null ? null : new CreateInfo.fromProxy(jsProxy);
 SendInfo _createSendInfo(JsObject jsProxy) => jsProxy == null ? null : new SendInfo.fromProxy(jsProxy);
 SocketInfo _createSocketInfo(JsObject jsProxy) => jsProxy == null ? null : new SocketInfo.fromProxy(jsProxy);
+TLSVersionConstraints _createTLSVersionConstraints(JsObject jsProxy) => jsProxy == null ? null : new TLSVersionConstraints.fromProxy(jsProxy);
 ArrayBuffer _createArrayBuffer(/*JsObject*/ jsProxy) => jsProxy == null ? null : new ArrayBuffer.fromProxy(jsProxy);
 
 /**
@@ -461,7 +500,9 @@ class ChromeSocketsTcpServer extends ChromeApi {
    * port/address is in use, the callback indicates a failure.
    * [socketId]: The socket identifier.
    * [address]: The address of the local machine.
-   * [port]: The port of the local machine.
+   * [port]: The port of the local machine. When set to `0`, a free port is
+   * chosen dynamically. The dynamically allocated port can be found by calling
+   * `getInfo`.
    * [backlog]: Length of the socket's listen queue. The default value depends
    * on the Operating System (SOMAXCONN), which ensures a reasonable queue
    * length for most applications.
@@ -868,6 +909,24 @@ class ChromeSocketsUdp extends ChromeApi {
 
     var completer = new ChromeCompleter<List<String>>.oneArg(listify);
     _sockets_udp.callMethod('getJoinedGroups', [socketId, completer.callback]);
+    return completer.future;
+  }
+
+  /**
+   * Enables or disables broadcast packets on this socket.
+   * 
+   * [socketId]: The socket ID.
+   * [enabled]: `true` to enable broadcast packets, `false` to disable them.
+   * 
+   * Returns:
+   * Callback from the `setBroadcast` method.
+   * [result]: The result code returned from the underlying network call.
+   */
+  Future<int> setBroadcast(int socketId, bool enabled) {
+    if (_sockets_udp == null) _throwNotAvailable();
+
+    var completer = new ChromeCompleter<int>.oneArg();
+    _sockets_udp.callMethod('setBroadcast', [socketId, enabled, completer.callback]);
     return completer.future;
   }
 

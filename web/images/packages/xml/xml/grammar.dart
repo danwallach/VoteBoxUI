@@ -1,9 +1,6 @@
 part of xml;
 
-/**
- * XML grammar definition.
- * Grammar of nodes ot type [TNode] with names of type [TName].
- */
+/// XML grammar definition with [TNode] and [TName].
 abstract class XmlGrammarDefinition<TNode, TName> extends GrammarDefinition {
 
   // name patterns
@@ -51,20 +48,24 @@ abstract class XmlGrammarDefinition<TNode, TName> extends GrammarDefinition {
   start() => ref(document).end();
 
   attribute() => ref(qualified)
-      .seq(ref(space).optional())
+      .seq(ref(space_optional))
       .seq(char(EQUALS))
-      .seq(ref(space).optional())
+      .seq(ref(space_optional))
       .seq(ref(attributeValue))
-      .map((each) => createAttribute(each[0], each[4]));
-  attributeValue() =>
-      ref(attributeValueDouble).or(ref(attributeValueSingle)).pick(1);
+      .map((each) => createAttribute(each[0] as TName, each[4]));
+  attributeValue() => ref(attributeValueDouble)
+      .or(ref(attributeValueSingle))
+      .pick(1);
   attributeValueDouble() => char(DOUBLE_QUOTE)
       .seq(new _XmlCharacterDataParser(DOUBLE_QUOTE, 0))
       .seq(char(DOUBLE_QUOTE));
   attributeValueSingle() => char(SINGLE_QUOTE)
       .seq(new _XmlCharacterDataParser(SINGLE_QUOTE, 0))
       .seq(char(SINGLE_QUOTE));
-  attributes() => ref(space).seq(ref(attribute)).pick(1).star();
+  attributes() => ref(space)
+      .seq(ref(attribute))
+      .pick(1)
+      .star();
   comment() => string(OPEN_COMMENT)
       .seq(any().starLazy(string(CLOSE_COMMENT)).flatten())
       .seq(string(CLOSE_COMMENT))
@@ -90,37 +91,35 @@ abstract class XmlGrammarDefinition<TNode, TName> extends GrammarDefinition {
               .seq(char(CLOSE_DOCTYPE_BLOCK)))
           .separatedBy(ref(space))
           .flatten())
-      .seq(ref(space).optional())
+      .seq(ref(space_optional))
       .seq(char(CLOSE_DOCTYPE))
       .map((each) => createDoctype(each[2]));
-  document() => ref(processing)
-      .optional()
+  document() => ref(processing).optional()
       .seq(ref(misc))
       .seq(ref(doctype).optional())
       .seq(ref(misc))
       .seq(ref(element))
       .seq(ref(misc))
-      .map((each) => createDocument(
-          [each[0], each[2], each[4]].where((each) => each != null)));
+      .map((each) => createDocument([each[0], each[2], each[4]]
+          .where((each) => each != null) as Iterable<TNode>));
   element() => char(OPEN_ELEMENT)
       .seq(ref(qualified))
       .seq(ref(attributes))
-      .seq(ref(space).optional())
+      .seq(ref(space_optional))
       .seq(string(CLOSE_END_ELEMENT).or(char(CLOSE_ELEMENT)
           .seq(ref(content))
           .seq(string(OPEN_END_ELEMENT))
           .seq(ref(qualified))
-          .seq(ref(space).optional())
+          .seq(ref(space_optional))
           .seq(char(CLOSE_ELEMENT))))
       .map((list) {
     if (list[4] == CLOSE_END_ELEMENT) {
-      return createElement(list[1], list[2], []);
+      return createElement(list[1] as TName, list[2] as Iterable<TNode>, []);
     } else {
       if (list[1] == list[4][3]) {
-        return createElement(list[1], list[2], list[4][1]);
+        return createElement(list[1] as TName, list[2] as Iterable<TNode>, list[4][1] as Iterable<TNode>);
       } else {
-        throw new ArgumentError(
-            'Expected </${list[1]}>, but found </${list[4][3]}>');
+        throw new ArgumentError('Expected </${list[1]}>, but found </${list[4][3]}>');
       }
     }
   });
@@ -134,10 +133,10 @@ abstract class XmlGrammarDefinition<TNode, TName> extends GrammarDefinition {
       .map((each) => createProcessing(each[1], each[2]));
   qualified() => ref(nameToken).map(createQualified);
 
-  characterData() =>
-      new _XmlCharacterDataParser(OPEN_ELEMENT, 1).map(createText);
+  characterData() => new _XmlCharacterDataParser(OPEN_ELEMENT, 1).map(createText);
   misc() => ref(space).or(ref(comment)).or(ref(processing)).star();
   space() => whitespace().plus();
+  space_optional() => whitespace().star();
 
   nameToken() => ref(nameStartChar).seq(ref(nameChar).star()).flatten();
   nameStartChar() => pattern(NAME_START_CHARS, 'Expected name');

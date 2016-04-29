@@ -6,8 +6,8 @@
  */
 library chrome.tabs;
 
+import 'extension_types.dart';
 import 'runtime.dart';
-import 'types.dart';
 import 'windows.dart';
 import '../src/common.dart';
 
@@ -199,11 +199,11 @@ class ChromeTabs extends ChromeApi {
    * occurs while connecting to the specified tab, the callback will be called
    * with no arguments and [runtime.lastError] will be set to the error message.
    */
-  Future<dynamic> sendMessage(int tabId, dynamic message) {
+  Future<dynamic> sendMessage(int tabId, dynamic message, [TabsSendMessageParams options]) {
     if (_tabs == null) _throwNotAvailable();
 
     var completer = new ChromeCompleter<dynamic>.oneArg();
-    _tabs.callMethod('sendMessage', [tabId, jsify(message), completer.callback]);
+    _tabs.callMethod('sendMessage', [tabId, jsify(message), jsify(options), completer.callback]);
     return completer.future;
   }
 
@@ -379,7 +379,7 @@ class ChromeTabs extends ChromeApi {
 
   /**
    * Captures the visible area of the currently active tab in the specified
-   * window. You must have <a href='declare_permissions'>&lt;all_urls&gt;</a>
+   * window. You must have <a href='declare_permissions'><all_urls></a>
    * permission to use this method.
    * 
    * [windowId] The target window. Defaults to the [current
@@ -440,7 +440,9 @@ class ChromeTabs extends ChromeApi {
    * [tabId] The ID of the tab to zoom; defaults to the active tab of the
    * current window.
    * 
-   * [zoomFactor] The new zoom factor.
+   * [zoomFactor] The new zoom factor. Use a value of 0 here to set the tab to
+   * its current default zoom factor. Values greater than zero specify a
+   * (possibly non-default) zoom factor for the tab.
    */
   Future setZoom(dynamic zoomFactor, [int tabId]) {
     if (_tabs == null) _throwNotAvailable();
@@ -744,109 +746,99 @@ class Tab extends ChromeObject {
 }
 
 /**
- * Details of the script or CSS to inject. Either the code or the file property
- * must be set, but both may not be set at the same time.
+ * Defines how zoom changes are handled, i.e. which entity is responsible for
+ * the actual scaling of the page; defaults to `automatic`.
+ * enum of `{name: automatic, description: Zoom changes are handled
+ * automatically by the browser.}`, `{name: manual, description: Overrides the
+ * automatic handling of zoom changes. The <code>onZoomChange</code> event will
+ * still be dispatched, and it is the responsibility of the extension to listen
+ * for this event and manually scale the page. This mode does not support
+ * <code>per-origin</code> zooming, and will thus ignore the <code>scope</code>
+ * zoom setting and assume <code>per-tab</code>.}`, `{name: disabled,
+ * description: Disables all zooming in the tab. The tab will revert to the
+ * default zoom level, and all attempted zoom changes will be ignored.}`
  */
-class InjectDetails extends ChromeObject {
-  InjectDetails({String code, String file, bool allFrames, bool matchAboutBlank, String runAt}) {
-    if (code != null) this.code = code;
-    if (file != null) this.file = file;
-    if (allFrames != null) this.allFrames = allFrames;
-    if (matchAboutBlank != null) this.matchAboutBlank = matchAboutBlank;
-    if (runAt != null) this.runAt = runAt;
-  }
-  InjectDetails.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+class ZoomSettingsMode extends ChromeObject {
+  ZoomSettingsMode();
+  ZoomSettingsMode.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
 
-  /**
-   * JavaScript or CSS code to inject.<br><br><b>Warning:</b><br>Be careful
-   * using the `code` parameter. Incorrect use of it may open your extension to
-   * [cross site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting)
-   * attacks.
-   */
-  String get code => jsProxy['code'];
-  set code(String value) => jsProxy['code'] = value;
-
-  /**
-   * JavaScript or CSS file to inject.
-   */
-  String get file => jsProxy['file'];
-  set file(String value) => jsProxy['file'] = value;
-
-  /**
-   * If allFrames is `true`, implies that the JavaScript or CSS should be
-   * injected into all frames of current page. By default, it's `false` and is
-   * only injected into the top frame.
-   */
-  bool get allFrames => jsProxy['allFrames'];
-  set allFrames(bool value) => jsProxy['allFrames'] = value;
-
-  /**
-   * If matchAboutBlank is true, then the code is also injected in about:blank
-   * and about:srcdoc frames if your extension has access to its parent
-   * document. Code cannot be inserted in top-level about:-frames. By default it
-   * is `false`.
-   */
-  bool get matchAboutBlank => jsProxy['matchAboutBlank'];
-  set matchAboutBlank(bool value) => jsProxy['matchAboutBlank'] = value;
-
-  /**
-   * The soonest that the JavaScript or CSS will be injected into the tab.
-   * Defaults to "document_idle".
-   * enum of `document_start`, `document_end`, `document_idle`
-   */
-  String get runAt => jsProxy['runAt'];
-  set runAt(String value) => jsProxy['runAt'] = value;
+/**
+ * Defines whether zoom changes will persist for the page's origin, or only take
+ * effect in this tab; defaults to `per-origin` when in `automatic` mode, and
+ * `per-tab` otherwise.
+ * enum of `{name: per-origin, description: Zoom changes will persist in the
+ * zoomed page's origin, i.e. all other tabs navigated to that same origin will
+ * be zoomed as well. Moreover, <code>per-origin</code> zoom changes are saved
+ * with the origin, meaning that when navigating to other pages in the same
+ * origin, they will all be zoomed to the same zoom factor. The
+ * <code>per-origin</code> scope is only available in the <code>automatic</code>
+ * mode.}`, `{name: per-tab, description: Zoom changes only take effect in this
+ * tab, and zoom changes in other tabs will not affect the zooming of this tab.
+ * Also, <code>per-tab</code> zoom changes are reset on navigation; navigating a
+ * tab will always load pages with their <code>per-origin</code> zoom factors.}`
+ */
+class ZoomSettingsScope extends ChromeObject {
+  ZoomSettingsScope();
+  ZoomSettingsScope.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 }
 
 /**
  * Defines how zoom changes in a tab are handled and at what scope.
  */
 class ZoomSettings extends ChromeObject {
-  ZoomSettings({String mode, String scope}) {
+  ZoomSettings({ZoomSettingsMode mode, ZoomSettingsScope scope, var defaultZoomFactor}) {
     if (mode != null) this.mode = mode;
     if (scope != null) this.scope = scope;
+    if (defaultZoomFactor != null) this.defaultZoomFactor = defaultZoomFactor;
   }
   ZoomSettings.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 
   /**
    * Defines how zoom changes are handled, i.e. which entity is responsible for
    * the actual scaling of the page; defaults to `automatic`.
-   * enum of `{name: automatic, description: Zoom changes are handled
-   * automatically by the browser.}`, `{name: manual, description: Overrides the
-   * automatic handling of zoom changes. The <code>onZoomChange</code> event
-   * will still be dispatched, and it is the responsibility of the extension to
-   * listen for this event and manually scale the page. This mode does not
-   * support <code>per-origin</code> zooming, and will thus ignore the
-   * <code>scope</code> zoom setting and assume <code>per-tab</code>.}`, `{name:
-   * disabled, description: Disables all zooming in the tab. The tab will revert
-   * to default (100%) zoom, and all attempted zoom changes will be ignored.}`
    */
-  String get mode => jsProxy['mode'];
-  set mode(String value) => jsProxy['mode'] = value;
+  ZoomSettingsMode get mode => _createZoomSettingsMode(jsProxy['mode']);
+  set mode(ZoomSettingsMode value) => jsProxy['mode'] = jsify(value);
 
   /**
    * Defines whether zoom changes will persist for the page's origin, or only
    * take effect in this tab; defaults to `per-origin` when in `automatic` mode,
    * and `per-tab` otherwise.
-   * enum of `{name: per-origin, description: Zoom changes will persist in the
-   * zoomed page's origin, i.e. all other tabs navigated to that same origin
-   * will be zoomed as well. Moreover, <code>per-origin</code> zoom changes are
-   * saved with the origin, meaning that when navigating to other pages in the
-   * same origin, they will all be zoomed to the same zoom factor. The
-   * <code>per-origin</code> scope is only available in the
-   * <code>automatic</code> mode.}`, `{name: per-tab, description: Zoom changes
-   * only take effect in this tab, and zoom changes in other tabs will not
-   * affect the zooming of this tab. Also, <code>per-tab</code> zoom changes are
-   * reset on navigation; navigating a tab will always load pages with their
-   * <code>per-origin</code> zoom factors.}`
    */
-  String get scope => jsProxy['scope'];
-  set scope(String value) => jsProxy['scope'] = value;
+  ZoomSettingsScope get scope => _createZoomSettingsScope(jsProxy['scope']);
+  set scope(ZoomSettingsScope value) => jsProxy['scope'] = jsify(value);
+
+  /**
+   * Used to return the default zoom level for the current tab in calls to
+   * tabs.getZoomSettings.
+   */
+  dynamic get defaultZoomFactor => jsProxy['defaultZoomFactor'];
+  set defaultZoomFactor(var value) => jsProxy['defaultZoomFactor'] = jsify(value);
+}
+
+/**
+ * Whether the tabs have completed loading.
+ * enum of `loading`, `complete`
+ */
+class TabStatus extends ChromeObject {
+  TabStatus();
+  TabStatus.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * The type of window.
+ * enum of `normal`, `popup`, `panel`, `app`
+ */
+class TabsWindowType extends ChromeObject {
+  TabsWindowType();
+  TabsWindowType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 }
 
 class TabsConnectParams extends ChromeObject {
-  TabsConnectParams({String name}) {
+  TabsConnectParams({String name, int frameId}) {
     if (name != null) this.name = name;
+    if (frameId != null) this.frameId = frameId;
   }
   TabsConnectParams.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 
@@ -856,6 +848,27 @@ class TabsConnectParams extends ChromeObject {
    */
   String get name => jsProxy['name'];
   set name(String value) => jsProxy['name'] = value;
+
+  /**
+   * Open a port to a specific [frame](webNavigation#frame_ids) identified by
+   * `frameId` instead of all frames in the tab.
+   */
+  int get frameId => jsProxy['frameId'];
+  set frameId(int value) => jsProxy['frameId'] = value;
+}
+
+class TabsSendMessageParams extends ChromeObject {
+  TabsSendMessageParams({int frameId}) {
+    if (frameId != null) this.frameId = frameId;
+  }
+  TabsSendMessageParams.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+
+  /**
+   * Send a message to a specific [frame](webNavigation#frame_ids) identified by
+   * `frameId` instead of all frames in the tab.
+   */
+  int get frameId => jsProxy['frameId'];
+  set frameId(int value) => jsProxy['frameId'] = value;
 }
 
 class TabsCreateParams extends ChromeObject {
@@ -922,7 +935,7 @@ class TabsCreateParams extends ChromeObject {
 }
 
 class TabsQueryParams extends ChromeObject {
-  TabsQueryParams({bool active, bool pinned, bool highlighted, bool currentWindow, bool lastFocusedWindow, String status, String title, String url, int windowId, String windowType, int index}) {
+  TabsQueryParams({bool active, bool pinned, bool highlighted, bool currentWindow, bool lastFocusedWindow, TabStatus status, String title, var url, int windowId, TabsWindowType windowType, int index}) {
     if (active != null) this.active = active;
     if (pinned != null) this.pinned = pinned;
     if (highlighted != null) this.highlighted = highlighted;
@@ -969,10 +982,9 @@ class TabsQueryParams extends ChromeObject {
 
   /**
    * Whether the tabs have completed loading.
-   * enum of `loading`, `complete`
    */
-  String get status => jsProxy['status'];
-  set status(String value) => jsProxy['status'] = value;
+  TabStatus get status => _createTabStatus(jsProxy['status']);
+  set status(TabStatus value) => jsProxy['status'] = jsify(value);
 
   /**
    * Match page titles against a pattern.
@@ -981,11 +993,11 @@ class TabsQueryParams extends ChromeObject {
   set title(String value) => jsProxy['title'] = value;
 
   /**
-   * Match tabs against a [URL pattern](match_patterns). Note that fragment
-   * identifiers are not matched.
+   * Match tabs against one or more [URL patterns](match_patterns). Note that
+   * fragment identifiers are not matched.
    */
-  String get url => jsProxy['url'];
-  set url(String value) => jsProxy['url'] = value;
+  dynamic get url => jsProxy['url'];
+  set url(var value) => jsProxy['url'] = jsify(value);
 
   /**
    * The ID of the parent window, or [windows.WINDOW_ID_CURRENT] for the
@@ -996,10 +1008,9 @@ class TabsQueryParams extends ChromeObject {
 
   /**
    * The type of window the tabs are in.
-   * enum of `normal`, `popup`, `panel`, `app`
    */
-  String get windowType => jsProxy['windowType'];
-  set windowType(String value) => jsProxy['windowType'] = value;
+  TabsWindowType get windowType => _createWindowType(jsProxy['windowType']);
+  set windowType(TabsWindowType value) => jsProxy['windowType'] = jsify(value);
 
   /**
    * The position of the tabs within their windows.
@@ -1132,3 +1143,7 @@ OnReplacedEvent _createOnReplacedEvent(int addedTabId, int removedTabId) =>
 Port _createPort(JsObject jsProxy) => jsProxy == null ? null : new Port.fromProxy(jsProxy);
 Window _createWindow(JsObject jsProxy) => jsProxy == null ? null : new Window.fromProxy(jsProxy);
 ZoomSettings _createZoomSettings(JsObject jsProxy) => jsProxy == null ? null : new ZoomSettings.fromProxy(jsProxy);
+ZoomSettingsMode _createZoomSettingsMode(JsObject jsProxy) => jsProxy == null ? null : new ZoomSettingsMode.fromProxy(jsProxy);
+ZoomSettingsScope _createZoomSettingsScope(JsObject jsProxy) => jsProxy == null ? null : new ZoomSettingsScope.fromProxy(jsProxy);
+TabStatus _createTabStatus(JsObject jsProxy) => jsProxy == null ? null : new TabStatus.fromProxy(jsProxy);
+TabsWindowType _createWindowType(JsObject jsProxy) => jsProxy == null ? null : new TabsWindowType.fromProxy(jsProxy);

@@ -27,8 +27,8 @@ class ChromeInputIme extends ChromeApi {
    * This event is sent when an IME is activated. It signals that the IME will
    * be receiving onKeyPress events.
    */
-  Stream<String> get onActivate => _onActivate.stream;
-  ChromeStreamController<String> _onActivate;
+  Stream<OnActivateEvent> get onActivate => _onActivate.stream;
+  ChromeStreamController<OnActivateEvent> _onActivate;
 
   /**
    * This event is sent when an IME is deactivated. It signals that the IME will
@@ -93,7 +93,7 @@ class ChromeInputIme extends ChromeApi {
 
   ChromeInputIme._() {
     var getApi = () => _input_ime;
-    _onActivate = new ChromeStreamController<String>.oneArg(getApi, 'onActivate', selfConverter);
+    _onActivate = new ChromeStreamController<OnActivateEvent>.twoArgs(getApi, 'onActivate', _createOnActivateEvent);
     _onDeactivated = new ChromeStreamController<String>.oneArg(getApi, 'onDeactivated', selfConverter);
     _onFocus = new ChromeStreamController<InputContext>.oneArg(getApi, 'onFocus', _createInputContext);
     _onBlur = new ChromeStreamController<int>.oneArg(getApi, 'onBlur', selfConverter);
@@ -255,6 +255,24 @@ class ChromeInputIme extends ChromeApi {
 }
 
 /**
+ * This event is sent when an IME is activated. It signals that the IME will be
+ * receiving onKeyPress events.
+ */
+class OnActivateEvent {
+  /**
+   * ID of the engine receiving the event
+   */
+  final String engineID;
+
+  /**
+   * The screen type under which the IME is activated.
+   */
+  final ScreenType screen;
+
+  OnActivateEvent(this.engineID, this.screen);
+}
+
+/**
  * This event is sent if this extension owns the active IME.
  */
 class OnKeyEventEvent {
@@ -287,9 +305,8 @@ class OnCandidateClickedEvent {
 
   /**
    * Which mouse buttons was clicked.
-   * enum of `left`, `middle`, `right`
    */
-  final String button;
+  final MouseButton button;
 
   OnCandidateClickedEvent(this.engineID, this.candidateID, this.button);
 }
@@ -331,7 +348,7 @@ class OnSurroundingTextChangedEvent {
 }
 
 class PropertiesInputIme extends ChromeObject {
-  PropertiesInputIme({bool visible, bool cursorVisible, bool vertical, int pageSize, String auxiliaryText, bool auxiliaryTextVisible, String windowPosition}) {
+  PropertiesInputIme({bool visible, bool cursorVisible, bool vertical, int pageSize, String auxiliaryText, bool auxiliaryTextVisible, WindowPosition windowPosition}) {
     if (visible != null) this.visible = visible;
     if (cursorVisible != null) this.cursorVisible = cursorVisible;
     if (vertical != null) this.vertical = vertical;
@@ -380,13 +397,10 @@ class PropertiesInputIme extends ChromeObject {
   set auxiliaryTextVisible(bool value) => jsProxy['auxiliaryTextVisible'] = value;
 
   /**
-   * Where to display the candidate window. If set to 'cursor', the window
-   * follows the cursor. If set to 'composition', the window is locked to the
-   * beginning of the composition.
-   * enum of `cursor`, `composition`
+   * Where to display the candidate window.
    */
-  String get windowPosition => jsProxy['windowPosition'];
-  set windowPosition(String value) => jsProxy['windowPosition'] = value;
+  WindowPosition get windowPosition => _createWindowPosition(jsProxy['windowPosition']);
+  set windowPosition(WindowPosition value) => jsProxy['windowPosition'] = jsify(value);
 }
 
 class UsageInputIme extends ChromeObject {
@@ -410,10 +424,18 @@ class UsageInputIme extends ChromeObject {
 }
 
 /**
+ * enum of `keyup`, `keydown`
+ */
+class KeyboardEventType extends ChromeObject {
+  KeyboardEventType();
+  KeyboardEventType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
  * See http://www.w3.org/TR/DOM-Level-3-Events/#events-KeyboardEvent
  */
 class KeyboardEvent extends ChromeObject {
-  KeyboardEvent({String type, String requestId, String extensionId, String key, String code, int keyCode, bool altKey, bool ctrlKey, bool shiftKey, bool capsLock}) {
+  KeyboardEvent({KeyboardEventType type, String requestId, String extensionId, String key, String code, int keyCode, bool altKey, bool ctrlKey, bool shiftKey, bool capsLock}) {
     if (type != null) this.type = type;
     if (requestId != null) this.requestId = requestId;
     if (extensionId != null) this.extensionId = extensionId;
@@ -429,10 +451,9 @@ class KeyboardEvent extends ChromeObject {
 
   /**
    * One of keyup or keydown.
-   * enum of `keyup`, `keydown`
    */
-  String get type => jsProxy['type'];
-  set type(String value) => jsProxy['type'] = value;
+  KeyboardEventType get type => _createKeyboardEventType(jsProxy['type']);
+  set type(KeyboardEventType value) => jsProxy['type'] = jsify(value);
 
   /**
    * The ID of the request.
@@ -493,12 +514,24 @@ class KeyboardEvent extends ChromeObject {
 }
 
 /**
+ * Type of value this text field edits, (Text, Number, URL, etc)
+ * enum of `text`, `search`, `tel`, `url`, `email`, `number`, `password`
+ */
+class InputContextType extends ChromeObject {
+  InputContextType();
+  InputContextType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
  * Describes an input Context
  */
 class InputContext extends ChromeObject {
-  InputContext({int contextID, String type}) {
+  InputContext({int contextID, InputContextType type, bool autoCorrect, bool autoComplete, bool spellCheck}) {
     if (contextID != null) this.contextID = contextID;
     if (type != null) this.type = type;
+    if (autoCorrect != null) this.autoCorrect = autoCorrect;
+    if (autoComplete != null) this.autoComplete = autoComplete;
+    if (spellCheck != null) this.spellCheck = spellCheck;
   }
   InputContext.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 
@@ -511,10 +544,37 @@ class InputContext extends ChromeObject {
 
   /**
    * Type of value this text field edits, (Text, Number, URL, etc)
-   * enum of `text`, `search`, `tel`, `url`, `email`, `number`, `password`
    */
-  String get type => jsProxy['type'];
-  set type(String value) => jsProxy['type'] = value;
+  InputContextType get type => _createInputContextType(jsProxy['type']);
+  set type(InputContextType value) => jsProxy['type'] = jsify(value);
+
+  /**
+   * Whether the text field wants auto-correct.
+   */
+  bool get autoCorrect => jsProxy['autoCorrect'];
+  set autoCorrect(bool value) => jsProxy['autoCorrect'] = value;
+
+  /**
+   * Whether the text field wants auto-complete.
+   */
+  bool get autoComplete => jsProxy['autoComplete'];
+  set autoComplete(bool value) => jsProxy['autoComplete'] = value;
+
+  /**
+   * Whether the text field wants spell-check.
+   */
+  bool get spellCheck => jsProxy['spellCheck'];
+  set spellCheck(bool value) => jsProxy['spellCheck'] = value;
+}
+
+/**
+ * The type of menu item. Radio buttons between separators are considered
+ * grouped.
+ * enum of `check`, `radio`, `separator`
+ */
+class MenuItemStyle extends ChromeObject {
+  MenuItemStyle();
+  MenuItemStyle.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 }
 
 /**
@@ -522,7 +582,7 @@ class InputContext extends ChromeObject {
  * language menu.
  */
 class MenuItem extends ChromeObject {
-  MenuItem({String id, String label, String style, bool visible, bool checked, bool enabled}) {
+  MenuItem({String id, String label, MenuItemStyle style, bool visible, bool checked, bool enabled}) {
     if (id != null) this.id = id;
     if (label != null) this.label = label;
     if (style != null) this.style = style;
@@ -545,12 +605,10 @@ class MenuItem extends ChromeObject {
   set label(String value) => jsProxy['label'] = value;
 
   /**
-   * Enum representing if this item is: check, radio, or a separator.  Radio
-   * buttons between separators are considered grouped.
-   * enum of `check`, `radio`, `separator`
+   * The type of menu item.
    */
-  String get style => jsProxy['style'];
-  set style(String value) => jsProxy['style'] = value;
+  MenuItemStyle get style => _createMenuItemStyle(jsProxy['style']);
+  set style(MenuItemStyle value) => jsProxy['style'] = jsify(value);
 
   /**
    * Indicates this item is visible.
@@ -569,6 +627,52 @@ class MenuItem extends ChromeObject {
    */
   bool get enabled => jsProxy['enabled'];
   set enabled(bool value) => jsProxy['enabled'] = value;
+}
+
+/**
+ * The type of the underline to modify this segment.
+ * enum of `underline`, `doubleUnderline`, `noUnderline`
+ */
+class UnderlineStyle extends ChromeObject {
+  UnderlineStyle();
+  UnderlineStyle.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * Where to display the candidate window. If set to 'cursor', the window follows
+ * the cursor. If set to 'composition', the window is locked to the beginning of
+ * the composition.
+ * enum of `cursor`, `composition`
+ */
+class WindowPosition extends ChromeObject {
+  WindowPosition();
+  WindowPosition.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * The screen type under which the IME is activated.
+ * enum of `normal`, `login`, `lock`, `secondary-login`
+ */
+class ScreenType extends ChromeObject {
+  ScreenType();
+  ScreenType.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * enum of `async`
+ */
+class CallbackStyle extends ChromeObject {
+  CallbackStyle();
+  CallbackStyle.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * Which mouse buttons was clicked.
+ * enum of `left`, `middle`, `right`
+ */
+class MouseButton extends ChromeObject {
+  MouseButton();
+  MouseButton.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 }
 
 class InputImeSetCompositionParams extends ChromeObject {
@@ -805,15 +909,23 @@ class InputImeDeleteSurroundingTextParams extends ChromeObject {
   set length(int value) => jsProxy['length'] = value;
 }
 
+OnActivateEvent _createOnActivateEvent(String engineID, JsObject screen) =>
+    new OnActivateEvent(engineID, _createScreenType(screen));
 InputContext _createInputContext(JsObject jsProxy) => jsProxy == null ? null : new InputContext.fromProxy(jsProxy);
 OnKeyEventEvent _createOnKeyEventEvent(String engineID, JsObject keyData) =>
     new OnKeyEventEvent(engineID, _createKeyboardEvent(keyData));
-OnCandidateClickedEvent _createOnCandidateClickedEvent(String engineID, int candidateID, String button) =>
-    new OnCandidateClickedEvent(engineID, candidateID, button);
+OnCandidateClickedEvent _createOnCandidateClickedEvent(String engineID, int candidateID, JsObject button) =>
+    new OnCandidateClickedEvent(engineID, candidateID, _createMouseButton(button));
 OnMenuItemActivatedEvent _createOnMenuItemActivatedEvent(String engineID, String name) =>
     new OnMenuItemActivatedEvent(engineID, name);
 OnSurroundingTextChangedEvent _createOnSurroundingTextChangedEvent(String engineID, JsObject surroundingInfo) =>
     new OnSurroundingTextChangedEvent(engineID, mapify(surroundingInfo));
+WindowPosition _createWindowPosition(JsObject jsProxy) => jsProxy == null ? null : new WindowPosition.fromProxy(jsProxy);
+KeyboardEventType _createKeyboardEventType(JsObject jsProxy) => jsProxy == null ? null : new KeyboardEventType.fromProxy(jsProxy);
+InputContextType _createInputContextType(JsObject jsProxy) => jsProxy == null ? null : new InputContextType.fromProxy(jsProxy);
+MenuItemStyle _createMenuItemStyle(JsObject jsProxy) => jsProxy == null ? null : new MenuItemStyle.fromProxy(jsProxy);
 KeyboardEvent _createKeyboardEvent(JsObject jsProxy) => jsProxy == null ? null : new KeyboardEvent.fromProxy(jsProxy);
 PropertiesInputIme _createPropertiesInputIme(JsObject jsProxy) => jsProxy == null ? null : new PropertiesInputIme.fromProxy(jsProxy);
 MenuItem _createMenuItem(JsObject jsProxy) => jsProxy == null ? null : new MenuItem.fromProxy(jsProxy);
+ScreenType _createScreenType(JsObject jsProxy) => jsProxy == null ? null : new ScreenType.fromProxy(jsProxy);
+MouseButton _createMouseButton(JsObject jsProxy) => jsProxy == null ? null : new MouseButton.fromProxy(jsProxy);

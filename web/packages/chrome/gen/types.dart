@@ -18,10 +18,39 @@ class ChromeTypes extends ChromeApi {
   ChromeTypes._();
 
   bool get available => _types != null;
+}
 
-  void _throwNotAvailable() {
-    throw new UnsupportedError("'chrome.types' is not available");
-  }
+/**
+ * The scope of the ChromeSetting. One of<ul><li>[regular]: setting for the
+ * regular profile (which is inherited by the incognito profile if not
+ * overridden elsewhere),</li><li>[regular_only]: setting for the regular
+ * profile only (not inherited by the incognito
+ * profile),</li><li>[incognito_persistent]: setting for the incognito profile
+ * that survives browser restarts (overrides regular
+ * preferences),</li><li>[incognito_session_only]: setting for the incognito
+ * profile that can only be set during an incognito session and is deleted when
+ * the incognito session ends (overrides regular and incognito_persistent
+ * preferences).</li></ul>
+ * enum of `regular`, `regular_only`, `incognito_persistent`,
+ * `incognito_session_only`
+ */
+class ChromeSettingScope extends ChromeObject {
+  ChromeSettingScope();
+  ChromeSettingScope.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
+}
+
+/**
+ * One of<ul><li>[not_controllable]: cannot be controlled by any
+ * extension</li><li>[controlled_by_other_extensions]: controlled by extensions
+ * with higher precedence</li><li>[controllable_by_this_extension]: can be
+ * controlled by this extension</li><li>[controlled_by_this_extension]:
+ * controlled by this extension</li></ul>
+ * enum of `not_controllable`, `controlled_by_other_extensions`,
+ * `controllable_by_this_extension`, `controlled_by_this_extension`
+ */
+class TypesLevelOfControl extends ChromeObject {
+  TypesLevelOfControl();
+  TypesLevelOfControl.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 }
 
 /**
@@ -69,33 +98,6 @@ class ChromeSetting extends ChromeObject {
   }
 }
 
-/**
- * Details about the format and quality of an image.
- */
-class ImageDetails extends ChromeObject {
-  ImageDetails({String format, int quality}) {
-    if (format != null) this.format = format;
-    if (quality != null) this.quality = quality;
-  }
-  ImageDetails.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
-
-  /**
-   * The format of the resulting image.  Default is `"jpeg"`.
-   * enum of `jpeg`, `png`
-   */
-  String get format => jsProxy['format'];
-  set format(String value) => jsProxy['format'] = value;
-
-  /**
-   * When format is `"jpeg"`, controls the quality of the resulting image.  This
-   * value is ignored for PNG images.  As quality is decreased, the resulting
-   * image will have more visual artifacts, and the number of bytes needed to
-   * store it will decrease.
-   */
-  int get quality => jsProxy['quality'];
-  set quality(int value) => jsProxy['quality'] = value;
-}
-
 class TypesGetParams extends ChromeObject {
   TypesGetParams({bool incognito}) {
     if (incognito != null) this.incognito = incognito;
@@ -111,7 +113,7 @@ class TypesGetParams extends ChromeObject {
 }
 
 class TypesSetParams extends ChromeObject {
-  TypesSetParams({var value, String scope}) {
+  TypesSetParams({var value, ChromeSettingScope scope}) {
     if (value != null) this.value = value;
     if (scope != null) this.scope = scope;
   }
@@ -126,43 +128,23 @@ class TypesSetParams extends ChromeObject {
   set value(var value) => jsProxy['value'] = jsify(value);
 
   /**
-   * Where to set the setting (default: regular). One of<ul><li>[regular]:
-   * setting for the regular profile (which is inherited by the incognito
-   * profile if not overridden elsewhere),</li><li>[regular_only]: setting for
-   * the regular profile only (not inherited by the incognito
-   * profile),</li><li>[incognito_persistent]: setting for the incognito profile
-   * that survives browser restarts (overrides regular
-   * preferences),</li><li>[incognito_session_only]: setting for the incognito
-   * profile that can only be set during an incognito session and is deleted
-   * when the incognito session ends (overrides regular and incognito_persistent
-   * preferences).</li></ul>
-   * enum of `regular`, `regular_only`, `incognito_persistent`,
-   * `incognito_session_only`
+   * Where to set the setting (default: regular).
    */
-  String get scope => jsProxy['scope'];
-  set scope(String value) => jsProxy['scope'] = value;
+  ChromeSettingScope get scope => _createChromeSettingScope(jsProxy['scope']);
+  set scope(ChromeSettingScope value) => jsProxy['scope'] = jsify(value);
 }
 
 class TypesClearParams extends ChromeObject {
-  TypesClearParams({String scope}) {
+  TypesClearParams({ChromeSettingScope scope}) {
     if (scope != null) this.scope = scope;
   }
   TypesClearParams.fromProxy(JsObject jsProxy): super.fromProxy(jsProxy);
 
   /**
-   * Where to clear the setting (default: regular). One of<ul><li>[regular]:
-   * setting for the regular profile (which is inherited by the incognito
-   * profile if not overridden elsewhere),</li><li>[regular_only]: setting for
-   * the regular profile only (not inherited by the incognito
-   * profile),</li><li>[incognito_persistent]: setting for the incognito profile
-   * that survives browser restarts (overrides regular
-   * preferences),</li><li>[incognito_session_only]: setting for the incognito
-   * profile that can only be set during an incognito session and is deleted
-   * when the incognito session ends (overrides regular and incognito_persistent
-   * preferences).</li></ul>
-   * enum of `regular`, `regular_only`, `incognito_persistent`,
-   * `incognito_session_only`
+   * Where to clear the setting (default: regular).
    */
-  String get scope => jsProxy['scope'];
-  set scope(String value) => jsProxy['scope'] = value;
+  ChromeSettingScope get scope => _createChromeSettingScope(jsProxy['scope']);
+  set scope(ChromeSettingScope value) => jsProxy['scope'] = jsify(value);
 }
+
+ChromeSettingScope _createChromeSettingScope(JsObject jsProxy) => jsProxy == null ? null : new ChromeSettingScope.fromProxy(jsProxy);

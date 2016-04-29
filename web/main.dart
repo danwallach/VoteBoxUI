@@ -11,6 +11,18 @@ main() async {
 
   chrome.app.window.current().fullscreen();
 
+  try {
+    chrome.Port port = chrome.runtime.connectNative('com.service.javahost');
+
+    port.onMessage.listen((chrome.OnMessageEvent e) => print("Received ${e.message}"));
+    //port.onDisconnect.listen((var e) => print("Disconnect ${e.message}"));
+    port.postMessage("Hello, Votebox!");
+
+  } catch(exception, stackTrace) {
+    print(exception);
+    print(stackTrace);
+  }
+
   /* Block undesirable key combinations */
   document.onKeyPress.listen(blockKeys);
   document.onKeyDown.listen(blockKeys);
@@ -336,7 +348,7 @@ void displayRace(Race race) {
     titleDiv.appendHtml("<br>");
 
     raceInstDiv.id = "raceInst";
-    raceInstDiv.text = "Vote for 1.";
+    raceInstDiv.text = "Vote for one.";
     titleDiv.append(raceInstDiv);
   }
 

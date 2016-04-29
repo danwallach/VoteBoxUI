@@ -2,16 +2,14 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library source_span.file;
-
 import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'location.dart';
+import 'location_mixin.dart';
 import 'span.dart';
 import 'span_mixin.dart';
 import 'span_with_context.dart';
-import 'utils.dart';
 
 // Constants to determine end-of-lines.
 const int _LF = 10;
@@ -42,6 +40,14 @@ class SourceFile {
 
   /// The number of lines in the file.
   int get lines => _lineStarts.length;
+
+  /// The line that the offset fell on the last time [getLine] was called.
+  ///
+  /// In many cases, sequential calls to getLine() are for nearby, usually
+  /// increasing offsets. In that case, we can find the line for an offset
+  /// quickly by first checking to see if the offset is on the same line as the
+  /// previous result.
+  int _cachedLine;
 
   /// Creates a new source file from [text].
   ///
@@ -85,7 +91,58 @@ class SourceFile {
       throw new RangeError("Offset $offset must not be greater than the number "
           "of characters in the file, $length.");
     }
-    return binarySearch(_lineStarts, (o) => o > offset) - 1;
+
+    if (offset < _lineStarts.first) return -1;
+    if (offset >= _lineStarts.last) return _lineStarts.length - 1;
+
+    if (_isNearCachedLine(offset)) return _cachedLine;
+
+    _cachedLine = _binarySearch(offset) - 1;
+    return _cachedLine;
+  }
+
+  /// Returns `true` if [offset] is near [_cachedLine].
+  ///
+  /// Checks on [_cachedLine] and the next line. If it's on the next line, it
+  /// updates [_cachedLine] to point to that.
+  bool _isNearCachedLine(int offset) {
+    if (_cachedLine == null) return false;
+
+    // See if it's before the cached line.
+    if (offset < _lineStarts[_cachedLine]) return false;
+
+    // See if it's on the cached line.
+    if (_cachedLine >= _lineStarts.length - 1 ||
+        offset < _lineStarts[_cachedLine + 1]) {
+      return true;
+    }
+
+    // See if it's on the next line.
+    if (_cachedLine >= _lineStarts.length - 2 ||
+        offset < _lineStarts[_cachedLine + 2]) {
+      _cachedLine++;
+      return true;
+    }
+
+    return false;
+  }
+
+  /// Binary search through [_lineStarts] to find the line containing [offset].
+  ///
+  /// Returns the index of the line in [_lineStarts].
+  int _binarySearch(int offset) {
+    int min = 0;
+    int max = _lineStarts.length - 1;
+    while (min < max) {
+      var half = min + ((max - min) ~/ 2);
+      if (_lineStarts[half] > offset) {
+        max = half;
+      } else {
+        min = half + 1;
+      }
+    }
+
+    return max;
   }
 
   /// Gets the 0-based column corresponding to [offset].
@@ -154,17 +211,19 @@ class SourceFile {
 /// and column values based on its offset and the contents of [file].
 ///
 /// A [FileLocation] can be created using [SourceFile.location].
-class FileLocation extends SourceLocation {
+class FileLocation extends SourceLocationMixin implements SourceLocation {
   /// The [file] that [this] belongs to.
   final SourceFile file;
 
+  final int offset;
   Uri get sourceUrl => file.url;
   int get line => file.getLine(offset);
   int get column => file.getColumn(offset);
 
-  FileLocation._(this.file, int offset)
-      : super(offset) {
-    if (offset > file.length) {
+  FileLocation._(this.file, this.offset) {
+    if (offset < 0) {
+      throw new RangeError("Offset may not be negative, was $offset.");
+    } else if (offset > file.length) {
       throw new RangeError("Offset $offset must not be greater than the number "
           "of characters in the file, ${file.length}.");
     }
@@ -184,6 +243,9 @@ class FileLocation extends SourceLocation {
 abstract class FileSpan implements SourceSpanWithContext {
   /// The [file] that [this] belongs to.
   SourceFile get file;
+
+  FileLocation get start;
+  FileLocation get end;
 
   /// Returns a new span that covers both [this] and [other].
   ///
@@ -242,12 +304,17 @@ class _FileSpan extends SourceSpanMixin implements FileSpan {
   SourceSpan union(SourceSpan other) {
     if (other is! FileSpan) return super.union(other);
 
+    
     _FileSpan span = expand(other);
-    var beginSpan = span._start == _start ? this : other;
-    var endSpan = span._end == _end ? this : other;
 
-    if (beginSpan._end < endSpan._start) {
-      throw new ArgumentError("Spans $this and $other are disjoint.");
+    if (other is _FileSpan) {
+      if (this._start > other._end || other._start > this._end) {
+        throw new ArgumentError("Spans $this and $other are disjoint.");
+      }
+    } else {
+      if (this._start > other.end.offset || other.start.offset > this._end) {
+        throw new ArgumentError("Spans $this and $other are disjoint.");
+      }
     }
 
     return span;
@@ -262,6 +329,9 @@ class _FileSpan extends SourceSpanMixin implements FileSpan {
     return _start == other._start && _end == other._end &&
         sourceUrl == other.sourceUrl;
   }
+
+  // Eliminates dart2js warning about overriding `==`, but not `hashCode`
+  int get hashCode => super.hashCode;
 
   /// Returns a new span that covers both [this] and [other].
   ///

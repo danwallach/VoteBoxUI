@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library frame;
-
 import 'package:path/path.dart' as path;
 
 import 'trace.dart';
@@ -95,8 +93,11 @@ class Frame {
   /// comes from.
   ///
   /// This will usually be the string form of [uri], but a relative URI will be
-  /// used if possible.
-  String get library => path.prettyUri(uri);
+  /// used if possible. Data URIs will be truncated.
+  String get library {
+    if (uri.scheme == 'data') return "data:...";
+    return path.prettyUri(uri);
+  }
 
   /// Returns the name of the package this stack frame comes from, or `null` if
   /// this stack frame doesn't come from a `package:` URL.
