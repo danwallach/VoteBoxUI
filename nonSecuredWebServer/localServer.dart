@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert' show JSON;
 import 'dart:async';
+import 'dart:core';
 
 /* A simple web server that responds to **ALL** GET requests by returning
  * the contents of data.json file, and responds to ALL **POST** requests
@@ -20,7 +21,11 @@ final String DATA_FILE = "data.json";
 String justWritten = "";
 String toWrite;
 
-void main() {
+main() async {
+
+  Process.start(r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
+      [r'--profile-directory=Default', r'--app-id=jinjkkheinoeggackbhoiggmoegackko', r'%USERPROFILE%\Desktop\election.xml'],
+      runInShell:true);
 
   HttpServer.bind(HOST, PORT).then((server) {
     server.listen((HttpRequest request) {
@@ -132,15 +137,16 @@ void handlePost(HttpRequest req) {
     4. Use prince to convert the new .html into a rendered pdf (with the barcode!)
     5. Use lpr to (silently!) print out that new pdf
 */
-Future runScript(List<String> arguments) async {
-  try {
-    return Process.run('dart', arguments, workingDirectory: Directory.current.path, runInShell:false)
-            .then((ProcessResult result)=> print("${result.stdout}"));
+void runScript(List<String> arguments) {
+  print(arguments);
+  print(Directory.current.path);
+    try {
+    Process.run('dart', arguments, workingDirectory: Directory.current.path, runInShell:false)
+            .then((process) =>  print(process.stdout));
   } catch (exception, StackTrace) {
     print('Uh oh! Problem running our script!');
     print(exception);
     print(StackTrace);
-    return new Future.error("Script error");
   }
 }
 /**
