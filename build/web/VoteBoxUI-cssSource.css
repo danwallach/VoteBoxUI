@@ -124,13 +124,29 @@ html, body {
 #changeOptions {
 	position: relative;
 	left: 5%;
+<<<<<<< HEAD
 	margin: 7% 0;
+=======
+	margin: 7% 0 0;
+}
+
+#reviewOptions {
+	position: relative;
+	left: 5%
+>>>>>>> origin/BAM_branch2
 }
 
 #changeOptions > div {
 	margin: 1%;
 }
 
+<<<<<<< HEAD
+=======
+#reviewOptions > div {
+	margin: 1%;
+}
+
+>>>>>>> origin/BAM_branch2
 .changeOptionsButton {
 	height: 5%;
 	width: 30%;
@@ -143,7 +159,11 @@ html, body {
 
 #changeOptionsSelection {
 	position: relative;
+<<<<<<< HEAD
 	left: 5%
+=======
+	left: 10%
+>>>>>>> origin/BAM_branch2
 }
 
 #confirmOptions {
@@ -156,35 +176,36 @@ html, body {
 
 
 /* Popup modal dialog that tell users their 5 digit auth number was incorrect */
-#IDdialog {
+dialog {
 
 	background: #FFF;
 	height: 13%;
-	width: 60%;
+	width: 100%;
 	text-align: center;
-	padding: 1em;
+	padding: 1em 0 1.5em;
 	margin: .25em auto;
 	border: 0;
 	border-top: .25em solid #002EB8;
-	box-shadow: 0 .125em .667em rgba(0,0,0,0.8);
-	position: fixed;
+	box-shadow: 0 .125em .667em rgba(0,0,0,0.75);
 	font-size: 2.5em;
 	font-style: inherit;
 	font-weight: inherit;
+	position: absolute;
+	top: 75%;
 }
 
-#IDdialog::backdrop {
+dialog::backdrop {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*'Okay' Button for the popup dialog telling users their 5 digit auth number was incorrect */
-#okay {
-	width: 100%;
+dialog > button {
+	width: 25%;
 	text-align: center;
 	font-size: 50px;
 	font-style: inherit;
@@ -201,9 +222,15 @@ html, body {
 	text-shadow: 0 1.5px 0 rgba(255, 255, 255, 0.8);
 	border-radius: 8px;
 	/* align-items: flex-start; */
+<<<<<<< HEAD
 	text-align: center;
 	display: block;
+=======
+    text-align: center;
+	display: inline-block;
+>>>>>>> origin/BAM_branch2
 	margin: .25em;
+
 }
 
 /* Formatted Elements */
@@ -232,6 +259,7 @@ strong {
 	left: 50%;
 	margin-left: -400px;
 }
+
 #enterID{
 	margin-left: auto;
 	margin-right: auto;
@@ -311,6 +339,17 @@ strong {
 	display: block;
 }
 
+#inlineConfirmationDiv {
+	position: relative;
+	top: 600px;
+	width: 85%;
+	height: 100%;
+	margin: 0 auto;
+	display: block;
+	font-size: 3em;
+	text-align: center;
+	line-height: 2em;
+}
 
 
 /* Ballot Completion Section */
@@ -706,6 +745,7 @@ input[type="radio"]{
 	align-items: flex-start;
 	text-align: center;
 	box-sizing: border-box;
+<<<<<<< HEAD
 }
 #Next.skip{ /*nav button displayed when a voter does NOT makes a selection*/
 	display: inline-block;
@@ -715,6 +755,17 @@ input[type="radio"]{
 	background-color: rgba(200,200,200,1);
 	color: black;
 	text-shadow: none;
+=======
+ }
+ #Next.skip,#Yes{ /*nav button displayed when a voter does NOT makes a selection*/
+	 display: inline-block;
+	 padding: 4px 105px 0 45px;
+    background-position: 140px -180px;
+    float: right;
+	 background-color: rgba(200,200,200,1);
+    color: black;
+    text-shadow: none;
+>>>>>>> origin/BAM_branch2
 	background-image: url('images/sprite-button.png');
 	background-size: 60px 480px;
 	background-repeat: no-repeat;
@@ -755,7 +806,7 @@ input[type="radio"]{
 }
 
 /* Back Nav*/
-#Back, #Previous{
+#Back, #Previous, #No {
 	display:inline-block;
 	padding: 4px 45px 0 80px;
 	background-position: 25px -120px; /*originally set at 60px -80px*/
