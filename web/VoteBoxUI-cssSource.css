@@ -379,7 +379,7 @@ strong {
 	text-align: left;
 }
 #propTitle.propTitle{ /*Proposition Title*/
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 	/*width: 688px; */
@@ -398,7 +398,7 @@ strong {
 }
 
 #propInst{ /*Choose yes or no. */
-	/*position: absolute;*/
+	/*position: relative;*/
 	/*top: 60px;*/
 	/*left:0;*/
 	font-weight: 900;
