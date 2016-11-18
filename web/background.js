@@ -16,8 +16,7 @@ chrome.app.runtime.onLaunched.addListener(function(launchData) {
 
     function(createdWindow) {
 
-        console.log(launchData.items[0]);
-      if(launchData.items) {
+      if(launchData.items !== undefined) {
         launchData.items[0].entry.file(
   
           function(result) {

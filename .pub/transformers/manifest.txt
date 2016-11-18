@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 1.12.0
+=======
+1.15.0
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
 chrome

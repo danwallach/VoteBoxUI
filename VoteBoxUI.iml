@@ -5,7 +5,11 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/nonSecuredWebServer/.pub" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/packages" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
       <excludeFolder url="file://$MODULE_DIR$/web/fonts/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/images/packages" />
       <excludeFolder url="file://$MODULE_DIR$/web/packages" />

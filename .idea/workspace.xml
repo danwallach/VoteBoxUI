@@ -35,11 +35,19 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-318.3611">
               <caret line="671" column="33" selection-start-line="671" selection-start-column="33" selection-end-line="671" selection-end-column="33" />
               <folding>
                 <element signature="e#0#55879#0" expanded="true" />
                 <marker date="1461943830077" expanded="false" signature="93:225" placeholder="..." />
+=======
+            <state vertical-scroll-proportion="-7.9166665">
+              <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#22063#0" expanded="true" />
+                <marker date="1461944090081" expanded="false" signature="93:225" placeholder="..." />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
               </folding>
             </state>
           </provider>
@@ -48,6 +56,7 @@
       <file leaf-file-name="VoteBoxUI-htmlSource.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-3.1044776">
               <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
               <folding>
@@ -73,6 +82,11 @@
                 <element signature="n#style#0;n#button#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#4;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+=======
+            <state vertical-scroll-proportion="16.432837">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+              <folding />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
             </state>
           </provider>
         </entry>
@@ -80,8 +94,13 @@
       <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.12805589">
               <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+=======
+            <state vertical-scroll-proportion="0.1260023">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
               <folding />
             </state>
           </provider>
@@ -138,10 +157,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-179" />
     <option name="y" value="49" />
     <option name="width" value="1924" />
     <option name="height" value="1084" />
+=======
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -202,6 +228,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="VoteBoxUI" />
@@ -216,6 +243,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+=======
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -640,12 +669,15 @@
       <workItem from="1443652675935" duration="3292000" />
       <workItem from="1443798236434" duration="4779000" />
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00005" summary="Working on implementing inline confirmation logic">
       <created>1442257253704</created>
       <option name="number" value="00005" />
       <option name="project" value="LOCAL" />
       <updated>1442257253704</updated>
     </task>
+=======
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
     <task id="LOCAL-00006" summary="Much of voteflipping framework in place">
       <created>1442449702172</created>
       <option name="number" value="00006" />
@@ -934,6 +966,7 @@
       <option name="project" value="LOCAL" />
       <updated>1461943869128</updated>
     </task>
+<<<<<<< HEAD
     <option name="localTasksCounter" value="54" />
     <servers />
   </component>
@@ -942,6 +975,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-179" y="49" width="1924" height="1084" extended-state="0" />
+=======
+    <task id="LOCAL-00054" summary="Version fix">
+      <created>1461944074077</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1461944074077</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="160211000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -954,7 +1003,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24812433" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -983,7 +1036,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="Fixed so we're only tracking voter intention selection in particular on flipped races" />
+=======
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
     <MESSAGE value="Formatted logging messages for report()" />
     <MESSAGE value="Included logger calls in the relevant listeners" />
     <MESSAGE value="Built in automatic logInterval detection and most of consolidation of those intervals" />
@@ -1008,7 +1064,12 @@
     <MESSAGE value="Probably fixed async issue" />
     <MESSAGE value="Updating some file names, changed server to put results in folder" />
     <MESSAGE value="UI Fixes" />
+<<<<<<< HEAD
     <option name="LAST_COMMIT_MESSAGE" value="UI Fixes" />
+=======
+    <MESSAGE value="Version fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version fix" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1017,17 +1078,26 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-318.3611">
           <caret line="671" column="33" selection-start-line="671" selection-start-column="33" selection-end-line="671" selection-end-column="33" />
           <folding>
             <element signature="e#0#55879#0" expanded="true" />
             <marker date="1461943830077" expanded="false" signature="93:225" placeholder="..." />
+=======
+        <state vertical-scroll-proportion="-7.9166665">
+          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#22063#0" expanded="true" />
+            <marker date="1461944090081" expanded="false" signature="93:225" placeholder="..." />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-3.1044776">
           <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding>
@@ -1053,13 +1123,23 @@
             <element signature="n#style#0;n#button#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#4;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+=======
+        <state vertical-scroll-proportion="16.432837">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.12805589">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+=======
+        <state vertical-scroll-proportion="0.1260023">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+>>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
           <folding />
         </state>
       </provider>

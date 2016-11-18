@@ -14,82 +14,14 @@
     <div id="Content">
         
         <dialog id ="IDdialog">
-          <p>You must correctly enter your 5-digit voting machine pin<br> to access your ballot.<br><br>Please try again.</p>
+          <p>You must correctly enter your 5-digit voting machine pin to access your ballot.<br><br>Please try again.</p>
           <button id="okay">OK</button>
         </dialog>
-
-        <dialog id = "verifyDialog">
-        </dialog>
-
-        <!--Options Page-->
-        <div id="options">
-
-            <button id="standard" class="changeOptionsButton">No Vote Changes</button>
-            <button id="duringVoting" class="changeOptionsButton">Vote Changes During Voting</button>
-            <button id="printChanges" class="changeOptionsButton">Vote Changes After Voting</button>
-
-            <div id="changeOptions" style="visibility: hidden">
-                <div id="locationOption">
-                    <label class="optionLabel">Location of Changes: </label><br>
-                    <input type="radio" name="location" id="locationTopBallot"
-                           checked="checked"><label for="locationTopBallot">Top of Ballot</label><br>
-                    <input type="radio" name="location" id="locationBottomBallot"><label for="locationBottomBallot">Bottom of Ballot</label><br>
-                    <input type="radio" name="location" id="locationTopScreen"><label for="locationTopScreen">Top of Screen</label><br>
-                    <input type="radio" name="location" id="locationBottomScreen"><label for="locationBottomScreen">Bottom of Screen</label><br>
-                    <input type="radio" name="location" id="locationTopLeft"><label for="locationTopLeft">Top Left</label><br>
-                    <input type="radio" name="location" id="locationTopRight"><label for="locationTopRight">Top Right</label><br>
-                    <input type="radio" name="location" id="locationBottomRight"><label for="locationBottomRight">Bottom Right</label><br>
-                    <input type="radio" name="location" id="locationBottomLeft"><label for="locationBottomLeft">Bottom Left</label><br>
-                </div>
-
-                <div id="numberOption">
-                    <label class="optionLabel">Number of Changes: </label><br>
-                    <input type="radio" name="number" id="numberOne" checked="checked"><label for="numberOne">One (1)</label><br>
-                    <input type="radio" name="number" id="numberTwo"><label for="numberTwo">Two (2)</label><br>
-                    <input type="radio" name="number" id="numberEight"><label for="numberEight">Eight (8)</label><br>
-                </div>
-
-                <div id="changeTypeOption">
-                    <label class="optionLabel">Type of Change: </label><br>
-                    <input type="radio" name="changeType" id="changeTypeChange"
-                           checked="checked"><label for="changeTypeChange">Change Selection</label><br>
-                    <input type="radio" name="changeType" id="changeTypeNoSel"><label for="changeTypeNoSel">No Selection</label><br>
-                    <input type="radio" name="changeType" id="changeTypeCombo"><label for="changeTypeCombo">Combination</label><br>
-                </div>
-
-                <div id="correctionOption">
-                    <label class="optionLabel">User Correction: </label><br>
-                    <input type="radio" name="correction" id="correctOn" checked="checked"><label for="correctOn">On</label><br>
-                    <input type="radio" name="correction" id="correctOff"><label for="correctOff">Off</label><br>
-                </div>
-            </div>
-
-            <div id="reviewOptions" style="visibility: hidden">
-                <div id="reviewTypeOption">
-                    <label class="optionLabel">Type of Review: </label><br>
-                    <input type="radio" name="reviewType" id="reviewTypeInline"><label for="reviewTypeInline">Inline Confirmation</label><br>
-                    <input type="radio" name="reviewType" id="reviewTypeEndOfBallot" checked="checked"><label for="reviewTypeEndOfBallot">End-of-Ballot</label><br>
-                    <input type="radio" name="reviewType" id="reviewTypeBoth"><label for="reviewTypeBoth">Both</label><br>
-                </div>
-
-                <div id="inlineTypeOption" style="display: none">
-                    <label class="optionLabel">Type of Inline Confirmation: </label><br>
-                    <input type="radio" name="inlineType" id="inlineTypePopup"
-                           checked="checked"><label for="inlineTypePopup">Pop-up</label><br>
-                    <input type="radio" name="inlineType" id="inlineTypeIntermediate"><label for="inlineTypeIntermediate">Intermediate Screen</label><br>
-                </div>
-
-            </div>
-
-            <label id="changeOptionsSelection"></label><br><br>
-            <button id="confirmOptions" style="visibility: hidden">Confirm and Continue</button>
-        </div>
-            
         <!--For Testing
         <div id="test" style="visibility: visible">SelectionOutput</div>-->
     
         <!--Authentication Number-->
-        <div id="auth" style="visibility: hidden">
+        <div id="auth">
           <label id="enterID" for="idText"> Enter your 5-digit voting machine pin to
               <br>access your precinct's ballot</label><!--enterID-->
             <p><input type="tel" id="idText" maxlength="5" autofocus></p> <!--size="10px" -->
@@ -189,7 +121,7 @@
 
     <!--Confirmation Screen-->
     <div id="confirmation" style="visibility: hidden">
-        <p id="confHeading"><strong> <span style="text-decoration: underline;">Now you need to cast your ballot!</span></strong></p>
+        <p id="confHeading"><strong> Thank you for completing your ballot. <span style="text-decoration: underline;">Now you need to cast your ballot!</span></strong></p>
         <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both.
         <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
     </div>
@@ -208,11 +140,8 @@
         
                 <!--Buttons and progress element used in ballot completion section -->
                 <button id="Previous" type="button" style= "visibility: hidden">Back</button>
-                <button id="No" type="button"  style= "display: none">No</button>
 
                 <div id="progress"></div> <!--Ballot Completion Progress: XX of 27-->
-
-                <button id="Yes" type="button" style= "display: none">Yes</button>
 
                 <button id="Next" type="button" class="next" style= "visibility: hidden">Next</button>
                 <button id="Review" type="button"  style= "visibility: hidden">Return to Review<br></button>
