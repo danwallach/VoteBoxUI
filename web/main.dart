@@ -1060,7 +1060,7 @@ void displayReviewPage(pageNum) {
   reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
 
   DivElement pagination = querySelector("#reviewPagination");
-  int numPages = Math.ceil(actuallyCastBallot.size()/28);
+  int numPages = (actuallyCastBallot.size()/28).ceil();
   if (numPages > 1) {
     var pagehtml = '<li><a href="#" class="active page" onclick="displayReviewPage(1)">1</a></li>';
     for (int i=2; i<=numPages; i++) {
@@ -1075,9 +1075,9 @@ void displayReviewPage(pageNum) {
   liElements.forEach((Element li){
     li.onClick.listen((e){
       liElements.forEach((Element li2){
-        li2.classes.remove('active')
+        li2.classes.remove('active');
       });
-      li.classes.add('active')
+      li.classes.add('active');
     });
   });
 

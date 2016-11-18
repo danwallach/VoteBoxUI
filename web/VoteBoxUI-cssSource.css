@@ -576,15 +576,12 @@ input[type="radio"]{
 	float: right;
 }
 #reviewPagination li {display: inline;}
-
 #reviewPagination li a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-
 }
-
 #reviewPagination li a.active {
     background-color: #4CAF50;
     color: white;
