@@ -1,18 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "VoteBoxUI",
-  "short_name": "VoteBoxUI",
+  "name": "VoteBoxUI-VoteFlipping",
+  "short_name": "VoteFlippingUI",
   "description": "",
-<<<<<<< HEAD
   "version": "0.1.13",
-=======
-  "version": "0.0.9",
->>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
   "minimum_chrome_version": "39",
 
   "icons": {
     "16": "vote16.png",
-    "128": "vote128.png"
+    "128": "voteFLIPPED128.png"
   },
 
   "app": {

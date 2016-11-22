@@ -36,10 +36,5 @@ packages:
   xml:
     description: xml
     source: hosted
-<<<<<<< HEAD
     version: "2.3.2"
 sdk: ">=1.9.0 <2.0.0"
-=======
-    version: "2.4.3"
-sdk: ">=1.14.0 <2.0.0"
->>>>>>> parent of ec90322... Merge remote-tracking branch 'origin/BAM_branch2'
