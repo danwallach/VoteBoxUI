@@ -35,19 +35,11 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state vertical-scroll-proportion="-7.9166665">
               <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
               <folding>
                 <element signature="e#0#22063#0" expanded="true" />
                 <marker date="1461944090081" expanded="false" signature="93:225" placeholder="..." />
-=======
-            <state vertical-scroll-proportion="-318.3611">
-              <caret line="671" column="33" selection-start-line="671" selection-start-column="33" selection-end-line="671" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#55879#0" expanded="true" />
-                <marker date="1461943830077" expanded="false" signature="93:225" placeholder="..." />
->>>>>>> origin/BAM_branch2
               </folding>
             </state>
           </provider>
@@ -56,37 +48,9 @@
       <file leaf-file-name="VoteBoxUI-htmlSource.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state vertical-scroll-proportion="16.432837">
               <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding />
-=======
-            <state vertical-scroll-proportion="-3.1044776">
-              <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#3;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#strong#0;n#p#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#4;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
->>>>>>> origin/BAM_branch2
             </state>
           </provider>
         </entry>
@@ -94,13 +58,8 @@
       <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state vertical-scroll-proportion="0.1260023">
               <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-=======
-            <state vertical-scroll-proportion="0.12805589">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
->>>>>>> origin/BAM_branch2
               <folding />
             </state>
           </provider>
@@ -157,17 +116,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-<<<<<<< HEAD
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1098" />
-=======
-    <option name="x" value="-179" />
-    <option name="y" value="49" />
-    <option name="width" value="1924" />
-    <option name="height" value="1084" />
->>>>>>> origin/BAM_branch2
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -228,23 +180,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-<<<<<<< HEAD
-=======
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VoteBoxUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="VoteBoxUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nonSecuredWebServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
->>>>>>> origin/BAM_branch2
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -669,7 +604,6 @@
       <workItem from="1443652675935" duration="3292000" />
       <workItem from="1443798236434" duration="4779000" />
     </task>
-<<<<<<< HEAD
     <task id="LOCAL-00006" summary="Much of voteflipping framework in place">
       <created>1442449702172</created>
       <option name="number" value="00006" />
@@ -844,188 +778,6 @@
       <option name="project" value="LOCAL" />
       <updated>1442969183125</updated>
     </task>
-=======
-    <task id="LOCAL-00005" summary="Working on implementing inline confirmation logic">
-      <created>1442257253704</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1442257253704</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Much of voteflipping framework in place">
-      <created>1442449702172</created>
-      <option name="number" value="00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1442449702172</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Vote-flipping logic seems to be all in place. Initial pre-tests have everything functioning (normally without flipping but with the flipping framework in existence). &#10;&#10;Still need to create a dialog, intermediate screen, and proper vote changing lists from the options.">
-      <created>1442452143039</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1442452143039</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Reworked some of the logic to essentially give inline confirmation on ANY *forward* move (i.e. a move towards the review screen). This handles both going race-by-race and also jumping back to the review screen.">
-      <created>1442452597338</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1442452597338</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Input the definition of the inline dialog">
-      <created>1442589612067</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1442589612067</updated>
-    </task>
-    <task id="LOCAL-00010" summary="DialogElement has no default constructor, so put in a possible workaround">
-      <created>1442589862707</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1442589862707</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Should be finished setting up dealing with options now.">
-      <created>1442593152298</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1442593152298</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Implemented intermediate screen">
-      <created>1442593642907</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1442593642907</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fixed some button issues">
-      <created>1442594614846</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1442594614846</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Put text into verification dialog buttons and changed hiding for &quot;Yes&quot;/&quot;No&quot; buttons to display:none to preserve button placement.">
-      <created>1442595027149</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1442595027149</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Random dialog bug fixed">
-      <created>1442596097719</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1442596097719</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Fixed selection display on inline dialog">
-      <created>1442596509810</created>
-      <option name="number" value="00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1442596509810</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fixed further styling on dialog">
-      <created>1442597570712</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1442597570712</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Have intermediate screens working well.">
-      <created>1442848073118</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1442848073118</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Fixed an interesting bug with duplicate event listeners.">
-      <created>1442850342237</created>
-      <option name="number" value="00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1442850342237</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Fixing manifest for voteflipping version">
-      <created>1442850600120</created>
-      <option name="number" value="00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1442850600120</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Adding printing functionality">
-      <created>1442869793017</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1442869793017</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Updated version to 0.0.2">
-      <created>1442870221853</created>
-      <option name="number" value="00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1442870221853</updated>
-    </task>
-    <task id="LOCAL-00023" summary="nonsecuredWebServer add">
-      <created>1442871269048</created>
-      <option name="number" value="00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1442871269048</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Fixed some options issues">
-      <created>1442875937711</created>
-      <option name="number" value="00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1442875937711</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Properly configured user corrections. Fixed some issues with displaying after refusing inline confirmations for races accessed from the review screen.">
-      <created>1442899096074</created>
-      <option name="number" value="00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1442899096074</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Updated manifest to 0.0.4. Next milestone data logging">
-      <created>1442899140877</created>
-      <option name="number" value="00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1442899140877</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Put in basic code for creating the three Ballot versions (actuallyCast, voterIntent, and voteFlipped)">
-      <created>1442953696436</created>
-      <option name="number" value="00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1442953696436</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Changed some element ids to be more intelligible. Implemented a currentPage global variable to make page logging a little easier. Implemented a series of logging objects for logging.">
-      <created>1442959988462</created>
-      <option name="number" value="00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1442959988462</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Made it so that the voter intent for vote-flipping would be the most recent attempted selection that is not the flipped value.">
-      <created>1442962059781</created>
-      <option name="number" value="00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1442962059781</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Refactored actuallyCastBallot to make it global and simplify access.">
-      <created>1442963138784</created>
-      <option name="number" value="00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1442963138784</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Fixed so we're only tracking voter intention selection in particular on flipped races">
-      <created>1442963567929</created>
-      <option name="number" value="00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1442963567929</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Formatted logging messages for report()">
-      <created>1442966336856</created>
-      <option name="number" value="00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1442966336856</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Included logger calls in the relevant listeners">
-      <created>1442967069584</created>
-      <option name="number" value="00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1442967069584</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Built in automatic logInterval detection and most of consolidation of those intervals">
-      <created>1442969183125</created>
-      <option name="number" value="00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1442969183125</updated>
-    </task>
->>>>>>> origin/BAM_branch2
     <task id="LOCAL-00035" summary="Finished interval consolidation pending testing">
       <created>1442969456346</created>
       <option name="number" value="00035" />
@@ -1140,7 +892,6 @@
       <option name="project" value="LOCAL" />
       <updated>1461943869128</updated>
     </task>
-<<<<<<< HEAD
     <task id="LOCAL-00054" summary="Version fix">
       <created>1461944074077</created>
       <option name="number" value="00054" />
@@ -1155,16 +906,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
-=======
-    <option name="localTasksCounter" value="54" />
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160150000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-179" y="49" width="1924" height="1084" extended-state="0" />
->>>>>>> origin/BAM_branch2
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1177,11 +918,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24812433" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
->>>>>>> origin/BAM_branch2
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1210,10 +947,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-<<<<<<< HEAD
-=======
-    <MESSAGE value="Fixed so we're only tracking voter intention selection in particular on flipped races" />
->>>>>>> origin/BAM_branch2
     <MESSAGE value="Formatted logging messages for report()" />
     <MESSAGE value="Included logger calls in the relevant listeners" />
     <MESSAGE value="Built in automatic logInterval detection and most of consolidation of those intervals" />
@@ -1238,12 +971,8 @@
     <MESSAGE value="Probably fixed async issue" />
     <MESSAGE value="Updating some file names, changed server to put results in folder" />
     <MESSAGE value="UI Fixes" />
-<<<<<<< HEAD
     <MESSAGE value="Version fix" />
     <option name="LAST_COMMIT_MESSAGE" value="Version fix" />
-=======
-    <option name="LAST_COMMIT_MESSAGE" value="UI Fixes" />
->>>>>>> origin/BAM_branch2
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1252,149 +981,31 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state vertical-scroll-proportion="-7.9166665">
           <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
           <folding>
             <element signature="e#0#22063#0" expanded="true" />
             <marker date="1461944090081" expanded="false" signature="93:225" placeholder="..." />
-=======
-        <state vertical-scroll-proportion="-318.3611">
-          <caret line="671" column="33" selection-start-line="671" selection-start-column="33" selection-end-line="671" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#55879#0" expanded="true" />
-            <marker date="1461943830077" expanded="false" signature="93:225" placeholder="..." />
->>>>>>> origin/BAM_branch2
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/VoteBoxUI-htmlSource.html">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state vertical-scroll-proportion="16.432837">
           <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
-=======
-        <state vertical-scroll-proportion="-3.1044776">
-          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#3;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#strong#0;n#p#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#2;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#3;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#4;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
->>>>>>> origin/BAM_branch2
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state vertical-scroll-proportion="0.1260023">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-=======
-        <state vertical-scroll-proportion="0.12805589">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
->>>>>>> origin/BAM_branch2
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>VoteBoxUI</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
-=======
->>>>>>> origin/BAM_branch2
   </component>
   <component name="masterDetails">
     <states>

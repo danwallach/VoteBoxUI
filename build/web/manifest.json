@@ -1,18 +1,14 @@
 {
   "manifest_version": 2,
-  "name": "VoteBoxUI-VoteFlipping",
-  "short_name": "VoteFlippingUI",
+  "name": "VoteBoxUI",
+  "short_name": "VoteBoxUI",
   "description": "",
-<<<<<<< HEAD
   "version": "0.0.8",
-=======
-  "version": "0.1.10",
->>>>>>> origin/BAM_branch2
   "minimum_chrome_version": "39",
 
   "icons": {
     "16": "vote16.png",
-    "128": "voteFLIPPED128.png"
+    "128": "vote128.png"
   },
 
   "app": {
