@@ -18,18 +18,15 @@ bool inlineConfirmation;
 bool endOfBallotReview;
 bool dialogConfirmation;
 bool userCorrection;
-
 String ballotType;
 int selections = 0;
 String selection;
-
 String voteFlippingType;
 String currentPage="Options Page";
 Ballot actuallyCastBallot;
-Ballot sample;
-Ballot november;
 Logger logger = new Logger();
 String ID;
+int reviewPageNum = 1;
 
 
 main() async {
@@ -41,19 +38,10 @@ main() async {
   document.onKeyDown.listen(blockKeys);
   document.onKeyUp.listen(blockKeys);
 
-/*chrome.runtime.getPackageDirectoryEntry((root) {
-  root.getFile("election.xml", {}, (fileEntry) {
-    fileEntry.file((file) {
-      var reader = new FileReader();
-      reader.onloadend = (e) {
-            var XML2;
-            XML2 = reader.result;
-            chrome.storage.local.set({'XML2': XML2});
-      };
-      reader.readAsText(file);
-    }, "Error reading XML file");
-  }, "Error reading XML file");
-});*/
+  /* Load the Ballot from the XML file reference passed through localdata */
+  //print("Loading ballot...");
+  //actuallyCastBallot = await loadBallot();
+  //print("Ballot has ${actuallyCastBallot.size()} 
 
   /*****************************************************************************************************************************\
                                                       OPTIONS PAGE
@@ -133,12 +121,6 @@ main() async {
           }
   );
 
-  /* Load the Ballot from the XML file reference passed through localdata */
-  //print("Loading ballot...");
-  //november = await loadBallot('XML2');
-  //print("Ballot has ${actuallyCastBallot.size()} races and propositions detected.");
-
-
   /* Go to auth screen once options are set up*/
   querySelector('#confirmOptions').onClick.listen(
       (MouseEvent e) async {
@@ -149,23 +131,6 @@ main() async {
         currentPage="Authentication Page";
       }
   );
-
-    /*querySelector('#confirmBallot').onClick.listen(
-      (MouseEvent e) async {
-        /* Load the Ballot from the XML file reference passed through localdata */
-        print("Loading ballot...");
-        actuallyCastBallot = await loadBallot(selection);
-        print("Ballot has ${actuallyCastBallot.size()} races and propositions detected.");
-
-
-
-        if (selections == 2) {
-        querySelector('#options').style.display ="none";
-        querySelector('#auth').style.visibility="visible";
-        currentPage="Authentication Page";
-        }
-      }
-  );*/
 
   /*****************************************************************************************************************************\
                                                     END OPTIONS PAGE
@@ -769,7 +734,7 @@ void review(MouseEvent event, int pageToDisplay) {
 
   if(pageToDisplay >= actuallyCastBallot.size()) {
 
-    displayReviewPage();
+    displayReviewPage(reviewPageNum);
 
     currentPage = "Review Page";
     actuallyCastBallot.updateCurrentPage(actuallyCastBallot.size());
@@ -860,12 +825,12 @@ void display(int pageToDisplay) {
         changeVotes();
       }
 
-      displayReviewPage();
+      displayReviewPage(reviewPageNum);
       currentPage = "Review Page";
 
     } else {
       /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
-      displayReviewPage();
+      displayReviewPage(reviewPageNum);
 
       currentPage = "Submit Screen";
 
@@ -1101,7 +1066,7 @@ void respondToClick(MouseEvent e, Race race) {
 /**
  * Renders the review page for the current state of this Ballot
  */
-void displayReviewPage() {
+void displayReviewPage(pageNum) {
 
   /* Clear all other HTML */
   querySelector("#VotingContentDIV").style.display = "none";
@@ -1133,8 +1098,32 @@ void displayReviewPage() {
   reviewCol1.querySelectorAll(".race").forEach((Element e) => e.remove());
   reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
 
+  DivElement pagination = querySelector("#reviewPagination");
+  int numPages = (actuallyCastBallot.size()/20).ceil();
+  if (numPages > 1 && pagination.innerHtml.trim().length==0) {
+    var pagehtml = '<li><a href="#" id="1" class="active page">1</a></li>';
+    for (int i=2; i<=numPages; i++) {
+      pagehtml += '<li><a href="#" class="page" id="${i}">${i}</a></li>';
+    }
+
+    pagination.setInnerHtml(pagehtml);
+    pagination.style.visibility = "visible";
+  }
+
+  ElementList<Element> liElements = querySelectorAll('.page');
+  liElements.forEach((Element li){
+    li.onClick.listen((e){
+      liElements.forEach((Element li2){
+        li2.classes.remove('active');
+      });
+      li.classes.add('active');
+      reviewPageNum = int.parse(e.target.id);
+      displayReviewPage(int.parse(e.target.id));
+    });
+  });
+
   /* Go through all the races and add them to the columns (14 max in each?) */
-  for (int i=0; i<actuallyCastBallot.size(); i++) {
+  for (int i=(pageNum-1)*19; i<((pageNum-1)*19)+19; i++) {
 
     /* Get the ith race */
     Race currentRace = actuallyCastBallot.getRace(i);
@@ -1179,7 +1168,7 @@ void displayReviewPage() {
     raceDiv.onClick.listen((MouseEvent e) => review(e, i));
 
     /* Send to correct column */
-    querySelector("#review${(i<14) ? "1" : "2"}").append(raceDiv);
+    querySelector("#review${(i<((pageNum-1)*19)+10) ? "1" : "2"}").append(raceDiv);
 
   }
 
@@ -1357,35 +1346,6 @@ Future<Ballot> loadBallot(String xml) async {
 
   return ballot;
 }
-
-/**
- * Loads the ballot XML file from localdata and parses the XML as a String to be sent
- * to be converted into a Ballot object
- */
-/*Future<Ballot> loadNovBallot(String xml) async {
-
-
-
-  String ballotXML = (await chrome.storage.local.get('XML2'))['XML2'];
-
-  if (ballotXML == null) {
-    print("The file was not loaded properly!");
-    return null;
-  }
-
-  print("Loaded the ballot XML...");
-  Ballot ballot = new Ballot();
-
-  print("Parsing the ballot XML...");
-  XmlDocument xmlDoc = await parse(ballotXML);
-
-  print("Parsed the ballot XML!");
-
-  print("Loading the ballot from XML...");
-  ballot.loadFromXML(xmlDoc);
-
-  return ballot;
-}*/
 
 
 /**
