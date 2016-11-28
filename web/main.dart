@@ -23,6 +23,7 @@ String currentPage="Options Page";
 Ballot actuallyCastBallot;
 Logger logger = new Logger();
 String ID;
+int reviewPageNum = 1;
 
 
 main() async {
@@ -694,7 +695,7 @@ void review(MouseEvent event, int pageToDisplay) {
 
   if(pageToDisplay >= actuallyCastBallot.size()) {
 
-    displayReviewPage(1);
+    displayReviewPage(reviewPageNum);
 
     currentPage = "Review Page";
     actuallyCastBallot.updateCurrentPage(actuallyCastBallot.size());
@@ -785,12 +786,12 @@ void display(int pageToDisplay) {
         changeVotes();
       }
 
-      displayReviewPage(1);
+      displayReviewPage(reviewPageNum);
       currentPage = "Review Page";
 
     } else {
       /* Proceed to printing page (display review to ensure cleanup of voting div, then submitScreen) */
-      displayReviewPage(1);
+      displayReviewPage(reviewPageNum);
 
       currentPage = "Submit Screen";
 
@@ -1051,7 +1052,6 @@ void displayReviewPage(pageNum) {
 
   DivElement reviewCol1 = querySelector("#review1");
   DivElement reviewCol2 = querySelector("#review2");
-  
 
   querySelector("#reviewTop").style.visibility = "visible";
 
@@ -1060,11 +1060,11 @@ void displayReviewPage(pageNum) {
   reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
 
   DivElement pagination = querySelector("#reviewPagination");
-  int numPages = (actuallyCastBallot.size()/28).ceil();
-  if (numPages > 1) {
-    var pagehtml = '<li><a href="#" class="active page" onclick="displayReviewPage(1)">1</a></li>';
+  int numPages = (actuallyCastBallot.size()/20).ceil();
+  if (numPages > 1 && pagination.innerHtml.trim().length==0) {
+    var pagehtml = '<li><a href="#" id="1" class="active page">1</a></li>';
     for (int i=2; i<=numPages; i++) {
-      pagehtml += '<li><a href="#" class="page" onclick="displayReviewPage(${i})">${i}</a></li>';
+      pagehtml += '<li><a href="#" class="page" id="${i}">${i}</a></li>';
     }
 
     pagination.setInnerHtml(pagehtml);
@@ -1078,13 +1078,13 @@ void displayReviewPage(pageNum) {
         li2.classes.remove('active');
       });
       li.classes.add('active');
+      reviewPageNum = int.parse(e.target.id);
+      displayReviewPage(int.parse(e.target.id));
     });
   });
 
-
-
   /* Go through all the races and add them to the columns (14 max in each?) */
-  for (int i=(pageNum-1)*28; i<28; i++) {
+  for (int i=(pageNum-1)*19; i<((pageNum-1)*19)+19; i++) {
 
     /* Get the ith race */
     Race currentRace = actuallyCastBallot.getRace(i);
@@ -1129,7 +1129,7 @@ void displayReviewPage(pageNum) {
     raceDiv.onClick.listen((MouseEvent e) => review(e, i));
 
     /* Send to correct column */
-    querySelector("#review${(i<((pageNum-1)*28)+14) ? "1" : "2"}").append(raceDiv);
+    querySelector("#review${(i<((pageNum-1)*19)+10) ? "1" : "2"}").append(raceDiv);
 
   }
 

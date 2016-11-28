@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<election>
+
+<race>
+	<title>President and Vice President</title>
+	<number>1</number>
+		<candidate>
+			<name>Donald J. Trump and Mike Pence</name>
+			<party>REP</party>
+		</candidate>
+        <candidate>
+			<name>Hillary Clinton and Tim Kaine</name>
+			<party>DEM</party>
+		</candidate>
+        <candidate>
+			<name>Gary Johnson and William Weld</name>
+			<party>LIB</party>
+		</candidate>  
+		<candidate>
+			<name>Jill Stein and Ajamu Baraka</name>
+			<party>GP</party>
+		</candidate>
+</race>
+
+<race>
+	<title>United States Representative, District 7</title>
+	<number>2</number>
+		<candidate>
+			<name>John Culberson</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>James Cargas</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Railroad Commissioner</title>
+	<number>3</number>
+		<candidate>
+			<name>Wayne Christian</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Grady Yarbrough</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Mark Miller</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Martina Salinas</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, Supreme Court, Place 3</title>
+	<number>4</number>
+		<candidate>
+			<name>Debra Lehrmann</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Mike Westergren</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Kathie Glass</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Rodolfo Rivera Munoz</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, Supreme Court, Place 5</title>
+	<number>5</number>
+		<candidate>
+			<name>Paul Green</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Dori Contreras Garza</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Tom Oxford</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Charles E. Waterbury</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, Supreme Court, Place 9</title>
+	<number>6</number>
+		<candidate>
+			<name>Eva Guzman</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Savannah Robinson</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Don Fulton</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Jim Chisholm</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Judge, Court of Criminal Appeals, Place 2</title>
+	<number>7</number>
+		<candidate>
+			<name>Mary Lou Keel</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Lawrence "Larry" Meyers</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Mark Ash</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Adam King Blackwell Reposa</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Judge, Court of Criminal Appeals, Place 5</title>
+	<number>8</number>
+		<candidate>
+			<name>Scott Walker</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Betsy Johnson</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>William Bryan Strange, III</name>
+			<party>LIB</party>
+		</candidate>
+		<candidate>
+			<name>Judith Sanders-Castro</name>
+			<party>GB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Judge, Court of Criminal Appeals, Place 6</title>
+	<number>9</number>
+		<candidate>
+			<name>Michael E. Keasler</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Robert Burns</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Mark W. Bennett</name>
+			<party>LIB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Member, State Board of Education, District 6</title>
+	<number>10</number>
+		<candidate>
+			<name>Donna Bahorich</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>R. Dakota Carter</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Whitney Bilyeu</name>
+			<party>LIB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>State Representative, District 134</title>
+	<number>11</number>
+		<candidate>
+			<name>Sarah Davis</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Ben Rose</name>
+			<party>DEM</party>
+		</candidate>
+		<candidate>
+			<name>Gilberto "Gil" Velasquez Jr.</name>
+			<party>LIB</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Chief Justice, 1st Court of Appeals</title>
+	<number>12</number>
+		<candidate>
+			<name>Sheery Radack</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Jim Peacock</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, 1st Court of Appeals District, Place 4</title>
+	<number>13</number>
+		<candidate>
+			<name>Evelyn Keyes</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Barbara Gardner</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, 14th Court of Appeals District, Place 2</title>
+	<number>14</number>
+		<candidate>
+			<name>Kevin Jewell</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Candance White</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice, 14th Court of Appeals District, Place 9</title>
+	<number>15</number>
+		<candidate>
+			<name>Tracy Elizabeth Christopher</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Peter M. Kelly</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 11th Judicial District</title>
+	<number>16</number>
+		<candidate>
+			<name>Kevin Fulton</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Kristen Hawkins</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 61st Judicial District</title>
+	<number>17</number>
+		<candidate>
+			<name>Erin Elizabeth Lunceford</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Fredericka Phillips</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 80th Judicial District</title>
+	<number>18</number>
+		<candidate>
+			<name>Will Archer</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Larry Weiman</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 125th Judicial District</title>
+	<number>19</number>
+		<candidate>
+			<name>Sharon Hemphill</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Kyle Carter</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 127th Judicial District</title>
+	<number>20</number>
+		<candidate>
+			<name>Sarahjane Swanson</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>R. K. Sandhill</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 129th Judicial District</title>
+	<number>21</number>
+		<candidate>
+			<name>Sophia Mafrige</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Michael Gomez</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 133rd Judicial District</title>
+	<number>22</number>
+		<candidate>
+			<name>Cindy Bennett Smith</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Jaclanel McFarland</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 151st Judicial District</title>
+	<number>23</number>
+		<candidate>
+			<name>Jeff Hastings</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Mike Engelhart</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 152nd Judicial District</title>
+	<number>24</number>
+		<candidate>
+			<name>Don Self</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Robert K. Schaffer</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 164th Judicial District</title>
+	<number>25</number>
+		<candidate>
+			<name>Bruce Bain</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Alexandra Smoots-Hogan</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 165th Judicial District</title>
+	<number>26</number>
+		<candidate>
+			<name>Debra Ibarra Mayfield</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Ursula A. Hall</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 174th Judicial District</title>
+	<number>27</number>
+		<candidate>
+			<name>Katherine McDaniel</name>
+			<party>R</party>
+		</candidate>
+		<candidate>
+			<name>Hazel B. Jones</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 176th Judicial District</title>
+	<number>28</number>
+		<candidate>
+			<name>Stacey W. Bond</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Nikita "Niki" Harmon</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 177th Judicial District</title>
+	<number>29</number>
+		<candidate>
+			<name>Ryan Patrick</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Robert Johnson</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 178th Judicial District</title>
+	<number>30</number>
+		<candidate>
+			<name>Phil Gommels</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Kelli Johnson</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 179th Judicial District</title>
+	<number>31</number>
+		<candidate>
+			<name>Kristin M. Guiney</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Randy Roll</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 215th Judicial District</title>
+	<number>32</number>
+		<candidate>
+			<name>Fred Shuchart</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Elaine Palmer</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 333rd Judicial District</title>
+	<number>33</number>
+		<candidate>
+			<name>Joseph "Tad" Halbach</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Daryl Moore</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 334th Judicial District</title>
+	<number>34</number>
+		<candidate>
+			<name>Grant Dorfman</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Steven Kirkland</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 337th Judicial District</title>
+	<number>35</number>
+		<candidate>
+			<name>Renee Magee</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Herb Ritchie</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 338th Judicial District</title>
+	<number>36</number>
+		<candidate>
+			<name>Brock Thomas</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Ramona Franklin</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 339th Judicial District</title>
+	<number>37</number>
+		<candidate>
+			<name>Mary McFaden</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Maria T. (Terri) Jackson</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 351st Judicial District</title>
+	<number>38</number>
+		<candidate>
+			<name>Mark Kent Ellis</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>George Powell</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Judge, 507th Judicial District</title>
+	<number>39</number>
+		<candidate>
+			<name>Alyssa Lemkuil</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Julia Maldonado</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>District Attorney</title>
+	<number>40</number>
+		<candidate>
+			<name>Devon Anderson</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Kim Ogg</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Judge, County Civil Court at Law No. 1 (Unexpired Term)</title>
+	<number>41</number>
+		<candidate>
+			<name>Clyde Raymond Leuchtag</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>George Barnstone</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Judge, County Criminal Court No. 16</title>
+	<number>42</number>
+		<candidate>
+			<name>Linda Garcia</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Darrell William Jordan</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>County Attorney</title>
+	<number>43</number>
+		<candidate>
+			<name>Jim Leitner</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Vince Ryan</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Sheriff</title>
+	<number>44</number>
+		<candidate>
+			<name>Ron Hickman</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Ed Gonzalez</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>County Tax Assessor-Collector</title>
+	<number>45</number>
+		<candidate>
+			<name>Mike Sullivan</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Ann Harris Bennett</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>County Commissioner, Precinct 1</title>
+	<number>46</number>
+		<candidate>
+			<name>Rodney Ellis</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Justice of the Peace, Precinct 1, Place 1</title>
+	<number>47</number>
+		<candidate>
+			<name>SaraJane Milligan</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Eric William Carter</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<race>
+	<title>Constable, Precinct 1</title>
+	<number>48</number>
+		<candidate>
+			<name>Joe Danna</name>
+			<party>REP</party>
+		</candidate>
+		<candidate>
+			<name>Alan Rosen</name>
+			<party>DEM</party>
+		</candidate>
+</race>
+
+<proposition>
+	<title>Houston Independent School District (HISD), Special Election</title>
+	<number>49</number>
+	<propositionText>
+		Authorizing the board of trustees of Houston Independent School District to purchase attendance credits from the state with local tax revenues
+	</propositionText>
+		<response>FOR</response>
+		<response>AGAINST</response>
+</proposition>
+
+</election>

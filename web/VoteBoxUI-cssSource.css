@@ -398,7 +398,7 @@ strong {
 }
 
 #propInst{ /*Choose yes or no. */
-	/*position: relative;*/
+	/*position: absolute;*/
 	/*top: 60px;*/
 	/*left:0;*/
 	font-weight: 900;
@@ -530,7 +530,8 @@ input[type="radio"]{
 	margin-left: -423px;
 	left: 50%;
 	position: absolute;
-	overflow: auto;
+	
+
 }
 #reviewTop{
 	width: 845px;
@@ -573,18 +574,22 @@ input[type="radio"]{
 	padding: 0;
 	margin: 10px;
 	visibility: hidden;
-	float: right;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 24px;
 }
 #reviewPagination li {display: inline;}
 #reviewPagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
 }
 #reviewPagination li a.active {
-    background-color: #4CAF50;
-    color: white;
+	background-color: #4CAF50;
+	color: white;
 }
 .race { /*review screen*/
     cursor: pointer;

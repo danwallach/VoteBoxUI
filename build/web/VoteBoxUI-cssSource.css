@@ -379,7 +379,7 @@ strong {
 	text-align: left;
 }
 #propTitle.propTitle{ /*Proposition Title*/
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 	/*width: 688px; */
@@ -530,6 +530,8 @@ input[type="radio"]{
 	margin-left: -423px;
 	left: 50%;
 	position: absolute;
+	
+
 }
 #reviewTop{
 	width: 845px;
@@ -566,6 +568,28 @@ input[type="radio"]{
 	width: 400px;
 	display: inline-block;
 	float: right;
+}
+#reviewPagination {
+	display: inline-block;
+	padding: 0;
+	margin: 10px;
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 24px;
+}
+#reviewPagination li {display: inline;}
+#reviewPagination li a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+#reviewPagination li a.active {
+	background-color: #4CAF50;
+	color: white;
 }
 .race { /*review screen*/
     cursor: pointer;
