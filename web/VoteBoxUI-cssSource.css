@@ -144,7 +144,7 @@ box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 	height: 5%;
 	width: 30%;
 	padding: 1% 1%;
-	margin: 1% 1.5% 2%;
+	margin: 1% 1.5% 2% 1.5%;
 	display: block;
 	font-size: 100%;
 	float: right;
@@ -154,10 +154,10 @@ box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 	height: 5%;
 	width: 30%;
 	padding: 1% 1%;
-	margin: 1% 1.5% 2%;
+	margin: 1% .5% 2% 2.5%;
 	display: block;
 	font-size: 100%;
-	float: right;
+	float: left;
 }
 
 #changeOptionsSelection {

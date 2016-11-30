@@ -24,11 +24,13 @@
         <!--Options Page-->
         <div id="options">
 
+
+            <button id="sampleBallot" class="ballotOptionsButton">Sample Ballot</button>
+            <button id="novemberBallot" class="ballotOptionsButton">November Ballot</button>
+			<br><br>
             <button id="standard" class="changeOptionsButton">No Vote Changes</button>
             <button id="duringVoting" class="changeOptionsButton">Vote Changes During Voting</button>
             <button id="printChanges" class="changeOptionsButton">Vote Changes After Voting</button>
-            <button id="sampleBallot" class="ballotOptionsButton">Sample Ballot</button>
-            <button id="novemberBallot" class="ballotOptionsButton">November Ballot</button>
 
             <div id="changeOptions" style="visibility: hidden">
                 <div id="locationOption">
@@ -102,16 +104,10 @@
         
           <!-- Election Information -->
           <div id="info" style="visibility:hidden">
-              <h1><strong>Ballot for the General Election</strong></h1>
-              <p>City of Houston <br>
-              Harris County, Texas</p>
-              <p>Precinct 101A<br>
-              Congressional District 7<br>
-              State Representative District 134<br>
-              State Board of Education District 2</p>
-              <p>November 8, 2016</p>
-              <button id="button_begin" type="button"> Begin Voting </button>
-          </div> <!--info-->
+            <div id="innerinfo"></div>
+            <button id='button_begin' type='button'> Begin Voting </button>
+          </div>
+          <!--info-->
         
           <!--How to complete ballot -->    
           <div id="first_instructions" style="visibility:hidden">

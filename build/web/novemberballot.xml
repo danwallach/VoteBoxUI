@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <election>
-
+<info>
+	<infoTitle>Ballot for the General Election</infoTitle>
+	<city>City of Houston</city>
+	<county>Harris County, Texas</county>
+	<precinct>Precinct 0175</precinct>
+	<conDistrict>Congressional District 7</conDistrict>
+	<repDistrict>State Representative District 134</repDistrict>
+	<eduDistrict>State Board of Education District 2</eduDistrict>
+	<date>November 8, 2016</date>
+</info>
 <race>
 	<title>President and Vice President</title>
 	<number>1</number>

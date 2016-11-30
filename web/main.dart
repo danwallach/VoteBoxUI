@@ -19,6 +19,8 @@ bool endOfBallotReview;
 bool dialogConfirmation;
 bool userCorrection;
 String ballotType;
+bool voteSelect = false;
+bool ballotSelect = false;
 int selections = 0;
 String selection;
 String voteFlippingType;
@@ -38,10 +40,6 @@ main() async {
   document.onKeyDown.listen(blockKeys);
   document.onKeyUp.listen(blockKeys);
 
-  /* Load the Ballot from the XML file reference passed through localdata */
-  //print("Loading ballot...");
-  //actuallyCastBallot = await loadBallot();
-  //print("Ballot has ${actuallyCastBallot.size()} 
 
   /*****************************************************************************************************************************\
                                                       OPTIONS PAGE
@@ -56,13 +54,12 @@ main() async {
           }
   );
 
-  /* Check for one of the main mode buttons to be clicked */
+  /* Check for one of the vote fipping buttons to be clicked */
   querySelectorAll('.changeOptionsButton').onClick.listen(
 
           (MouseEvent e){
-
-            var a = selections + 1;
-            selections = a;
+            //checks for vote flipping selection
+            voteSelect = true;
 
             /* Make all the button font weights normal again */
             (querySelectorAll('.changeOptionsButton') as ElementList<ButtonElement>).forEach(
@@ -75,7 +72,7 @@ main() async {
             ButtonElement buttonClicked = (e.currentTarget as ButtonElement);
             buttonClicked.style.fontWeight = "bold";
 
-            if (selections == 2) {
+            if (voteSelect && ballotSelect) {
             querySelector('#confirmOptions').style.visibility = "visible";
             }
             querySelector('#reviewOptions').style.visibility = "visible";
@@ -91,13 +88,12 @@ main() async {
           }
   );
 
-  /* Check for one of the main mode buttons to be clicked */
+  /* Check for one of the ballot buttons to be clicked */
   querySelectorAll('.ballotOptionsButton').onClick.listen(
 
           (MouseEvent e){
-
-            var a = selections + 1;
-            selections = a;
+            //checks for ballot selection
+            ballotSelect = true;
 
             /* Make all the button font weights normal again */
             (querySelectorAll('.ballotOptionsButton') as ElementList<ButtonElement>).forEach(
@@ -110,20 +106,21 @@ main() async {
             ButtonElement buttonClicked = (e.currentTarget as ButtonElement);
             buttonClicked.style.fontWeight = "bold";
 
-           if (selections == 2) {
+           if (voteSelect && ballotSelect) {
             querySelector('#confirmOptions').style.visibility = "visible";
             }
             querySelector('#changeBallotSelection').innerHtml = "You've selected <font color=\"red\">${buttonClicked.text}";
 
             ballotType = buttonClicked.text.trim();
-
-            selection = (ballotType == "Sample Ballot") ?  'XML' : 'XML2';
+            //picks a xml file dependent on the button clicked
+            selection = (ballotType == "Sample Ballot") ?  'XML2' : 'XML';
           }
   );
 
   /* Go to auth screen once options are set up*/
   querySelector('#confirmOptions').onClick.listen(
       (MouseEvent e) async {
+        //loads the ballot dependent upon selection
         actuallyCastBallot = await loadBallot(selection);
         recordOptions();
         querySelector('#options').style.display ="none";
@@ -355,6 +352,7 @@ void getID(MouseEvent event) {
     dialog.showModal();
   }
   else{
+    querySelector("#innerinfo").innerHtml = actuallyCastBallot.getInfoStr(); //loads election information from xml
     querySelector("#info").style.visibility="visible"; //shows election information page or start
     querySelector("#ID").style.display="none"; //hides the elements on the authentication page
     querySelector("#enterID").style.display="none";
@@ -1098,8 +1096,9 @@ void displayReviewPage(pageNum) {
   reviewCol1.querySelectorAll(".race").forEach((Element e) => e.remove());
   reviewCol2.querySelectorAll(".race").forEach((Element e) => e.remove());
 
+  /* Adds a pagination to review page */
   DivElement pagination = querySelector("#reviewPagination");
-  int numPages = (actuallyCastBallot.size()/20).ceil();
+  int numPages = (actuallyCastBallot.size()/25).ceil();
   if (numPages > 1 && pagination.innerHtml.trim().length==0) {
     var pagehtml = '<li><a href="#" id="1" class="active page">1</a></li>';
     for (int i=2; i<=numPages; i++) {
@@ -1110,6 +1109,7 @@ void displayReviewPage(pageNum) {
     pagination.style.visibility = "visible";
   }
 
+  /* adds and removes active class from pagination links */
   ElementList<Element> liElements = querySelectorAll('.page');
   liElements.forEach((Element li){
     li.onClick.listen((e){
@@ -1122,8 +1122,8 @@ void displayReviewPage(pageNum) {
     });
   });
 
-  /* Go through all the races and add them to the columns (14 max in each?) */
-  for (int i=(pageNum-1)*19; i<((pageNum-1)*19)+19; i++) {
+  /* Go through all the races and add them to the columns (12 in column1, 13 in column 2) */
+  for (int i=(pageNum-1)*25; i<((pageNum-1)*25)+25; i++) {
 
     /* Get the ith race */
     Race currentRace = actuallyCastBallot.getRace(i);
@@ -1168,7 +1168,7 @@ void displayReviewPage(pageNum) {
     raceDiv.onClick.listen((MouseEvent e) => review(e, i));
 
     /* Send to correct column */
-    querySelector("#review${(i<((pageNum-1)*19)+10) ? "1" : "2"}").append(raceDiv);
+    querySelector("#review${(i<((pageNum-1)*25)+12) ? "1" : "2"}").append(raceDiv);
 
   }
 
@@ -1475,6 +1475,7 @@ class Ballot {
 
   List<Race> _races;
   int _currentPage=0;
+  String _infostr="";
 
   Ballot() {
     _races = new List<Race>();
@@ -1488,6 +1489,10 @@ class Ballot {
     return _races.elementAt(index);
   }
 
+  String getInfoStr() {
+    return _infostr;
+  }
+
   int getCurrentPage() {
     return _currentPage;
   }
@@ -1499,6 +1504,32 @@ class Ballot {
   void loadFromXML(XmlDocument xml) {
 
     List<XmlElement> raceList = xml.findAllElements("race");
+
+    /* election info */
+    List<XmlElement> infoList = xml.findAllElements("info");
+    for (XmlElement info in infoList) {
+      String infoTitle = info.findElements("infoTitle").first.text;
+      String city = info.findElements("city").first.text;
+      String county = info.findElements("county").first.text;
+      String precinct = info.findElements("precinct").first.text;
+      String conDistrict = info.findElements("conDistrict").first.text;
+      String repDistrict = info.findElements("repDistrict").first.text;
+      String eduDistrict = info.findElements("eduDistrict").first.text;
+      String date = info.findElements("date").first.text;
+
+      _infostr = "<h1><strong>" + infoTitle + "</strong></h1>" +
+                "<p>" + city + "<br>" + 
+                county + "</p>" +
+                "<p>" + precinct + "<br>" +
+                conDistrict + "<br>" +
+                repDistrict + "<br>" + 
+                eduDistrict + "</p>" +
+                "<p>" + date + "</p>";
+
+    }
+
+    
+
 
     for (XmlElement race in raceList) {
 
