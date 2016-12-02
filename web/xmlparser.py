@@ -1,5 +1,15 @@
+"""
+Input: List of tuples. Each tuple represents a race, which consists
+of a title, number, a list of candidates. Each candidate is 
+represented by a tuple: (name, party).
+
+Output: string of races, with added xml tags
+
+Note: you'll still need to add the <info> section manually
+"""
+
 def xmlparser(raceList):
-	xml = ""
+	xml = "<election>\n"
 	for raceTuple in raceList:
 		title = raceTuple[0]
 		number = raceTuple[1]
@@ -19,7 +29,7 @@ def xmlparser(raceList):
 				party = candidateTuple[1]	
 			xml = xml + "<candidate>\n<name>" + candidateTuple[0] + "</name>\n<party>" \
 			+ party + "</party>\n</candidate>\n"
-		xml = xml + "</race>\n"
+		xml = xml + "</race>\n</election>"
 	return xml
 
 
