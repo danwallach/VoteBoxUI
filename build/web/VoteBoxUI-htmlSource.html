@@ -24,6 +24,10 @@
         <!--Options Page-->
         <div id="options">
 
+
+            <button id="sampleBallot" class="ballotOptionsButton">Sample Ballot</button>
+            <button id="novemberBallot" class="ballotOptionsButton">November Ballot</button>
+			<br><br>
             <button id="standard" class="changeOptionsButton">No Vote Changes</button>
             <button id="duringVoting" class="changeOptionsButton">Vote Changes During Voting</button>
             <button id="printChanges" class="changeOptionsButton">Vote Changes After Voting</button>
@@ -83,6 +87,8 @@
 
             <label id="changeOptionsSelection"></label><br><br>
             <button id="confirmOptions" style="visibility: hidden">Confirm and Continue</button>
+
+            <label id="changeBallotSelection"></label><br><br>
         </div>
             
         <!--For Testing
@@ -98,16 +104,10 @@
         
           <!-- Election Information -->
           <div id="info" style="visibility:hidden">
-              <h1><strong>Ballot for the General Election</strong></h1>
-              <p>City of Houston <br>
-              Harris County, Texas</p>
-              <p>Precinct 101A<br>
-              Congressional District 7<br>
-              State Representative District 134<br>
-              State Board of Education District 2</p>
-              <p>November 8, 2016</p>
-              <button id="button_begin" type="button"> Begin Voting </button>
-          </div> <!--info-->
+            <div id="innerinfo"></div>
+            <button id='button_begin' type='button'> Begin Voting </button>
+          </div>
+          <!--info-->
         
           <!--How to complete ballot -->    
           <div id="first_instructions" style="visibility:hidden">
@@ -123,7 +123,7 @@
                 <div id="propTitle" class="propTitle">Prop title here </div><br>
                 <div id="propText"> Choose yes or no. </div> <br>
                 <div id="raceTitle" class = "raceTitle">Race Title</div><br>
-                <div id="raceInst">Vote for 1.</div>
+                <div id="raceInst">Vote for one.</div>
             </div>
 
             <div id="votes">
@@ -171,6 +171,8 @@
                 </div>
           
             </div> <!--review2-->
+            <ul id="reviewPagination">
+            </ul>
 
         </div> <!--reviews-->
             
@@ -189,7 +191,7 @@
 
     <!--Confirmation Screen-->
     <div id="confirmation" style="visibility: hidden">
-        <p id="confHeading"><strong> <span style="text-decoration: underline;">Now you need to cast your ballot!</span></strong></p>
+        <p id="confHeading"><strong><span style="text-decoration: underline;">Now you need to cast your ballot!</span></strong></p>
         <p id="waitForPrinting"> Right now, 2 sheets are printing: your ballot and ballot tracker. Wait for both.
         <p id="confText"><strong>To cast your ballot, place your printed ballot in the ballot box.</strong> Keep your ballot tracker. You can use your ballot tracker to check on your vote after the polls close.</p>
     </div>

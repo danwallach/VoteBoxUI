@@ -144,15 +144,30 @@ box-shadow: 0 45px 0 0 rgba(255,255,255,0.1) inset; display: block;
 	height: 5%;
 	width: 30%;
 	padding: 1% 1%;
-	margin: 1% 1.5% 2%;
+	margin: 1% 1.5% 2% 1.5%;
 	display: block;
 	font-size: 100%;
 	float: right;
 }
 
+.ballotOptionsButton {
+	height: 5%;
+	width: 30%;
+	padding: 1% 1%;
+	margin: 1% .5% 2% 2.5%;
+	display: block;
+	font-size: 100%;
+	float: left;
+}
+
 #changeOptionsSelection {
 	position: relative;
-	left: 10%
+	left: 8%
+}
+
+#changeBallotSelection {
+	position: relative;
+	left: 8%
 }
 
 #confirmOptions {
@@ -379,7 +394,7 @@ strong {
 	text-align: left;
 }
 #propTitle.propTitle{ /*Proposition Title*/
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 	/*width: 688px; */
@@ -530,6 +545,8 @@ input[type="radio"]{
 	margin-left: -423px;
 	left: 50%;
 	position: absolute;
+	
+
 }
 #reviewTop{
 	width: 845px;
@@ -566,6 +583,29 @@ input[type="radio"]{
 	width: 400px;
 	display: inline-block;
 	float: right;
+}
+#reviewPagination {
+	display: inline-block;
+	padding: 0;
+	margin: 10px;
+	visibility: hidden;
+	position: absolute;
+	top: 100%;
+	left: 49%;
+	transform: translate(-50%, -50%);
+	font-size: 40px;
+}
+#reviewPagination li {display: inline;}
+#reviewPagination li a {
+	color: black;
+	float: left;
+	padding: 8px 20px;
+	margin: 5px;
+	text-decoration: none;
+}
+#reviewPagination li a.active {
+	background-color: #4CAF50;
+	color: white;
 }
 .race { /*review screen*/
     cursor: pointer;
